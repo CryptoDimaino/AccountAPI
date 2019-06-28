@@ -24,11 +24,13 @@ namespace AccountAPI.Models
         [Required]
         public string EventLocation {get;set;}
         [Required]
-        public DateTime CreatedAt {get;set;}
+        public DateTime CreatedAt {get;set;} = DateTime.Now;
         [Required]
-        public DateTime UpdatedAt {get;set;}
+        public DateTime UpdatedAt {get;set;} = DateTime.Now;
         public List<Game> Games {get;set;}
         public List<ControllerType> ControllerType {get;set;}
         public List<Platform> Platforms {get;set;}
+
+        public ICollection<GameAccount> GameAccounts {get;} = new List<GameAccount>();
     }
 }

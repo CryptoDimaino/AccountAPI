@@ -57,7 +57,7 @@ namespace AccountAPI.Controllers
         }
 
         // GET api/Account/{name}
-        [HttpGet("name")]
+        [HttpGet("name/{name}")]
         public async Task<IActionResult> GetAccountByName(string Name)
         {
             try
@@ -80,9 +80,9 @@ namespace AccountAPI.Controllers
             int Count = await _IAccountRepository.CountNumberOfAccountsAsync();
             Account NewAccount = new Account()
             {
-                Name = "Account1",
-                Password = "Password1",
-                Email = "Account1@gmail.com",
+                Name = "Account" + Count,
+                Password = "Password" + Count,
+                Email = $"Account{Count}@gmail.com",
                 EmailPassword = "",
                 CheckedOutStatus = false,
                 EventLocation = "",
@@ -105,7 +105,7 @@ namespace AccountAPI.Controllers
         }
 
         // PUT api/account/{id}
-        [HttpPut("id")]
+        [HttpPut("{id}")]
         public async Task<IActionResult> UpdateAccount(int id)
         {
             try

@@ -14,8 +14,10 @@ namespace AccountAPI.Models
         [Required]
         public string Name {get;set;}
         [Required]
-        public DateTime CreatedAt {get;set;}
+        public DateTime CreatedAt {get;set;} = DateTime.Now;
         [Required]
-        public DateTime UpdatedAt {get;set;}
+        public DateTime UpdatedAt {get;set;} = DateTime.Now;
+
+        public ICollection<GamePlatform> GamePlatforms {get;} = new List<GamePlatform>();
     }
 }

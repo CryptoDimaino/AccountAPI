@@ -9,7 +9,6 @@ namespace AccountAPI.Models
 {
 	public class Code
     {
-        // One to One for Games
         [Key]
         public int CodeId {get;set;}
         [Required]
@@ -17,8 +16,8 @@ namespace AccountAPI.Models
         [Required]
         public string UsedStatus {get;set;}
         [Required]
-        public DateTime CreatedAt {get;set;}
+        public DateTime CreatedAt {get;set;} = DateTime.Now;
         [Required]
-        public DateTime UpdatedAt {get;set;}
+        public DateTime UpdatedAt {get;set;} = DateTime.Now;
     }
 }

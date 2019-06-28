@@ -7,11 +7,11 @@ using Newtonsoft.Json;
 
 namespace AccountAPI.Models
 {
-	public class GamePlatform
+	public class GameAccount
     {
         public int GameId {get;set;}
         public Game Game {get;set;}
-        public int PlatformId {get;set;}
-        public Platform Platform {get;set;}
+        public int AccountId {get;set;}
+        public Account Account {get;set;}
     }
 }

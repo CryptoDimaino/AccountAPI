@@ -11,7 +11,7 @@ namespace AccountAPI.Models
     {
         public int GameId {get;set;}
         public Game Game {get;set;}
-        public int PlatformId {get;set;}
-        public Platform Platform {get;set;}
+        public int RatingId {get;set;}
+        public Rating Rating {get;set;}
     }
 }

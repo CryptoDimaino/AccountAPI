@@ -20,6 +20,11 @@ namespace AccountAPI.Models
         protected override void OnModelCreating(ModelBuilder ModelBuilder)
         {
             base.OnModelCreating(ModelBuilder);
+
+            ModelBuilder.Entity<GameAccount>().HasKey(ga => new { ga.GameId, ga.AccountId });
+            ModelBuilder.Entity<GameControllerType>().HasKey(gc => new { gc.GameId, gc.ControllerTypeId });
+            ModelBuilder.Entity<GamePlatform>().HasKey(gp => new { gp.GameId, gp.PlatformId });
+            ModelBuilder.Entity<GameRating>().HasKey(gr => new { gr.GameId, gr.RatingId });
         }
     }
 }

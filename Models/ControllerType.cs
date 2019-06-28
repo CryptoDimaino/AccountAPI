@@ -15,9 +15,9 @@ namespace AccountAPI.Models
         [Required]
         public string Type {get;set;}
         [Required]
-        public DateTime CreatedAt {get;set;}
+        public DateTime CreatedAt {get;set;} = DateTime.Now;
         [Required]
-        public DateTime UpdatedAt {get;set;}
-        public List<Game> Games {get;set;}
+        public DateTime UpdatedAt {get;set;} = DateTime.Now;
+        public ICollection<GameControllerType> GameControllerTypes {get;} = new List<GameControllerType>();
     }
 }

@@ -7,17 +7,15 @@ using Newtonsoft.Json;
 
 namespace AccountAPI.Models
 {
-	public class Rating
+	public class PlatformAccount
     {
         [Key]
-        public int RatingId {get;set;}
+        public int PlatformAccountId {get;set;}
         [Required]
-        public string RatingString {get;set;}
+        public string Name {get;set;}
         [Required]
         public DateTime CreatedAt {get;set;} = DateTime.Now;
         [Required]
         public DateTime UpdatedAt {get;set;} = DateTime.Now;
-
-        public ICollection<GameRating> GameRatings {get;} = new List<GameRating>();
     }
 }

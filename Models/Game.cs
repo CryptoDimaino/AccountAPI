@@ -20,10 +20,15 @@ namespace AccountAPI.Models
         [Required]
         public string URLToDocumentation {get;set;}
         [Required]
-        public DateTime CreatedAt {get;set;}
+        public DateTime CreatedAt {get;set;} = DateTime.Now;
         [Required]
-        public DateTime UpdatedAt {get;set;}
-        public ICollection<Game> Games {get;set;}
-        // Missing lists/ IDs
+        public DateTime UpdatedAt {get;set;} = DateTime.Now;
+
+
+        public ICollection<Code> Codes {get;set;}
+        public ICollection<GameControllerType> GameControllerTypes {get;} = new List<GameControllerType>();
+        public ICollection<GamePlatform> GamePlatforms {get;} = new List<GamePlatform>();
+        public ICollection<GameAccount> GameAccounts {get;} = new List<GameAccount>();
+        public ICollection<GameRating> GameRatings {get;} = new List<GameRating>();
     }
 }

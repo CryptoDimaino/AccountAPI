@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AccountAPI.Migrations
 {
     [DbContext(typeof(Context))]
-    [Migration("20190628164138_InitialMigration")]
+    [Migration("20190628231852_InitialMigration")]
     partial class InitialMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -60,12 +60,16 @@ namespace AccountAPI.Migrations
 
                     b.Property<DateTime>("CreatedAt");
 
+                    b.Property<int?>("GameId");
+
                     b.Property<DateTime>("UpdatedAt");
 
                     b.Property<string>("UsedStatus")
                         .IsRequired();
 
                     b.HasKey("CodeId");
+
+                    b.HasIndex("GameId");
 
                     b.ToTable("Codes");
                 });
@@ -100,11 +104,7 @@ namespace AccountAPI.Migrations
 
                     b.Property<bool>("ConnectionType");
 
-                    b.Property<int?>("ControllerTypeId");
-
                     b.Property<DateTime>("CreatedAt");
-
-                    b.Property<int?>("GameId1");
 
                     b.Property<string>("Name")
                         .IsRequired();
@@ -120,11 +120,33 @@ namespace AccountAPI.Migrations
 
                     b.HasIndex("AccountId");
 
+                    b.ToTable("Games");
+                });
+
+            modelBuilder.Entity("AccountAPI.Models.GameAccount", b =>
+                {
+                    b.Property<int>("GameId");
+
+                    b.Property<int>("AccountId");
+
+                    b.HasKey("GameId", "AccountId");
+
+                    b.HasIndex("AccountId");
+
+                    b.ToTable("GameAccount");
+                });
+
+            modelBuilder.Entity("AccountAPI.Models.GameControllerType", b =>
+                {
+                    b.Property<int>("GameId");
+
+                    b.Property<int>("ControllerTypeId");
+
+                    b.HasKey("GameId", "ControllerTypeId");
+
                     b.HasIndex("ControllerTypeId");
 
-                    b.HasIndex("GameId1");
-
-                    b.ToTable("Games");
+                    b.ToTable("GameControllerType");
                 });
 
             modelBuilder.Entity("AccountAPI.Models.Platform", b =>
@@ -136,6 +158,8 @@ namespace AccountAPI.Migrations
 
                     b.Property<DateTime>("CreatedAt");
 
+                    b.Property<int?>("GameId");
+
                     b.Property<string>("Name")
                         .IsRequired();
 
@@ -144,6 +168,8 @@ namespace AccountAPI.Migrations
                     b.HasKey("PlatformId");
 
                     b.HasIndex("AccountId");
+
+                    b.HasIndex("GameId");
 
                     b.ToTable("Platforms");
                 });
@@ -211,6 +237,13 @@ namespace AccountAPI.Migrations
                     b.ToTable("Regions");
                 });
 
+            modelBuilder.Entity("AccountAPI.Models.Code", b =>
+                {
+                    b.HasOne("AccountAPI.Models.Game")
+                        .WithMany("Codes")
+                        .HasForeignKey("GameId");
+                });
+
             modelBuilder.Entity("AccountAPI.Models.ControllerType", b =>
                 {
                     b.HasOne("AccountAPI.Models.Account")
@@ -223,14 +256,32 @@ namespace AccountAPI.Migrations
                     b.HasOne("AccountAPI.Models.Account")
                         .WithMany("Games")
                         .HasForeignKey("AccountId");
+                });
 
-                    b.HasOne("AccountAPI.Models.ControllerType")
-                        .WithMany("Games")
-                        .HasForeignKey("ControllerTypeId");
+            modelBuilder.Entity("AccountAPI.Models.GameAccount", b =>
+                {
+                    b.HasOne("AccountAPI.Models.Account", "Account")
+                        .WithMany("GameAccounts")
+                        .HasForeignKey("AccountId")
+                        .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("AccountAPI.Models.Game")
-                        .WithMany("Games")
-                        .HasForeignKey("GameId1");
+                    b.HasOne("AccountAPI.Models.Game", "Game")
+                        .WithMany("GameAccounts")
+                        .HasForeignKey("GameId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("AccountAPI.Models.GameControllerType", b =>
+                {
+                    b.HasOne("AccountAPI.Models.ControllerType", "ControllerType")
+                        .WithMany("GameControllerTypes")
+                        .HasForeignKey("ControllerTypeId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("AccountAPI.Models.Game", "Game")
+                        .WithMany("GameControllerTypes")
+                        .HasForeignKey("GameId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("AccountAPI.Models.Platform", b =>
@@ -238,6 +289,10 @@ namespace AccountAPI.Migrations
                     b.HasOne("AccountAPI.Models.Account")
                         .WithMany("Platforms")
                         .HasForeignKey("AccountId");
+
+                    b.HasOne("AccountAPI.Models.Game")
+                        .WithMany("Platforms")
+                        .HasForeignKey("GameId");
                 });
 #pragma warning restore 612, 618
         }
