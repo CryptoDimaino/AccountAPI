@@ -85,7 +85,7 @@ namespace AccountAPI.Controllers
                 Email = $"Account{Count}@gmail.com",
                 EmailPassword = "",
                 CheckedOutStatus = false,
-                EventLocation = "",
+                EventId = 1,
                 CreatedAt = DateTime.Now,
                 UpdatedAt = DateTime.Now,
                 // AccountProfileId = 1

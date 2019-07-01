@@ -7,7 +7,7 @@ using Newtonsoft.Json;
 
 namespace AccountAPI.Models
 {
-	public class GamePlatform
+	public class GameRating
     {
         public int GameId {get;set;}
         public Game Game {get;set;}

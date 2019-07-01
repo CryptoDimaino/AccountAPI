@@ -9,10 +9,38 @@ namespace AccountAPI.Models
 {
 	public class Rating
     {
+        public enum RatingSystem
+        {
+            ESRB,
+            PEGI,
+            RARS,
+            ACB,
+            USK
+        }
+
+        public enum Country
+        {
+            USA,
+            EU,
+            Russia,
+            Australia,
+            Germany
+        }
+
         [Key]
         public int RatingId {get;set;}
         [Required]
-        public string RatingString {get;set;}
+        public RatingSystem RatingsSystem {get;set;}
+        [Required]
+        public Country RatingsCountry {get;set;}
+        [Required]
+        public string Name {get;set;}
+        [Required]
+        public int Age {get;set;}
+        [Required]
+        public string Definition {get;set;}
+        [Required]
+        public string ImageLink {get;set;}
         [Required]
         public DateTime CreatedAt {get;set;} = DateTime.Now;
         [Required]

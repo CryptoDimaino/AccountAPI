@@ -7,23 +7,19 @@ using Newtonsoft.Json;
 
 namespace AccountAPI.Models
 {
-	public class RatingType
+	public class Event
     {
         [Key]
-        public int RatingTypeId {get;set;}
+        public int EventId {get;set;}
         [Required]
-        public string Type {get;set;}
+        public string Name {get;set;}
         [Required]
-        public string Country {get;set;}
-        [Required]
-        public string GameRatingURL {get;set;}
-        [Required]
-        public string Definitions {get;set;}
-        [Required]
-        public string ImageLink {get;set;}
+        public string Location {get;set;}
         [Required]
         public DateTime CreatedAt {get;set;} = DateTime.Now;
         [Required]
         public DateTime UpdatedAt {get;set;} = DateTime.Now;
+
+        public ICollection<Account> Accounts {get;} = new List<Account>();
     }
 }
