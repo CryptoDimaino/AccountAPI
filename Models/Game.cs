@@ -14,7 +14,7 @@ namespace AccountAPI.Models
         [Required]
         public string Name {get;set;}
         [Required]
-        public bool ConnectionType {get;set;}
+        public byte ConnectionType {get;set;}
         [Required]
         public DateTime ReleaseDate {get;set;}
         [Required]
@@ -25,9 +25,11 @@ namespace AccountAPI.Models
         public DateTime UpdatedAt {get;set;} = DateTime.Now;
 
 
-        public ICollection<Code> Codes {get;set;}
+        public ICollection<Code> Codes {get;} = new List<Code>();
+        public int PlatformId {get;set;}
+        public Platform Platform {get;set;}
         public ICollection<GameControllerType> GameControllerTypes {get;} = new List<GameControllerType>();
-        public ICollection<GamePlatform> GamePlatforms {get;} = new List<GamePlatform>();
+
         public ICollection<GameAccount> GameAccounts {get;} = new List<GameAccount>();
         public ICollection<GameRating> GameRatings {get;} = new List<GameRating>();
     }

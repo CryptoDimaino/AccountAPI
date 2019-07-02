@@ -16,10 +16,6 @@ namespace AccountAPI.Models
         [Required]
         public string Password {get;set;}
         [Required]
-        public string Email {get;set;}
-        [Required]
-        public string EmailPassword {get;set;}
-        [Required]
         public bool CheckedOutStatus {get;set;}
         [Required]
         public DateTime CreatedAt {get;set;} = DateTime.Now;

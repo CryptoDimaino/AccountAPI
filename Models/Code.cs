@@ -19,5 +19,10 @@ namespace AccountAPI.Models
         public DateTime CreatedAt {get;set;} = DateTime.Now;
         [Required]
         public DateTime UpdatedAt {get;set;} = DateTime.Now;
+
+        public int? AccountId {get;set;}
+        public Account Account {get;set;}
+        public int GameId {get;set;}
+        public Game Game {get;set;}
     }
 }

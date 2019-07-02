@@ -14,7 +14,7 @@ namespace AccountAPI.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "2.2.3-servicing-35854")
+                .HasAnnotation("ProductVersion", "2.2.2-servicing-10034")
                 .HasAnnotation("Relational:MaxIdentifierLength", 64);
 
             modelBuilder.Entity("AccountAPI.Models.Account", b =>
@@ -25,12 +25,6 @@ namespace AccountAPI.Migrations
                     b.Property<bool>("CheckedOutStatus");
 
                     b.Property<DateTime>("CreatedAt");
-
-                    b.Property<string>("Email")
-                        .IsRequired();
-
-                    b.Property<string>("EmailPassword")
-                        .IsRequired();
 
                     b.Property<int>("EventId");
 
@@ -47,6 +41,78 @@ namespace AccountAPI.Migrations
                     b.HasIndex("EventId");
 
                     b.ToTable("Accounts");
+
+                    b.HasData(
+                        new
+                        {
+                            AccountId = 1,
+                            CheckedOutStatus = false,
+                            CreatedAt = new DateTime(2019, 7, 2, 15, 38, 45, 91, DateTimeKind.Local).AddTicks(9252),
+                            EventId = 1,
+                            Name = "Demodepotna01",
+                            Password = "Password1",
+                            UpdatedAt = new DateTime(2019, 7, 2, 15, 38, 45, 91, DateTimeKind.Local).AddTicks(9632)
+                        },
+                        new
+                        {
+                            AccountId = 2,
+                            CheckedOutStatus = false,
+                            CreatedAt = new DateTime(2019, 7, 2, 15, 38, 45, 92, DateTimeKind.Local).AddTicks(330),
+                            EventId = 1,
+                            Name = "Demodepotna02",
+                            Password = "Password1",
+                            UpdatedAt = new DateTime(2019, 7, 2, 15, 38, 45, 92, DateTimeKind.Local).AddTicks(336)
+                        },
+                        new
+                        {
+                            AccountId = 3,
+                            CheckedOutStatus = true,
+                            CreatedAt = new DateTime(2019, 7, 2, 15, 38, 45, 92, DateTimeKind.Local).AddTicks(353),
+                            EventId = 2,
+                            Name = "Demodepotna03",
+                            Password = "Password1",
+                            UpdatedAt = new DateTime(2019, 7, 2, 15, 38, 45, 92, DateTimeKind.Local).AddTicks(356)
+                        });
+                });
+
+            modelBuilder.Entity("AccountAPI.Models.AccountPlatform", b =>
+                {
+                    b.Property<int>("AccountId");
+
+                    b.Property<int>("PlatformId");
+
+                    b.HasKey("AccountId", "PlatformId");
+
+                    b.HasIndex("PlatformId");
+
+                    b.ToTable("AccountPlatforms");
+
+                    b.HasData(
+                        new
+                        {
+                            AccountId = 1,
+                            PlatformId = 1
+                        },
+                        new
+                        {
+                            AccountId = 1,
+                            PlatformId = 2
+                        },
+                        new
+                        {
+                            AccountId = 1,
+                            PlatformId = 3
+                        },
+                        new
+                        {
+                            AccountId = 2,
+                            PlatformId = 4
+                        },
+                        new
+                        {
+                            AccountId = 2,
+                            PlatformId = 5
+                        });
                 });
 
             modelBuilder.Entity("AccountAPI.Models.AccountProfile", b =>
@@ -59,9 +125,15 @@ namespace AccountAPI.Migrations
 
                     b.Property<DateTime>("CreatedAt");
 
+                    b.Property<string>("Email")
+                        .IsRequired();
+
                     b.Property<string>("FirstName");
 
                     b.Property<string>("LastName");
+
+                    b.Property<string>("Password")
+                        .IsRequired();
 
                     b.Property<string>("PhoneNumber");
 
@@ -82,6 +154,44 @@ namespace AccountAPI.Migrations
                     b.HasKey("AccountProfileId");
 
                     b.ToTable("AccountProfiles");
+
+                    b.HasData(
+                        new
+                        {
+                            AccountProfileId = 1,
+                            Birthday = new DateTime(2019, 7, 2, 15, 38, 45, 92, DateTimeKind.Local).AddTicks(7162),
+                            CreatedAt = new DateTime(2019, 7, 2, 15, 38, 45, 92, DateTimeKind.Local).AddTicks(9819),
+                            Email = "aaosd@daosp.asd",
+                            FirstName = "Demo",
+                            LastName = "Depot",
+                            Password = "asd",
+                            PhoneNumber = "",
+                            UpdatedAt = new DateTime(2019, 7, 2, 15, 38, 45, 93, DateTimeKind.Local).AddTicks(169)
+                        },
+                        new
+                        {
+                            AccountProfileId = 2,
+                            Birthday = new DateTime(2019, 7, 2, 15, 38, 45, 93, DateTimeKind.Local).AddTicks(549),
+                            CreatedAt = new DateTime(2019, 7, 2, 15, 38, 45, 93, DateTimeKind.Local).AddTicks(589),
+                            Email = "aaosd@daosp.asd",
+                            FirstName = "Demo 1",
+                            LastName = "Depot",
+                            Password = "asd",
+                            PhoneNumber = "",
+                            UpdatedAt = new DateTime(2019, 7, 2, 15, 38, 45, 93, DateTimeKind.Local).AddTicks(595)
+                        },
+                        new
+                        {
+                            AccountProfileId = 3,
+                            Birthday = new DateTime(2019, 7, 2, 15, 38, 45, 93, DateTimeKind.Local).AddTicks(603),
+                            CreatedAt = new DateTime(2019, 7, 2, 15, 38, 45, 93, DateTimeKind.Local).AddTicks(608),
+                            Email = "aaosd@daosp.asd",
+                            FirstName = "Demo 2",
+                            LastName = "Depot",
+                            Password = "asd",
+                            PhoneNumber = "",
+                            UpdatedAt = new DateTime(2019, 7, 2, 15, 38, 45, 93, DateTimeKind.Local).AddTicks(612)
+                        });
                 });
 
             modelBuilder.Entity("AccountAPI.Models.Code", b =>
@@ -89,12 +199,14 @@ namespace AccountAPI.Migrations
                     b.Property<int>("CodeId")
                         .ValueGeneratedOnAdd();
 
+                    b.Property<int?>("AccountId");
+
                     b.Property<string>("CodeString")
                         .IsRequired();
 
                     b.Property<DateTime>("CreatedAt");
 
-                    b.Property<int?>("GameId");
+                    b.Property<int>("GameId");
 
                     b.Property<DateTime>("UpdatedAt");
 
@@ -102,12 +214,89 @@ namespace AccountAPI.Migrations
 
                     b.HasKey("CodeId");
 
-                    b.HasIndex("CodeString")
-                        .IsUnique();
+                    b.HasIndex("AccountId");
 
                     b.HasIndex("GameId");
 
                     b.ToTable("Codes");
+
+                    b.HasData(
+                        new
+                        {
+                            CodeId = 1,
+                            AccountId = 1,
+                            CodeString = "Some Code 1",
+                            CreatedAt = new DateTime(2019, 7, 2, 15, 38, 45, 92, DateTimeKind.Local).AddTicks(2478),
+                            GameId = 1,
+                            UpdatedAt = new DateTime(2019, 7, 2, 15, 38, 45, 92, DateTimeKind.Local).AddTicks(2852),
+                            UsedStatus = true
+                        },
+                        new
+                        {
+                            CodeId = 2,
+                            AccountId = 1,
+                            CodeString = "Some Code 2",
+                            CreatedAt = new DateTime(2019, 7, 2, 15, 38, 45, 92, DateTimeKind.Local).AddTicks(4140),
+                            GameId = 2,
+                            UpdatedAt = new DateTime(2019, 7, 2, 15, 38, 45, 92, DateTimeKind.Local).AddTicks(4147),
+                            UsedStatus = true
+                        },
+                        new
+                        {
+                            CodeId = 3,
+                            CodeString = "Some Code 3",
+                            CreatedAt = new DateTime(2019, 7, 2, 15, 38, 45, 92, DateTimeKind.Local).AddTicks(4167),
+                            GameId = 1,
+                            UpdatedAt = new DateTime(2019, 7, 2, 15, 38, 45, 92, DateTimeKind.Local).AddTicks(4170),
+                            UsedStatus = false
+                        },
+                        new
+                        {
+                            CodeId = 4,
+                            AccountId = 2,
+                            CodeString = "Some Code 4",
+                            CreatedAt = new DateTime(2019, 7, 2, 15, 38, 45, 92, DateTimeKind.Local).AddTicks(4180),
+                            GameId = 1,
+                            UpdatedAt = new DateTime(2019, 7, 2, 15, 38, 45, 92, DateTimeKind.Local).AddTicks(4183),
+                            UsedStatus = true
+                        },
+                        new
+                        {
+                            CodeId = 5,
+                            CodeString = "Some Code 5",
+                            CreatedAt = new DateTime(2019, 7, 2, 15, 38, 45, 92, DateTimeKind.Local).AddTicks(4192),
+                            GameId = 2,
+                            UpdatedAt = new DateTime(2019, 7, 2, 15, 38, 45, 92, DateTimeKind.Local).AddTicks(4195),
+                            UsedStatus = false
+                        },
+                        new
+                        {
+                            CodeId = 6,
+                            CodeString = "Some Code 6",
+                            CreatedAt = new DateTime(2019, 7, 2, 15, 38, 45, 92, DateTimeKind.Local).AddTicks(4205),
+                            GameId = 3,
+                            UpdatedAt = new DateTime(2019, 7, 2, 15, 38, 45, 92, DateTimeKind.Local).AddTicks(4208),
+                            UsedStatus = false
+                        },
+                        new
+                        {
+                            CodeId = 7,
+                            AccountId = 3,
+                            CodeString = "Some Code 7",
+                            CreatedAt = new DateTime(2019, 7, 2, 15, 38, 45, 92, DateTimeKind.Local).AddTicks(4217),
+                            GameId = 3,
+                            UpdatedAt = new DateTime(2019, 7, 2, 15, 38, 45, 92, DateTimeKind.Local).AddTicks(4220),
+                            UsedStatus = true
+                        },
+                        new
+                        {
+                            CodeId = 8,
+                            CodeString = "Some Code 8",
+                            CreatedAt = new DateTime(2019, 7, 2, 15, 38, 45, 92, DateTimeKind.Local).AddTicks(4229),
+                            GameId = 1,
+                            UpdatedAt = new DateTime(2019, 7, 2, 15, 38, 45, 92, DateTimeKind.Local).AddTicks(4232),
+                            UsedStatus = false
+                        });
                 });
 
             modelBuilder.Entity("AccountAPI.Models.ControllerType", b =>
@@ -130,30 +319,30 @@ namespace AccountAPI.Migrations
                         new
                         {
                             ControllerTypeId = 1,
-                            CreatedAt = new DateTime(2019, 7, 1, 21, 48, 29, 322, DateTimeKind.Local).AddTicks(9609),
+                            CreatedAt = new DateTime(2019, 7, 2, 15, 38, 45, 88, DateTimeKind.Local).AddTicks(7034),
                             Type = "Touch",
-                            UpdatedAt = new DateTime(2019, 7, 1, 21, 48, 29, 322, DateTimeKind.Local).AddTicks(9828)
+                            UpdatedAt = new DateTime(2019, 7, 2, 15, 38, 45, 88, DateTimeKind.Local).AddTicks(7895)
                         },
                         new
                         {
                             ControllerTypeId = 2,
-                            CreatedAt = new DateTime(2019, 7, 1, 21, 48, 29, 323, DateTimeKind.Local).AddTicks(45),
+                            CreatedAt = new DateTime(2019, 7, 2, 15, 38, 45, 88, DateTimeKind.Local).AddTicks(8728),
                             Type = "Keyboard & Mouse",
-                            UpdatedAt = new DateTime(2019, 7, 1, 21, 48, 29, 323, DateTimeKind.Local).AddTicks(49)
+                            UpdatedAt = new DateTime(2019, 7, 2, 15, 38, 45, 88, DateTimeKind.Local).AddTicks(8744)
                         },
                         new
                         {
                             ControllerTypeId = 3,
-                            CreatedAt = new DateTime(2019, 7, 1, 21, 48, 29, 323, DateTimeKind.Local).AddTicks(57),
+                            CreatedAt = new DateTime(2019, 7, 2, 15, 38, 45, 88, DateTimeKind.Local).AddTicks(8778),
                             Type = "Xbox",
-                            UpdatedAt = new DateTime(2019, 7, 1, 21, 48, 29, 323, DateTimeKind.Local).AddTicks(59)
+                            UpdatedAt = new DateTime(2019, 7, 2, 15, 38, 45, 88, DateTimeKind.Local).AddTicks(8785)
                         },
                         new
                         {
                             ControllerTypeId = 4,
-                            CreatedAt = new DateTime(2019, 7, 1, 21, 48, 29, 323, DateTimeKind.Local).AddTicks(66),
+                            CreatedAt = new DateTime(2019, 7, 2, 15, 38, 45, 88, DateTimeKind.Local).AddTicks(8810),
                             Type = "Steering Wheel",
-                            UpdatedAt = new DateTime(2019, 7, 1, 21, 48, 29, 323, DateTimeKind.Local).AddTicks(68)
+                            UpdatedAt = new DateTime(2019, 7, 2, 15, 38, 45, 88, DateTimeKind.Local).AddTicks(8817)
                         });
                 });
 
@@ -174,16 +363,40 @@ namespace AccountAPI.Migrations
 
                     b.HasKey("EventId");
 
-                    b.ToTable("Event");
+                    b.ToTable("Events");
 
                     b.HasData(
                         new
                         {
                             EventId = 1,
-                            CreatedAt = new DateTime(2019, 7, 1, 21, 48, 29, 323, DateTimeKind.Local).AddTicks(1547),
+                            CreatedAt = new DateTime(2019, 7, 2, 15, 38, 45, 89, DateTimeKind.Local).AddTicks(4149),
                             Location = "Chicago",
                             Name = "IEM",
-                            UpdatedAt = new DateTime(2019, 7, 1, 21, 48, 29, 323, DateTimeKind.Local).AddTicks(1760)
+                            UpdatedAt = new DateTime(2019, 7, 2, 15, 38, 45, 89, DateTimeKind.Local).AddTicks(5254)
+                        },
+                        new
+                        {
+                            EventId = 2,
+                            CreatedAt = new DateTime(2019, 7, 2, 15, 38, 45, 89, DateTimeKind.Local).AddTicks(6184),
+                            Location = "Austraila",
+                            Name = "IEM",
+                            UpdatedAt = new DateTime(2019, 7, 2, 15, 38, 45, 89, DateTimeKind.Local).AddTicks(6200)
+                        },
+                        new
+                        {
+                            EventId = 3,
+                            CreatedAt = new DateTime(2019, 7, 2, 15, 38, 45, 89, DateTimeKind.Local).AddTicks(6235),
+                            Location = "China",
+                            Name = "IEM",
+                            UpdatedAt = new DateTime(2019, 7, 2, 15, 38, 45, 89, DateTimeKind.Local).AddTicks(6242)
+                        },
+                        new
+                        {
+                            EventId = 4,
+                            CreatedAt = new DateTime(2019, 7, 2, 15, 38, 45, 89, DateTimeKind.Local).AddTicks(6266),
+                            Location = "Poland",
+                            Name = "IEM",
+                            UpdatedAt = new DateTime(2019, 7, 2, 15, 38, 45, 89, DateTimeKind.Local).AddTicks(6273)
                         });
                 });
 
@@ -192,12 +405,14 @@ namespace AccountAPI.Migrations
                     b.Property<int>("GameId")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<bool>("ConnectionType");
+                    b.Property<byte>("ConnectionType");
 
                     b.Property<DateTime>("CreatedAt");
 
                     b.Property<string>("Name")
                         .IsRequired();
+
+                    b.Property<int>("PlatformId");
 
                     b.Property<DateTime>("ReleaseDate");
 
@@ -208,7 +423,44 @@ namespace AccountAPI.Migrations
 
                     b.HasKey("GameId");
 
+                    b.HasIndex("PlatformId");
+
                     b.ToTable("Games");
+
+                    b.HasData(
+                        new
+                        {
+                            GameId = 1,
+                            ConnectionType = (byte)0,
+                            CreatedAt = new DateTime(2019, 7, 2, 15, 38, 45, 91, DateTimeKind.Local).AddTicks(4728),
+                            Name = "Game 1",
+                            PlatformId = 1,
+                            ReleaseDate = new DateTime(2019, 7, 2, 15, 38, 45, 91, DateTimeKind.Local).AddTicks(3972),
+                            URLToDocumentation = "Location to Doc",
+                            UpdatedAt = new DateTime(2019, 7, 2, 15, 38, 45, 91, DateTimeKind.Local).AddTicks(5267)
+                        },
+                        new
+                        {
+                            GameId = 2,
+                            ConnectionType = (byte)1,
+                            CreatedAt = new DateTime(2019, 7, 2, 15, 38, 45, 91, DateTimeKind.Local).AddTicks(6396),
+                            Name = "Game 2",
+                            PlatformId = 2,
+                            ReleaseDate = new DateTime(2019, 7, 2, 15, 38, 45, 91, DateTimeKind.Local).AddTicks(6386),
+                            URLToDocumentation = "Location to Doc",
+                            UpdatedAt = new DateTime(2019, 7, 2, 15, 38, 45, 91, DateTimeKind.Local).AddTicks(6402)
+                        },
+                        new
+                        {
+                            GameId = 3,
+                            ConnectionType = (byte)2,
+                            CreatedAt = new DateTime(2019, 7, 2, 15, 38, 45, 91, DateTimeKind.Local).AddTicks(6423),
+                            Name = "Game 3",
+                            PlatformId = 1,
+                            ReleaseDate = new DateTime(2019, 7, 2, 15, 38, 45, 91, DateTimeKind.Local).AddTicks(6420),
+                            URLToDocumentation = "Location to Doc",
+                            UpdatedAt = new DateTime(2019, 7, 2, 15, 38, 45, 91, DateTimeKind.Local).AddTicks(6426)
+                        });
                 });
 
             modelBuilder.Entity("AccountAPI.Models.GameAccount", b =>
@@ -221,7 +473,39 @@ namespace AccountAPI.Migrations
 
                     b.HasIndex("AccountId");
 
-                    b.ToTable("GameAccount");
+                    b.ToTable("GameAccounts");
+
+                    b.HasData(
+                        new
+                        {
+                            GameId = 1,
+                            AccountId = 1
+                        },
+                        new
+                        {
+                            GameId = 2,
+                            AccountId = 1
+                        },
+                        new
+                        {
+                            GameId = 3,
+                            AccountId = 1
+                        },
+                        new
+                        {
+                            GameId = 3,
+                            AccountId = 2
+                        },
+                        new
+                        {
+                            GameId = 1,
+                            AccountId = 2
+                        },
+                        new
+                        {
+                            GameId = 2,
+                            AccountId = 2
+                        });
                 });
 
             modelBuilder.Entity("AccountAPI.Models.GameControllerType", b =>
@@ -234,20 +518,39 @@ namespace AccountAPI.Migrations
 
                     b.HasIndex("ControllerTypeId");
 
-                    b.ToTable("GameControllerType");
-                });
+                    b.ToTable("GameControllerTypes");
 
-            modelBuilder.Entity("AccountAPI.Models.GamePlatform", b =>
-                {
-                    b.Property<int>("GameId");
-
-                    b.Property<int>("PlatformId");
-
-                    b.HasKey("GameId", "PlatformId");
-
-                    b.HasIndex("PlatformId");
-
-                    b.ToTable("GamePlatform");
+                    b.HasData(
+                        new
+                        {
+                            GameId = 1,
+                            ControllerTypeId = 1
+                        },
+                        new
+                        {
+                            GameId = 1,
+                            ControllerTypeId = 2
+                        },
+                        new
+                        {
+                            GameId = 2,
+                            ControllerTypeId = 1
+                        },
+                        new
+                        {
+                            GameId = 2,
+                            ControllerTypeId = 2
+                        },
+                        new
+                        {
+                            GameId = 2,
+                            ControllerTypeId = 3
+                        },
+                        new
+                        {
+                            GameId = 3,
+                            ControllerTypeId = 1
+                        });
                 });
 
             modelBuilder.Entity("AccountAPI.Models.GameRating", b =>
@@ -260,7 +563,34 @@ namespace AccountAPI.Migrations
 
                     b.HasIndex("RatingId");
 
-                    b.ToTable("GameRating");
+                    b.ToTable("GameRatings");
+
+                    b.HasData(
+                        new
+                        {
+                            GameId = 1,
+                            RatingId = 1
+                        },
+                        new
+                        {
+                            GameId = 1,
+                            RatingId = 4
+                        },
+                        new
+                        {
+                            GameId = 2,
+                            RatingId = 8
+                        },
+                        new
+                        {
+                            GameId = 2,
+                            RatingId = 10
+                        },
+                        new
+                        {
+                            GameId = 2,
+                            RatingId = 2
+                        });
                 });
 
             modelBuilder.Entity("AccountAPI.Models.Platform", b =>
@@ -287,194 +617,194 @@ namespace AccountAPI.Migrations
                         new
                         {
                             PlatformId = 1,
-                            CreatedAt = new DateTime(2019, 7, 1, 21, 48, 29, 322, DateTimeKind.Local).AddTicks(7207),
+                            CreatedAt = new DateTime(2019, 7, 2, 15, 38, 45, 87, DateTimeKind.Local).AddTicks(7160),
                             Name = "Steam",
                             PlatformTypeId = 1,
-                            UpdatedAt = new DateTime(2019, 7, 1, 21, 48, 29, 322, DateTimeKind.Local).AddTicks(7427)
+                            UpdatedAt = new DateTime(2019, 7, 2, 15, 38, 45, 87, DateTimeKind.Local).AddTicks(8016)
                         },
                         new
                         {
                             PlatformId = 2,
-                            CreatedAt = new DateTime(2019, 7, 1, 21, 48, 29, 322, DateTimeKind.Local).AddTicks(7654),
+                            CreatedAt = new DateTime(2019, 7, 2, 15, 38, 45, 87, DateTimeKind.Local).AddTicks(8865),
                             Name = "Microsoft Store",
                             PlatformTypeId = 1,
-                            UpdatedAt = new DateTime(2019, 7, 1, 21, 48, 29, 322, DateTimeKind.Local).AddTicks(7659)
+                            UpdatedAt = new DateTime(2019, 7, 2, 15, 38, 45, 87, DateTimeKind.Local).AddTicks(8881)
                         },
                         new
                         {
                             PlatformId = 3,
-                            CreatedAt = new DateTime(2019, 7, 1, 21, 48, 29, 322, DateTimeKind.Local).AddTicks(7667),
+                            CreatedAt = new DateTime(2019, 7, 2, 15, 38, 45, 87, DateTimeKind.Local).AddTicks(8916),
                             Name = "Windows",
                             PlatformTypeId = 1,
-                            UpdatedAt = new DateTime(2019, 7, 1, 21, 48, 29, 322, DateTimeKind.Local).AddTicks(7670)
+                            UpdatedAt = new DateTime(2019, 7, 2, 15, 38, 45, 87, DateTimeKind.Local).AddTicks(8923)
                         },
                         new
                         {
                             PlatformId = 4,
-                            CreatedAt = new DateTime(2019, 7, 1, 21, 48, 29, 322, DateTimeKind.Local).AddTicks(7677),
+                            CreatedAt = new DateTime(2019, 7, 2, 15, 38, 45, 87, DateTimeKind.Local).AddTicks(9339),
                             Name = "Android",
                             PlatformTypeId = 1,
-                            UpdatedAt = new DateTime(2019, 7, 1, 21, 48, 29, 322, DateTimeKind.Local).AddTicks(7679)
+                            UpdatedAt = new DateTime(2019, 7, 2, 15, 38, 45, 87, DateTimeKind.Local).AddTicks(9347)
                         },
                         new
                         {
                             PlatformId = 5,
-                            CreatedAt = new DateTime(2019, 7, 1, 21, 48, 29, 322, DateTimeKind.Local).AddTicks(7685),
+                            CreatedAt = new DateTime(2019, 7, 2, 15, 38, 45, 87, DateTimeKind.Local).AddTicks(9371),
                             Name = "Steam VR",
                             PlatformTypeId = 1,
-                            UpdatedAt = new DateTime(2019, 7, 1, 21, 48, 29, 322, DateTimeKind.Local).AddTicks(7688)
+                            UpdatedAt = new DateTime(2019, 7, 2, 15, 38, 45, 87, DateTimeKind.Local).AddTicks(9378)
                         },
                         new
                         {
                             PlatformId = 6,
-                            CreatedAt = new DateTime(2019, 7, 1, 21, 48, 29, 322, DateTimeKind.Local).AddTicks(7694),
+                            CreatedAt = new DateTime(2019, 7, 2, 15, 38, 45, 87, DateTimeKind.Local).AddTicks(9401),
                             Name = "Oculus",
                             PlatformTypeId = 1,
-                            UpdatedAt = new DateTime(2019, 7, 1, 21, 48, 29, 322, DateTimeKind.Local).AddTicks(7696)
+                            UpdatedAt = new DateTime(2019, 7, 2, 15, 38, 45, 87, DateTimeKind.Local).AddTicks(9409)
                         },
                         new
                         {
                             PlatformId = 7,
-                            CreatedAt = new DateTime(2019, 7, 1, 21, 48, 29, 322, DateTimeKind.Local).AddTicks(7703),
+                            CreatedAt = new DateTime(2019, 7, 2, 15, 38, 45, 87, DateTimeKind.Local).AddTicks(9432),
                             Name = "Origin",
                             PlatformTypeId = 1,
-                            UpdatedAt = new DateTime(2019, 7, 1, 21, 48, 29, 322, DateTimeKind.Local).AddTicks(7705)
+                            UpdatedAt = new DateTime(2019, 7, 2, 15, 38, 45, 87, DateTimeKind.Local).AddTicks(9439)
                         },
                         new
                         {
                             PlatformId = 8,
-                            CreatedAt = new DateTime(2019, 7, 1, 21, 48, 29, 322, DateTimeKind.Local).AddTicks(7712),
+                            CreatedAt = new DateTime(2019, 7, 2, 15, 38, 45, 87, DateTimeKind.Local).AddTicks(9462),
                             Name = "Uplay",
                             PlatformTypeId = 1,
-                            UpdatedAt = new DateTime(2019, 7, 1, 21, 48, 29, 322, DateTimeKind.Local).AddTicks(7714)
+                            UpdatedAt = new DateTime(2019, 7, 2, 15, 38, 45, 87, DateTimeKind.Local).AddTicks(9470)
                         },
                         new
                         {
                             PlatformId = 9,
-                            CreatedAt = new DateTime(2019, 7, 1, 21, 48, 29, 322, DateTimeKind.Local).AddTicks(7721),
+                            CreatedAt = new DateTime(2019, 7, 2, 15, 38, 45, 87, DateTimeKind.Local).AddTicks(9493),
                             Name = "Epic",
                             PlatformTypeId = 1,
-                            UpdatedAt = new DateTime(2019, 7, 1, 21, 48, 29, 322, DateTimeKind.Local).AddTicks(7723)
+                            UpdatedAt = new DateTime(2019, 7, 2, 15, 38, 45, 87, DateTimeKind.Local).AddTicks(9500)
                         },
                         new
                         {
                             PlatformId = 10,
-                            CreatedAt = new DateTime(2019, 7, 1, 21, 48, 29, 322, DateTimeKind.Local).AddTicks(7730),
+                            CreatedAt = new DateTime(2019, 7, 2, 15, 38, 45, 87, DateTimeKind.Local).AddTicks(9523),
                             Name = "Standalone",
                             PlatformTypeId = 1,
-                            UpdatedAt = new DateTime(2019, 7, 1, 21, 48, 29, 322, DateTimeKind.Local).AddTicks(7732)
+                            UpdatedAt = new DateTime(2019, 7, 2, 15, 38, 45, 87, DateTimeKind.Local).AddTicks(9530)
                         },
                         new
                         {
                             PlatformId = 11,
-                            CreatedAt = new DateTime(2019, 7, 1, 21, 48, 29, 322, DateTimeKind.Local).AddTicks(7738),
+                            CreatedAt = new DateTime(2019, 7, 2, 15, 38, 45, 87, DateTimeKind.Local).AddTicks(9553),
                             Name = "Maniaplenet",
                             PlatformTypeId = 1,
-                            UpdatedAt = new DateTime(2019, 7, 1, 21, 48, 29, 322, DateTimeKind.Local).AddTicks(7740)
+                            UpdatedAt = new DateTime(2019, 7, 2, 15, 38, 45, 87, DateTimeKind.Local).AddTicks(9561)
                         },
                         new
                         {
                             PlatformId = 12,
-                            CreatedAt = new DateTime(2019, 7, 1, 21, 48, 29, 322, DateTimeKind.Local).AddTicks(7747),
+                            CreatedAt = new DateTime(2019, 7, 2, 15, 38, 45, 87, DateTimeKind.Local).AddTicks(9584),
                             Name = "Play Station",
                             PlatformTypeId = 1,
-                            UpdatedAt = new DateTime(2019, 7, 1, 21, 48, 29, 322, DateTimeKind.Local).AddTicks(7749)
+                            UpdatedAt = new DateTime(2019, 7, 2, 15, 38, 45, 87, DateTimeKind.Local).AddTicks(9591)
                         },
                         new
                         {
                             PlatformId = 13,
-                            CreatedAt = new DateTime(2019, 7, 1, 21, 48, 29, 322, DateTimeKind.Local).AddTicks(7755),
+                            CreatedAt = new DateTime(2019, 7, 2, 15, 38, 45, 87, DateTimeKind.Local).AddTicks(9614),
                             Name = "BattleNet",
                             PlatformTypeId = 1,
-                            UpdatedAt = new DateTime(2019, 7, 1, 21, 48, 29, 322, DateTimeKind.Local).AddTicks(7757)
+                            UpdatedAt = new DateTime(2019, 7, 2, 15, 38, 45, 87, DateTimeKind.Local).AddTicks(9621)
                         },
                         new
                         {
                             PlatformId = 14,
-                            CreatedAt = new DateTime(2019, 7, 1, 21, 48, 29, 322, DateTimeKind.Local).AddTicks(7763),
+                            CreatedAt = new DateTime(2019, 7, 2, 15, 38, 45, 87, DateTimeKind.Local).AddTicks(9644),
                             Name = "Lego Mini Online",
                             PlatformTypeId = 1,
-                            UpdatedAt = new DateTime(2019, 7, 1, 21, 48, 29, 322, DateTimeKind.Local).AddTicks(7766)
+                            UpdatedAt = new DateTime(2019, 7, 2, 15, 38, 45, 87, DateTimeKind.Local).AddTicks(9652)
                         },
                         new
                         {
                             PlatformId = 15,
-                            CreatedAt = new DateTime(2019, 7, 1, 21, 48, 29, 322, DateTimeKind.Local).AddTicks(7772),
+                            CreatedAt = new DateTime(2019, 7, 2, 15, 38, 45, 87, DateTimeKind.Local).AddTicks(9675),
                             Name = "League of Legends",
                             PlatformTypeId = 1,
-                            UpdatedAt = new DateTime(2019, 7, 1, 21, 48, 29, 322, DateTimeKind.Local).AddTicks(7774)
+                            UpdatedAt = new DateTime(2019, 7, 2, 15, 38, 45, 87, DateTimeKind.Local).AddTicks(9682)
                         },
                         new
                         {
                             PlatformId = 16,
-                            CreatedAt = new DateTime(2019, 7, 1, 21, 48, 29, 322, DateTimeKind.Local).AddTicks(7780),
+                            CreatedAt = new DateTime(2019, 7, 2, 15, 38, 45, 87, DateTimeKind.Local).AddTicks(9705),
                             Name = "Intel Appup",
                             PlatformTypeId = 1,
-                            UpdatedAt = new DateTime(2019, 7, 1, 21, 48, 29, 322, DateTimeKind.Local).AddTicks(7782)
+                            UpdatedAt = new DateTime(2019, 7, 2, 15, 38, 45, 87, DateTimeKind.Local).AddTicks(9712)
                         },
                         new
                         {
                             PlatformId = 17,
-                            CreatedAt = new DateTime(2019, 7, 1, 21, 48, 29, 322, DateTimeKind.Local).AddTicks(7789),
+                            CreatedAt = new DateTime(2019, 7, 2, 15, 38, 45, 87, DateTimeKind.Local).AddTicks(9735),
                             Name = "Cryptic Studios",
                             PlatformTypeId = 1,
-                            UpdatedAt = new DateTime(2019, 7, 1, 21, 48, 29, 322, DateTimeKind.Local).AddTicks(7791)
+                            UpdatedAt = new DateTime(2019, 7, 2, 15, 38, 45, 87, DateTimeKind.Local).AddTicks(9742)
                         },
                         new
                         {
                             PlatformId = 18,
-                            CreatedAt = new DateTime(2019, 7, 1, 21, 48, 29, 322, DateTimeKind.Local).AddTicks(7797),
+                            CreatedAt = new DateTime(2019, 7, 2, 15, 38, 45, 87, DateTimeKind.Local).AddTicks(9765),
                             Name = "Amazon",
                             PlatformTypeId = 2,
-                            UpdatedAt = new DateTime(2019, 7, 1, 21, 48, 29, 322, DateTimeKind.Local).AddTicks(7799)
+                            UpdatedAt = new DateTime(2019, 7, 2, 15, 38, 45, 87, DateTimeKind.Local).AddTicks(9772)
                         },
                         new
                         {
                             PlatformId = 19,
-                            CreatedAt = new DateTime(2019, 7, 1, 21, 48, 29, 322, DateTimeKind.Local).AddTicks(7806),
+                            CreatedAt = new DateTime(2019, 7, 2, 15, 38, 45, 87, DateTimeKind.Local).AddTicks(9795),
                             Name = "McAfee LiveSafe",
                             PlatformTypeId = 2,
-                            UpdatedAt = new DateTime(2019, 7, 1, 21, 48, 29, 322, DateTimeKind.Local).AddTicks(7808)
+                            UpdatedAt = new DateTime(2019, 7, 2, 15, 38, 45, 87, DateTimeKind.Local).AddTicks(9803)
                         },
                         new
                         {
                             PlatformId = 20,
-                            CreatedAt = new DateTime(2019, 7, 1, 21, 48, 29, 322, DateTimeKind.Local).AddTicks(7814),
+                            CreatedAt = new DateTime(2019, 7, 2, 15, 38, 45, 87, DateTimeKind.Local).AddTicks(9826),
                             Name = "Eve Online",
                             PlatformTypeId = 1,
-                            UpdatedAt = new DateTime(2019, 7, 1, 21, 48, 29, 322, DateTimeKind.Local).AddTicks(7816)
+                            UpdatedAt = new DateTime(2019, 7, 2, 15, 38, 45, 87, DateTimeKind.Local).AddTicks(9833)
                         },
                         new
                         {
                             PlatformId = 21,
-                            CreatedAt = new DateTime(2019, 7, 1, 21, 48, 29, 322, DateTimeKind.Local).AddTicks(7822),
+                            CreatedAt = new DateTime(2019, 7, 2, 15, 38, 45, 87, DateTimeKind.Local).AddTicks(9856),
                             Name = "Apple",
                             PlatformTypeId = 2,
-                            UpdatedAt = new DateTime(2019, 7, 1, 21, 48, 29, 322, DateTimeKind.Local).AddTicks(7824)
+                            UpdatedAt = new DateTime(2019, 7, 2, 15, 38, 45, 87, DateTimeKind.Local).AddTicks(9864)
                         },
                         new
                         {
                             PlatformId = 22,
-                            CreatedAt = new DateTime(2019, 7, 1, 21, 48, 29, 322, DateTimeKind.Local).AddTicks(7831),
+                            CreatedAt = new DateTime(2019, 7, 2, 15, 38, 45, 87, DateTimeKind.Local).AddTicks(9887),
                             Name = "QQ",
                             PlatformTypeId = 2,
-                            UpdatedAt = new DateTime(2019, 7, 1, 21, 48, 29, 322, DateTimeKind.Local).AddTicks(7833)
+                            UpdatedAt = new DateTime(2019, 7, 2, 15, 38, 45, 87, DateTimeKind.Local).AddTicks(9894)
                         },
                         new
                         {
                             PlatformId = 23,
-                            CreatedAt = new DateTime(2019, 7, 1, 21, 48, 29, 322, DateTimeKind.Local).AddTicks(7839),
+                            CreatedAt = new DateTime(2019, 7, 2, 15, 38, 45, 87, DateTimeKind.Local).AddTicks(9917),
                             Name = "Media Accounts",
                             PlatformTypeId = 2,
-                            UpdatedAt = new DateTime(2019, 7, 1, 21, 48, 29, 322, DateTimeKind.Local).AddTicks(7841)
+                            UpdatedAt = new DateTime(2019, 7, 2, 15, 38, 45, 87, DateTimeKind.Local).AddTicks(9924)
                         },
                         new
                         {
                             PlatformId = 24,
-                            CreatedAt = new DateTime(2019, 7, 1, 21, 48, 29, 322, DateTimeKind.Local).AddTicks(7848),
+                            CreatedAt = new DateTime(2019, 7, 2, 15, 38, 45, 87, DateTimeKind.Local).AddTicks(9947),
                             Name = "Twitch",
                             PlatformTypeId = 2,
-                            UpdatedAt = new DateTime(2019, 7, 1, 21, 48, 29, 322, DateTimeKind.Local).AddTicks(7850)
+                            UpdatedAt = new DateTime(2019, 7, 2, 15, 38, 45, 87, DateTimeKind.Local).AddTicks(9955)
                         });
                 });
 
@@ -498,16 +828,16 @@ namespace AccountAPI.Migrations
                         new
                         {
                             PlatformTypeId = 1,
-                            CreatedAt = new DateTime(2019, 7, 1, 21, 48, 29, 322, DateTimeKind.Local).AddTicks(3936),
+                            CreatedAt = new DateTime(2019, 7, 2, 15, 38, 45, 86, DateTimeKind.Local).AddTicks(4563),
                             Name = "Game",
-                            UpdatedAt = new DateTime(2019, 7, 1, 21, 48, 29, 322, DateTimeKind.Local).AddTicks(4184)
+                            UpdatedAt = new DateTime(2019, 7, 2, 15, 38, 45, 86, DateTimeKind.Local).AddTicks(5821)
                         },
                         new
                         {
                             PlatformTypeId = 2,
-                            CreatedAt = new DateTime(2019, 7, 1, 21, 48, 29, 322, DateTimeKind.Local).AddTicks(4430),
+                            CreatedAt = new DateTime(2019, 7, 2, 15, 38, 45, 86, DateTimeKind.Local).AddTicks(6793),
                             Name = "Other",
-                            UpdatedAt = new DateTime(2019, 7, 1, 21, 48, 29, 322, DateTimeKind.Local).AddTicks(4434)
+                            UpdatedAt = new DateTime(2019, 7, 2, 15, 38, 45, 86, DateTimeKind.Local).AddTicks(6809)
                         });
                 });
 
@@ -546,367 +876,350 @@ namespace AccountAPI.Migrations
                         {
                             RatingId = 1,
                             Age = 3,
-                            CreatedAt = new DateTime(2019, 7, 1, 21, 48, 29, 323, DateTimeKind.Local).AddTicks(4486),
+                            CreatedAt = new DateTime(2019, 7, 2, 15, 38, 45, 90, DateTimeKind.Local).AddTicks(7909),
                             Definition = "Titles rated EC (Early Childhood) have content that may be suitable for ages 3 and older. Contains no material that parents would find inappropriate.",
                             ImageLink = "client/images/ESRB/eC.png",
                             Name = "Early Childhood",
                             RatingsCountry = "USA",
                             RatingsSystem = "ESRB",
-                            UpdatedAt = new DateTime(2019, 7, 1, 21, 48, 29, 323, DateTimeKind.Local).AddTicks(4696)
+                            UpdatedAt = new DateTime(2019, 7, 2, 15, 38, 45, 90, DateTimeKind.Local).AddTicks(8320)
                         },
                         new
                         {
                             RatingId = 2,
                             Age = 6,
-                            CreatedAt = new DateTime(2019, 7, 1, 21, 48, 29, 323, DateTimeKind.Local).AddTicks(4917),
+                            CreatedAt = new DateTime(2019, 7, 2, 15, 38, 45, 90, DateTimeKind.Local).AddTicks(8747),
                             Definition = "Titles rated E (Everyone) have content that is generally suitable for all ages. May contain minimal cartoon, fantasy or mild violence and/or infrequent use of mild language.",
                             ImageLink = "client/images/ESRB/E.png",
                             Name = "Everyone",
                             RatingsCountry = "USA",
                             RatingsSystem = "ESRB",
-                            UpdatedAt = new DateTime(2019, 7, 1, 21, 48, 29, 323, DateTimeKind.Local).AddTicks(4921)
+                            UpdatedAt = new DateTime(2019, 7, 2, 15, 38, 45, 90, DateTimeKind.Local).AddTicks(8753)
                         },
                         new
                         {
                             RatingId = 3,
                             Age = 10,
-                            CreatedAt = new DateTime(2019, 7, 1, 21, 48, 29, 323, DateTimeKind.Local).AddTicks(4930),
+                            CreatedAt = new DateTime(2019, 7, 2, 15, 38, 45, 90, DateTimeKind.Local).AddTicks(8767),
                             Definition = "Titles rated E10+ (Everyone 10 and older) have content that is generally suitable for ages 10 and up. May contain more cartoon, fantasy or mild violence, mild language and/or minimal suggestive themes.themes.",
                             ImageLink = "client/images/ESRB/E10.png",
                             Name = "Everyone 10+",
                             RatingsCountry = "USA",
                             RatingsSystem = "ESRB",
-                            UpdatedAt = new DateTime(2019, 7, 1, 21, 48, 29, 323, DateTimeKind.Local).AddTicks(4933)
+                            UpdatedAt = new DateTime(2019, 7, 2, 15, 38, 45, 90, DateTimeKind.Local).AddTicks(8770)
                         },
                         new
                         {
                             RatingId = 4,
                             Age = 13,
-                            CreatedAt = new DateTime(2019, 7, 1, 21, 48, 29, 323, DateTimeKind.Local).AddTicks(4940),
+                            CreatedAt = new DateTime(2019, 7, 2, 15, 38, 45, 90, DateTimeKind.Local).AddTicks(8780),
                             Definition = "Titles rated T (Teen) have content that is generally suitable for ages 13 and up. May contain violence, suggestive themes, crude humor, minimal blood, simulated gambling, and/or infrequent use of strong language.",
                             ImageLink = "client/images/ESRB/T.png",
                             Name = "Teen",
                             RatingsCountry = "USA",
                             RatingsSystem = "ESRB",
-                            UpdatedAt = new DateTime(2019, 7, 1, 21, 48, 29, 323, DateTimeKind.Local).AddTicks(4942)
+                            UpdatedAt = new DateTime(2019, 7, 2, 15, 38, 45, 90, DateTimeKind.Local).AddTicks(8783)
                         },
                         new
                         {
                             RatingId = 5,
                             Age = 17,
-                            CreatedAt = new DateTime(2019, 7, 1, 21, 48, 29, 323, DateTimeKind.Local).AddTicks(4948),
+                            CreatedAt = new DateTime(2019, 7, 2, 15, 38, 45, 90, DateTimeKind.Local).AddTicks(8792),
                             Definition = "Titles rated M (Mature) have content that is generally suitable for persons ages 17 and up. May contain intense violence, blood and gore, sexual content and/or strong language.",
                             ImageLink = "client/images/ESRB/M.png",
                             Name = "Mature",
                             RatingsCountry = "USA",
                             RatingsSystem = "ESRB",
-                            UpdatedAt = new DateTime(2019, 7, 1, 21, 48, 29, 323, DateTimeKind.Local).AddTicks(4951)
+                            UpdatedAt = new DateTime(2019, 7, 2, 15, 38, 45, 90, DateTimeKind.Local).AddTicks(8795)
                         },
                         new
                         {
                             RatingId = 6,
                             Age = 18,
-                            CreatedAt = new DateTime(2019, 7, 1, 21, 48, 29, 323, DateTimeKind.Local).AddTicks(4958),
+                            CreatedAt = new DateTime(2019, 7, 2, 15, 38, 45, 90, DateTimeKind.Local).AddTicks(8805),
                             Definition = "Titles rated AO (Adults Only) have content that is only suitable for persons ages 17 and up. May contain intense violence, blood and gore, sexual content and/or strong language.",
                             ImageLink = "client/images/ESRB/Ao.png",
                             Name = "Adults Only 18+",
                             RatingsCountry = "USA",
                             RatingsSystem = "ESRB",
-                            UpdatedAt = new DateTime(2019, 7, 1, 21, 48, 29, 323, DateTimeKind.Local).AddTicks(4960)
+                            UpdatedAt = new DateTime(2019, 7, 2, 15, 38, 45, 90, DateTimeKind.Local).AddTicks(8808)
                         },
                         new
                         {
                             RatingId = 7,
                             Age = -1,
-                            CreatedAt = new DateTime(2019, 7, 1, 21, 48, 29, 323, DateTimeKind.Local).AddTicks(4966),
+                            CreatedAt = new DateTime(2019, 7, 2, 15, 38, 45, 90, DateTimeKind.Local).AddTicks(8817),
                             Definition = "Titles listed as RP (Rating Pending) have not yet been assigned a final ESRB rating. (This symbol appears only in advertising and promotional materials prior to a game's release, and will be replaced by a game’s rating once it has been assigned.)",
                             ImageLink = "client/images/ESRB/RP.png",
                             Name = "Rating Pending",
                             RatingsCountry = "USA",
                             RatingsSystem = "ESRB",
-                            UpdatedAt = new DateTime(2019, 7, 1, 21, 48, 29, 323, DateTimeKind.Local).AddTicks(4968)
+                            UpdatedAt = new DateTime(2019, 7, 2, 15, 38, 45, 90, DateTimeKind.Local).AddTicks(8820)
                         },
                         new
                         {
                             RatingId = 8,
                             Age = 3,
-                            CreatedAt = new DateTime(2019, 7, 1, 21, 48, 29, 323, DateTimeKind.Local).AddTicks(4975),
+                            CreatedAt = new DateTime(2019, 7, 2, 15, 38, 45, 90, DateTimeKind.Local).AddTicks(8830),
                             Definition = "The content of games with a PEGI 3 rating is considered suitable for all age groups. The game should not contain any sounds or pictures that are likely to frighten young children. A very mild form of violence (in a comical context or a childlike setting) is acceptable. No bad language should be heard.",
                             ImageLink = "client/images/PEGI/3.png",
                             Name = "PEGI 3",
                             RatingsCountry = "EU",
                             RatingsSystem = "PEGI",
-                            UpdatedAt = new DateTime(2019, 7, 1, 21, 48, 29, 323, DateTimeKind.Local).AddTicks(4977)
+                            UpdatedAt = new DateTime(2019, 7, 2, 15, 38, 45, 90, DateTimeKind.Local).AddTicks(8833)
                         },
                         new
                         {
                             RatingId = 9,
                             Age = 7,
-                            CreatedAt = new DateTime(2019, 7, 1, 21, 48, 29, 323, DateTimeKind.Local).AddTicks(4984),
+                            CreatedAt = new DateTime(2019, 7, 2, 15, 38, 45, 90, DateTimeKind.Local).AddTicks(8842),
                             Definition = "Game content with scenes or sounds that can possibly frightening to younger children should fall in this category. Very mild forms of violence (implied, non-detailed, or non-realistic violence) are acceptable for a game with a PEGI 7 rating.",
                             ImageLink = "client/images/PEGI/7.png",
                             Name = "PEGI 7",
                             RatingsCountry = "EU",
                             RatingsSystem = "PEGI",
-                            UpdatedAt = new DateTime(2019, 7, 1, 21, 48, 29, 323, DateTimeKind.Local).AddTicks(4986)
+                            UpdatedAt = new DateTime(2019, 7, 2, 15, 38, 45, 90, DateTimeKind.Local).AddTicks(8845)
                         },
                         new
                         {
                             RatingId = 10,
                             Age = 12,
-                            CreatedAt = new DateTime(2019, 7, 1, 21, 48, 29, 323, DateTimeKind.Local).AddTicks(4993),
+                            CreatedAt = new DateTime(2019, 7, 2, 15, 38, 45, 90, DateTimeKind.Local).AddTicks(8855),
                             Definition = "Video games that show violence of a slightly more graphic nature towards fantasy characters or non-realistic violence towards human-like characters would fall in this age category. Sexual innuendo or sexual posturing can be present, while any bad language in this category must be mild. Gambling as it is normally carried out in real life in casinos or gambling halls can also be present (e.g. card games that in real life would be played for money).",
                             ImageLink = "client/images/PEGI/12.png",
                             Name = "PEGI 12",
                             RatingsCountry = "EU",
                             RatingsSystem = "PEGI",
-                            UpdatedAt = new DateTime(2019, 7, 1, 21, 48, 29, 323, DateTimeKind.Local).AddTicks(4995)
+                            UpdatedAt = new DateTime(2019, 7, 2, 15, 38, 45, 90, DateTimeKind.Local).AddTicks(8858)
                         },
                         new
                         {
                             RatingId = 11,
                             Age = 16,
-                            CreatedAt = new DateTime(2019, 7, 1, 21, 48, 29, 323, DateTimeKind.Local).AddTicks(5009),
+                            CreatedAt = new DateTime(2019, 7, 2, 15, 38, 45, 90, DateTimeKind.Local).AddTicks(8867),
                             Definition = "This rating is applied once the depiction of violence (or sexual activity) reaches a stage that looks the same as would be expected in real life. The use of bad language in games with a PEGI 16 rating can be more extreme, while games of chance, and the use of tobacco, alcohol or illegal drugs can also be present.",
                             ImageLink = "client/images/PEGI/16.png",
                             Name = "PEGI 16",
                             RatingsCountry = "EU",
                             RatingsSystem = "PEGI",
-                            UpdatedAt = new DateTime(2019, 7, 1, 21, 48, 29, 323, DateTimeKind.Local).AddTicks(5011)
+                            UpdatedAt = new DateTime(2019, 7, 2, 15, 38, 45, 90, DateTimeKind.Local).AddTicks(8870)
                         },
                         new
                         {
                             RatingId = 12,
                             Age = 18,
-                            CreatedAt = new DateTime(2019, 7, 1, 21, 48, 29, 323, DateTimeKind.Local).AddTicks(5019),
+                            CreatedAt = new DateTime(2019, 7, 2, 15, 38, 45, 90, DateTimeKind.Local).AddTicks(8880),
                             Definition = "The adult classification is applied when the level of violence reaches a stage where it becomes a depiction of gross violence, apparently motiveless killing, or violence towards defenceless characters. The glamorisation of the use of illegal drugs and explicit sexual activity should also fall into this age category.",
                             ImageLink = "client/images/PEGI/18.png",
                             Name = "PEGI 18",
                             RatingsCountry = "EU",
                             RatingsSystem = "PEGI",
-                            UpdatedAt = new DateTime(2019, 7, 1, 21, 48, 29, 323, DateTimeKind.Local).AddTicks(5021)
+                            UpdatedAt = new DateTime(2019, 7, 2, 15, 38, 45, 90, DateTimeKind.Local).AddTicks(8882)
                         },
                         new
                         {
                             RatingId = 13,
                             Age = 0,
-                            CreatedAt = new DateTime(2019, 7, 1, 21, 48, 29, 323, DateTimeKind.Local).AddTicks(5028),
+                            CreatedAt = new DateTime(2019, 7, 2, 15, 38, 45, 90, DateTimeKind.Local).AddTicks(8892),
                             Definition = "Any age",
                             ImageLink = "client/images/RARS/0+.png",
                             Name = "0+",
                             RatingsCountry = "Russia",
                             RatingsSystem = "RARS",
-                            UpdatedAt = new DateTime(2019, 7, 1, 21, 48, 29, 323, DateTimeKind.Local).AddTicks(5030)
+                            UpdatedAt = new DateTime(2019, 7, 2, 15, 38, 45, 90, DateTimeKind.Local).AddTicks(8895)
                         },
                         new
                         {
                             RatingId = 14,
                             Age = 6,
-                            CreatedAt = new DateTime(2019, 7, 1, 21, 48, 29, 323, DateTimeKind.Local).AddTicks(5037),
+                            CreatedAt = new DateTime(2019, 7, 2, 15, 38, 45, 90, DateTimeKind.Local).AddTicks(8905),
                             Definition = "The age 6 and older",
                             ImageLink = "client/images/RARS/6+.png",
                             Name = "6+",
                             RatingsCountry = "Russia",
                             RatingsSystem = "RARS",
-                            UpdatedAt = new DateTime(2019, 7, 1, 21, 48, 29, 323, DateTimeKind.Local).AddTicks(5039)
+                            UpdatedAt = new DateTime(2019, 7, 2, 15, 38, 45, 90, DateTimeKind.Local).AddTicks(8908)
                         },
                         new
                         {
                             RatingId = 15,
                             Age = 12,
-                            CreatedAt = new DateTime(2019, 7, 1, 21, 48, 29, 323, DateTimeKind.Local).AddTicks(5045),
+                            CreatedAt = new DateTime(2019, 7, 2, 15, 38, 45, 90, DateTimeKind.Local).AddTicks(8917),
                             Definition = "The age 12 and older",
                             ImageLink = "client/images/RARS/12+.png",
                             Name = "12+",
                             RatingsCountry = "Russia",
                             RatingsSystem = "RARS",
-                            UpdatedAt = new DateTime(2019, 7, 1, 21, 48, 29, 323, DateTimeKind.Local).AddTicks(5047)
+                            UpdatedAt = new DateTime(2019, 7, 2, 15, 38, 45, 90, DateTimeKind.Local).AddTicks(8920)
                         },
                         new
                         {
                             RatingId = 16,
                             Age = 16,
-                            CreatedAt = new DateTime(2019, 7, 1, 21, 48, 29, 323, DateTimeKind.Local).AddTicks(5054),
+                            CreatedAt = new DateTime(2019, 7, 2, 15, 38, 45, 90, DateTimeKind.Local).AddTicks(8929),
                             Definition = "The age 16 and older",
                             ImageLink = "client/images/RARS/16+.png",
                             Name = "16+",
                             RatingsCountry = "Russia",
                             RatingsSystem = "RARS",
-                            UpdatedAt = new DateTime(2019, 7, 1, 21, 48, 29, 323, DateTimeKind.Local).AddTicks(5056)
+                            UpdatedAt = new DateTime(2019, 7, 2, 15, 38, 45, 90, DateTimeKind.Local).AddTicks(8932)
                         },
                         new
                         {
                             RatingId = 17,
                             Age = 18,
-                            CreatedAt = new DateTime(2019, 7, 1, 21, 48, 29, 323, DateTimeKind.Local).AddTicks(5063),
+                            CreatedAt = new DateTime(2019, 7, 2, 15, 38, 45, 90, DateTimeKind.Local).AddTicks(8942),
                             Definition = "The age 18 and older",
                             ImageLink = "client/images/RARS/18+.png",
                             Name = "18+",
                             RatingsCountry = "Russia",
                             RatingsSystem = "RARS",
-                            UpdatedAt = new DateTime(2019, 7, 1, 21, 48, 29, 323, DateTimeKind.Local).AddTicks(5065)
+                            UpdatedAt = new DateTime(2019, 7, 2, 15, 38, 45, 90, DateTimeKind.Local).AddTicks(8945)
                         },
                         new
                         {
                             RatingId = 18,
                             Age = 0,
-                            CreatedAt = new DateTime(2019, 7, 1, 21, 48, 29, 323, DateTimeKind.Local).AddTicks(5071),
+                            CreatedAt = new DateTime(2019, 7, 2, 15, 38, 45, 90, DateTimeKind.Local).AddTicks(8954),
                             Definition = "Contains material available for general viewing. This category does not necessarily designate a children's film or game. Although not mandatory at this category, the Board may provide consumer information. Consumer advice at G classification usually relates to impacts on very young children. The content is very mild in impact.",
                             ImageLink = "client/images/ACB/E.png",
                             Name = "Exempt from classification",
                             RatingsCountry = "Australia",
                             RatingsSystem = "ACB",
-                            UpdatedAt = new DateTime(2019, 7, 1, 21, 48, 29, 323, DateTimeKind.Local).AddTicks(5074)
+                            UpdatedAt = new DateTime(2019, 7, 2, 15, 38, 45, 90, DateTimeKind.Local).AddTicks(8958)
                         },
                         new
                         {
                             RatingId = 19,
                             Age = 0,
-                            CreatedAt = new DateTime(2019, 7, 1, 21, 48, 29, 323, DateTimeKind.Local).AddTicks(5080),
+                            CreatedAt = new DateTime(2019, 7, 2, 15, 38, 45, 90, DateTimeKind.Local).AddTicks(8967),
                             Definition = "Contains material available for general viewing. This category does not necessarily designate a children's film or game. Although not mandatory at this category, the Board may provide consumer information. Consumer advice at G classification usually relates to impacts on very young children. The content is very mild in impact.",
                             ImageLink = "client/images/ACB/General.png",
                             Name = "General",
                             RatingsCountry = "Australia",
                             RatingsSystem = "ACB",
-                            UpdatedAt = new DateTime(2019, 7, 1, 21, 48, 29, 323, DateTimeKind.Local).AddTicks(5082)
+                            UpdatedAt = new DateTime(2019, 7, 2, 15, 38, 45, 90, DateTimeKind.Local).AddTicks(8970)
                         },
                         new
                         {
                             RatingId = 20,
                             Age = 8,
-                            CreatedAt = new DateTime(2019, 7, 1, 21, 48, 29, 323, DateTimeKind.Local).AddTicks(5089),
+                            CreatedAt = new DateTime(2019, 7, 2, 15, 38, 45, 90, DateTimeKind.Local).AddTicks(8979),
                             Definition = "Not recommended for viewing or playing by people under 15 without guidance from parents or guardians. Contains material that young viewers may find confusing or upsetting. The content is mild in impact.",
                             ImageLink = "client/images/ACB/PG.png",
                             Name = "Parental Guidance",
                             RatingsCountry = "Australia",
                             RatingsSystem = "ACB",
-                            UpdatedAt = new DateTime(2019, 7, 1, 21, 48, 29, 323, DateTimeKind.Local).AddTicks(5091)
+                            UpdatedAt = new DateTime(2019, 7, 2, 15, 38, 45, 90, DateTimeKind.Local).AddTicks(8982)
                         },
                         new
                         {
                             RatingId = 21,
                             Age = 15,
-                            CreatedAt = new DateTime(2019, 7, 1, 21, 48, 29, 323, DateTimeKind.Local).AddTicks(5098),
+                            CreatedAt = new DateTime(2019, 7, 2, 15, 38, 45, 90, DateTimeKind.Local).AddTicks(8992),
                             Definition = "Recommended for people aged 15 years and over. People under 15 may legally access this material because it is an advisory category. This category contains material that may require a mature perspective, but is not deemed too strong for younger viewers. The content is moderate in impact, although the Moderate indicator prefix is no longer used in the consumer advice, eg. Moderate violence is referred to as Violence.",
                             ImageLink = "client/images/ACB/M.png",
                             Name = "Mature",
                             RatingsCountry = "Australia",
                             RatingsSystem = "ACB",
-                            UpdatedAt = new DateTime(2019, 7, 1, 21, 48, 29, 323, DateTimeKind.Local).AddTicks(5100)
+                            UpdatedAt = new DateTime(2019, 7, 2, 15, 38, 45, 90, DateTimeKind.Local).AddTicks(8995)
                         },
                         new
                         {
                             RatingId = 22,
                             Age = 15,
-                            CreatedAt = new DateTime(2019, 7, 1, 21, 48, 29, 323, DateTimeKind.Local).AddTicks(5107),
+                            CreatedAt = new DateTime(2019, 7, 2, 15, 38, 45, 90, DateTimeKind.Local).AddTicks(9005),
                             Definition = "Contains material that is considered unsuitable for exhibition by persons under the age of 15. People under 15 may legally purchase, rent, exhibit or view such content only under the supervision of a parent or adult guardian. A person may be asked to show proof of age before renting or purchasing an MA 15+ film or computer game. The content is strong in impact.",
                             ImageLink = "client/images/ACB/MA.png",
                             Name = "Mature Accompanied",
                             RatingsCountry = "Australia",
                             RatingsSystem = "ACB",
-                            UpdatedAt = new DateTime(2019, 7, 1, 21, 48, 29, 323, DateTimeKind.Local).AddTicks(5109)
+                            UpdatedAt = new DateTime(2019, 7, 2, 15, 38, 45, 90, DateTimeKind.Local).AddTicks(9007)
                         },
                         new
                         {
                             RatingId = 23,
                             Age = 18,
-                            CreatedAt = new DateTime(2019, 7, 1, 21, 48, 29, 323, DateTimeKind.Local).AddTicks(5115),
+                            CreatedAt = new DateTime(2019, 7, 2, 15, 38, 45, 90, DateTimeKind.Local).AddTicks(9017),
                             Definition = "Contains material that is considered unsuitable for exhibition to persons under the age of 18. People under 18 may not legally buy, rent, exhibit or view R 18+ classified content. A person may be asked for proof of their age before purchasing, hiring or viewing an R 18+ film or computer game at a retail store or cinema. Some material classified R 18+ may be offensive to sections of the adult community. The content is high in impact.",
                             ImageLink = "client/images/ACB/R18.png",
                             Name = "Restricted R",
                             RatingsCountry = "Australia",
                             RatingsSystem = "ACB",
-                            UpdatedAt = new DateTime(2019, 7, 1, 21, 48, 29, 323, DateTimeKind.Local).AddTicks(5117)
+                            UpdatedAt = new DateTime(2019, 7, 2, 15, 38, 45, 90, DateTimeKind.Local).AddTicks(9020)
                         },
                         new
                         {
                             RatingId = 24,
                             Age = 18,
-                            CreatedAt = new DateTime(2019, 7, 1, 21, 48, 29, 323, DateTimeKind.Local).AddTicks(5124),
+                            CreatedAt = new DateTime(2019, 7, 2, 15, 38, 45, 90, DateTimeKind.Local).AddTicks(9030),
                             Definition = "Contains material that is pornographic in nature. People under 18 may not legally buy, rent, possess, exhibit or view these films. The exhibition or sale of these films to people under the age of 18 years is a criminal offence carrying a maximum fine of $5,500. Films classified as X 18+ are banned (via state government legislation) from being sold or rented in all Australian states (but are legal to possess except in certain parts of the Northern Territory) and are legally available to purchase only in the Australian Capital Territory and the Northern Territory. Importing X 18+ material from these territories to any other state is legal (as the Australian Constitution forbids any restrictions on trade between the states and territories). The content is sexually explicit, and the rating does not exist for video games.",
                             ImageLink = "client/images/ACB/X18.png",
                             Name = "Restricted X",
                             RatingsCountry = "Australia",
                             RatingsSystem = "ACB",
-                            UpdatedAt = new DateTime(2019, 7, 1, 21, 48, 29, 323, DateTimeKind.Local).AddTicks(5126)
+                            UpdatedAt = new DateTime(2019, 7, 2, 15, 38, 45, 90, DateTimeKind.Local).AddTicks(9033)
                         },
                         new
                         {
                             RatingId = 25,
                             Age = 0,
-                            CreatedAt = new DateTime(2019, 7, 1, 21, 48, 29, 323, DateTimeKind.Local).AddTicks(5133),
+                            CreatedAt = new DateTime(2019, 7, 2, 15, 38, 45, 90, DateTimeKind.Local).AddTicks(9042),
                             Definition = "Approved without age restriction in accordance with Art. 14 German Children and Young Persons Protection Act (JuSchG).  Games without age restriction are games which are directly aimed at children and young persons as well as at an adult buyer group.",
                             ImageLink = "client/images/USK/0.png",
                             Name = "0",
                             RatingsCountry = "Germany",
                             RatingsSystem = "USK",
-                            UpdatedAt = new DateTime(2019, 7, 1, 21, 48, 29, 323, DateTimeKind.Local).AddTicks(5135)
+                            UpdatedAt = new DateTime(2019, 7, 2, 15, 38, 45, 90, DateTimeKind.Local).AddTicks(9045)
                         },
                         new
                         {
                             RatingId = 26,
                             Age = 6,
-                            CreatedAt = new DateTime(2019, 7, 1, 21, 48, 29, 323, DateTimeKind.Local).AddTicks(5142),
+                            CreatedAt = new DateTime(2019, 7, 2, 15, 38, 45, 90, DateTimeKind.Local).AddTicks(9054),
                             Definition = "Approved for children aged 6 and above in accordance with Art. 14 German Children and Young Persons Protection Act (JuSchG).  These games mostly involve family-friendly games which may be more exciting and competitive (e.g. via faster game speeds and more complex tasks).",
                             ImageLink = "client/images/USK/6.png",
                             Name = "6",
                             RatingsCountry = "Germany",
                             RatingsSystem = "USK",
-                            UpdatedAt = new DateTime(2019, 7, 1, 21, 48, 29, 323, DateTimeKind.Local).AddTicks(5144)
+                            UpdatedAt = new DateTime(2019, 7, 2, 15, 38, 45, 90, DateTimeKind.Local).AddTicks(9057)
                         },
                         new
                         {
                             RatingId = 27,
                             Age = 12,
-                            CreatedAt = new DateTime(2019, 7, 1, 21, 48, 29, 323, DateTimeKind.Local).AddTicks(5151),
+                            CreatedAt = new DateTime(2019, 7, 2, 15, 38, 45, 90, DateTimeKind.Local).AddTicks(9067),
                             Definition = "Approved for children aged 12 and above in accordance with Art. 14 German Children and Young Persons Protection Act (JuSchG).  These games feature much more of a competitive edge. Game scenarios contain little violence, enabling players to distance themselves sufficiently from events.",
                             ImageLink = "client/images/USK/12.png",
                             Name = "12",
                             RatingsCountry = "Germany",
                             RatingsSystem = "USK",
-                            UpdatedAt = new DateTime(2019, 7, 1, 21, 48, 29, 323, DateTimeKind.Local).AddTicks(5153)
+                            UpdatedAt = new DateTime(2019, 7, 2, 15, 38, 45, 90, DateTimeKind.Local).AddTicks(9070)
                         },
                         new
                         {
                             RatingId = 28,
                             Age = 16,
-                            CreatedAt = new DateTime(2019, 7, 1, 21, 48, 29, 323, DateTimeKind.Local).AddTicks(5159),
+                            CreatedAt = new DateTime(2019, 7, 2, 15, 38, 45, 90, DateTimeKind.Local).AddTicks(9079),
                             Definition = "Approved for children aged 16 and above in accordance with Art. 14 German Children and Young Persons Protection Act (JuSchG).  Games approved for children aged 16 and above may include acts of violence. This means that it is also natural for adults to buy them.",
                             ImageLink = "client/images/USK/16.png",
                             Name = "16",
                             RatingsCountry = "Germany",
                             RatingsSystem = "USK",
-                            UpdatedAt = new DateTime(2019, 7, 1, 21, 48, 29, 323, DateTimeKind.Local).AddTicks(5161)
+                            UpdatedAt = new DateTime(2019, 7, 2, 15, 38, 45, 90, DateTimeKind.Local).AddTicks(9082)
                         },
                         new
                         {
                             RatingId = 29,
                             Age = 18,
-                            CreatedAt = new DateTime(2019, 7, 1, 21, 48, 29, 323, DateTimeKind.Local).AddTicks(5168),
+                            CreatedAt = new DateTime(2019, 7, 2, 15, 38, 45, 90, DateTimeKind.Local).AddTicks(9092),
                             Definition = "Not approved for anyone under 18 in accordance with Art. 14 German Children and Young Persons Protection Act (JuSchG).  These games almost always involve violent game concepts and frequently generate a dark and threatening atmosphere. This makes them suitable for adults only. These games often contain brutal, strong bloody violence and/or glorify war and/or human rights violations.",
                             ImageLink = "client/images/USK/18.png",
                             Name = "18",
                             RatingsCountry = "Germany",
                             RatingsSystem = "USK",
-                            UpdatedAt = new DateTime(2019, 7, 1, 21, 48, 29, 323, DateTimeKind.Local).AddTicks(5170)
+                            UpdatedAt = new DateTime(2019, 7, 2, 15, 38, 45, 90, DateTimeKind.Local).AddTicks(9095)
                         });
-                });
-
-            modelBuilder.Entity("AccountAPI.Models.Region", b =>
-                {
-                    b.Property<int>("RegionId")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<DateTime>("CreatedAt");
-
-                    b.Property<string>("Name")
-                        .IsRequired();
-
-                    b.Property<DateTime>("UpdatedAt");
-
-                    b.HasKey("RegionId");
-
-                    b.ToTable("Regions");
                 });
 
             modelBuilder.Entity("AccountAPI.Models.Account", b =>
@@ -914,6 +1227,19 @@ namespace AccountAPI.Migrations
                     b.HasOne("AccountAPI.Models.Event", "Event")
                         .WithMany("Accounts")
                         .HasForeignKey("EventId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("AccountAPI.Models.AccountPlatform", b =>
+                {
+                    b.HasOne("AccountAPI.Models.Account", "Account")
+                        .WithMany()
+                        .HasForeignKey("AccountId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("AccountAPI.Models.Platform", "Platform")
+                        .WithMany()
+                        .HasForeignKey("PlatformId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
@@ -927,9 +1253,22 @@ namespace AccountAPI.Migrations
 
             modelBuilder.Entity("AccountAPI.Models.Code", b =>
                 {
-                    b.HasOne("AccountAPI.Models.Game")
+                    b.HasOne("AccountAPI.Models.Account", "Account")
+                        .WithMany()
+                        .HasForeignKey("AccountId");
+
+                    b.HasOne("AccountAPI.Models.Game", "Game")
                         .WithMany("Codes")
-                        .HasForeignKey("GameId");
+                        .HasForeignKey("GameId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("AccountAPI.Models.Game", b =>
+                {
+                    b.HasOne("AccountAPI.Models.Platform", "Platform")
+                        .WithMany("Games")
+                        .HasForeignKey("PlatformId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("AccountAPI.Models.GameAccount", b =>
@@ -955,19 +1294,6 @@ namespace AccountAPI.Migrations
                     b.HasOne("AccountAPI.Models.Game", "Game")
                         .WithMany("GameControllerTypes")
                         .HasForeignKey("GameId")
-                        .OnDelete(DeleteBehavior.Cascade);
-                });
-
-            modelBuilder.Entity("AccountAPI.Models.GamePlatform", b =>
-                {
-                    b.HasOne("AccountAPI.Models.Game", "Game")
-                        .WithMany("GamePlatforms")
-                        .HasForeignKey("GameId")
-                        .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("AccountAPI.Models.Platform", "Platform")
-                        .WithMany("GamePlatforms")
-                        .HasForeignKey("PlatformId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 

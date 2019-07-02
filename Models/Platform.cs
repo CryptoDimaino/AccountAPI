@@ -18,9 +18,9 @@ namespace AccountAPI.Models
         [Required]
         public DateTime UpdatedAt {get;set;} = DateTime.Now;
 
-        public ICollection<GamePlatform> GamePlatforms {get;} = new List<GamePlatform>();
-
         public int PlatformTypeId {get;set;}
         public PlatformType PlatformType {get;set;}
+
+        public ICollection<Game> Games {get;} = new List<Game>();
     }
 }

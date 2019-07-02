@@ -82,8 +82,8 @@ namespace AccountAPI.Controllers
             {
                 Name = "Account" + Count,
                 Password = "Password" + Count,
-                Email = $"Account{Count}@gmail.com",
-                EmailPassword = "",
+                // Email = $"Account{Count}@gmail.com",
+                // EmailPassword = "",
                 CheckedOutStatus = false,
                 EventId = 1,
                 CreatedAt = DateTime.Now,
