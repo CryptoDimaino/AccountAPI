@@ -4,3 +4,4 @@ bin/*
 logs/*
 SteamOriginalAccounts.csv
 Migrations/*
+ModelBuilderSensitiveData.cs

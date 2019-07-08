@@ -22,7 +22,10 @@ namespace AccountAPI.Models
         [Required]
         public DateTime UpdatedAt {get;set;} = DateTime.Now;
 
-        public int EventId {get;set;}
+        public int AccountTypeId {get;set;}
+        public AccountType AccountType {get;set;}
+
+        public int? EventId {get;set;}
         public Event Event {get;set;}
 
         public ICollection<GameAccount> GameAccounts {get;} = new List<GameAccount>();

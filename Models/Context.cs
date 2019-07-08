@@ -17,7 +17,6 @@ namespace AccountAPI.Models
         public DbSet<ControllerType> ControllerTypes {get;set;}
         public DbSet<GameControllerType> GameControllerTypes {get;set;}
         public DbSet<Platform> Platforms {get;set;}
-        public DbSet<PlatformType> PlatformTypes {get;set;}
         public DbSet<Rating> Ratings {get;set;}
         public DbSet<GameRating> GameRatings {get;set;}
 
@@ -41,7 +40,8 @@ namespace AccountAPI.Models
             base.OnModelCreating(ModelBuilder);
 
             // Use static class for seeded data
-            ModelBuilder.Seed();
+            ModelBuilder.SeedGeneralData();
+            ModelBuilder.SeedSensitiveData();
         }
     }
 }
