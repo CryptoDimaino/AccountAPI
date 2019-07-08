@@ -20,28 +20,22 @@ namespace AccountAPI
             ModelBuilder.Entity<Platform>().HasData(
                 new Platform() {PlatformId = 1, Name = "Steam", PlatformTypeId = 1, CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now},
                 new Platform() {PlatformId = 2, Name = "Microsoft Store", PlatformTypeId = 1, CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now},
-                new Platform() {PlatformId = 3, Name = "Windows", PlatformTypeId = 1, CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now},
-                new Platform() {PlatformId = 4, Name = "Android", PlatformTypeId = 1, CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now},
-                new Platform() {PlatformId = 5, Name = "Steam VR", PlatformTypeId = 1, CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now},
-                new Platform() {PlatformId = 6, Name = "Oculus", PlatformTypeId = 1, CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now},
-                new Platform() {PlatformId = 7, Name = "Origin", PlatformTypeId = 1, CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now},
-                new Platform() {PlatformId = 8, Name = "Uplay", PlatformTypeId = 1, CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now},
-                new Platform() {PlatformId = 9, Name = "Epic", PlatformTypeId = 1, CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now},
-                new Platform() {PlatformId = 10, Name = "Standalone", PlatformTypeId = 1, CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now},
-                new Platform() {PlatformId = 11, Name = "Maniaplenet", PlatformTypeId = 1, CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now},
-                new Platform() {PlatformId = 12, Name = "Play Station", PlatformTypeId = 1, CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now},
-                new Platform() {PlatformId = 13, Name = "BattleNet", PlatformTypeId = 1, CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now},
-                new Platform() {PlatformId = 14, Name = "Lego Mini Online", PlatformTypeId = 1, CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now},
-                new Platform() {PlatformId = 15, Name = "League of Legends", PlatformTypeId = 1, CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now},
-                new Platform() {PlatformId = 16, Name = "Intel Appup", PlatformTypeId = 1, CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now},
-                new Platform() {PlatformId = 17, Name = "Cryptic Studios", PlatformTypeId = 1, CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now},
-                new Platform() {PlatformId = 18, Name = "Amazon", PlatformTypeId = 2, CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now},
-                new Platform() {PlatformId = 19, Name = "McAfee LiveSafe", PlatformTypeId = 2, CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now},
-                new Platform() {PlatformId = 20, Name = "Eve Online", PlatformTypeId = 1, CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now},
-                new Platform() {PlatformId = 21, Name = "Apple", PlatformTypeId = 2, CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now},
-                new Platform() {PlatformId = 22, Name = "QQ", PlatformTypeId = 2, CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now},
-                new Platform() {PlatformId = 23, Name = "Media Accounts", PlatformTypeId = 2, CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now},
-                new Platform() {PlatformId = 24, Name = "Twitch", PlatformTypeId = 2, CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now}
+                new Platform() {PlatformId = 3, Name = "Android", PlatformTypeId = 1, CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now},
+                new Platform() {PlatformId = 4, Name = "Steam VR", PlatformTypeId = 1, CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now},
+                new Platform() {PlatformId = 5, Name = "Oculus", PlatformTypeId = 1, CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now},
+                new Platform() {PlatformId = 6, Name = "Origin", PlatformTypeId = 1, CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now},
+                new Platform() {PlatformId = 7, Name = "Uplay", PlatformTypeId = 1, CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now},
+                new Platform() {PlatformId = 8, Name = "Epic", PlatformTypeId = 1, CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now},
+                new Platform() {PlatformId = 9, Name = "Standalone", PlatformTypeId = 1, CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now},
+                new Platform() {PlatformId = 10, Name = "Playsation", PlatformTypeId = 1, CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now},
+                new Platform() {PlatformId = 11, Name = "BattleNet", PlatformTypeId = 1, CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now}
+            //     new Platform() {PlatformId = 12, Name = "Intel Appup", PlatformTypeId = 1, CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now},
+            //     new Platform() {PlatformId = 13, Name = "Amazon", PlatformTypeId = 2, CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now},
+            //     new Platform() {PlatformId = 14, Name = "McAfee LiveSafe", PlatformTypeId = 2, CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now},
+            //     new Platform() {PlatformId = 15, Name = "Apple", PlatformTypeId = 2, CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now},
+            //     new Platform() {PlatformId = 16, Name = "QQ", PlatformTypeId = 2, CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now},
+            //     new Platform() {PlatformId = 17, Name = "Media Accounts", PlatformTypeId = 2, CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now},
+            //     new Platform() {PlatformId = 18, Name = "Twitch", PlatformTypeId = 2, CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now}
             );
 
             // ControllerType
@@ -95,77 +89,226 @@ namespace AccountAPI
         
             // Game
             ModelBuilder.Entity<Game>().HasData(
+                // Steam - 1
                 new Game() { GameId = 1, Name = "Virtua Tennis 4", ConnectionType = 2, ReleaseDate = new DateTime(2011, 4, 29), URLToDocumentation = "Location to Doc", CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now, PlatformId = 1 },
-                new Game() { GameId = 2, Name = "Portal 2", ConnectionType = 2, ReleaseDate = DateTime.Now, URLToDocumentation = "Location to Doc", CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now, PlatformId = 1 },
-                new Game() { GameId = 3, Name = "Rage", ConnectionType = 2, ReleaseDate = DateTime.Now, URLToDocumentation = "Location to Doc", CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now, PlatformId = 1 }
-                new Game() { GameId = 4, Name = "F1 Racing 2011", ConnectionType = 2, ReleaseDate = DateTime.Now, URLToDocumentation = "Location to Doc", CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now, PlatformId = 1 }
-                new Game() { GameId = 5, Name = "Shogun 2", ConnectionType = 2, ReleaseDate = DateTime.Now, URLToDocumentation = "Location to Doc", CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now, PlatformId = 1 }
-                new Game() { GameId = 6, Name = "Operation Flashpoint Red River", ConnectionType = 2, ReleaseDate = DateTime.Now, URLToDocumentation = "Location to Doc", CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now, PlatformId = 1 }
-                new Game() { GameId = 7, Name = "Batman Arkham City", ConnectionType = 2, ReleaseDate = DateTime.Now, URLToDocumentation = "Location to Doc", CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now, PlatformId = 1 }
-                new Game() { GameId = 8, Name = "Modern Warfare 3", ConnectionType = 2, ReleaseDate = DateTime.Now, URLToDocumentation = "Location to Doc", CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now, PlatformId = 1 }
-                new Game() { GameId = 9, Name = "Skyrim", ConnectionType = 2, ReleaseDate = DateTime.Now, URLToDocumentation = "Location to Doc", CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now, PlatformId = 1 }
-                new Game() { GameId = 10, Name = "Renegade Ops", ConnectionType = 2, ReleaseDate = DateTime.Now, URLToDocumentation = "Location to Doc", CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now, PlatformId = 1 }
-                new Game() { GameId = 11, Name = "Defense Grid", ConnectionType = 2, ReleaseDate = DateTime.Now, URLToDocumentation = "Location to Doc", CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now, PlatformId = 1 }
-                new Game() { GameId = 12, Name = "Limbo", ConnectionType = 2, ReleaseDate = DateTime.Now, URLToDocumentation = "Location to Doc", CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now, PlatformId = 1 }
-                new Game() { GameId = 13, Name = "Call of Duty: Black Ops 2", ConnectionType = 2, ReleaseDate = DateTime.Now, URLToDocumentation = "Location to Doc", CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now, PlatformId = 1 }
-                new Game() { GameId = 14, Name = "Dishonored", ConnectionType = 2, ReleaseDate = DateTime.Now, URLToDocumentation = "Location to Doc", CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now, PlatformId = 1 }
-                new Game() { GameId = 15, Name = "Deep Black: Reloaded", ConnectionType = 2, ReleaseDate = DateTime.Now, URLToDocumentation = "Location to Doc", CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now, PlatformId = 1 }
-                new Game() { GameId = 16, Name = "Civilization 5", ConnectionType = 2, ReleaseDate = DateTime.Now, URLToDocumentation = "Location to Doc", CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now, PlatformId = 1 }
-                new Game() { GameId = 17, Name = "Command & Conquer 4: Tiberian Twilight", ConnectionType = 2, ReleaseDate = DateTime.Now, URLToDocumentation = "Location to Doc", CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now, PlatformId = 1 }
-                new Game() { GameId = 18, Name = "Lego: The Lord of the Rings", ConnectionType = 2, ReleaseDate = DateTime.Now, URLToDocumentation = "Location to Doc", CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now, PlatformId = 1 }
-                new Game() { GameId = 19, Name = "Transformers: Fal of Cybertron", ConnectionType = 2, ReleaseDate = DateTime.Now, URLToDocumentation = "Location to Doc", CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now, PlatformId = 1 }
-                new Game() { GameId = 20, Name = "Grid 2", ConnectionType = 2, ReleaseDate = DateTime.Now, URLToDocumentation = "Location to Doc", CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now, PlatformId = 1 }
-                new Game() { GameId = 21, Name = "Sega and Sonic All Stars Transformed", ConnectionType = 2, ReleaseDate = DateTime.Now, URLToDocumentation = "Location to Doc", CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now, PlatformId = 1 }
-                new Game() { GameId = 22, Name = "Sega and Sonic All Stars Transformed", ConnectionType = 2, ReleaseDate = DateTime.Now, URLToDocumentation = "Location to Doc", CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now, PlatformId = 1 }
-                new Game() { GameId = 23, Name = "Civilization 5: Brave New World", ConnectionType = 2, ReleaseDate = DateTime.Now, URLToDocumentation = "Location to Doc", CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now, PlatformId = 1 }
-                new Game() { GameId = 24, Name = "ArmA3", ConnectionType = 2, ReleaseDate = DateTime.Now, URLToDocumentation = "Location to Doc", CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now, PlatformId = 1 }
-                new Game() { GameId = 25, Name = "Broken Age", ConnectionType = 2, ReleaseDate = DateTime.Now, URLToDocumentation = "Location to Doc", CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now, PlatformId = 1 }
-                new Game() { GameId = 26, Name = "Shadowrun Returns", ConnectionType = 2, ReleaseDate = DateTime.Now, URLToDocumentation = "Location to Doc", CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now, PlatformId = 1 }
-                new Game() { GameId = 27, Name = "Shadowrun: Dragonfall", ConnectionType = 2, ReleaseDate = DateTime.Now, URLToDocumentation = "Location to Doc", CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now, PlatformId = 1 }
-                new Game() { GameId = 28, Name = "Trine 2 Complete", ConnectionType = 2, ReleaseDate = DateTime.Now, URLToDocumentation = "Location to Doc", CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now, PlatformId = 1 }
-                new Game() { GameId = 29, Name = "Grid Autosport", ConnectionType = 2, ReleaseDate = DateTime.Now, URLToDocumentation = "Location to Doc", CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now, PlatformId = 1 }
-                new Game() { GameId = 30, Name = "Beat Buddy: Tale of te Guardians", ConnectionType = 2, ReleaseDate = DateTime.Now, URLToDocumentation = "Location to Doc", CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now, PlatformId = 1 }
-                new Game() { GameId = 31, Name = "Transistor", ConnectionType = 2, ReleaseDate = DateTime.Now, URLToDocumentation = "Location to Doc", CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now, PlatformId = 1 }
-                new Game() { GameId = 32, Name = "Borderlands: The Pre-Sequel Preorder", ConnectionType = 2, ReleaseDate = DateTime.Now, URLToDocumentation = "Location to Doc", CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now, PlatformId = 1 }
-                new Game() { GameId = 33, Name = "Alien Isolation", ConnectionType = 2, ReleaseDate = DateTime.Now, URLToDocumentation = "Location to Doc", CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now, PlatformId = 1 }
-                new Game() { GameId = 34, Name = "Counter Strike: Global Offensive", ConnectionType = 2, ReleaseDate = DateTime.Now, URLToDocumentation = "Location to Doc", CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now, PlatformId = 1 }
-                new Game() { GameId = 35, Name = "Lara Croft Temple of Osiris", ConnectionType = 2, ReleaseDate = DateTime.Now, URLToDocumentation = "Location to Doc", CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now, PlatformId = 1 }
-                new Game() { GameId = 36, Name = "Tomb Raider (2013)", ConnectionType = 2, ReleaseDate = DateTime.Now, URLToDocumentation = "Location to Doc", CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now, PlatformId = 1 }
-                new Game() { GameId = 37, Name = "F1 2015", ConnectionType = 2, ReleaseDate = DateTime.Now, URLToDocumentation = "Location to Doc", CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now, PlatformId = 1 }
-                new Game() { GameId = 38, Name = "Homeworld Remastered Collection", ConnectionType = 2, ReleaseDate = DateTime.Now, URLToDocumentation = "Location to Doc", CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now, PlatformId = 1 }
-                new Game() { GameId = 39, Name = "Euro Truck Simulator", ConnectionType = 2, ReleaseDate = DateTime.Now, URLToDocumentation = "Location to Doc", CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now, PlatformId = 1 }
-                new Game() { GameId = 40, Name = "Project Cars", ConnectionType = 2, ReleaseDate = DateTime.Now, URLToDocumentation = "Location to Doc", CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now, PlatformId = 1 }
-                new Game() { GameId = 41, Name = "Just Cause 3", ConnectionType = 2, ReleaseDate = DateTime.Now, URLToDocumentation = "Location to Doc", CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now, PlatformId = 1 }
-                new Game() { GameId = 42, Name = "NBA2K16", ConnectionType = 2, ReleaseDate = DateTime.Now, URLToDocumentation = "Location to Doc", CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now, PlatformId = 1 }
-                new Game() { GameId = 43, Name = "Rocket League", ConnectionType = 2, ReleaseDate = DateTime.Now, URLToDocumentation = "Location to Doc", CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now, PlatformId = 1 }
-                new Game() { GameId = 44, Name = "Warhammer Vermintide", ConnectionType = 2, ReleaseDate = DateTime.Now, URLToDocumentation = "Location to Doc", CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now, PlatformId = 1 }
-                new Game() { GameId = 45, Name = "Tom Clancy's Rainbow Six Siege", ConnectionType = 2, ReleaseDate = DateTime.Now, URLToDocumentation = "Location to Doc", CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now, PlatformId = 1 }
-                new Game() { GameId = 46, Name = "Grey Goo", ConnectionType = 2, ReleaseDate = DateTime.Now, URLToDocumentation = "Location to Doc", CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now, PlatformId = 1 }
-                new Game() { GameId = 47, Name = "PES 2017", ConnectionType = 2, ReleaseDate = DateTime.Now, URLToDocumentation = "Location to Doc", CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now, PlatformId = 1 }
-                new Game() { GameId = 48, Name = "Project Cars 2", ConnectionType = 2, ReleaseDate = DateTime.Now, URLToDocumentation = "Location to Doc", CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now, PlatformId = 1 }
-                new Game() { GameId = 49, Name = "PUBG", ConnectionType = 2, ReleaseDate = DateTime.Now, URLToDocumentation = "Location to Doc", CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now, PlatformId = 1 }
-                new Game() { GameId = 50, Name = "Total War: Warhammer 2", ConnectionType = 2, ReleaseDate = DateTime.Now, URLToDocumentation = "Location to Doc", CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now, PlatformId = 1 }
-                new Game() { GameId = 51, Name = "Lego Marvel Super Heroes 2", ConnectionType = 2, ReleaseDate = DateTime.Now, URLToDocumentation = "Location to Doc", CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now, PlatformId = 1 }
-                new Game() { GameId = 52, Name = "Call of Duty World War II", ConnectionType = 2, ReleaseDate = DateTime.Now, URLToDocumentation = "Location to Doc", CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now, PlatformId = 1 }
-                new Game() { GameId = 53, Name = "Warrhammer: Vermintide 2", ConnectionType = 2, ReleaseDate = DateTime.Now, URLToDocumentation = "Location to Doc", CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now, PlatformId = 1 }
-                new Game() { GameId = 54, Name = "Cuphead", ConnectionType = 2, ReleaseDate = DateTime.Now, URLToDocumentation = "Location to Doc", CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now, PlatformId = 1 }
-                new Game() { GameId = 55, Name = "Yooka Laylee", ConnectionType = 2, ReleaseDate = DateTime.Now, URLToDocumentation = "Location to Doc", CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now, PlatformId = 1 }
-                new Game() { GameId = 56, Name = "NBA 2K18", ConnectionType = 2, ReleaseDate = DateTime.Now, URLToDocumentation = "Location to Doc", CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now, PlatformId = 1 }
-                new Game() { GameId = 57, Name = "Sinner: BETA Testing", ConnectionType = 2, ReleaseDate = DateTime.Now, URLToDocumentation = "Location to Doc", CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now, PlatformId = 1 }
-                new Game() { GameId = 58, Name = "NBA 2k19", ConnectionType = 2, ReleaseDate = DateTime.Now, URLToDocumentation = "Location to Doc", CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now, PlatformId = 1 }
-                new Game() { GameId = 59, Name = "Hitman 2", ConnectionType = 2, ReleaseDate = DateTime.Now, URLToDocumentation = "Location to Doc", CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now, PlatformId = 1 }
-                new Game() { GameId = 60, Name = "Just Cause 4", ConnectionType = 2, ReleaseDate = DateTime.Now, URLToDocumentation = "Location to Doc", CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now, PlatformId = 1 }
-                new Game() { GameId = 61, Name = "Ring of Elysium", ConnectionType = 2, ReleaseDate = DateTime.Now, URLToDocumentation = "Location to Doc", CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now, PlatformId = 1 }
-                new Game() { GameId = 62, Name = "Street Fighter 5", ConnectionType = 2, ReleaseDate = DateTime.Now, URLToDocumentation = "Location to Doc", CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now, PlatformId = 1 }
-                new Game() { GameId = 63, Name = "Resident Evil 2", ConnectionType = 2, ReleaseDate = DateTime.Now, URLToDocumentation = "Location to Doc", CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now, PlatformId = 1 }
-                new Game() { GameId = 64, Name = "Outward", ConnectionType = 2, ReleaseDate = DateTime.Now, URLToDocumentation = "Location to Doc", CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now, PlatformId = 1 }
-                new Game() { GameId = 65, Name = "Tekken 7", ConnectionType = 2, ReleaseDate = DateTime.Now, URLToDocumentation = "Location to Doc", CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now, PlatformId = 1 }
-                new Game() { GameId = 66, Name = "Soul Calibur 6", ConnectionType = 2, ReleaseDate = DateTime.Now, URLToDocumentation = "Location to Doc", CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now, PlatformId = 1 }
-                new Game() { GameId = 67, Name = "Dragon Ball FighterZ", ConnectionType = 2, ReleaseDate = DateTime.Now, URLToDocumentation = "Location to Doc", CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now, PlatformId = 1 }
-                new Game() { GameId = 68, Name = "DOTA 2", ConnectionType = 2, ReleaseDate = DateTime.Now, URLToDocumentation = "Location to Doc", CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now, PlatformId = 1 }
-                new Game() { GameId = 69, Name = "Ace Combat 7: Skies Unknown", ConnectionType = 2, ReleaseDate = DateTime.Now, URLToDocumentation = "Location to Doc", CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now, PlatformId = 1 }
-                new Game() { GameId = 70, Name = "Sekiro: Shadows Die Twice", ConnectionType = 2, ReleaseDate = DateTime.Now, URLToDocumentation = "Location to Doc", CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now, PlatformId = 1 }
+                new Game() { GameId = 2, Name = "Portal 2", ConnectionType = 2, ReleaseDate = new DateTime(2011, 4, 19), URLToDocumentation = "Location to Doc", CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now, PlatformId = 1 },
+                new Game() { GameId = 3, Name = "Rage", ConnectionType = 2, ReleaseDate = new DateTime(2010, 11, 18), URLToDocumentation = "Location to Doc", CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now, PlatformId = 1 },
+                new Game() { GameId = 4, Name = "F1 Racing 2011", ConnectionType = 2, ReleaseDate = new DateTime(2011, 9, 23), URLToDocumentation = "Location to Doc", CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now, PlatformId = 1 },
+                new Game() { GameId = 5, Name = "Shogun 2", ConnectionType = 2, ReleaseDate = new DateTime(2011, 3, 15), URLToDocumentation = "Location to Doc", CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now, PlatformId = 1 },
+                new Game() { GameId = 6, Name = "Operation Flashpoint Red River", ConnectionType = 2, ReleaseDate = new DateTime(2011, 4, 21), URLToDocumentation = "Location to Doc", CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now, PlatformId = 1 },
+                new Game() { GameId = 7, Name = "Batman Arkham City", ConnectionType = 2, ReleaseDate = new DateTime(2011, 10, 18), URLToDocumentation = "Location to Doc", CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now, PlatformId = 1 },
+                new Game() { GameId = 8, Name = "Modern Warfare 3", ConnectionType = 2, ReleaseDate = new DateTime(2011, 11, 8), URLToDocumentation = "Location to Doc", CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now, PlatformId = 1 },
+                new Game() { GameId = 9, Name = "Skyrim", ConnectionType = 2, ReleaseDate = ReleaseDate = new DateTime(2011, 11, 11), URLToDocumentation = "Location to Doc", CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now, PlatformId = 1 },
+                new Game() { GameId = 10, Name = "Renegade Ops", ConnectionType = 2, ReleaseDate = ReleaseDate = new DateTime(2011, 9, 13), URLToDocumentation = "Location to Doc", CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now, PlatformId = 1 },
+                new Game() { GameId = 11, Name = "Defense Grid", ConnectionType = 2, ReleaseDate = ReleaseDate = new DateTime(2008, 12, 8), URLToDocumentation = "Location to Doc", CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now, PlatformId = 1 },
+                new Game() { GameId = 12, Name = "Limbo", ConnectionType = 2, ReleaseDate = ReleaseDate = new DateTime(2010, 7, 21), URLToDocumentation = "Location to Doc", CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now, PlatformId = 1 },
+                new Game() { GameId = 13, Name = "Call of Duty: Black Ops 2", ConnectionType = 2, ReleaseDate = ReleaseDate = new DateTime(2012, 11, 13), URLToDocumentation = "Location to Doc", CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now, PlatformId = 1 },
+                new Game() { GameId = 14, Name = "Dishonored", ConnectionType = 2, ReleaseDate = new DateTime(2012, 10, 9), URLToDocumentation = "Location to Doc", CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now, PlatformId = 1 },
+                new Game() { GameId = 15, Name = "Deep Black: Reloaded", ConnectionType = 2, ReleaseDate = new DateTime(2012, 4, 18), URLToDocumentation = "Location to Doc", CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now, PlatformId = 1 },
+                new Game() { GameId = 16, Name = "Civilization 5", ConnectionType = 2, ReleaseDate = new DateTime(2012, 10, 9), URLToDocumentation = "Location to Doc", CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now, PlatformId = 1 },
+                new Game() { GameId = 17, Name = "Command & Conquer 4: Tiberian Twilight", ConnectionType = 2, ReleaseDate = new DateTime(2010, 3, 16), URLToDocumentation = "Location to Doc", CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now, PlatformId = 1 },
+                new Game() { GameId = 18, Name = "Lego: The Lord of the Rings", ConnectionType = 2, ReleaseDate = new DateTime(2012, 10, 30), URLToDocumentation = "Location to Doc", CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now, PlatformId = 1 },
+                new Game() { GameId = 19, Name = "Transformers: Fal of Cybertron", ConnectionType = 2, ReleaseDate = new DateTime(2012, 8, 21), URLToDocumentation = "Location to Doc", CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now, PlatformId = 1 },
+                new Game() { GameId = 20, Name = "Grid 2", ConnectionType = 2, ReleaseDate = new DateTime(2012, 8, 21), URLToDocumentation = "Location to Doc", CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now, PlatformId = 1 },
+                new Game() { GameId = 21, Name = "Sega and Sonic All Stars Transformed", ConnectionType = 2, ReleaseDate = new DateTime(2012, 11, 16), URLToDocumentation = "Location to Doc", CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now, PlatformId = 1 },
+                new Game() { GameId = 22, Name = "Sega and Sonic All Stars Transformed", ConnectionType = 2, ReleaseDate = new DateTime(2012, 11, 16), URLToDocumentation = "Location to Doc", CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now, PlatformId = 1 },
+                new Game() { GameId = 23, Name = "Civilization 5: Brave New World", ConnectionType = 2, ReleaseDate = new DateTime(2013, 7, 9), URLToDocumentation = "Location to Doc", CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now, PlatformId = 1 },
+                new Game() { GameId = 24, Name = "ARMA 3", ConnectionType = 2, ReleaseDate = new DateTime(2013, 9, 12), URLToDocumentation = "Location to Doc", CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now, PlatformId = 1 },
+                new Game() { GameId = 25, Name = "Broken Age", ConnectionType = 2, ReleaseDate = new DateTime(2014, 1, 14), URLToDocumentation = "Location to Doc", CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now, PlatformId = 1 },
+                new Game() { GameId = 26, Name = "Shadowrun Returns", ConnectionType = 2, ReleaseDate = new DateTime(2013, 7, 25), URLToDocumentation = "Location to Doc", CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now, PlatformId = 1 },
+                new Game() { GameId = 27, Name = "Shadowrun: Dragonfall", ConnectionType = 2, ReleaseDate = new DateTime(2014, 2, 27), URLToDocumentation = "Location to Doc", CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now, PlatformId = 1 },
+                new Game() { GameId = 28, Name = "Trine 2 Complete", ConnectionType = 2, ReleaseDate = new DateTime(2011, 12, 7), URLToDocumentation = "Location to Doc", CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now, PlatformId = 1 },
+                new Game() { GameId = 29, Name = "Grid Autosport", ConnectionType = 2, ReleaseDate = new DateTime(2014, 6, 24), URLToDocumentation = "Location to Doc", CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now, PlatformId = 1 },
+                new Game() { GameId = 30, Name = "Beatbuddy: Tale of the Guardians", ConnectionType = 2, ReleaseDate = new DateTime(2014, 8, 6), URLToDocumentation = "Location to Doc", CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now, PlatformId = 1 },
+                new Game() { GameId = 31, Name = "Transistor", ConnectionType = 2, ReleaseDate = new DateTime(2014, 5, 20), URLToDocumentation = "Location to Doc", CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now, PlatformId = 1 },
+                new Game() { GameId = 32, Name = "Borderlands: The Pre-Sequel Preorder", ConnectionType = 2, ReleaseDate = new DateTime(2014, 10, 14), URLToDocumentation = "Location to Doc", CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now, PlatformId = 1 },
+                new Game() { GameId = 33, Name = "Alien Isolation", ConnectionType = 2, ReleaseDate = new DateTime(2014, 10, 7), URLToDocumentation = "Location to Doc", CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now, PlatformId = 1 },
+                new Game() { GameId = 34, Name = "Counter Strike: Global Offensive", ConnectionType = 2, ReleaseDate = new DateTime(2012, 8, 21), URLToDocumentation = "Location to Doc", CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now, PlatformId = 1 },
+                new Game() { GameId = 35, Name = "Lara Croft Temple of Osiris", ConnectionType = 2, ReleaseDate = new DateTime(2014, 12, 9), URLToDocumentation = "Location to Doc", CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now, PlatformId = 1 },
+                new Game() { GameId = 36, Name = "Tomb Raider (2013)", ConnectionType = 2, ReleaseDate = new DateTime(2013, 3, 5), URLToDocumentation = "Location to Doc", CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now, PlatformId = 1 },
+                new Game() { GameId = 37, Name = "F1 2015", ConnectionType = 2, ReleaseDate = new DateTime(2015, 7, 10), URLToDocumentation = "Location to Doc", CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now, PlatformId = 1 },
+                new Game() { GameId = 38, Name = "Homeworld Remastered Collection", ConnectionType = 2, ReleaseDate = new DateTime(2015, 2, 25), URLToDocumentation = "Location to Doc", CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now, PlatformId = 1 },
+                new Game() { GameId = 39, Name = "Euro Truck Simulator", ConnectionType = 2, ReleaseDate = new DateTime(2012, 10, 19), URLToDocumentation = "Location to Doc", CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now, PlatformId = 1 },
+                new Game() { GameId = 40, Name = "Project Cars", ConnectionType = 2, ReleaseDate = new DateTime(2015, 5, 6), URLToDocumentation = "Location to Doc", CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now, PlatformId = 1 },
+                new Game() { GameId = 41, Name = "Just Cause 3", ConnectionType = 2, ReleaseDate = new DateTime(2015, 12, 1), URLToDocumentation = "Location to Doc", CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now, PlatformId = 1 },
+                new Game() { GameId = 42, Name = "NBA2K16", ConnectionType = 2, ReleaseDate = new DateTime(2015, 9, 29), URLToDocumentation = "Location to Doc", CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now, PlatformId = 1 },
+                new Game() { GameId = 43, Name = "Rocket League", ConnectionType = 2, ReleaseDate = new DateTime(2015, 7, 7), URLToDocumentation = "Location to Doc", CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now, PlatformId = 1 },
+                new Game() { GameId = 44, Name = "Warhammer Vermintide", ConnectionType = 2, ReleaseDate = new DateTime(2015, 10, 23), URLToDocumentation = "Location to Doc", CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now, PlatformId = 1 },
+                new Game() { GameId = 45, Name = "Tom Clancy's Rainbow Six Siege", ConnectionType = 2, ReleaseDate = new DateTime(2015, 12, 1), URLToDocumentation = "Location to Doc", CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now, PlatformId = 1 },
+                new Game() { GameId = 46, Name = "Grey Goo", ConnectionType = 2, ReleaseDate = new DateTime(2015, 1, 23), URLToDocumentation = "Location to Doc", CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now, PlatformId = 1 },
+                new Game() { GameId = 47, Name = "PES 2017", ConnectionType = 2, ReleaseDate = new DateTime(2016, 9, 13), URLToDocumentation = "Location to Doc", CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now, PlatformId = 1 },
+                new Game() { GameId = 48, Name = "Project Cars 2", ConnectionType = 2, ReleaseDate = new DateTime(2017, 9, 22), URLToDocumentation = "Location to Doc", CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now, PlatformId = 1 },
+                new Game() { GameId = 49, Name = "PUBG", ConnectionType = 2, ReleaseDate = new DateTime(2017, 12, 20), URLToDocumentation = "Location to Doc", CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now, PlatformId = 1 },
+                new Game() { GameId = 50, Name = "Total War: Warhammer 2", ConnectionType = 2, ReleaseDate = new DateTime(2017, 9, 28), URLToDocumentation = "Location to Doc", CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now, PlatformId = 1 },
+                new Game() { GameId = 51, Name = "Lego Marvel Super Heroes 2", ConnectionType = 2, ReleaseDate = new DateTime(2018, 8, 2), URLToDocumentation = "Location to Doc", CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now, PlatformId = 1 },
+                new Game() { GameId = 52, Name = "Call of Duty World War II", ConnectionType = 2, ReleaseDate = new DateTime(2017, 11, 3), URLToDocumentation = "Location to Doc", CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now, PlatformId = 1 },
+                new Game() { GameId = 53, Name = "Warhammer: Vermintide 2", ConnectionType = 2, ReleaseDate = new DateTime(2018, 3, 8), URLToDocumentation = "Location to Doc", CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now, PlatformId = 1 },
+                new Game() { GameId = 54, Name = "Cuphead", ConnectionType = 2, ReleaseDate = ReleaseDate = new DateTime(2017, 9, 29), URLToDocumentation = "Location to Doc", CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now, PlatformId = 1 },
+                new Game() { GameId = 55, Name = "Yooka Laylee", ConnectionType = 2, ReleaseDate = new DateTime(2017, 4, 11), URLToDocumentation = "Location to Doc", CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now, PlatformId = 1 },
+                new Game() { GameId = 56, Name = "NBA 2K18", ConnectionType = 2, ReleaseDate = new DateTime(2017, 9, 19), URLToDocumentation = "Location to Doc", CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now, PlatformId = 1 },
+                new Game() { GameId = 57, Name = "SINNER: Sacrifice for Redemption", ConnectionType = 2, ReleaseDate = new DateTime(2018, 10, 22), URLToDocumentation = "Location to Doc", CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now, PlatformId = 1 },
+                new Game() { GameId = 58, Name = "NBA 2k19", ConnectionType = 2, ReleaseDate = new DateTime(2018, 9, 11), URLToDocumentation = "Location to Doc", CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now, PlatformId = 1 },
+                new Game() { GameId = 59, Name = "Hitman 2", ConnectionType = 2, ReleaseDate = new DateTime(2018, 11, 13), URLToDocumentation = "Location to Doc", CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now, PlatformId = 1 },
+                new Game() { GameId = 60, Name = "Just Cause 4", ConnectionType = 2, ReleaseDate = new DateTime(2018, 12, 4), URLToDocumentation = "Location to Doc", CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now, PlatformId = 1 },
+                new Game() { GameId = 61, Name = "Ring of Elysium", ConnectionType = 2, ReleaseDate = new DateTime(2018, 9, 19), URLToDocumentation = "Location to Doc", CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now, PlatformId = 1 },
+                new Game() { GameId = 62, Name = "Street Fighter 5", ConnectionType = 2, ReleaseDate = new DateTime(2016, 2, 16), URLToDocumentation = "Location to Doc", CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now, PlatformId = 1 },
+                new Game() { GameId = 63, Name = "Resident Evil 2 Remake", ConnectionType = 2, ReleaseDate = new DateTime(2019, 1, 25), URLToDocumentation = "Location to Doc", CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now, PlatformId = 1 },
+                new Game() { GameId = 64, Name = "Outward", ConnectionType = 2, ReleaseDate = new DateTime(2019, 3, 26), URLToDocumentation = "Location to Doc", CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now, PlatformId = 1 },
+                new Game() { GameId = 65, Name = "Tekken 7", ConnectionType = 2, ReleaseDate = new DateTime(2015, 3, 18), URLToDocumentation = "Location to Doc", CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now, PlatformId = 1 },
+                new Game() { GameId = 66, Name = "Soul Calibur 6", ConnectionType = 2, ReleaseDate = DateTime.Now, URLToDocumentation = "Location to Doc", CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now, PlatformId = 1 },
+                new Game() { GameId = 67, Name = "Dragon Ball FighterZ", ConnectionType = 2, ReleaseDate = DateTime.Now, URLToDocumentation = "Location to Doc", CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now, PlatformId = 1 },
+                new Game() { GameId = 68, Name = "DOTA 2", ConnectionType = 2, ReleaseDate = DateTime.Now, URLToDocumentation = "Location to Doc", CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now, PlatformId = 1 },
+                new Game() { GameId = 69, Name = "Ace Combat 7: Skies Unknown", ConnectionType = 2, ReleaseDate = DateTime.Now, URLToDocumentation = "Location to Doc", CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now, PlatformId = 1 },
+                new Game() { GameId = 70, Name = "Sekiro: Shadows Die Twice", ConnectionType = 2, ReleaseDate = DateTime.Now, URLToDocumentation = "Location to Doc", CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now, PlatformId = 1 },
+
+                // Microsftstore - 2
+                new Game() { GameId = 71, Name = "Superhot VR", ConnectionType = 2, ReleaseDate = DateTime.Now, URLToDocumentation = "Location to Doc", CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now, PlatformId = 2 },
+                new Game() { GameId = 72, Name = "Gears of War 4", ConnectionType = 2, ReleaseDate = DateTime.Now, URLToDocumentation = "Location to Doc", CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now, PlatformId = 2 },
+                new Game() { GameId = 73, Name = "Ghostbusters VR", ConnectionType = 2, ReleaseDate = DateTime.Now, URLToDocumentation = "Location to Doc", CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now, PlatformId = 2 },
+                new Game() { GameId = 74, Name = "Arizona Sunshine", ConnectionType = 2, ReleaseDate = DateTime.Now, URLToDocumentation = "Location to Doc", CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now, PlatformId = 2 },
+                new Game() { GameId = 75, Name = "Halo Wars", ConnectionType = 2, ReleaseDate = DateTime.Now, URLToDocumentation = "Location to Doc", CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now, PlatformId = 2 },
+
+                // Android - 3
+                new Game() { GameId = 75, Name = "Marvel Run Jump Smash", ConnectionType = 2, ReleaseDate = DateTime.Now, URLToDocumentation = "Location to Doc", CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now, PlatformId = 3 },
+                new Game() { GameId = 75, Name = "Angry Birds (Free)", ConnectionType = 2, ReleaseDate = DateTime.Now, URLToDocumentation = "Location to Doc", CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now, PlatformId = 3 },
+                new Game() { GameId = 75, Name = "Angry Birds Space (Free)", ConnectionType = 2, ReleaseDate = DateTime.Now, URLToDocumentation = "Location to Doc", CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now, PlatformId = 3 },
+                new Game() { GameId = 75, Name = "Candy Crush Saga (Free)", ConnectionType = 2, ReleaseDate = DateTime.Now, URLToDocumentation = "Location to Doc", CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now, PlatformId = 3 },
+                new Game() { GameId = 75, Name = "Fruit Ninja (Free)", ConnectionType = 2, ReleaseDate = DateTime.Now, URLToDocumentation = "Location to Doc", CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now, PlatformId = 3 },
+                new Game() { GameId = 75, Name = "Jetpack Joyride (Free)", ConnectionType = 2, ReleaseDate = DateTime.Now, URLToDocumentation = "Location to Doc", CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now, PlatformId = 3 },
+                new Game() { GameId = 75, Name = "Plants vs Zombies 2 (Free)", ConnectionType = 2, ReleaseDate = DateTime.Now, URLToDocumentation = "Location to Doc", CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now, PlatformId = 3 },
+                new Game() { GameId = 75, Name = "Tap the Frog (Free)", ConnectionType = 2, ReleaseDate = DateTime.Now, URLToDocumentation = "Location to Doc", CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now, PlatformId = 3 },
+                new Game() { GameId = 75, Name = "Tiny Dice Dung", ConnectionType = 2, ReleaseDate = DateTime.Now, URLToDocumentation = "Location to Doc", CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now, PlatformId = 3 },
+                new Game() { GameId = 75, Name = "Fractal Combat X (FCX) (Free)", ConnectionType = 2, ReleaseDate = DateTime.Now, URLToDocumentation = "Location to Doc", CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now, PlatformId = 3 },
+                new Game() { GameId = 75, Name = "GT Racing 2", ConnectionType = 2, ReleaseDate = DateTime.Now, URLToDocumentation = "Location to Doc", CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now, PlatformId = 3 },
+                new Game() { GameId = 75, Name = "Shadowrun Returns", ConnectionType = 2, ReleaseDate = DateTime.Now, URLToDocumentation = "Location to Doc", CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now, PlatformId = 3 },
+                new Game() { GameId = 75, Name = "Hitman GO", ConnectionType = 2, ReleaseDate = DateTime.Now, URLToDocumentation = "Location to Doc", CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now, PlatformId = 3 },
+                new Game() { GameId = 75, Name = "Sonic Dash", ConnectionType = 2, ReleaseDate = DateTime.Now, URLToDocumentation = "Location to Doc", CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now, PlatformId = 3 },
+                new Game() { GameId = 75, Name = "Blitz Brigade (Free)", ConnectionType = 2, ReleaseDate = DateTime.Now, URLToDocumentation = "Location to Doc", CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now, PlatformId = 3 },
+                new Game() { GameId = 75, Name = "Assassin's Creed Pirates (Free)", ConnectionType = 2, ReleaseDate = DateTime.Now, URLToDocumentation = "Location to Doc", CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now, PlatformId = 3 },
+                new Game() { GameId = 75, Name = "Jetpack Joyride", ConnectionType = 2, ReleaseDate = DateTime.Now, URLToDocumentation = "Location to Doc", CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now, PlatformId = 3 },
+                new Game() { GameId = 75, Name = "Uoaki Watch Wibble Wobble (Free)", ConnectionType = 2, ReleaseDate = DateTime.Now, URLToDocumentation = "Location to Doc", CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now, PlatformId = 3 },
+
+                // Steam VR - 4
+                new Game() { GameId = 71, Name = "The Gallery - Episode 1: Call of the Starseed", ConnectionType = 2, ReleaseDate = DateTime.Now, URLToDocumentation = "Location to Doc", CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now, PlatformId = 4 },
+                new Game() { GameId = 72, Name = "Arizona Sunshine", ConnectionType = 2, ReleaseDate = DateTime.Now, URLToDocumentation = "Location to Doc", CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now, PlatformId = 4 },
+                new Game() { GameId = 73, Name = "Budget Cuts", ConnectionType = 2, ReleaseDate = DateTime.Now, URLToDocumentation = "Location to Doc", CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now, PlatformId = 4 },
+                new Game() { GameId = 74, Name = "The LAB", ConnectionType = 2, ReleaseDate = DateTime.Now, URLToDocumentation = "Location to Doc", CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now, PlatformId = 4 },
+                new Game() { GameId = 75, Name = "Raw Data", ConnectionType = 2, ReleaseDate = DateTime.Now, URLToDocumentation = "Location to Doc", CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now, PlatformId = 4 },
+                new Game() { GameId = 75, Name = "Raw Data (Demo)", ConnectionType = 2, ReleaseDate = DateTime.Now, URLToDocumentation = "Location to Doc", CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now, PlatformId = 4 },
+                new Game() { GameId = 75, Name = "theBlu", ConnectionType = 2, ReleaseDate = DateTime.Now, URLToDocumentation = "Location to Doc", CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now, PlatformId = 4 },
+                new Game() { GameId = 75, Name = "Tilt Brush", ConnectionType = 2, ReleaseDate = DateTime.Now, URLToDocumentation = "Location to Doc", CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now, PlatformId = 4 },
+                new Game() { GameId = 75, Name = "A-10 VR", ConnectionType = 2, ReleaseDate = DateTime.Now, URLToDocumentation = "Location to Doc", CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now, PlatformId = 4 },
+                new Game() { GameId = 75, Name = "Job Simulator", ConnectionType = 2, ReleaseDate = DateTime.Now, URLToDocumentation = "Location to Doc", CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now, PlatformId = 4 },
+                new Game() { GameId = 75, Name = "Fantastic Contraption", ConnectionType = 2, ReleaseDate = DateTime.Now, URLToDocumentation = "Location to Doc", CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now, PlatformId = 4 },
+                new Game() { GameId = 75, Name = "Balloon, Chair, Death, Match", ConnectionType = 2, ReleaseDate = DateTime.Now, URLToDocumentation = "Location to Doc", CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now, PlatformId = 4 },
+                new Game() { GameId = 75, Name = "Serious Sam VR", ConnectionType = 2, ReleaseDate = DateTime.Now, URLToDocumentation = "Location to Doc", CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now, PlatformId = 4 },
+                new Game() { GameId = 75, Name = "Warhammer: End Times - Vermintide", ConnectionType = 2, ReleaseDate = DateTime.Now, URLToDocumentation = "Location to Doc", CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now, PlatformId = 4 },
+                new Game() { GameId = 75, Name = "Blue Effect VR", ConnectionType = 2, ReleaseDate = DateTime.Now, URLToDocumentation = "Location to Doc", CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now, PlatformId = 4 },
+                new Game() { GameId = 75, Name = "Bullet Sorrow", ConnectionType = 2, ReleaseDate = DateTime.Now, URLToDocumentation = "Location to Doc", CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now, PlatformId = 4 },
+                new Game() { GameId = 75, Name = "Fruit Ninja VR", ConnectionType = 2, ReleaseDate = DateTime.Now, URLToDocumentation = "Location to Doc", CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now, PlatformId = 4 },
+                new Game() { GameId = 75, Name = "NBA 2kVR Experience", ConnectionType = 2, ReleaseDate = DateTime.Now, URLToDocumentation = "Location to Doc", CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now, PlatformId = 4 },
+                new Game() { GameId = 75, Name = "SportsBar VR", ConnectionType = 2, ReleaseDate = DateTime.Now, URLToDocumentation = "Location to Doc", CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now, PlatformId = 4 },
+                new Game() { GameId = 75, Name = "Evasion", ConnectionType = 2, ReleaseDate = DateTime.Now, URLToDocumentation = "Location to Doc", CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now, PlatformId = 4 },
+                new Game() { GameId = 75, Name = "Sprint Vector", ConnectionType = 2, ReleaseDate = DateTime.Now, URLToDocumentation = "Location to Doc", CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now, PlatformId = 4 },
+                new Game() { GameId = 75, Name = "Mortal Blitz", ConnectionType = 2, ReleaseDate = DateTime.Now, URLToDocumentation = "Location to Doc", CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now, PlatformId = 4 },
+                new Game() { GameId = 75, Name = "Onward VR", ConnectionType = 2, ReleaseDate = DateTime.Now, URLToDocumentation = "Location to Doc", CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now, PlatformId = 4 },
+                new Game() { GameId = 75, Name = "Space Pirate Trainer", ConnectionType = 2, ReleaseDate = DateTime.Now, URLToDocumentation = "Location to Doc", CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now, PlatformId = 4 },
+                new Game() { GameId = 75, Name = "Archangel: Hellfire", ConnectionType = 2, ReleaseDate = DateTime.Now, URLToDocumentation = "Location to Doc", CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now, PlatformId = 4 },
+                new Game() { GameId = 75, Name = "Beatsaber", ConnectionType = 2, ReleaseDate = DateTime.Now, URLToDocumentation = "Location to Doc", CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now, PlatformId = 4 },
+                new Game() { GameId = 75, Name = "The Gold Club VR", ConnectionType = 2, ReleaseDate = DateTime.Now, URLToDocumentation = "Location to Doc", CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now, PlatformId = 4 },
+                new Game() { GameId = 75, Name = "Creed - Rise to Glory", ConnectionType = 2, ReleaseDate = DateTime.Now, URLToDocumentation = "Location to Doc", CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now, PlatformId = 4 },
+                // new Game() { GameId = 75, Name = "Creed - Rise to Glory ""Arcade""", ConnectionType = 2, ReleaseDate = DateTime.Now, URLToDocumentation = "Location to Doc", CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now, PlatformId = 4 },
+                new Game() { GameId = 75, Name = "Audica", ConnectionType = 2, ReleaseDate = DateTime.Now, URLToDocumentation = "Location to Doc", CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now, PlatformId = 4 },
+
+                // Oculus - 5
+                new Game() { GameId = 76, Name = "SuperhotVR", ConnectionType = 2, ReleaseDate = DateTime.Now, URLToDocumentation = "Location to Doc", CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now, PlatformId = 5 },
+                new Game() { GameId = 77, Name = "Rock Band VR", ConnectionType = 2, ReleaseDate = DateTime.Now, URLToDocumentation = "Location to Doc", CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now, PlatformId = 5 },
+                new Game() { GameId = 78, Name = "Robo Recall", ConnectionType = 2, ReleaseDate = DateTime.Now, URLToDocumentation = "Location to Doc", CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now, PlatformId = 5 },
+                new Game() { GameId = 79, Name = "Unspoken", ConnectionType = 2, ReleaseDate = DateTime.Now, URLToDocumentation = "Location to Doc", CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now, PlatformId = 5 },
+                new Game() { GameId = 80, Name = "Dead and Buried", ConnectionType = 2, ReleaseDate = DateTime.Now, URLToDocumentation = "Location to Doc", CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now, PlatformId = 5 },
+                new Game() { GameId = 81, Name = "Sprint Vector", ConnectionType = 2, ReleaseDate = DateTime.Now, URLToDocumentation = "Location to Doc", CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now, PlatformId = 5 },
+                new Game() { GameId = 82, Name = "Lone Echo", ConnectionType = 2, ReleaseDate = DateTime.Now, URLToDocumentation = "Location to Doc", CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now, PlatformId = 5 },
+                new Game() { GameId = 83, Name = "Luna", ConnectionType = 2, ReleaseDate = DateTime.Now, URLToDocumentation = "Location to Doc", CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now, PlatformId = 5 },
+                new Game() { GameId = 84, Name = "Echo Arena", ConnectionType = 2, ReleaseDate = DateTime.Now, URLToDocumentation = "Location to Doc", CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now, PlatformId = 5  },
+
+                // Origin - 6
+                new Game() { GameId = 85, Name = "Battlefield 3", ConnectionType = 2, ReleaseDate = DateTime.Now, URLToDocumentation = "Location to Doc", CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now, PlatformId = 6 },
+                new Game() { GameId = 86, Name = "Fifa Soccer 12", ConnectionType = 2, ReleaseDate = DateTime.Now, URLToDocumentation = "Location to Doc", CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now, PlatformId = 6 },
+                new Game() { GameId = 87, Name = "Fifa Soccer 13", ConnectionType = 2, ReleaseDate = DateTime.Now, URLToDocumentation = "Location to Doc", CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now, PlatformId = 6 },
+                new Game() { GameId = 88, Name = "Fifa Soccer 14", ConnectionType = 2, ReleaseDate = DateTime.Now, URLToDocumentation = "Location to Doc", CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now, PlatformId = 6 },
+                new Game() { GameId = 89, Name = "Titanfall", ConnectionType = 2, ReleaseDate = DateTime.Now, URLToDocumentation = "Location to Doc", CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now, PlatformId = 6 },
+                new Game() { GameId = 90, Name = "Fifa Soccer 15", ConnectionType = 2, ReleaseDate = DateTime.Now, URLToDocumentation = "Location to Doc", CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now, PlatformId = 6 },
+                new Game() { GameId = 91, Name = "The SIMS 4", ConnectionType = 2, ReleaseDate = DateTime.Now, URLToDocumentation = "Location to Doc", CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now, PlatformId = 6 },
+                new Game() { GameId = 92, Name = "Titanfall 2", ConnectionType = 2, ReleaseDate = DateTime.Now, URLToDocumentation = "Location to Doc", CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now, PlatformId = 6 },
+                new Game() { GameId = 93, Name = "Battlefield 1", ConnectionType = 2, ReleaseDate = DateTime.Now, URLToDocumentation = "Location to Doc", CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now, PlatformId = 6 },
+
+                // Uplay - 7
+                new Game() { GameId = 94, Name = "Tom Clany's Raimbow Six Siege", ConnectionType = 2, ReleaseDate = DateTime.Now, URLToDocumentation = "Location to Doc", CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now, PlatformId = 7 },
+                new Game() { GameId = 95, Name = "Assassin's Creed Origins", ConnectionType = 2, ReleaseDate = DateTime.Now, URLToDocumentation = "Location to Doc", CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now, PlatformId = 7 },
+
+                // Epic - 8
+                new Game() { GameId = 95, Name = "Fortnite", ConnectionType = 2, ReleaseDate = DateTime.Now, URLToDocumentation = "Location to Doc", CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now, PlatformId = 8 },
+                new Game() { GameId = 95, Name = "Unreal Tournament", ConnectionType = 2, ReleaseDate = DateTime.Now, URLToDocumentation = "Location to Doc", CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now, PlatformId = 8 },
+
+                // Standalone - 9
+                new Game() { GameId = 95, Name = "Lost Planet", ConnectionType = 2, ReleaseDate = DateTime.Now, URLToDocumentation = "Location to Doc", CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now, PlatformId = 9 },
+                new Game() { GameId = 95, Name = "DnD Daggerdale", ConnectionType = 2, ReleaseDate = DateTime.Now, URLToDocumentation = "Location to Doc", CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now, PlatformId = 9 },
+                new Game() { GameId = 95, Name = "Need For Speed World", ConnectionType = 2, ReleaseDate = DateTime.Now, URLToDocumentation = "Location to Doc", CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now, PlatformId = 9 },
+                new Game() { GameId = 95, Name = "DarkSpore", ConnectionType = 2, ReleaseDate = DateTime.Now, URLToDocumentation = "Location to Doc", CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now, PlatformId = 9 },
+                new Game() { GameId = 95, Name = "Might & Magic Heroes VI", ConnectionType = 2, ReleaseDate = DateTime.Now, URLToDocumentation = "Location to Doc", CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now, PlatformId = 9 },
+
+                
+                new Game() { GameId = 95, Name = "LEGO Mini Figures Online", ConnectionType = 2, ReleaseDate = DateTime.Now, URLToDocumentation = "Location to Doc", CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now, PlatformId = 9 },
+                
+                new Game() { GameId = 95, Name = "TrackMania 2 - Canyon", ConnectionType = 2, ReleaseDate = DateTime.Now, URLToDocumentation = "Location to Doc", CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now, PlatformId = 9 },
+                new Game() { GameId = 95, Name = "ShootMania", ConnectionType = 2, ReleaseDate = DateTime.Now, URLToDocumentation = "Location to Doc", CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now, PlatformId = 9 },
+                new Game() { GameId = 95, Name = "Trackmania - Valley", ConnectionType = 2, ReleaseDate = DateTime.Now, URLToDocumentation = "Location to Doc", CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now, PlatformId = 9 },
+                new Game() { GameId = 95, Name = "Trackmania - Stadium", ConnectionType = 2, ReleaseDate = DateTime.Now, URLToDocumentation = "Location to Doc", CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now, PlatformId = 9 },
+
+                new Game() { GameId = 95, Name = "Star Trek Online", ConnectionType = 2, ReleaseDate = DateTime.Now, URLToDocumentation = "Location to Doc", CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now, PlatformId = 9 },
+
+
+
+
+                // Playstation - 10
+                new Game() { GameId = 95, Name = "Planetside 2", ConnectionType = 2, ReleaseDate = DateTime.Now, URLToDocumentation = "Location to Doc", CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now, PlatformId = 10 },
+                new Game() { GameId = 95, Name = "Dragons Prophet", ConnectionType = 2, ReleaseDate = DateTime.Now, URLToDocumentation = "Location to Doc", CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now, PlatformId = 10 },
+
+                // Battlenet - 11
+                new Game() { GameId = 95, Name = "Call of Duty: BO4", ConnectionType = 2, ReleaseDate = DateTime.Now, URLToDocumentation = "Location to Doc", CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now, PlatformId = 11 },
+                new Game() { GameId = 95, Name = "World of Warcraft", ConnectionType = 2, ReleaseDate = DateTime.Now, URLToDocumentation = "Location to Doc", CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now, PlatformId = 11 },
+                new Game() { GameId = 95, Name = "Starcraft 2: Wings of Liberty", ConnectionType = 2, ReleaseDate = DateTime.Now, URLToDocumentation = "Location to Doc", CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now, PlatformId = 11 },
+                new Game() { GameId = 95, Name = "Starcraft 2: Heart of the Swarm", ConnectionType = 2, ReleaseDate = DateTime.Now, URLToDocumentation = "Location to Doc", CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now, PlatformId = 11 },
+                new Game() { GameId = 95, Name = "Starcraft 2: Legacy of the Void", ConnectionType = 2, ReleaseDate = DateTime.Now, URLToDocumentation = "Location to Doc", CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now, PlatformId = 11 },
+                new Game() { GameId = 95, Name = "Starcraft 2: Nova Convert Ops", ConnectionType = 2, ReleaseDate = DateTime.Now, URLToDocumentation = "Location to Doc", CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now, PlatformId = 11 },
+                new Game() { GameId = 95, Name = "Heartstone", ConnectionType = 2, ReleaseDate = DateTime.Now, URLToDocumentation = "Location to Doc", CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now, PlatformId = 11 },
+                new Game() { GameId = 95, Name = "Overwatch", ConnectionType = 2, ReleaseDate = DateTime.Now, URLToDocumentation = "Location to Doc", CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now, PlatformId = 11 },
+                new Game() { GameId = 95, Name = "Heroes of the Storm", ConnectionType = 2, ReleaseDate = DateTime.Now, URLToDocumentation = "Location to Doc", CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now, PlatformId = 11 },
+                new Game() { GameId = 95, Name = "Starcraft", ConnectionType = 2, ReleaseDate = DateTime.Now, URLToDocumentation = "Location to Doc", CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now, PlatformId = 11 }
+
+                // Intel Appup - 12
+
+
+                // Amazon - 13
+
+
+                // McAfee LiveSafe - 14
+
+
+                // Apple - 15
+
+
+                // QQ - 16
+
+
+                // Media - 17
+
+
+
+                // Twitch - 18
+
             );
+
             // Account
             ModelBuilder.Entity<Account>().HasData(
                 new Account() { AccountId = 1, Name = "Demodepotna01", Password = "Password1", CheckedOutStatus = false, CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now, EventId = 1 },
