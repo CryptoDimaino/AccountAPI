@@ -28,6 +28,9 @@ namespace AccountAPI.Models
         public int? EventId {get;set;}
         public Event Event {get;set;}
 
+        public int PlatformId {get;set;}
+        public Platform Platform {get;set;}
+
         public ICollection<GameAccount> GameAccounts {get;} = new List<GameAccount>();
         public virtual AccountProfile Profile {get;set;}
     }

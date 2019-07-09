@@ -7,6 +7,7 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
+using AccountAPI.DTOs;
 
 namespace AccountAPI.Repositories
 {
@@ -53,6 +54,19 @@ namespace AccountAPI.Repositories
         public async Task<int> CountNumberOfPlatformsAsync()
         {
             return await CountAsync();
+        }
+
+        public async Task<IEnumerable<PlatformDTO>> GetAllPlatformDTOAsync()
+        {
+            return await GetAll().Include(p => p.Games).Select(p => new PlatformDTO()
+            {
+                PlatformId = p.PlatformId,
+                Name = p.Name,
+                Games = p.Games.Select(g => new PlatformGameDTO()
+                {
+                    Name = g.Name
+                })
+            }).ToListAsync();
         }
     }
 }

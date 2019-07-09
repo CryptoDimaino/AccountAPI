@@ -116,7 +116,7 @@ namespace AccountAPI.Controllers
                     _Logger.LogWarn(ControllerContext, $"Warning: Account was not found with the id: {id}");
                     return StatusCode(500, "Internal Server Error.");
                 }
-                _Logger.LogInfo(ControllerContext, $"Chipset with the id: {id} has been updated.");
+                _Logger.LogInfo(ControllerContext, $"Account with the id: {id} has been updated.");
 
                 AccountToUpdate.UpdatedAt = DateTime.Now;
                 await _IAccountRepository.UpdateAccountAsync(AccountToUpdate);
@@ -142,7 +142,7 @@ namespace AccountAPI.Controllers
                     _Logger.LogWarn(ControllerContext, $"Account with id: {id}, hasn't been found in database.");
                     return NotFound();
                 }
-                _Logger.LogInfo(ControllerContext, $"Chipset with id: {id} has been deleted");
+                _Logger.LogInfo(ControllerContext, $"Account with id: {id} has been deleted");
                 await _IAccountRepository.DeleteAccountAsync(AccountToDelete);
                 return NoContent();
             }

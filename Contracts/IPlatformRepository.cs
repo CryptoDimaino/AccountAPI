@@ -7,7 +7,7 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
-// using AccountAPI.DTOs;
+using AccountAPI.DTOs;
 
 namespace AccountAPI.Contracts
 {
@@ -20,5 +20,7 @@ namespace AccountAPI.Contracts
         Task UpdatePlatformAsync(Platform PlatformToUpdate);
         Task DeletePlatformAsync(Platform PlatformToDelete);
         Task<int> CountNumberOfPlatformsAsync();
+
+        Task<IEnumerable<PlatformDTO>> GetAllPlatformDTOAsync();
     }
 }

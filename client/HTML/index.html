@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>jQuery UI Autocomplete - Default functionality</title>
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script>
+
+  $( document ).ready(function() {
+	var thing = [];
+	$.getJSON( "https://localhost:5001/api/platform/dto", function(data) 
+	{
+
+		$.each( data, function( key, val ) {
+
+			$.each(val['Games'], function(key, val){
+				console.log(val.Name);
+				thing.push(val.Name);
+			});
+			
+		});
+	});
+	
+	$.getJSON( "https://localhost:5001/api/account", function(data) 
+	{
+		$.each( data, function( key, val ) {
+			console.log(val.Name);
+			thing.push(val.Name + " - " + val.Platform.Name);
+		});
+	});
+	
+	
+	$( "#tags" ).autocomplete({
+		source: thing
+    });
+});
+  </script>
+</head>
+<body>
+ 
+<div class="ui-widget">
+  <label for="tags">Tags: </label>
+  <input id="tags">
+</div>
+ 
+ 
+</body>
+</html>

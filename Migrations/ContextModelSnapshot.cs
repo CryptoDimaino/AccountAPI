@@ -14,7 +14,7 @@ namespace AccountAPI.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "2.2.3-servicing-35854")
+                .HasAnnotation("ProductVersion", "2.2.2-servicing-10034")
                 .HasAnnotation("Relational:MaxIdentifierLength", 64);
 
             modelBuilder.Entity("AccountAPI.Models.Account", b =>
@@ -36,6 +36,8 @@ namespace AccountAPI.Migrations
                     b.Property<string>("Password")
                         .IsRequired();
 
+                    b.Property<int>("PlatformId");
+
                     b.Property<DateTime>("UpdatedAt");
 
                     b.HasKey("AccountId");
@@ -43,6 +45,8 @@ namespace AccountAPI.Migrations
                     b.HasIndex("AccountTypeId");
 
                     b.HasIndex("EventId");
+
+                    b.HasIndex("PlatformId");
 
                     b.ToTable("Accounts");
 
@@ -52,1580 +56,2068 @@ namespace AccountAPI.Migrations
                             AccountId = 1,
                             AccountTypeId = 1,
                             CheckedOutStatus = false,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(6933),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(3911),
                             Name = "demodepotna01@gmail.com",
                             Password = "D3m0D3p0t",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(7156)
+                            PlatformId = 2,
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(4245)
                         },
                         new
                         {
                             AccountId = 2,
                             AccountTypeId = 1,
                             CheckedOutStatus = false,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(7779),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(5369),
                             Name = "demodepotna02@gmail.com",
                             Password = "D3m0D3p0t",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(7783)
+                            PlatformId = 2,
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(5374)
                         },
                         new
                         {
                             AccountId = 3,
                             AccountTypeId = 1,
                             CheckedOutStatus = false,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(7794),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(5396),
                             Name = "demodepotna03@gmail.com",
                             Password = "D3m0D3p0t",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(7797)
+                            PlatformId = 2,
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(5398)
                         },
                         new
                         {
                             AccountId = 4,
                             AccountTypeId = 1,
                             CheckedOutStatus = false,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(7804),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(5407),
                             Name = "demodepotna04@gmail.com",
                             Password = "D3m0D3p0t",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(7806)
+                            PlatformId = 2,
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(5409)
                         },
                         new
                         {
                             AccountId = 5,
                             AccountTypeId = 1,
                             CheckedOutStatus = false,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(7813),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(5418),
                             Name = "demodepotna05@gmail.com",
                             Password = "D3m0D3p0t",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(7815)
+                            PlatformId = 2,
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(5420)
                         },
                         new
                         {
                             AccountId = 6,
                             AccountTypeId = 1,
                             CheckedOutStatus = false,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(7822),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(5429),
                             Name = "demodepotna06@gmail.com",
                             Password = "D3m0D3p0t",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(7824)
+                            PlatformId = 2,
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(5431)
                         },
                         new
                         {
                             AccountId = 7,
                             AccountTypeId = 1,
                             CheckedOutStatus = false,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(7831),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(5439),
                             Name = "demodepotna07@gmail.com",
                             Password = "D3m0D3p0t",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(7833)
+                            PlatformId = 2,
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(5442)
                         },
                         new
                         {
                             AccountId = 8,
                             AccountTypeId = 1,
                             CheckedOutStatus = false,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(7840),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(5450),
                             Name = "demodepotna08@gmail.com",
                             Password = "D3m0D3p0t",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(7842)
+                            PlatformId = 2,
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(5452)
                         },
                         new
                         {
                             AccountId = 9,
                             AccountTypeId = 1,
                             CheckedOutStatus = false,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(7848),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(5461),
                             Name = "demodepotna09@gmail.com",
                             Password = "D3m0D3p0t",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(7850)
+                            PlatformId = 2,
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(5463)
                         },
                         new
                         {
                             AccountId = 10,
                             AccountTypeId = 1,
                             CheckedOutStatus = false,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(7857),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(5472),
                             Name = "demodepotna10@gmail.com",
                             Password = "D3m0D3p0t",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(7859)
+                            PlatformId = 2,
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(5474)
                         },
                         new
                         {
                             AccountId = 11,
                             AccountTypeId = 1,
                             CheckedOutStatus = false,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(7867),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(5482),
                             Name = "demodepotna11@gmail.com",
                             Password = "D3m0D3p0t",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(7869)
+                            PlatformId = 2,
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(5485)
                         },
                         new
                         {
                             AccountId = 12,
                             AccountTypeId = 1,
                             CheckedOutStatus = false,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(7876),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(5493),
                             Name = "demodepotna12@gmail.com",
                             Password = "D3m0D3p0t",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(7878)
+                            PlatformId = 2,
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(5496)
                         },
                         new
                         {
                             AccountId = 13,
                             AccountTypeId = 1,
                             CheckedOutStatus = false,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(7885),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(5504),
                             Name = "demodepotna13@gmail.com",
                             Password = "D3m0D3p0t",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(7887)
+                            PlatformId = 2,
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(5507)
                         },
                         new
                         {
                             AccountId = 14,
                             AccountTypeId = 1,
                             CheckedOutStatus = false,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(7894),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(5515),
                             Name = "demodepotna14@gmail.com",
                             Password = "D3m0D3p0t",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(7896)
+                            PlatformId = 2,
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(5517)
                         },
                         new
                         {
                             AccountId = 15,
                             AccountTypeId = 1,
                             CheckedOutStatus = false,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(7903),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(5525),
                             Name = "demodepotna15@gmail.com",
                             Password = "D3m0D3p0t",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(7905)
+                            PlatformId = 2,
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(5528)
                         },
                         new
                         {
                             AccountId = 16,
                             AccountTypeId = 1,
                             CheckedOutStatus = false,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(7911),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(5536),
                             Name = "demodepotna16@gmail.com",
                             Password = "D3m0D3p0t",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(7914)
+                            PlatformId = 2,
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(5538)
                         },
                         new
                         {
                             AccountId = 17,
                             AccountTypeId = 1,
                             CheckedOutStatus = false,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(7920),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(5547),
                             Name = "demodepotna17@gmail.com",
                             Password = "D3m0D3p0t",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(7923)
+                            PlatformId = 2,
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(5550)
                         },
                         new
                         {
                             AccountId = 18,
                             AccountTypeId = 1,
                             CheckedOutStatus = false,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(7930),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(5558),
                             Name = "demodepotna18@gmail.com",
                             Password = "D3m0D3p0t",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(7932)
+                            PlatformId = 2,
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(5560)
                         },
                         new
                         {
                             AccountId = 19,
                             AccountTypeId = 1,
                             CheckedOutStatus = false,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(7939),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(5568),
                             Name = "demodepotna19@gmail.com",
                             Password = "D3m0D3p0t",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(7941)
+                            PlatformId = 2,
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(5571)
                         },
                         new
                         {
                             AccountId = 20,
                             AccountTypeId = 1,
                             CheckedOutStatus = false,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(7948),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(5579),
                             Name = "demodepotna20@gmail.com",
                             Password = "D3m0D3p0t",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(7950)
+                            PlatformId = 2,
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(5582)
                         },
                         new
                         {
                             AccountId = 21,
                             AccountTypeId = 1,
                             CheckedOutStatus = false,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(7957),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(5590),
                             Name = "demodepotds01@gmail.com",
                             Password = "Depot2oooDS",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(7959)
+                            PlatformId = 2,
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(5592)
                         },
                         new
                         {
                             AccountId = 22,
                             AccountTypeId = 1,
                             CheckedOutStatus = false,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(7966),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(5601),
                             Name = "demodepotds02@gmail.com",
                             Password = "Depot2oooDS",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(7968)
+                            PlatformId = 2,
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(5603)
                         },
                         new
                         {
                             AccountId = 23,
                             AccountTypeId = 1,
                             CheckedOutStatus = false,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(7975),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(5611),
                             Name = "demodepotds03@gmail.com",
                             Password = "Depot2oooDS",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(7978)
+                            PlatformId = 2,
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(5614)
                         },
                         new
                         {
                             AccountId = 24,
                             AccountTypeId = 1,
                             CheckedOutStatus = false,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(7985),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(5622),
                             Name = "demodepotds04@gmail.com",
                             Password = "Depot2oooDS",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(7987)
+                            PlatformId = 2,
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(5625)
                         },
                         new
                         {
                             AccountId = 25,
                             AccountTypeId = 1,
                             CheckedOutStatus = false,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(7994),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(5633),
                             Name = "demodepotds05@gmail.com",
                             Password = "Depot2oooDS",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(7996)
+                            PlatformId = 2,
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(5636)
                         },
                         new
                         {
                             AccountId = 26,
                             AccountTypeId = 1,
                             CheckedOutStatus = false,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(8004),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(5644),
                             Name = "demodepot",
                             Password = "depot2000",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(8006)
+                            PlatformId = 1,
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(5647)
                         },
                         new
                         {
                             AccountId = 27,
                             AccountTypeId = 1,
                             CheckedOutStatus = false,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(8014),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(5655),
                             Name = "demodepot2",
                             Password = "depot2000",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(8016)
+                            PlatformId = 1,
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(5657)
                         },
                         new
                         {
                             AccountId = 28,
                             AccountTypeId = 1,
                             CheckedOutStatus = false,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(8024),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(5665),
                             Name = "demodepot001",
                             Password = "depot2000",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(8026)
+                            PlatformId = 1,
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(5668)
                         },
                         new
                         {
                             AccountId = 29,
                             AccountTypeId = 1,
                             CheckedOutStatus = false,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(8034),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(5676),
                             Name = "demodepot002",
                             Password = "depot2000",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(8036)
+                            PlatformId = 1,
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(5679)
                         },
                         new
                         {
                             AccountId = 30,
                             AccountTypeId = 1,
                             CheckedOutStatus = false,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(8043),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(5687),
                             Name = "demodepot003",
                             Password = "depot2000",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(8045)
+                            PlatformId = 1,
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(5689)
                         },
                         new
                         {
                             AccountId = 31,
                             AccountTypeId = 1,
                             CheckedOutStatus = false,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(8052),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(5698),
                             Name = "demodepot004",
                             Password = "depot2000",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(8054)
+                            PlatformId = 1,
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(5700)
                         },
                         new
                         {
                             AccountId = 32,
                             AccountTypeId = 1,
                             CheckedOutStatus = false,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(8062),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(5708),
                             Name = "demodepot005",
                             Password = "depot2000",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(8064)
+                            PlatformId = 1,
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(5711)
                         },
                         new
                         {
                             AccountId = 33,
                             AccountTypeId = 1,
                             CheckedOutStatus = false,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(8071),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(5719),
                             Name = "demodepot006",
                             Password = "depot2000",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(8073)
+                            PlatformId = 1,
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(5721)
                         },
                         new
                         {
                             AccountId = 34,
                             AccountTypeId = 1,
                             CheckedOutStatus = false,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(8080),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(5730),
                             Name = "demodepot007",
                             Password = "depot2000",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(8082)
+                            PlatformId = 1,
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(5732)
                         },
                         new
                         {
                             AccountId = 35,
                             AccountTypeId = 1,
                             CheckedOutStatus = false,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(8089),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(5740),
                             Name = "demodepot008",
                             Password = "depot2000",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(8092)
+                            PlatformId = 1,
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(5743)
                         },
                         new
                         {
                             AccountId = 36,
                             AccountTypeId = 1,
                             CheckedOutStatus = false,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(8099),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(5751),
                             Name = "demodepot009",
                             Password = "depot2000",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(8101)
+                            PlatformId = 1,
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(5753)
                         },
                         new
                         {
                             AccountId = 37,
                             AccountTypeId = 1,
                             CheckedOutStatus = false,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(8108),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(5761),
                             Name = "demodepot01",
                             Password = "depot2000",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(8110)
+                            PlatformId = 1,
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(5764)
                         },
                         new
                         {
                             AccountId = 38,
                             AccountTypeId = 1,
                             CheckedOutStatus = false,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(8117),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(5772),
                             Name = "demodepot02",
                             Password = "depot2000",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(8119)
+                            PlatformId = 1,
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(5775)
                         },
                         new
                         {
                             AccountId = 39,
                             AccountTypeId = 1,
                             CheckedOutStatus = false,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(8130),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(5783),
                             Name = "demodepot03",
                             Password = "depot2000",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(8132)
+                            PlatformId = 1,
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(5786)
                         },
                         new
                         {
                             AccountId = 40,
                             AccountTypeId = 1,
                             CheckedOutStatus = false,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(8140),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(5794),
                             Name = "demodepot04",
                             Password = "depot2000",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(8142)
+                            PlatformId = 1,
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(5796)
                         },
                         new
                         {
                             AccountId = 41,
                             AccountTypeId = 1,
                             CheckedOutStatus = false,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(8150),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(5805),
                             Name = "demodepot05",
                             Password = "depot2000",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(8152)
+                            PlatformId = 1,
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(5807)
                         },
                         new
                         {
                             AccountId = 42,
                             AccountTypeId = 1,
                             CheckedOutStatus = false,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(8160),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(5815),
                             Name = "demodepot06",
                             Password = "depot2000",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(8162)
+                            PlatformId = 1,
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(5818)
                         },
                         new
                         {
                             AccountId = 43,
                             AccountTypeId = 1,
                             CheckedOutStatus = false,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(8170),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(5826),
                             Name = "demodepot07",
                             Password = "depot2000",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(8172)
+                            PlatformId = 1,
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(5829)
                         },
                         new
                         {
                             AccountId = 44,
                             AccountTypeId = 1,
                             CheckedOutStatus = false,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(8194),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(5837),
                             Name = "demodepot08",
                             Password = "depot2000",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(8197)
+                            PlatformId = 1,
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(5839)
                         },
                         new
                         {
                             AccountId = 45,
                             AccountTypeId = 1,
                             CheckedOutStatus = false,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(8204),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(5847),
                             Name = "demodepot09",
                             Password = "depot2000",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(8207)
+                            PlatformId = 1,
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(5850)
                         },
                         new
                         {
                             AccountId = 46,
                             AccountTypeId = 1,
                             CheckedOutStatus = false,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(8214),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(5858),
                             Name = "demodepot10",
                             Password = "depot2000",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(8217)
+                            PlatformId = 1,
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(5860)
                         },
                         new
                         {
                             AccountId = 47,
                             AccountTypeId = 1,
                             CheckedOutStatus = false,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(8225),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(5869),
                             Name = "demodepot11",
                             Password = "depot2000",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(8227)
+                            PlatformId = 1,
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(5872)
                         },
                         new
                         {
                             AccountId = 48,
                             AccountTypeId = 1,
                             CheckedOutStatus = false,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(8235),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(5880),
                             Name = "demodepot12",
                             Password = "depot2000",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(8237)
+                            PlatformId = 1,
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(5882)
                         },
                         new
                         {
                             AccountId = 49,
                             AccountTypeId = 1,
                             CheckedOutStatus = false,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(8245),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(5890),
                             Name = "demodepot13",
                             Password = "depot2000",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(8247)
+                            PlatformId = 1,
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(5893)
                         },
                         new
                         {
                             AccountId = 50,
                             AccountTypeId = 1,
                             CheckedOutStatus = false,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(8255),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(5901),
                             Name = "demodepot14",
                             Password = "depot2000",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(8257)
+                            PlatformId = 1,
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(5904)
                         },
                         new
                         {
                             AccountId = 51,
                             AccountTypeId = 1,
                             CheckedOutStatus = false,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(8265),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(6153),
                             Name = "demodepot15",
                             Password = "depot2000",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(8267)
+                            PlatformId = 1,
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(6156)
                         },
                         new
                         {
                             AccountId = 52,
                             AccountTypeId = 1,
                             CheckedOutStatus = false,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(8275),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(6165),
                             Name = "demodepot16",
                             Password = "depot2000",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(8277)
+                            PlatformId = 1,
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(6167)
                         },
                         new
                         {
                             AccountId = 53,
                             AccountTypeId = 1,
                             CheckedOutStatus = false,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(8285),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(6175),
                             Name = "demodepot17",
                             Password = "depot2000",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(8287)
+                            PlatformId = 1,
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(6178)
                         },
                         new
                         {
                             AccountId = 54,
                             AccountTypeId = 1,
                             CheckedOutStatus = false,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(8295),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(6186),
                             Name = "demodepot18",
                             Password = "depot2000",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(8297)
+                            PlatformId = 1,
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(6189)
                         },
                         new
                         {
                             AccountId = 55,
                             AccountTypeId = 1,
                             CheckedOutStatus = false,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(8305),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(6197),
                             Name = "demodepot19",
                             Password = "depot2000",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(8307)
+                            PlatformId = 1,
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(6200)
                         },
                         new
                         {
                             AccountId = 56,
                             AccountTypeId = 1,
                             CheckedOutStatus = false,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(8314),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(6208),
                             Name = "demodepot20",
                             Password = "depot2000",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(8317)
+                            PlatformId = 1,
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(6211)
                         },
                         new
                         {
                             AccountId = 57,
                             AccountTypeId = 1,
                             CheckedOutStatus = false,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(8325),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(6219),
                             Name = "demodepot21",
                             Password = "depot2000",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(8327)
+                            PlatformId = 1,
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(6221)
                         },
                         new
                         {
                             AccountId = 58,
                             AccountTypeId = 1,
                             CheckedOutStatus = false,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(8334),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(6229),
                             Name = "demodepot22",
                             Password = "depot2000",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(8337)
+                            PlatformId = 1,
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(6232)
                         },
                         new
                         {
                             AccountId = 59,
                             AccountTypeId = 1,
                             CheckedOutStatus = false,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(8344),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(6240),
                             Name = "demodepot23",
                             Password = "depot2000",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(8347)
+                            PlatformId = 1,
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(6243)
                         },
                         new
                         {
                             AccountId = 60,
                             AccountTypeId = 1,
                             CheckedOutStatus = false,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(8355),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(6251),
                             Name = "demodepot24",
                             Password = "depot2000",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(8357)
+                            PlatformId = 1,
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(6253)
                         },
                         new
                         {
                             AccountId = 61,
                             AccountTypeId = 1,
                             CheckedOutStatus = false,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(8365),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(6262),
                             Name = "demodepot25",
                             Password = "depot2000",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(8367)
+                            PlatformId = 1,
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(6264)
                         },
                         new
                         {
                             AccountId = 62,
                             AccountTypeId = 1,
                             CheckedOutStatus = false,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(8375),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(6272),
                             Name = "demodepot26",
                             Password = "depot2000",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(8377)
+                            PlatformId = 1,
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(6275)
                         },
                         new
                         {
                             AccountId = 63,
                             AccountTypeId = 1,
                             CheckedOutStatus = false,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(8385),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(6283),
                             Name = "demodepot27",
                             Password = "depot2000",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(8387)
+                            PlatformId = 1,
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(6286)
                         },
                         new
                         {
                             AccountId = 64,
                             AccountTypeId = 1,
                             CheckedOutStatus = false,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(8395),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(6294),
                             Name = "demodepot28",
                             Password = "depot2000",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(8397)
+                            PlatformId = 1,
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(6297)
                         },
                         new
                         {
                             AccountId = 65,
                             AccountTypeId = 1,
                             CheckedOutStatus = false,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(8405),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(6305),
                             Name = "demodepot29",
                             Password = "depot2000",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(8407)
+                            PlatformId = 1,
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(6307)
                         },
                         new
                         {
                             AccountId = 66,
                             AccountTypeId = 1,
                             CheckedOutStatus = false,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(8415),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(6316),
                             Name = "demodepot30",
                             Password = "depot2000",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(8417)
+                            PlatformId = 1,
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(6318)
                         },
                         new
                         {
                             AccountId = 67,
                             AccountTypeId = 1,
                             CheckedOutStatus = false,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(8425),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(6326),
                             Name = "demodepot31",
                             Password = "depot2000",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(8427)
+                            PlatformId = 1,
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(6329)
                         },
                         new
                         {
                             AccountId = 68,
                             AccountTypeId = 1,
                             CheckedOutStatus = false,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(8435),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(6337),
                             Name = "demodepot32",
                             Password = "depot2000",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(8437)
+                            PlatformId = 1,
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(6339)
                         },
                         new
                         {
                             AccountId = 69,
                             AccountTypeId = 1,
                             CheckedOutStatus = false,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(8444),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(6347),
                             Name = "demodepot33",
                             Password = "depot2000",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(8447)
+                            PlatformId = 1,
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(6350)
                         },
                         new
                         {
                             AccountId = 70,
                             AccountTypeId = 1,
                             CheckedOutStatus = false,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(8455),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(6358),
                             Name = "demodepot34",
                             Password = "depot2000",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(8457)
+                            PlatformId = 1,
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(6360)
                         },
                         new
                         {
                             AccountId = 71,
                             AccountTypeId = 1,
                             CheckedOutStatus = false,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(8464),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(6369),
                             Name = "demodepot35",
                             Password = "depot2000",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(8467)
+                            PlatformId = 1,
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(6372)
                         },
                         new
                         {
                             AccountId = 72,
                             AccountTypeId = 1,
                             CheckedOutStatus = false,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(8474),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(6380),
                             Name = "demodepot36",
                             Password = "depot2000",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(8477)
+                            PlatformId = 1,
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(6382)
                         },
                         new
                         {
                             AccountId = 73,
                             AccountTypeId = 1,
                             CheckedOutStatus = false,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(8484),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(6390),
                             Name = "demodepot37",
                             Password = "depot2000",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(8487)
+                            PlatformId = 1,
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(6393)
                         },
                         new
                         {
                             AccountId = 74,
                             AccountTypeId = 1,
                             CheckedOutStatus = false,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(8494),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(6401),
                             Name = "demodepot38",
                             Password = "depot2000",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(8497)
+                            PlatformId = 1,
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(6403)
                         },
                         new
                         {
                             AccountId = 75,
                             AccountTypeId = 1,
                             CheckedOutStatus = false,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(8504),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(6412),
                             Name = "demodepot39",
                             Password = "depot2000",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(8507)
+                            PlatformId = 1,
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(6414)
                         },
                         new
                         {
                             AccountId = 76,
                             AccountTypeId = 1,
                             CheckedOutStatus = false,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(8514),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(6422),
                             Name = "demodepot40",
                             Password = "depot2000",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(8517)
+                            PlatformId = 1,
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(6425)
                         },
                         new
                         {
                             AccountId = 77,
                             AccountTypeId = 1,
                             CheckedOutStatus = false,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(8524),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(6433),
                             Name = "demodepot41",
                             Password = "depot2000",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(8527)
+                            PlatformId = 1,
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(6435)
                         },
                         new
                         {
                             AccountId = 78,
                             AccountTypeId = 1,
                             CheckedOutStatus = false,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(8534),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(6444),
                             Name = "demodepot42",
                             Password = "depot2000",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(8537)
+                            PlatformId = 1,
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(6447)
                         },
                         new
                         {
                             AccountId = 79,
                             AccountTypeId = 1,
                             CheckedOutStatus = false,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(8544),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(6455),
                             Name = "demodepot43",
                             Password = "Depot2020",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(8547)
+                            PlatformId = 1,
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(6458)
                         },
                         new
                         {
                             AccountId = 80,
                             AccountTypeId = 1,
                             CheckedOutStatus = false,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(8554),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(6466),
                             Name = "demodepot43_01",
                             Password = "Depot2020",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(8557)
+                            PlatformId = 1,
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(6468)
                         },
                         new
                         {
                             AccountId = 81,
                             AccountTypeId = 1,
                             CheckedOutStatus = false,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(8564),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(6477),
                             Name = "demodepot44",
                             Password = "Depot2020",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(8567)
+                            PlatformId = 1,
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(6479)
                         },
                         new
                         {
                             AccountId = 82,
                             AccountTypeId = 1,
                             CheckedOutStatus = false,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(8574),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(6487),
                             Name = "demodepot45",
                             Password = "Depot2020",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(8577)
+                            PlatformId = 1,
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(6490)
                         },
                         new
                         {
                             AccountId = 83,
                             AccountTypeId = 1,
                             CheckedOutStatus = false,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(8584),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(6498),
                             Name = "demodepot46",
                             Password = "Depot2020",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(8586)
+                            PlatformId = 1,
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(6501)
                         },
                         new
                         {
                             AccountId = 84,
                             AccountTypeId = 1,
                             CheckedOutStatus = false,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(8594),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(6509),
                             Name = "demodepot47",
                             Password = "Depot2020",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(8597)
+                            PlatformId = 1,
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(6511)
                         },
                         new
                         {
                             AccountId = 85,
                             AccountTypeId = 1,
                             CheckedOutStatus = false,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(8604),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(6520),
                             Name = "demodepot48",
                             Password = "Depot2020",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(8606)
+                            PlatformId = 1,
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(6522)
                         },
                         new
                         {
                             AccountId = 86,
                             AccountTypeId = 1,
                             CheckedOutStatus = false,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(8614),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(6531),
                             Name = "demodepot49",
                             Password = "Depot2020",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(8616)
+                            PlatformId = 1,
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(6533)
                         },
                         new
                         {
                             AccountId = 87,
                             AccountTypeId = 1,
                             CheckedOutStatus = false,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(8624),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(6541),
                             Name = "demodepot50",
                             Password = "Depot2020",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(8626)
+                            PlatformId = 1,
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(6544)
                         },
                         new
                         {
                             AccountId = 88,
                             AccountTypeId = 1,
                             CheckedOutStatus = false,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(8634),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(6552),
                             Name = "demodepot51",
                             Password = "Depot2020",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(8637)
+                            PlatformId = 1,
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(6555)
                         },
                         new
                         {
                             AccountId = 89,
                             AccountTypeId = 1,
                             CheckedOutStatus = false,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(8644),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(6563),
                             Name = "demodepot52",
                             Password = "Depot2020",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(8647)
+                            PlatformId = 1,
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(6565)
                         },
                         new
                         {
                             AccountId = 90,
                             AccountTypeId = 1,
                             CheckedOutStatus = false,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(8654),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(6574),
                             Name = "demodepot53",
                             Password = "Depot2020",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(8657)
+                            PlatformId = 1,
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(6576)
                         },
                         new
                         {
                             AccountId = 91,
                             AccountTypeId = 1,
                             CheckedOutStatus = false,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(8664),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(6584),
                             Name = "demodepot54",
                             Password = "Depot2020",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(8667)
+                            PlatformId = 1,
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(6587)
                         },
                         new
                         {
                             AccountId = 92,
                             AccountTypeId = 1,
                             CheckedOutStatus = false,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(8674),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(6595),
                             Name = "demodepot55",
                             Password = "Depot2000",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(8677)
+                            PlatformId = 1,
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(6597)
                         },
                         new
                         {
                             AccountId = 93,
                             AccountTypeId = 1,
                             CheckedOutStatus = false,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(8684),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(6606),
                             Name = "demodepot56",
                             Password = "Depot2000",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(8687)
+                            PlatformId = 1,
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(6609)
                         },
                         new
                         {
                             AccountId = 94,
                             AccountTypeId = 1,
                             CheckedOutStatus = false,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(8694),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(6617),
                             Name = "demodepot57",
                             Password = "Depot2000",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(8697)
+                            PlatformId = 1,
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(6619)
                         },
                         new
                         {
                             AccountId = 95,
                             AccountTypeId = 1,
                             CheckedOutStatus = false,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(8704),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(6627),
                             Name = "demodepot58",
                             Password = "Depot2000",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(8707)
+                            PlatformId = 1,
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(6630)
                         },
                         new
                         {
                             AccountId = 96,
                             AccountTypeId = 1,
                             CheckedOutStatus = false,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(8714),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(6638),
                             Name = "demodepot59",
                             Password = "Depot2000",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(8717)
+                            PlatformId = 1,
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(6640)
                         },
                         new
                         {
                             AccountId = 97,
                             AccountTypeId = 1,
                             CheckedOutStatus = false,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(8724),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(6648),
                             Name = "demodepot60",
                             Password = "D3p0t2020",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(8727)
+                            PlatformId = 1,
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(6651)
                         },
                         new
                         {
                             AccountId = 98,
                             AccountTypeId = 1,
                             CheckedOutStatus = false,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(8734),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(6659),
                             Name = "demodepot61",
                             Password = "D3p0t2020",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(8737)
+                            PlatformId = 1,
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(6662)
                         },
                         new
                         {
                             AccountId = 99,
                             AccountTypeId = 1,
                             CheckedOutStatus = false,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(8744),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(6670),
                             Name = "demodepot62",
                             Password = "D3p0t2020",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(8747)
+                            PlatformId = 1,
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(6672)
                         },
                         new
                         {
                             AccountId = 100,
                             AccountTypeId = 1,
                             CheckedOutStatus = false,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(8754),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(6681),
                             Name = "demodepot63",
                             Password = "D3p0t2020",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(8757)
+                            PlatformId = 1,
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(6683)
                         },
                         new
                         {
                             AccountId = 101,
                             AccountTypeId = 1,
                             CheckedOutStatus = false,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(8771),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(6692),
                             Name = "demodepoteu01",
                             Password = "depot2000",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(8773)
+                            PlatformId = 1,
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(6694)
                         },
                         new
                         {
                             AccountId = 102,
                             AccountTypeId = 1,
                             CheckedOutStatus = false,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(8781),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(6702),
                             Name = "demodepoteu02",
                             Password = "depot2000",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(8783)
+                            PlatformId = 1,
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(6704)
                         },
                         new
                         {
                             AccountId = 103,
                             AccountTypeId = 1,
                             CheckedOutStatus = false,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(8791),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(6713),
                             Name = "demodepoteu03",
                             Password = "depot2000",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(8793)
+                            PlatformId = 1,
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(6715)
                         },
                         new
                         {
                             AccountId = 104,
                             AccountTypeId = 1,
                             CheckedOutStatus = false,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(8801),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(6724),
                             Name = "demodepoteu04",
                             Password = "depot2000",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(8803)
+                            PlatformId = 1,
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(6726)
                         },
                         new
                         {
                             AccountId = 105,
                             AccountTypeId = 1,
                             CheckedOutStatus = false,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(8811),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(6835),
                             Name = "demodepoteu05",
                             Password = "depot2000",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(8813)
+                            PlatformId = 1,
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(6837)
                         },
                         new
                         {
                             AccountId = 106,
                             AccountTypeId = 1,
                             CheckedOutStatus = false,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(8821),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(6846),
                             Name = "demodepoteu06",
                             Password = "depot2000",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(8823)
+                            PlatformId = 1,
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(6849)
                         },
                         new
                         {
                             AccountId = 107,
                             AccountTypeId = 1,
                             CheckedOutStatus = false,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(8831),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(6857),
                             Name = "demodepoteu07",
                             Password = "depot2000",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(8833)
+                            PlatformId = 1,
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(6860)
                         },
                         new
                         {
                             AccountId = 108,
                             AccountTypeId = 1,
                             CheckedOutStatus = false,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(8841),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(6868),
                             Name = "demodepoteu08",
                             Password = "depot2000",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(8843)
+                            PlatformId = 1,
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(6871)
                         },
                         new
                         {
                             AccountId = 109,
                             AccountTypeId = 1,
                             CheckedOutStatus = false,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(8851),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(6879),
                             Name = "demodepoteu09",
                             Password = "depot2000",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(8853)
+                            PlatformId = 1,
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(6881)
                         },
                         new
                         {
                             AccountId = 110,
                             AccountTypeId = 1,
                             CheckedOutStatus = false,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(8861),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(6889),
                             Name = "demodepoteu10",
                             Password = "depot2000",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(8863)
+                            PlatformId = 1,
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(6892)
                         },
                         new
                         {
                             AccountId = 111,
                             AccountTypeId = 1,
                             CheckedOutStatus = false,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(8871),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(6900),
                             Name = "demodepotds01",
                             Password = "Depot2oooDS",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(8873)
+                            PlatformId = 1,
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(6903)
                         },
                         new
                         {
                             AccountId = 112,
                             AccountTypeId = 1,
                             CheckedOutStatus = false,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(8881),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(6911),
                             Name = "demodepotds02",
                             Password = "Depot2oooDS",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(8883)
+                            PlatformId = 1,
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(6913)
                         },
                         new
                         {
                             AccountId = 113,
                             AccountTypeId = 1,
                             CheckedOutStatus = false,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(8891),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(6921),
                             Name = "demodepotds03",
                             Password = "Depot2oooDS",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(8893)
+                            PlatformId = 1,
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(6924)
                         },
                         new
                         {
                             AccountId = 114,
                             AccountTypeId = 1,
                             CheckedOutStatus = false,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(8901),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(6932),
                             Name = "demodepotds04",
                             Password = "Depot2oooDS",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(8903)
+                            PlatformId = 1,
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(6935)
                         },
                         new
                         {
                             AccountId = 115,
                             AccountTypeId = 1,
                             CheckedOutStatus = false,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(8911),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(6943),
                             Name = "demodepotds05",
                             Password = "Depot2oooDS",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(8913)
+                            PlatformId = 1,
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(6945)
                         },
                         new
                         {
                             AccountId = 116,
                             AccountTypeId = 1,
                             CheckedOutStatus = false,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(8921),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(6954),
                             Name = "iemcapcom01",
                             Password = "IntelCapcom2019",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(8923)
+                            PlatformId = 1,
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(6956)
                         },
                         new
                         {
                             AccountId = 117,
                             AccountTypeId = 1,
                             CheckedOutStatus = false,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(8931),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(6964),
                             Name = "iemcapcom02",
                             Password = "IntelCapcom2019",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(8933)
+                            PlatformId = 1,
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(6967)
                         },
                         new
                         {
                             AccountId = 118,
                             AccountTypeId = 1,
                             CheckedOutStatus = false,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(8941),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(6975),
                             Name = "iemcapcom03",
                             Password = "IntelCapcom2019",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(8943)
+                            PlatformId = 1,
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(6978)
                         },
                         new
                         {
                             AccountId = 119,
                             AccountTypeId = 1,
                             CheckedOutStatus = false,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(8951),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(6986),
                             Name = "iemcapcom04",
                             Password = "IntelCapcom2019",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(8953)
+                            PlatformId = 1,
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(6988)
                         },
                         new
                         {
                             AccountId = 120,
                             AccountTypeId = 1,
                             CheckedOutStatus = false,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(8960),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(6997),
                             Name = "iemcapcom05",
                             Password = "IntelCapcom2019",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(8963)
+                            PlatformId = 1,
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(6999)
                         },
                         new
                         {
                             AccountId = 121,
                             AccountTypeId = 1,
                             CheckedOutStatus = false,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(8970),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(7007),
                             Name = "iemcapcom06",
                             Password = "2019IntelCapcom",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(8973)
+                            PlatformId = 1,
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(7010)
                         },
                         new
                         {
                             AccountId = 122,
                             AccountTypeId = 1,
                             CheckedOutStatus = false,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(8980),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(7018),
                             Name = "demodepotvr01",
                             Password = "depot2ooo",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(8983)
+                            PlatformId = 4,
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(7021)
                         },
                         new
                         {
                             AccountId = 123,
                             AccountTypeId = 1,
                             CheckedOutStatus = false,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(8990),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(7029),
                             Name = "demodepotvr02",
                             Password = "depot2ooo",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(8993)
+                            PlatformId = 4,
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(7031)
                         },
                         new
                         {
                             AccountId = 124,
                             AccountTypeId = 1,
                             CheckedOutStatus = false,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(9000),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(7040),
                             Name = "demodepotvr03",
                             Password = "depot2ooo",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(9003)
+                            PlatformId = 4,
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(7042)
                         },
                         new
                         {
                             AccountId = 125,
                             AccountTypeId = 1,
                             CheckedOutStatus = false,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(9010),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(7050),
                             Name = "demodepotvr04",
                             Password = "depot2ooo",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(9013)
+                            PlatformId = 4,
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(7053)
                         },
                         new
                         {
                             AccountId = 126,
                             AccountTypeId = 1,
                             CheckedOutStatus = false,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(9020),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(7061),
                             Name = "demodepotvr05",
                             Password = "depot2ooo",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(9022)
+                            PlatformId = 4,
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(7063)
                         },
                         new
                         {
                             AccountId = 127,
                             AccountTypeId = 1,
                             CheckedOutStatus = false,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(9030),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(7071),
                             Name = "demodepotvr06",
                             Password = "depot2oooo",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(9033)
+                            PlatformId = 4,
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(7074)
                         },
                         new
                         {
                             AccountId = 128,
                             AccountTypeId = 1,
                             CheckedOutStatus = false,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(9040),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(7085),
                             Name = "demodepotvr07",
                             Password = "depot2oooo",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(9042)
+                            PlatformId = 4,
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(7087)
                         },
                         new
                         {
                             AccountId = 129,
                             AccountTypeId = 1,
                             CheckedOutStatus = false,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(9050),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(7095),
                             Name = "demodepotvr08",
                             Password = "depot2oooo",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(9052)
+                            PlatformId = 4,
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(7098)
                         },
                         new
                         {
                             AccountId = 130,
                             AccountTypeId = 1,
                             CheckedOutStatus = false,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(9060),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(7106),
                             Name = "demodepotvr09",
                             Password = "depot2oooo",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(9062)
+                            PlatformId = 4,
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(7109)
                         },
                         new
                         {
                             AccountId = 131,
                             AccountTypeId = 1,
                             CheckedOutStatus = false,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(9070),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(7117),
                             Name = "demodepotvr10",
                             Password = "depot2oooo",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(9072)
+                            PlatformId = 4,
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(7119)
                         },
                         new
                         {
                             AccountId = 132,
                             AccountTypeId = 1,
                             CheckedOutStatus = false,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(9080),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(7128),
                             Name = "demodepotvr11",
                             Password = "depot2ooo",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(9082)
+                            PlatformId = 4,
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(7130)
                         },
                         new
                         {
                             AccountId = 133,
                             AccountTypeId = 1,
                             CheckedOutStatus = false,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(9090),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(7138),
                             Name = "demodepotvr12",
                             Password = "depot2ooo",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(9092)
+                            PlatformId = 4,
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(7141)
                         },
                         new
                         {
                             AccountId = 134,
                             AccountTypeId = 1,
                             CheckedOutStatus = false,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(9100),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(7149),
                             Name = "demodepotvr13",
                             Password = "depot2ooo",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(9102)
+                            PlatformId = 4,
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(7152)
                         },
                         new
                         {
                             AccountId = 135,
                             AccountTypeId = 1,
                             CheckedOutStatus = false,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(9110),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(7160),
                             Name = "demodepotvr14",
                             Password = "depot2ooo",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(9112)
+                            PlatformId = 4,
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(7162)
                         },
                         new
                         {
                             AccountId = 136,
                             AccountTypeId = 1,
                             CheckedOutStatus = false,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(9120),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(7171),
                             Name = "demodepotvr15",
                             Password = "depot2ooo",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(9122)
+                            PlatformId = 4,
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(7173)
                         },
                         new
                         {
                             AccountId = 137,
                             AccountTypeId = 1,
                             CheckedOutStatus = false,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(9130),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(7181),
                             Name = "demodepotvr96",
                             Password = "depot2ooo",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(9132)
+                            PlatformId = 4,
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(7184)
                         },
                         new
                         {
                             AccountId = 138,
                             AccountTypeId = 1,
                             CheckedOutStatus = false,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(9140),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(7192),
                             Name = "demodepotvr97",
                             Password = "depot2ooo",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(9142)
+                            PlatformId = 4,
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(7195)
                         },
                         new
                         {
                             AccountId = 139,
                             AccountTypeId = 1,
                             CheckedOutStatus = false,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(9150),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(7203),
                             Name = "demodepotvr98",
                             Password = "depot2ooo",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(9152)
+                            PlatformId = 4,
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(7205)
                         },
                         new
                         {
                             AccountId = 140,
                             AccountTypeId = 1,
                             CheckedOutStatus = false,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(9160),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(7213),
                             Name = "demodepotvr99",
                             Password = "depot2ooo",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(9162)
+                            PlatformId = 4,
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(7216)
                         },
                         new
                         {
                             AccountId = 141,
                             AccountTypeId = 1,
                             CheckedOutStatus = false,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(9170),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(7224),
                             Name = "demodepotvr01@gmail.com",
                             Password = "depot2000",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(9172)
+                            PlatformId = 5,
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(7226)
                         },
                         new
                         {
                             AccountId = 142,
                             AccountTypeId = 1,
                             CheckedOutStatus = false,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(9180),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(7235),
                             Name = "demodepotvr02@gmail.com",
                             Password = "depot2000",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(9182)
+                            PlatformId = 5,
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(7237)
                         },
                         new
                         {
                             AccountId = 143,
                             AccountTypeId = 1,
                             CheckedOutStatus = false,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(9190),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(7245),
                             Name = "demodepotvr03@gmail.com",
                             Password = "depot2000",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(9192)
+                            PlatformId = 5,
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(7248)
                         },
                         new
                         {
                             AccountId = 144,
                             AccountTypeId = 1,
                             CheckedOutStatus = false,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(9200),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(7257),
                             Name = "demodepotvr04@gmail.com",
                             Password = "depot2000",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(9202)
+                            PlatformId = 5,
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(7259)
                         },
                         new
                         {
                             AccountId = 145,
                             AccountTypeId = 1,
                             CheckedOutStatus = false,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(9210),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(7267),
                             Name = "demodepotvr05@gmail.com",
                             Password = "depot2000",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(9212)
+                            PlatformId = 5,
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(7270)
                         },
                         new
                         {
                             AccountId = 146,
                             AccountTypeId = 1,
                             CheckedOutStatus = false,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(9220),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(7278),
                             Name = "demodepotvr05@gmail.com",
                             Password = "depot2000",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(9222)
+                            PlatformId = 5,
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(7281)
                         },
                         new
                         {
                             AccountId = 147,
                             AccountTypeId = 1,
                             CheckedOutStatus = false,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(9230),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(7289),
                             Name = "demodepotvr06@gmail.com",
                             Password = "depot2000",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(9232)
+                            PlatformId = 5,
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(7291)
                         },
                         new
                         {
                             AccountId = 148,
                             AccountTypeId = 1,
                             CheckedOutStatus = false,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(9240),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(7299),
                             Name = "demodepotvr07@gmail.com",
                             Password = "depot2000",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(9242)
+                            PlatformId = 5,
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(7302)
                         },
                         new
                         {
                             AccountId = 149,
                             AccountTypeId = 1,
                             CheckedOutStatus = false,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(9250),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(7310),
                             Name = "demodepotvr08@gmail.com",
                             Password = "depot2000",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(9252)
+                            PlatformId = 5,
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(7312)
                         },
                         new
                         {
                             AccountId = 150,
                             AccountTypeId = 1,
                             CheckedOutStatus = false,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(9260),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(7321),
                             Name = "demodepotvr09@gmail.com",
                             Password = "depot2000",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(9262)
+                            PlatformId = 5,
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(7323)
                         },
                         new
                         {
                             AccountId = 151,
                             AccountTypeId = 1,
                             CheckedOutStatus = false,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(9270),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(7331),
                             Name = "demodepotvr10@gmail.com",
                             Password = "depot2000",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(9272)
+                            PlatformId = 5,
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(7334)
                         },
                         new
                         {
                             AccountId = 152,
                             AccountTypeId = 1,
                             CheckedOutStatus = false,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(9280),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(7342),
                             Name = "demodepotvr11@gmail.com",
                             Password = "depot2000",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(9282)
+                            PlatformId = 5,
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(7344)
                         },
                         new
                         {
                             AccountId = 153,
                             AccountTypeId = 1,
                             CheckedOutStatus = false,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(9290),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(7353),
                             Name = "demodepotvr96@gmail.com",
                             Password = "depot2000",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(9292)
+                            PlatformId = 5,
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(7355)
                         },
                         new
                         {
                             AccountId = 154,
                             AccountTypeId = 1,
                             CheckedOutStatus = false,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(9300),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(7364),
                             Name = "demodepotvr97@gmail.com",
                             Password = "depot2000",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(9302)
+                            PlatformId = 5,
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(7366)
                         },
                         new
                         {
                             AccountId = 155,
                             AccountTypeId = 1,
                             CheckedOutStatus = false,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(9310),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(7374),
                             Name = "demodepotvr98@gmail.com",
                             Password = "depot2000",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(9312)
+                            PlatformId = 5,
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(7377)
                         },
                         new
                         {
                             AccountId = 156,
                             AccountTypeId = 1,
                             CheckedOutStatus = false,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(9319),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(7385),
                             Name = "demodepotvr99@gmail.com",
                             Password = "depot2000",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(9322)
+                            PlatformId = 5,
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(7387)
                         },
                         new
                         {
                             AccountId = 157,
                             AccountTypeId = 1,
                             CheckedOutStatus = false,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(9330),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(7395),
                             Name = "demodepottvr01@gmail.com",
                             Password = "depot2000",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(9332)
+                            PlatformId = 5,
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(7398)
                         },
                         new
                         {
                             AccountId = 158,
                             AccountTypeId = 1,
                             CheckedOutStatus = false,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(9346),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(7406),
                             Name = "demodepottvr02@gmail.com",
                             Password = "depot2000",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(9348)
+                            PlatformId = 5,
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(7409)
+                        },
+                        new
+                        {
+                            AccountId = 159,
+                            AccountTypeId = 1,
+                            CheckedOutStatus = false,
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(7516),
+                            Name = "demodepotds01",
+                            Password = "Depot2oooDS",
+                            PlatformId = 4,
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(7519)
+                        },
+                        new
+                        {
+                            AccountId = 160,
+                            AccountTypeId = 1,
+                            CheckedOutStatus = false,
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(7527),
+                            Name = "demodepotds02",
+                            Password = "Depot2oooDS",
+                            PlatformId = 4,
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(7530)
+                        },
+                        new
+                        {
+                            AccountId = 161,
+                            AccountTypeId = 1,
+                            CheckedOutStatus = false,
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(7538),
+                            Name = "demodepotds03",
+                            Password = "Depot2oooDS",
+                            PlatformId = 4,
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(7540)
+                        },
+                        new
+                        {
+                            AccountId = 162,
+                            AccountTypeId = 1,
+                            CheckedOutStatus = false,
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(7549),
+                            Name = "demodepotds04",
+                            Password = "Depot2oooDS",
+                            PlatformId = 4,
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(7551)
+                        },
+                        new
+                        {
+                            AccountId = 163,
+                            AccountTypeId = 1,
+                            CheckedOutStatus = false,
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(7559),
+                            Name = "demodepotds05",
+                            Password = "Depot2oooDS",
+                            PlatformId = 4,
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(7562)
+                        },
+                        new
+                        {
+                            AccountId = 164,
+                            AccountTypeId = 1,
+                            CheckedOutStatus = false,
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(7570),
+                            Name = "demodepotds01",
+                            Password = "Depot2oooDS",
+                            PlatformId = 5,
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(7573)
+                        },
+                        new
+                        {
+                            AccountId = 165,
+                            AccountTypeId = 1,
+                            CheckedOutStatus = false,
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(7581),
+                            Name = "demodepotds02",
+                            Password = "Depot2oooDS",
+                            PlatformId = 5,
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(7583)
+                        },
+                        new
+                        {
+                            AccountId = 166,
+                            AccountTypeId = 1,
+                            CheckedOutStatus = false,
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(7591),
+                            Name = "demodepotds03",
+                            Password = "Depot2oooDS",
+                            PlatformId = 5,
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(7594)
+                        },
+                        new
+                        {
+                            AccountId = 167,
+                            AccountTypeId = 1,
+                            CheckedOutStatus = false,
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(7602),
+                            Name = "demodepotds04",
+                            Password = "Depot2oooDS",
+                            PlatformId = 5,
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(7605)
+                        },
+                        new
+                        {
+                            AccountId = 168,
+                            AccountTypeId = 1,
+                            CheckedOutStatus = false,
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(7613),
+                            Name = "demodepotds05",
+                            Password = "Depot2oooDS",
+                            PlatformId = 5,
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(7615)
+                        },
+                        new
+                        {
+                            AccountId = 169,
+                            AccountTypeId = 1,
+                            CheckedOutStatus = false,
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(7623),
+                            Name = "demodepotna01@gmail.com",
+                            Password = "Depot2000",
+                            PlatformId = 6,
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(7626)
+                        },
+                        new
+                        {
+                            AccountId = 170,
+                            AccountTypeId = 1,
+                            CheckedOutStatus = false,
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(7634),
+                            Name = "demodepotna02@gmail.com",
+                            Password = "Depot2000",
+                            PlatformId = 6,
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(7636)
+                        },
+                        new
+                        {
+                            AccountId = 171,
+                            AccountTypeId = 1,
+                            CheckedOutStatus = false,
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(7645),
+                            Name = "demodepotna03@gmail.com",
+                            Password = "Depot2000",
+                            PlatformId = 6,
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(7647)
+                        },
+                        new
+                        {
+                            AccountId = 172,
+                            AccountTypeId = 1,
+                            CheckedOutStatus = false,
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(7655),
+                            Name = "demodepotna04@gmail.com",
+                            Password = "Depot2000",
+                            PlatformId = 6,
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(7658)
+                        },
+                        new
+                        {
+                            AccountId = 173,
+                            AccountTypeId = 1,
+                            CheckedOutStatus = false,
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(7666),
+                            Name = "demodepotna05@gmail.com",
+                            Password = "Depot2000",
+                            PlatformId = 6,
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(7668)
+                        },
+                        new
+                        {
+                            AccountId = 174,
+                            AccountTypeId = 1,
+                            CheckedOutStatus = false,
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(7677),
+                            Name = "demodepotna06@gmail.com",
+                            Password = "Depot2000",
+                            PlatformId = 6,
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(7679)
+                        },
+                        new
+                        {
+                            AccountId = 175,
+                            AccountTypeId = 1,
+                            CheckedOutStatus = false,
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(7687),
+                            Name = "demodepotna07@gmail.com",
+                            Password = "Depot2000",
+                            PlatformId = 6,
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(7690)
+                        },
+                        new
+                        {
+                            AccountId = 176,
+                            AccountTypeId = 1,
+                            CheckedOutStatus = false,
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(7698),
+                            Name = "demodepotna08@gmail.com",
+                            Password = "Depot2000",
+                            PlatformId = 6,
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(7700)
+                        },
+                        new
+                        {
+                            AccountId = 177,
+                            AccountTypeId = 1,
+                            CheckedOutStatus = false,
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(7708),
+                            Name = "demodepotna09@gmail.com",
+                            Password = "Depot2000",
+                            PlatformId = 6,
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(7711)
+                        },
+                        new
+                        {
+                            AccountId = 178,
+                            AccountTypeId = 1,
+                            CheckedOutStatus = false,
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(7719),
+                            Name = "demodepotna10@gmail.com",
+                            Password = "Depot2000",
+                            PlatformId = 6,
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(7722)
+                        },
+                        new
+                        {
+                            AccountId = 179,
+                            AccountTypeId = 1,
+                            CheckedOutStatus = false,
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(7730),
+                            Name = "demodepotna11@gmail.com",
+                            Password = "Depot2000",
+                            PlatformId = 6,
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(7732)
+                        },
+                        new
+                        {
+                            AccountId = 180,
+                            AccountTypeId = 1,
+                            CheckedOutStatus = false,
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(7740),
+                            Name = "demodepotna12@gmail.com",
+                            Password = "Depot2000",
+                            PlatformId = 6,
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(7743)
+                        },
+                        new
+                        {
+                            AccountId = 181,
+                            AccountTypeId = 1,
+                            CheckedOutStatus = false,
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(7751),
+                            Name = "demodepotna13@gmail.com",
+                            Password = "Depot2000",
+                            PlatformId = 6,
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(7753)
+                        },
+                        new
+                        {
+                            AccountId = 182,
+                            AccountTypeId = 1,
+                            CheckedOutStatus = false,
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(7762),
+                            Name = "demodepotna14@gmail.com",
+                            Password = "Depot2000",
+                            PlatformId = 6,
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(7764)
+                        },
+                        new
+                        {
+                            AccountId = 183,
+                            AccountTypeId = 1,
+                            CheckedOutStatus = false,
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(7773),
+                            Name = "demodepotna15@gmail.com",
+                            Password = "Depot2000",
+                            PlatformId = 6,
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(7775)
+                        },
+                        new
+                        {
+                            AccountId = 184,
+                            AccountTypeId = 1,
+                            CheckedOutStatus = false,
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(7783),
+                            Name = "demodepotna16@gmail.com",
+                            Password = "Depot2000",
+                            PlatformId = 6,
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(7786)
+                        },
+                        new
+                        {
+                            AccountId = 185,
+                            AccountTypeId = 1,
+                            CheckedOutStatus = false,
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(7794),
+                            Name = "demodepotna17@gmail.com",
+                            Password = "Depot2000",
+                            PlatformId = 6,
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(7796)
+                        },
+                        new
+                        {
+                            AccountId = 186,
+                            AccountTypeId = 1,
+                            CheckedOutStatus = false,
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(7805),
+                            Name = "demodepotna18@gmail.com",
+                            Password = "Depot2000",
+                            PlatformId = 6,
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(7807)
+                        },
+                        new
+                        {
+                            AccountId = 187,
+                            AccountTypeId = 1,
+                            CheckedOutStatus = false,
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(7815),
+                            Name = "demodepotna19@gmail.com",
+                            Password = "Depot2000",
+                            PlatformId = 6,
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(7818)
+                        },
+                        new
+                        {
+                            AccountId = 188,
+                            AccountTypeId = 1,
+                            CheckedOutStatus = false,
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(7826),
+                            Name = "demodepotna20@gmail.com",
+                            Password = "Depot2000",
+                            PlatformId = 6,
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(7828)
                         });
                 });
 
@@ -1713,38 +2205,38 @@ namespace AccountAPI.Migrations
                         new
                         {
                             AccountProfileId = 1,
-                            Birthday = new DateTime(2019, 7, 8, 19, 49, 11, 671, DateTimeKind.Local).AddTicks(3050),
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 671, DateTimeKind.Local).AddTicks(4600),
+                            Birthday = new DateTime(2019, 7, 9, 11, 29, 47, 747, DateTimeKind.Local).AddTicks(5008),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 747, DateTimeKind.Local).AddTicks(7587),
                             Email = "aaosd@daosp.asd",
                             FirstName = "Demo",
                             LastName = "Depot",
                             Password = "asd",
                             PhoneNumber = "",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 671, DateTimeKind.Local).AddTicks(4808)
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 747, DateTimeKind.Local).AddTicks(7906)
                         },
                         new
                         {
                             AccountProfileId = 2,
-                            Birthday = new DateTime(2019, 7, 8, 19, 49, 11, 671, DateTimeKind.Local).AddTicks(5029),
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 671, DateTimeKind.Local).AddTicks(5051),
+                            Birthday = new DateTime(2019, 7, 9, 11, 29, 47, 747, DateTimeKind.Local).AddTicks(8228),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 747, DateTimeKind.Local).AddTicks(8264),
                             Email = "aaosd@daosp.asd",
                             FirstName = "Demo 1",
                             LastName = "Depot",
                             Password = "asd",
                             PhoneNumber = "",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 671, DateTimeKind.Local).AddTicks(5055)
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 747, DateTimeKind.Local).AddTicks(8270)
                         },
                         new
                         {
                             AccountProfileId = 3,
-                            Birthday = new DateTime(2019, 7, 8, 19, 49, 11, 671, DateTimeKind.Local).AddTicks(5060),
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 671, DateTimeKind.Local).AddTicks(5063),
+                            Birthday = new DateTime(2019, 7, 9, 11, 29, 47, 747, DateTimeKind.Local).AddTicks(8277),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 747, DateTimeKind.Local).AddTicks(8281),
                             Email = "aaosd@daosp.asd",
                             FirstName = "Demo 2",
                             LastName = "Depot",
                             Password = "asd",
                             PhoneNumber = "",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 671, DateTimeKind.Local).AddTicks(5065)
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 747, DateTimeKind.Local).AddTicks(8284)
                         });
                 });
 
@@ -1768,16 +2260,16 @@ namespace AccountAPI.Migrations
                         new
                         {
                             AccountTypeId = 1,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(4390),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 745, DateTimeKind.Local).AddTicks(9922),
                             Type = "Game",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(4630)
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(368)
                         },
                         new
                         {
                             AccountTypeId = 2,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(4987),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(756),
                             Type = "Other",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 670, DateTimeKind.Local).AddTicks(4991)
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 746, DateTimeKind.Local).AddTicks(762)
                         });
                 });
 
@@ -1803,9 +2295,6 @@ namespace AccountAPI.Migrations
 
                     b.HasIndex("AccountId");
 
-                    b.HasIndex("CodeString")
-                        .IsUnique();
-
                     b.HasIndex("GameId");
 
                     b.ToTable("Codes");
@@ -1815,77 +2304,719 @@ namespace AccountAPI.Migrations
                         {
                             CodeId = 1,
                             AccountId = 1,
-                            CodeString = "Some Code 1",
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 671, DateTimeKind.Local).AddTicks(693),
-                            GameId = 1,
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 671, DateTimeKind.Local).AddTicks(909),
+                            CodeString = "Q3PM7-YHJ62-KTKK7-HCWXV-PC4MZ",
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 747, DateTimeKind.Local).AddTicks(384),
+                            GameId = 71,
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 747, DateTimeKind.Local).AddTicks(718),
                             UsedStatus = true
                         },
                         new
                         {
                             CodeId = 2,
-                            AccountId = 1,
-                            CodeString = "Some Code 2",
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 671, DateTimeKind.Local).AddTicks(1553),
-                            GameId = 2,
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 671, DateTimeKind.Local).AddTicks(1557),
+                            AccountId = 2,
+                            CodeString = "P3XCF-JMK9Q-3RW3P-497GD-KXFXZ",
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 747, DateTimeKind.Local).AddTicks(1801),
+                            GameId = 71,
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 747, DateTimeKind.Local).AddTicks(1806),
                             UsedStatus = true
                         },
                         new
                         {
                             CodeId = 3,
-                            CodeString = "Some Code 3",
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 671, DateTimeKind.Local).AddTicks(1569),
-                            GameId = 1,
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 671, DateTimeKind.Local).AddTicks(1571),
-                            UsedStatus = false
+                            AccountId = 3,
+                            CodeString = "TCJ9M-HD7XP-P9KMR-3RG3H-D3DQZ",
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 747, DateTimeKind.Local).AddTicks(1824),
+                            GameId = 71,
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 747, DateTimeKind.Local).AddTicks(1826),
+                            UsedStatus = true
                         },
                         new
                         {
                             CodeId = 4,
-                            AccountId = 2,
-                            CodeString = "Some Code 4",
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 671, DateTimeKind.Local).AddTicks(1578),
-                            GameId = 1,
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 671, DateTimeKind.Local).AddTicks(1580),
+                            AccountId = 4,
+                            CodeString = "G4MQX-FHT33-CDJQH-HFKMV-DCV9Z",
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 747, DateTimeKind.Local).AddTicks(1835),
+                            GameId = 71,
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 747, DateTimeKind.Local).AddTicks(1837),
                             UsedStatus = true
                         },
                         new
                         {
                             CodeId = 5,
-                            CodeString = "Some Code 5",
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 671, DateTimeKind.Local).AddTicks(1587),
-                            GameId = 2,
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 671, DateTimeKind.Local).AddTicks(1589),
-                            UsedStatus = false
+                            AccountId = 6,
+                            CodeString = "W323F-RHJD7-3D37J-44TXC-FMMKZ",
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 747, DateTimeKind.Local).AddTicks(1845),
+                            GameId = 71,
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 747, DateTimeKind.Local).AddTicks(1848),
+                            UsedStatus = true
                         },
                         new
                         {
                             CodeId = 6,
-                            CodeString = "Some Code 6",
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 671, DateTimeKind.Local).AddTicks(1596),
-                            GameId = 3,
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 671, DateTimeKind.Local).AddTicks(1598),
-                            UsedStatus = false
+                            AccountId = 1,
+                            CodeString = "32KRG-XMHXT-Y426Y-Y9M3J-CG3PZ",
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 747, DateTimeKind.Local).AddTicks(1855),
+                            GameId = 72,
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 747, DateTimeKind.Local).AddTicks(1858),
+                            UsedStatus = true
                         },
                         new
                         {
                             CodeId = 7,
-                            AccountId = 3,
-                            CodeString = "Some Code 7",
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 671, DateTimeKind.Local).AddTicks(1605),
-                            GameId = 3,
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 671, DateTimeKind.Local).AddTicks(1607),
+                            AccountId = 2,
+                            CodeString = "6DQQM-CX76T-TRVDT-Y943D-H3QVZ",
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 747, DateTimeKind.Local).AddTicks(1866),
+                            GameId = 72,
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 747, DateTimeKind.Local).AddTicks(1868),
                             UsedStatus = true
                         },
                         new
                         {
                             CodeId = 8,
-                            CodeString = "Some Code 8",
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 671, DateTimeKind.Local).AddTicks(1613),
+                            AccountId = 3,
+                            CodeString = "WXCRH-F929W-7XVJD-D9T46-2VWPZ",
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 747, DateTimeKind.Local).AddTicks(1876),
+                            GameId = 72,
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 747, DateTimeKind.Local).AddTicks(1879),
+                            UsedStatus = true
+                        },
+                        new
+                        {
+                            CodeId = 9,
+                            AccountId = 4,
+                            CodeString = "Q2FWP-66HT4-Y44HP-MVQM9-TW6KZ",
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 747, DateTimeKind.Local).AddTicks(1886),
+                            GameId = 72,
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 747, DateTimeKind.Local).AddTicks(1889),
+                            UsedStatus = true
+                        },
+                        new
+                        {
+                            CodeId = 10,
+                            AccountId = 5,
+                            CodeString = "VFG32-PP24M-97PH3-TM4V4-JJF9Z",
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 747, DateTimeKind.Local).AddTicks(1897),
+                            GameId = 72,
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 747, DateTimeKind.Local).AddTicks(1899),
+                            UsedStatus = true
+                        },
+                        new
+                        {
+                            CodeId = 11,
+                            AccountId = 21,
+                            CodeString = "MX4YW-HWFYK-C9H6H-JYX43-PFGCZ",
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 747, DateTimeKind.Local).AddTicks(1908),
+                            GameId = 73,
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 747, DateTimeKind.Local).AddTicks(1910),
+                            UsedStatus = true
+                        },
+                        new
+                        {
+                            CodeId = 12,
+                            AccountId = 22,
+                            CodeString = "PJYW2-V9Q74-2V29K-WP4GK-DWCTZ",
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 747, DateTimeKind.Local).AddTicks(1918),
+                            GameId = 73,
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 747, DateTimeKind.Local).AddTicks(1920),
+                            UsedStatus = true
+                        },
+                        new
+                        {
+                            CodeId = 13,
+                            AccountId = 23,
+                            CodeString = "HG7X4-MPRCC-PDXDJ-W3VKC-43GVZ",
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 747, DateTimeKind.Local).AddTicks(1928),
+                            GameId = 73,
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 747, DateTimeKind.Local).AddTicks(1931),
+                            UsedStatus = true
+                        },
+                        new
+                        {
+                            CodeId = 14,
+                            AccountId = 24,
+                            CodeString = "CR9JW-WKDGY-VVF76-MTTM6-JHHYZ",
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 747, DateTimeKind.Local).AddTicks(1939),
+                            GameId = 73,
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 747, DateTimeKind.Local).AddTicks(1941),
+                            UsedStatus = true
+                        },
+                        new
+                        {
+                            CodeId = 15,
+                            AccountId = 25,
+                            CodeString = "GTDF6-D3RR7-FH74Q-MG92R-4QJFZ",
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 747, DateTimeKind.Local).AddTicks(1949),
+                            GameId = 73,
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 747, DateTimeKind.Local).AddTicks(1952),
+                            UsedStatus = true
+                        },
+                        new
+                        {
+                            CodeId = 16,
+                            AccountId = 1,
+                            CodeString = "Redeemed 1/19/2018",
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 747, DateTimeKind.Local).AddTicks(1959),
+                            GameId = 74,
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 747, DateTimeKind.Local).AddTicks(1962),
+                            UsedStatus = true
+                        },
+                        new
+                        {
+                            CodeId = 17,
+                            AccountId = 2,
+                            CodeString = "Redeemed 1/19/2018",
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 747, DateTimeKind.Local).AddTicks(1970),
+                            GameId = 74,
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 747, DateTimeKind.Local).AddTicks(1973),
+                            UsedStatus = true
+                        },
+                        new
+                        {
+                            CodeId = 18,
+                            AccountId = 3,
+                            CodeString = "Redeemed 1/19/2018",
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 747, DateTimeKind.Local).AddTicks(1980),
+                            GameId = 74,
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 747, DateTimeKind.Local).AddTicks(1983),
+                            UsedStatus = true
+                        },
+                        new
+                        {
+                            CodeId = 19,
+                            AccountId = 4,
+                            CodeString = "Redeemed 1/19/2018",
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 747, DateTimeKind.Local).AddTicks(1991),
+                            GameId = 74,
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 747, DateTimeKind.Local).AddTicks(1993),
+                            UsedStatus = true
+                        },
+                        new
+                        {
+                            CodeId = 20,
+                            AccountId = 5,
+                            CodeString = "Redeemed 1/19/2018",
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 747, DateTimeKind.Local).AddTicks(2001),
+                            GameId = 74,
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 747, DateTimeKind.Local).AddTicks(2003),
+                            UsedStatus = true
+                        },
+                        new
+                        {
+                            CodeId = 21,
+                            AccountId = 6,
+                            CodeString = "6V42J-JQRWW-Y7HKW-FFKJ2-7X9VZ",
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 747, DateTimeKind.Local).AddTicks(2011),
+                            GameId = 74,
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 747, DateTimeKind.Local).AddTicks(2014),
+                            UsedStatus = true
+                        },
+                        new
+                        {
+                            CodeId = 22,
+                            AccountId = 7,
+                            CodeString = "Redeemed 1/19/2018",
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 747, DateTimeKind.Local).AddTicks(2022),
+                            GameId = 74,
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 747, DateTimeKind.Local).AddTicks(2024),
+                            UsedStatus = true
+                        },
+                        new
+                        {
+                            CodeId = 23,
+                            AccountId = 8,
+                            CodeString = "Redeemed 1/19/2018",
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 747, DateTimeKind.Local).AddTicks(2032),
+                            GameId = 74,
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 747, DateTimeKind.Local).AddTicks(2034),
+                            UsedStatus = true
+                        },
+                        new
+                        {
+                            CodeId = 24,
+                            AccountId = 9,
+                            CodeString = "Redeemed 1/19/2018",
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 747, DateTimeKind.Local).AddTicks(2043),
+                            GameId = 74,
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 747, DateTimeKind.Local).AddTicks(2045),
+                            UsedStatus = true
+                        },
+                        new
+                        {
+                            CodeId = 25,
+                            AccountId = 10,
+                            CodeString = "Redeemed 1/19/2018",
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 747, DateTimeKind.Local).AddTicks(2053),
+                            GameId = 74,
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 747, DateTimeKind.Local).AddTicks(2056),
+                            UsedStatus = true
+                        },
+                        new
+                        {
+                            CodeId = 26,
+                            AccountId = 11,
+                            CodeString = "Redeemed 1/19/2018",
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 747, DateTimeKind.Local).AddTicks(2064),
+                            GameId = 74,
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 747, DateTimeKind.Local).AddTicks(2066),
+                            UsedStatus = true
+                        },
+                        new
+                        {
+                            CodeId = 27,
+                            AccountId = 12,
+                            CodeString = "Redeemed 1/19/2018",
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 747, DateTimeKind.Local).AddTicks(2074),
+                            GameId = 74,
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 747, DateTimeKind.Local).AddTicks(2077),
+                            UsedStatus = true
+                        },
+                        new
+                        {
+                            CodeId = 28,
+                            AccountId = 13,
+                            CodeString = "Redeemed 1/19/2018",
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 747, DateTimeKind.Local).AddTicks(2085),
+                            GameId = 74,
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 747, DateTimeKind.Local).AddTicks(2087),
+                            UsedStatus = true
+                        },
+                        new
+                        {
+                            CodeId = 29,
+                            AccountId = 14,
+                            CodeString = "Redeemed 1/19/2018",
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 747, DateTimeKind.Local).AddTicks(2095),
+                            GameId = 74,
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 747, DateTimeKind.Local).AddTicks(2098),
+                            UsedStatus = true
+                        },
+                        new
+                        {
+                            CodeId = 30,
+                            AccountId = 15,
+                            CodeString = "Redeemed 1/19/2018",
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 747, DateTimeKind.Local).AddTicks(2106),
+                            GameId = 74,
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 747, DateTimeKind.Local).AddTicks(2108),
+                            UsedStatus = true
+                        },
+                        new
+                        {
+                            CodeId = 31,
+                            AccountId = 16,
+                            CodeString = "Redeemed 1/19/2018",
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 747, DateTimeKind.Local).AddTicks(2116),
+                            GameId = 74,
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 747, DateTimeKind.Local).AddTicks(2118),
+                            UsedStatus = true
+                        },
+                        new
+                        {
+                            CodeId = 32,
+                            AccountId = 17,
+                            CodeString = "Redeemed 1/19/2018",
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 747, DateTimeKind.Local).AddTicks(2126),
+                            GameId = 74,
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 747, DateTimeKind.Local).AddTicks(2129),
+                            UsedStatus = true
+                        },
+                        new
+                        {
+                            CodeId = 33,
+                            AccountId = 18,
+                            CodeString = "Redeemed 1/19/2018",
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 747, DateTimeKind.Local).AddTicks(2136),
+                            GameId = 74,
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 747, DateTimeKind.Local).AddTicks(2139),
+                            UsedStatus = true
+                        },
+                        new
+                        {
+                            CodeId = 34,
+                            AccountId = 19,
+                            CodeString = "Redeemed 1/19/2018",
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 747, DateTimeKind.Local).AddTicks(2147),
+                            GameId = 74,
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 747, DateTimeKind.Local).AddTicks(2149),
+                            UsedStatus = true
+                        },
+                        new
+                        {
+                            CodeId = 35,
+                            AccountId = 20,
+                            CodeString = "Redeemed 1/19/2018",
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 747, DateTimeKind.Local).AddTicks(2157),
+                            GameId = 74,
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 747, DateTimeKind.Local).AddTicks(2160),
+                            UsedStatus = true
+                        },
+                        new
+                        {
+                            CodeId = 36,
+                            AccountId = 1,
+                            CodeString = "Free to Play",
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 747, DateTimeKind.Local).AddTicks(2167),
+                            GameId = 75,
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 747, DateTimeKind.Local).AddTicks(2170),
+                            UsedStatus = true
+                        },
+                        new
+                        {
+                            CodeId = 37,
+                            AccountId = 2,
+                            CodeString = "Free to Play",
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 747, DateTimeKind.Local).AddTicks(2178),
+                            GameId = 75,
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 747, DateTimeKind.Local).AddTicks(2180),
+                            UsedStatus = true
+                        },
+                        new
+                        {
+                            CodeId = 38,
+                            AccountId = 3,
+                            CodeString = "Free to Play",
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 747, DateTimeKind.Local).AddTicks(2188),
+                            GameId = 75,
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 747, DateTimeKind.Local).AddTicks(2191),
+                            UsedStatus = true
+                        },
+                        new
+                        {
+                            CodeId = 39,
+                            AccountId = 4,
+                            CodeString = "Free to Play",
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 747, DateTimeKind.Local).AddTicks(2198),
+                            GameId = 75,
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 747, DateTimeKind.Local).AddTicks(2201),
+                            UsedStatus = true
+                        },
+                        new
+                        {
+                            CodeId = 40,
+                            AccountId = 5,
+                            CodeString = "Free to Play",
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 747, DateTimeKind.Local).AddTicks(2209),
+                            GameId = 75,
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 747, DateTimeKind.Local).AddTicks(2211),
+                            UsedStatus = true
+                        },
+                        new
+                        {
+                            CodeId = 41,
+                            AccountId = 6,
+                            CodeString = "Free to Play",
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 747, DateTimeKind.Local).AddTicks(2219),
+                            GameId = 75,
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 747, DateTimeKind.Local).AddTicks(2222),
+                            UsedStatus = true
+                        },
+                        new
+                        {
+                            CodeId = 42,
+                            AccountId = 7,
+                            CodeString = "Free to Play",
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 747, DateTimeKind.Local).AddTicks(2230),
+                            GameId = 75,
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 747, DateTimeKind.Local).AddTicks(2232),
+                            UsedStatus = true
+                        },
+                        new
+                        {
+                            CodeId = 43,
+                            AccountId = 8,
+                            CodeString = "Free to Play",
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 747, DateTimeKind.Local).AddTicks(2240),
+                            GameId = 75,
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 747, DateTimeKind.Local).AddTicks(2243),
+                            UsedStatus = true
+                        },
+                        new
+                        {
+                            CodeId = 44,
+                            AccountId = 9,
+                            CodeString = "Free to Play",
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 747, DateTimeKind.Local).AddTicks(2251),
+                            GameId = 75,
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 747, DateTimeKind.Local).AddTicks(2253),
+                            UsedStatus = true
+                        },
+                        new
+                        {
+                            CodeId = 45,
+                            AccountId = 10,
+                            CodeString = "Free to Play",
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 747, DateTimeKind.Local).AddTicks(2261),
+                            GameId = 75,
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 747, DateTimeKind.Local).AddTicks(2263),
+                            UsedStatus = true
+                        },
+                        new
+                        {
+                            CodeId = 46,
+                            AccountId = 11,
+                            CodeString = "Free to Play",
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 747, DateTimeKind.Local).AddTicks(2271),
+                            GameId = 75,
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 747, DateTimeKind.Local).AddTicks(2274),
+                            UsedStatus = true
+                        },
+                        new
+                        {
+                            CodeId = 47,
+                            AccountId = 12,
+                            CodeString = "Free to Play",
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 747, DateTimeKind.Local).AddTicks(2281),
+                            GameId = 75,
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 747, DateTimeKind.Local).AddTicks(2284),
+                            UsedStatus = true
+                        },
+                        new
+                        {
+                            CodeId = 48,
+                            AccountId = 13,
+                            CodeString = "Free to Play",
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 747, DateTimeKind.Local).AddTicks(2292),
+                            GameId = 75,
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 747, DateTimeKind.Local).AddTicks(2294),
+                            UsedStatus = true
+                        },
+                        new
+                        {
+                            CodeId = 49,
+                            AccountId = 14,
+                            CodeString = "Free to Play",
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 747, DateTimeKind.Local).AddTicks(2302),
+                            GameId = 75,
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 747, DateTimeKind.Local).AddTicks(2305),
+                            UsedStatus = true
+                        },
+                        new
+                        {
+                            CodeId = 50,
+                            AccountId = 15,
+                            CodeString = "Free to Play",
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 747, DateTimeKind.Local).AddTicks(2312),
+                            GameId = 75,
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 747, DateTimeKind.Local).AddTicks(2315),
+                            UsedStatus = true
+                        },
+                        new
+                        {
+                            CodeId = 51,
+                            AccountId = 16,
+                            CodeString = "Free to Play",
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 747, DateTimeKind.Local).AddTicks(2323),
+                            GameId = 75,
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 747, DateTimeKind.Local).AddTicks(2325),
+                            UsedStatus = true
+                        },
+                        new
+                        {
+                            CodeId = 52,
+                            AccountId = 17,
+                            CodeString = "Free to Play",
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 747, DateTimeKind.Local).AddTicks(2333),
+                            GameId = 75,
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 747, DateTimeKind.Local).AddTicks(2335),
+                            UsedStatus = true
+                        },
+                        new
+                        {
+                            CodeId = 53,
+                            AccountId = 18,
+                            CodeString = "Free to Play",
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 747, DateTimeKind.Local).AddTicks(2343),
+                            GameId = 75,
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 747, DateTimeKind.Local).AddTicks(2346),
+                            UsedStatus = true
+                        },
+                        new
+                        {
+                            CodeId = 54,
+                            AccountId = 19,
+                            CodeString = "Free to Play",
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 747, DateTimeKind.Local).AddTicks(2354),
+                            GameId = 75,
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 747, DateTimeKind.Local).AddTicks(2356),
+                            UsedStatus = true
+                        },
+                        new
+                        {
+                            CodeId = 55,
+                            AccountId = 20,
+                            CodeString = "Free to Play",
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 747, DateTimeKind.Local).AddTicks(2364),
+                            GameId = 75,
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 747, DateTimeKind.Local).AddTicks(2366),
+                            UsedStatus = true
+                        },
+                        new
+                        {
+                            CodeId = 56,
+                            AccountId = 26,
+                            CodeString = "No Original Key, Game Playable",
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 747, DateTimeKind.Local).AddTicks(2375),
                             GameId = 1,
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 671, DateTimeKind.Local).AddTicks(1615),
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 747, DateTimeKind.Local).AddTicks(2377),
+                            UsedStatus = true
+                        },
+                        new
+                        {
+                            CodeId = 57,
+                            AccountId = 28,
+                            CodeString = "QLD3I-8AIKI-3MVQV",
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 747, DateTimeKind.Local).AddTicks(2385),
+                            GameId = 1,
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 747, DateTimeKind.Local).AddTicks(2387),
+                            UsedStatus = true
+                        },
+                        new
+                        {
+                            CodeId = 58,
+                            AccountId = 37,
+                            CodeString = "ICBM6-MIDNE-4WZ04",
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 747, DateTimeKind.Local).AddTicks(2395),
+                            GameId = 1,
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 747, DateTimeKind.Local).AddTicks(2398),
+                            UsedStatus = true
+                        },
+                        new
+                        {
+                            CodeId = 59,
+                            AccountId = 38,
+                            CodeString = "5K4HT-0RHK5-54A9X",
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 747, DateTimeKind.Local).AddTicks(2406),
+                            GameId = 1,
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 747, DateTimeKind.Local).AddTicks(2408),
+                            UsedStatus = true
+                        },
+                        new
+                        {
+                            CodeId = 60,
+                            AccountId = 39,
+                            CodeString = "VERGF-0G0KT-VPW6Y",
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 747, DateTimeKind.Local).AddTicks(2416),
+                            GameId = 1,
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 747, DateTimeKind.Local).AddTicks(2419),
+                            UsedStatus = true
+                        },
+                        new
+                        {
+                            CodeId = 61,
+                            AccountId = 40,
+                            CodeString = "DDB59-245X0-2EI7K",
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 747, DateTimeKind.Local).AddTicks(2427),
+                            GameId = 1,
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 747, DateTimeKind.Local).AddTicks(2429),
+                            UsedStatus = true
+                        },
+                        new
+                        {
+                            CodeId = 62,
+                            AccountId = 41,
+                            CodeString = "6MCIF-WPJDG-CWFEP",
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 747, DateTimeKind.Local).AddTicks(2437),
+                            GameId = 1,
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 747, DateTimeKind.Local).AddTicks(2440),
+                            UsedStatus = true
+                        },
+                        new
+                        {
+                            CodeId = 63,
+                            AccountId = 42,
+                            CodeString = "F4HRH-I03ZV-HKFLH",
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 747, DateTimeKind.Local).AddTicks(2447),
+                            GameId = 1,
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 747, DateTimeKind.Local).AddTicks(2450),
+                            UsedStatus = true
+                        },
+                        new
+                        {
+                            CodeId = 64,
+                            AccountId = 43,
+                            CodeString = "YHG4C-XDTD0-RWRL0",
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 747, DateTimeKind.Local).AddTicks(2458),
+                            GameId = 1,
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 747, DateTimeKind.Local).AddTicks(2461),
+                            UsedStatus = true
+                        },
+                        new
+                        {
+                            CodeId = 65,
+                            CodeString = "G8Y8J-V2R85-YYQ93",
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 747, DateTimeKind.Local).AddTicks(2469),
+                            GameId = 1,
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 747, DateTimeKind.Local).AddTicks(2471),
                             UsedStatus = false
+                        },
+                        new
+                        {
+                            CodeId = 66,
+                            CodeString = "YETRG-VCVMR-YACL5",
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 747, DateTimeKind.Local).AddTicks(2479),
+                            GameId = 1,
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 747, DateTimeKind.Local).AddTicks(2482),
+                            UsedStatus = false
+                        },
+                        new
+                        {
+                            CodeId = 67,
+                            AccountId = 26,
+                            CodeString = "ED7V8-YIJYM-62T6W",
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 747, DateTimeKind.Local).AddTicks(2490),
+                            GameId = 2,
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 747, DateTimeKind.Local).AddTicks(2492),
+                            UsedStatus = true
+                        },
+                        new
+                        {
+                            CodeId = 68,
+                            AccountId = 27,
+                            CodeString = "3VIJY-KKFAF-PBZG7",
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 747, DateTimeKind.Local).AddTicks(2500),
+                            GameId = 2,
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 747, DateTimeKind.Local).AddTicks(2503),
+                            UsedStatus = true
+                        },
+                        new
+                        {
+                            CodeId = 69,
+                            AccountId = 37,
+                            CodeString = "QVG22-LAR4D-8D4EQ",
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 747, DateTimeKind.Local).AddTicks(2511),
+                            GameId = 2,
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 747, DateTimeKind.Local).AddTicks(2513),
+                            UsedStatus = true
+                        },
+                        new
+                        {
+                            CodeId = 70,
+                            AccountId = 38,
+                            CodeString = "H9N0X-XK8X3-I94YG",
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 747, DateTimeKind.Local).AddTicks(2521),
+                            GameId = 2,
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 747, DateTimeKind.Local).AddTicks(2523),
+                            UsedStatus = true
+                        },
+                        new
+                        {
+                            CodeId = 71,
+                            AccountId = 39,
+                            CodeString = "K3IX5-C6X6P-AEL8D",
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 747, DateTimeKind.Local).AddTicks(2531),
+                            GameId = 2,
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 747, DateTimeKind.Local).AddTicks(2534),
+                            UsedStatus = true
+                        },
+                        new
+                        {
+                            CodeId = 72,
+                            AccountId = 40,
+                            CodeString = "B56CZ-G78B5-IMFDP",
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 747, DateTimeKind.Local).AddTicks(2545),
+                            GameId = 2,
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 747, DateTimeKind.Local).AddTicks(2547),
+                            UsedStatus = true
                         });
                 });
 
@@ -1909,30 +3040,30 @@ namespace AccountAPI.Migrations
                         new
                         {
                             ControllerTypeId = 1,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 657, DateTimeKind.Local).AddTicks(7307),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 706, DateTimeKind.Local).AddTicks(5589),
                             Type = "Touch",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 657, DateTimeKind.Local).AddTicks(7534)
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 706, DateTimeKind.Local).AddTicks(5941)
                         },
                         new
                         {
                             ControllerTypeId = 2,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 657, DateTimeKind.Local).AddTicks(7768),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 706, DateTimeKind.Local).AddTicks(6282),
                             Type = "Keyboard & Mouse",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 657, DateTimeKind.Local).AddTicks(7771)
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 706, DateTimeKind.Local).AddTicks(6287)
                         },
                         new
                         {
                             ControllerTypeId = 3,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 657, DateTimeKind.Local).AddTicks(7780),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 706, DateTimeKind.Local).AddTicks(6299),
                             Type = "Xbox",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 657, DateTimeKind.Local).AddTicks(7783)
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 706, DateTimeKind.Local).AddTicks(6301)
                         },
                         new
                         {
                             ControllerTypeId = 4,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 657, DateTimeKind.Local).AddTicks(7790),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 706, DateTimeKind.Local).AddTicks(6310),
                             Type = "Steering Wheel",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 657, DateTimeKind.Local).AddTicks(7792)
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 706, DateTimeKind.Local).AddTicks(6312)
                         });
                 });
 
@@ -1959,34 +3090,34 @@ namespace AccountAPI.Migrations
                         new
                         {
                             EventId = 1,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 657, DateTimeKind.Local).AddTicks(9414),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 706, DateTimeKind.Local).AddTicks(8603),
                             Location = "Chicago",
                             Name = "IEM",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 657, DateTimeKind.Local).AddTicks(9636)
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 706, DateTimeKind.Local).AddTicks(8919)
                         },
                         new
                         {
                             EventId = 2,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 657, DateTimeKind.Local).AddTicks(9866),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 706, DateTimeKind.Local).AddTicks(9243),
                             Location = "Austraila",
                             Name = "IEM",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 657, DateTimeKind.Local).AddTicks(9870)
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 706, DateTimeKind.Local).AddTicks(9248)
                         },
                         new
                         {
                             EventId = 3,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 657, DateTimeKind.Local).AddTicks(9879),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 706, DateTimeKind.Local).AddTicks(9260),
                             Location = "China",
                             Name = "IEM",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 657, DateTimeKind.Local).AddTicks(9882)
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 706, DateTimeKind.Local).AddTicks(9262)
                         },
                         new
                         {
                             EventId = 4,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 657, DateTimeKind.Local).AddTicks(9888),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 706, DateTimeKind.Local).AddTicks(9270),
                             Location = "Poland",
                             Name = "IEM",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 657, DateTimeKind.Local).AddTicks(9890)
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 706, DateTimeKind.Local).AddTicks(9273)
                         });
                 });
 
@@ -2022,1948 +3153,1948 @@ namespace AccountAPI.Migrations
                         {
                             GameId = 1,
                             ConnectionType = (byte)2,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(6139),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 707, DateTimeKind.Local).AddTicks(9585),
                             Name = "Virtua Tennis 4",
                             PlatformId = 1,
                             ReleaseDate = new DateTime(2011, 4, 29, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             URLToDocumentation = "Location to Doc",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(6345)
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 707, DateTimeKind.Local).AddTicks(9963)
                         },
                         new
                         {
                             GameId = 2,
                             ConnectionType = (byte)2,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(6858),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(567),
                             Name = "Portal 2",
                             PlatformId = 1,
                             ReleaseDate = new DateTime(2011, 4, 19, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             URLToDocumentation = "Location to Doc",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(6862)
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(573)
                         },
                         new
                         {
                             GameId = 3,
                             ConnectionType = (byte)2,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(6874),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(589),
                             Name = "Rage",
                             PlatformId = 1,
                             ReleaseDate = new DateTime(2010, 11, 18, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             URLToDocumentation = "Location to Doc",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(6876)
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(592)
                         },
                         new
                         {
                             GameId = 4,
                             ConnectionType = (byte)2,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(6883),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(601),
                             Name = "F1 Racing 2011",
                             PlatformId = 1,
                             ReleaseDate = new DateTime(2011, 9, 23, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             URLToDocumentation = "Location to Doc",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(6885)
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(604)
                         },
                         new
                         {
                             GameId = 5,
                             ConnectionType = (byte)2,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(6893),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(612),
                             Name = "Shogun 2",
                             PlatformId = 1,
                             ReleaseDate = new DateTime(2011, 3, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             URLToDocumentation = "Location to Doc",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(6895)
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(615)
                         },
                         new
                         {
                             GameId = 6,
                             ConnectionType = (byte)2,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(6903),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(624),
                             Name = "Operation Flashpoint Red River",
                             PlatformId = 1,
                             ReleaseDate = new DateTime(2011, 4, 21, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             URLToDocumentation = "Location to Doc",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(6905)
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(626)
                         },
                         new
                         {
                             GameId = 7,
                             ConnectionType = (byte)2,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(6912),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(635),
                             Name = "Batman Arkham City",
                             PlatformId = 1,
                             ReleaseDate = new DateTime(2011, 10, 18, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             URLToDocumentation = "Location to Doc",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(6914)
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(638)
                         },
                         new
                         {
                             GameId = 8,
                             ConnectionType = (byte)2,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(6922),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(646),
                             Name = "Modern Warfare 3",
                             PlatformId = 1,
                             ReleaseDate = new DateTime(2011, 11, 8, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             URLToDocumentation = "Location to Doc",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(6924)
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(649)
                         },
                         new
                         {
                             GameId = 9,
                             ConnectionType = (byte)2,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(6931),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(658),
                             Name = "Skyrim",
                             PlatformId = 1,
                             ReleaseDate = new DateTime(2011, 11, 11, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             URLToDocumentation = "Location to Doc",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(6933)
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(661)
                         },
                         new
                         {
                             GameId = 10,
                             ConnectionType = (byte)2,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(6940),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(670),
                             Name = "Renegade Ops",
                             PlatformId = 1,
                             ReleaseDate = new DateTime(2011, 9, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             URLToDocumentation = "Location to Doc",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(6943)
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(672)
                         },
                         new
                         {
                             GameId = 11,
                             ConnectionType = (byte)2,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(6950),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(682),
                             Name = "Defense Grid",
                             PlatformId = 1,
                             ReleaseDate = new DateTime(2008, 12, 8, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             URLToDocumentation = "Location to Doc",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(6953)
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(685)
                         },
                         new
                         {
                             GameId = 12,
                             ConnectionType = (byte)2,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(6960),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(694),
                             Name = "Limbo",
                             PlatformId = 1,
                             ReleaseDate = new DateTime(2010, 7, 21, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             URLToDocumentation = "Location to Doc",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(6962)
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(696)
                         },
                         new
                         {
                             GameId = 13,
                             ConnectionType = (byte)2,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(6970),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(705),
                             Name = "Call of Duty: Black Ops 2",
                             PlatformId = 1,
                             ReleaseDate = new DateTime(2012, 11, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             URLToDocumentation = "Location to Doc",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(6972)
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(708)
                         },
                         new
                         {
                             GameId = 14,
                             ConnectionType = (byte)2,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(6979),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(717),
                             Name = "Dishonored",
                             PlatformId = 1,
                             ReleaseDate = new DateTime(2012, 10, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             URLToDocumentation = "Location to Doc",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(6981)
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(719)
                         },
                         new
                         {
                             GameId = 15,
                             ConnectionType = (byte)2,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(6989),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(728),
                             Name = "Deep Black: Reloaded",
                             PlatformId = 1,
                             ReleaseDate = new DateTime(2012, 4, 18, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             URLToDocumentation = "Location to Doc",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(6991)
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(730)
                         },
                         new
                         {
                             GameId = 16,
                             ConnectionType = (byte)2,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(6998),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(739),
                             Name = "Civilization 5",
                             PlatformId = 1,
                             ReleaseDate = new DateTime(2012, 10, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             URLToDocumentation = "Location to Doc",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(7000)
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(742)
                         },
                         new
                         {
                             GameId = 17,
                             ConnectionType = (byte)2,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(7007),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(751),
                             Name = "Command & Conquer 4: Tiberian Twilight",
                             PlatformId = 1,
                             ReleaseDate = new DateTime(2010, 3, 16, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             URLToDocumentation = "Location to Doc",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(7009)
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(753)
                         },
                         new
                         {
                             GameId = 18,
                             ConnectionType = (byte)2,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(7017),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(942),
                             Name = "Lego: The Lord of the Rings",
                             PlatformId = 1,
                             ReleaseDate = new DateTime(2012, 10, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             URLToDocumentation = "Location to Doc",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(7019)
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(947)
                         },
                         new
                         {
                             GameId = 19,
                             ConnectionType = (byte)2,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(7026),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(958),
                             Name = "Transformers: Fal of Cybertron",
                             PlatformId = 1,
                             ReleaseDate = new DateTime(2012, 8, 21, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             URLToDocumentation = "Location to Doc",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(7028)
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(961)
                         },
                         new
                         {
                             GameId = 20,
                             ConnectionType = (byte)2,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(7035),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(970),
                             Name = "Grid 2",
                             PlatformId = 1,
                             ReleaseDate = new DateTime(2012, 8, 21, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             URLToDocumentation = "Location to Doc",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(7037)
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(972)
                         },
                         new
                         {
                             GameId = 21,
                             ConnectionType = (byte)2,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(7045),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(981),
                             Name = "Sega and Sonic All Stars Transformed",
                             PlatformId = 1,
                             ReleaseDate = new DateTime(2012, 11, 16, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             URLToDocumentation = "Location to Doc",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(7047)
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(984)
                         },
                         new
                         {
                             GameId = 22,
                             ConnectionType = (byte)2,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(7054),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(993),
                             Name = "Sega and Sonic All Stars Transformed",
                             PlatformId = 1,
                             ReleaseDate = new DateTime(2012, 11, 16, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             URLToDocumentation = "Location to Doc",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(7056)
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(995)
                         },
                         new
                         {
                             GameId = 23,
                             ConnectionType = (byte)2,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(7064),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(1004),
                             Name = "Civilization 5: Brave New World",
                             PlatformId = 1,
                             ReleaseDate = new DateTime(2013, 7, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             URLToDocumentation = "Location to Doc",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(7066)
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(1006)
                         },
                         new
                         {
                             GameId = 24,
                             ConnectionType = (byte)2,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(7073),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(1015),
                             Name = "ARMA 3",
                             PlatformId = 1,
                             ReleaseDate = new DateTime(2013, 9, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             URLToDocumentation = "Location to Doc",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(7075)
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(1017)
                         },
                         new
                         {
                             GameId = 25,
                             ConnectionType = (byte)2,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(7083),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(1026),
                             Name = "Broken Age",
                             PlatformId = 1,
                             ReleaseDate = new DateTime(2014, 1, 14, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             URLToDocumentation = "Location to Doc",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(7085)
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(1028)
                         },
                         new
                         {
                             GameId = 26,
                             ConnectionType = (byte)2,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(7092),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(1037),
                             Name = "Shadowrun Returns",
                             PlatformId = 1,
                             ReleaseDate = new DateTime(2013, 7, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             URLToDocumentation = "Location to Doc",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(7094)
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(1040)
                         },
                         new
                         {
                             GameId = 27,
                             ConnectionType = (byte)2,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(7101),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(1049),
                             Name = "Shadowrun: Dragonfall",
                             PlatformId = 1,
                             ReleaseDate = new DateTime(2014, 2, 27, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             URLToDocumentation = "Location to Doc",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(7103)
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(1051)
                         },
                         new
                         {
                             GameId = 28,
                             ConnectionType = (byte)2,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(7111),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(1060),
                             Name = "Trine 2 Complete",
                             PlatformId = 1,
                             ReleaseDate = new DateTime(2011, 12, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             URLToDocumentation = "Location to Doc",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(7113)
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(1063)
                         },
                         new
                         {
                             GameId = 29,
                             ConnectionType = (byte)2,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(7129),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(1071),
                             Name = "Grid Autosport",
                             PlatformId = 1,
                             ReleaseDate = new DateTime(2014, 6, 24, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             URLToDocumentation = "Location to Doc",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(7131)
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(1074)
                         },
                         new
                         {
                             GameId = 30,
                             ConnectionType = (byte)2,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(7139),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(1082),
                             Name = "Beatbuddy: Tale of the Guardians",
                             PlatformId = 1,
                             ReleaseDate = new DateTime(2014, 8, 6, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             URLToDocumentation = "Location to Doc",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(7141)
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(1085)
                         },
                         new
                         {
                             GameId = 31,
                             ConnectionType = (byte)2,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(7149),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(1093),
                             Name = "Transistor",
                             PlatformId = 1,
                             ReleaseDate = new DateTime(2014, 5, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             URLToDocumentation = "Location to Doc",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(7151)
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(1096)
                         },
                         new
                         {
                             GameId = 32,
                             ConnectionType = (byte)2,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(7158),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(1105),
                             Name = "Borderlands: The Pre-Sequel Preorder",
                             PlatformId = 1,
                             ReleaseDate = new DateTime(2014, 10, 14, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             URLToDocumentation = "Location to Doc",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(7160)
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(1107)
                         },
                         new
                         {
                             GameId = 33,
                             ConnectionType = (byte)2,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(7167),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(1116),
                             Name = "Alien Isolation",
                             PlatformId = 1,
                             ReleaseDate = new DateTime(2014, 10, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             URLToDocumentation = "Location to Doc",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(7169)
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(1118)
                         },
                         new
                         {
                             GameId = 34,
                             ConnectionType = (byte)2,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(7177),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(1128),
                             Name = "Counter Strike: Global Offensive",
                             PlatformId = 1,
                             ReleaseDate = new DateTime(2012, 8, 21, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             URLToDocumentation = "Location to Doc",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(7179)
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(1130)
                         },
                         new
                         {
                             GameId = 35,
                             ConnectionType = (byte)2,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(7186),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(1139),
                             Name = "Lara Croft Temple of Osiris",
                             PlatformId = 1,
                             ReleaseDate = new DateTime(2014, 12, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             URLToDocumentation = "Location to Doc",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(7188)
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(1142)
                         },
                         new
                         {
                             GameId = 36,
                             ConnectionType = (byte)2,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(7195),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(1150),
                             Name = "Tomb Raider (2013)",
                             PlatformId = 1,
                             ReleaseDate = new DateTime(2013, 3, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             URLToDocumentation = "Location to Doc",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(7197)
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(1153)
                         },
                         new
                         {
                             GameId = 37,
                             ConnectionType = (byte)2,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(7205),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(1161),
                             Name = "F1 2015",
                             PlatformId = 1,
                             ReleaseDate = new DateTime(2015, 7, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             URLToDocumentation = "Location to Doc",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(7207)
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(1164)
                         },
                         new
                         {
                             GameId = 38,
                             ConnectionType = (byte)2,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(7214),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(1173),
                             Name = "Homeworld Remastered Collection",
                             PlatformId = 1,
                             ReleaseDate = new DateTime(2015, 2, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             URLToDocumentation = "Location to Doc",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(7216)
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(1175)
                         },
                         new
                         {
                             GameId = 39,
                             ConnectionType = (byte)2,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(7224),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(1184),
                             Name = "Euro Truck Simulator",
                             PlatformId = 1,
                             ReleaseDate = new DateTime(2012, 10, 19, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             URLToDocumentation = "Location to Doc",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(7226)
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(1186)
                         },
                         new
                         {
                             GameId = 40,
                             ConnectionType = (byte)2,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(7233),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(1195),
                             Name = "Project Cars",
                             PlatformId = 1,
                             ReleaseDate = new DateTime(2015, 5, 6, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             URLToDocumentation = "Location to Doc",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(7235)
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(1197)
                         },
                         new
                         {
                             GameId = 41,
                             ConnectionType = (byte)2,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(7242),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(1206),
                             Name = "Just Cause 3",
                             PlatformId = 1,
                             ReleaseDate = new DateTime(2015, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             URLToDocumentation = "Location to Doc",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(7244)
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(1209)
                         },
                         new
                         {
                             GameId = 42,
                             ConnectionType = (byte)2,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(7251),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(1218),
                             Name = "NBA2K16",
                             PlatformId = 1,
                             ReleaseDate = new DateTime(2015, 9, 29, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             URLToDocumentation = "Location to Doc",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(7254)
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(1221)
                         },
                         new
                         {
                             GameId = 43,
                             ConnectionType = (byte)2,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(7261),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(1230),
                             Name = "Rocket League",
                             PlatformId = 1,
                             ReleaseDate = new DateTime(2015, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             URLToDocumentation = "Location to Doc",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(7263)
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(1232)
                         },
                         new
                         {
                             GameId = 44,
                             ConnectionType = (byte)2,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(7270),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(1241),
                             Name = "Warhammer Vermintide",
                             PlatformId = 1,
                             ReleaseDate = new DateTime(2015, 10, 23, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             URLToDocumentation = "Location to Doc",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(7272)
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(1243)
                         },
                         new
                         {
                             GameId = 45,
                             ConnectionType = (byte)2,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(7280),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(1252),
                             Name = "Tom Clancy's Rainbow Six Siege",
                             PlatformId = 1,
                             ReleaseDate = new DateTime(2015, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             URLToDocumentation = "Location to Doc",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(7282)
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(1254)
                         },
                         new
                         {
                             GameId = 46,
                             ConnectionType = (byte)2,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(7289),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(1263),
                             Name = "Grey Goo",
                             PlatformId = 1,
                             ReleaseDate = new DateTime(2015, 1, 23, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             URLToDocumentation = "Location to Doc",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(7291)
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(1265)
                         },
                         new
                         {
                             GameId = 47,
                             ConnectionType = (byte)2,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(7298),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(1274),
                             Name = "PES 2017",
                             PlatformId = 1,
                             ReleaseDate = new DateTime(2016, 9, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             URLToDocumentation = "Location to Doc",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(7300)
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(1277)
                         },
                         new
                         {
                             GameId = 48,
                             ConnectionType = (byte)2,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(7308),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(1286),
                             Name = "Project Cars 2",
                             PlatformId = 1,
                             ReleaseDate = new DateTime(2017, 9, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             URLToDocumentation = "Location to Doc",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(7310)
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(1288)
                         },
                         new
                         {
                             GameId = 49,
                             ConnectionType = (byte)2,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(7317),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(1561),
                             Name = "PUBG",
                             PlatformId = 1,
                             ReleaseDate = new DateTime(2017, 12, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             URLToDocumentation = "Location to Doc",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(7319)
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(1564)
                         },
                         new
                         {
                             GameId = 50,
                             ConnectionType = (byte)2,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(7326),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(1574),
                             Name = "Total War: Warhammer 2",
                             PlatformId = 1,
                             ReleaseDate = new DateTime(2017, 9, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             URLToDocumentation = "Location to Doc",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(7328)
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(1577)
                         },
                         new
                         {
                             GameId = 51,
                             ConnectionType = (byte)2,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(7336),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(1585),
                             Name = "Lego Marvel Super Heroes 2",
                             PlatformId = 1,
                             ReleaseDate = new DateTime(2018, 8, 2, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             URLToDocumentation = "Location to Doc",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(7338)
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(1588)
                         },
                         new
                         {
                             GameId = 52,
                             ConnectionType = (byte)2,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(7345),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(1596),
                             Name = "Call of Duty World War II",
                             PlatformId = 1,
                             ReleaseDate = new DateTime(2017, 11, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             URLToDocumentation = "Location to Doc",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(7347)
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(1599)
                         },
                         new
                         {
                             GameId = 53,
                             ConnectionType = (byte)2,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(7354),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(1607),
                             Name = "Warhammer: Vermintide 2",
                             PlatformId = 1,
                             ReleaseDate = new DateTime(2018, 3, 8, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             URLToDocumentation = "Location to Doc",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(7356)
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(1610)
                         },
                         new
                         {
                             GameId = 54,
                             ConnectionType = (byte)2,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(7364),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(1618),
                             Name = "Cuphead",
                             PlatformId = 1,
                             ReleaseDate = new DateTime(2017, 9, 29, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             URLToDocumentation = "Location to Doc",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(7366)
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(1621)
                         },
                         new
                         {
                             GameId = 55,
                             ConnectionType = (byte)2,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(7373),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(1629),
                             Name = "Yooka Laylee",
                             PlatformId = 1,
                             ReleaseDate = new DateTime(2017, 4, 11, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             URLToDocumentation = "Location to Doc",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(7375)
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(1632)
                         },
                         new
                         {
                             GameId = 56,
                             ConnectionType = (byte)2,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(7382),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(1641),
                             Name = "NBA 2K18",
                             PlatformId = 1,
                             ReleaseDate = new DateTime(2017, 9, 19, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             URLToDocumentation = "Location to Doc",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(7384)
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(1643)
                         },
                         new
                         {
                             GameId = 57,
                             ConnectionType = (byte)2,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(7391),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(1652),
                             Name = "SINNER: Sacrifice for Redemption",
                             PlatformId = 1,
                             ReleaseDate = new DateTime(2018, 10, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             URLToDocumentation = "Location to Doc",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(7394)
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(1654)
                         },
                         new
                         {
                             GameId = 58,
                             ConnectionType = (byte)2,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(7401),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(1663),
                             Name = "NBA 2k19",
                             PlatformId = 1,
                             ReleaseDate = new DateTime(2018, 9, 11, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             URLToDocumentation = "Location to Doc",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(7403)
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(1666)
                         },
                         new
                         {
                             GameId = 59,
                             ConnectionType = (byte)2,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(7417),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(1675),
                             Name = "Hitman 2",
                             PlatformId = 1,
                             ReleaseDate = new DateTime(2018, 11, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             URLToDocumentation = "Location to Doc",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(7419)
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(1677)
                         },
                         new
                         {
                             GameId = 60,
                             ConnectionType = (byte)2,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(7426),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(1686),
                             Name = "Just Cause 4",
                             PlatformId = 1,
                             ReleaseDate = new DateTime(2018, 12, 4, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             URLToDocumentation = "Location to Doc",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(7428)
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(1688)
                         },
                         new
                         {
                             GameId = 61,
                             ConnectionType = (byte)2,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(7436),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(1697),
                             Name = "Ring of Elysium",
                             PlatformId = 1,
                             ReleaseDate = new DateTime(2018, 9, 19, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             URLToDocumentation = "Location to Doc",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(7438)
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(1699)
                         },
                         new
                         {
                             GameId = 62,
                             ConnectionType = (byte)2,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(7445),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(1708),
                             Name = "Street Fighter 5",
                             PlatformId = 1,
                             ReleaseDate = new DateTime(2016, 2, 16, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             URLToDocumentation = "Location to Doc",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(7447)
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(1710)
                         },
                         new
                         {
                             GameId = 63,
                             ConnectionType = (byte)2,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(7454),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(1719),
                             Name = "Resident Evil 2 Remake",
                             PlatformId = 1,
                             ReleaseDate = new DateTime(2019, 1, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             URLToDocumentation = "Location to Doc",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(7457)
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(1722)
                         },
                         new
                         {
                             GameId = 64,
                             ConnectionType = (byte)2,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(7464),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(1730),
                             Name = "Outward",
                             PlatformId = 1,
                             ReleaseDate = new DateTime(2019, 3, 26, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             URLToDocumentation = "Location to Doc",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(7466)
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(1733)
                         },
                         new
                         {
                             GameId = 65,
                             ConnectionType = (byte)2,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(7473),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(1741),
                             Name = "Tekken 7",
                             PlatformId = 1,
                             ReleaseDate = new DateTime(2015, 3, 18, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             URLToDocumentation = "Location to Doc",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(7475)
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(1744)
                         },
                         new
                         {
                             GameId = 66,
                             ConnectionType = (byte)2,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(7483),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(1753),
                             Name = "Soul Calibur 6",
                             PlatformId = 1,
                             ReleaseDate = new DateTime(2018, 10, 19, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             URLToDocumentation = "Location to Doc",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(7485)
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(1755)
                         },
                         new
                         {
                             GameId = 67,
                             ConnectionType = (byte)2,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(7492),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(1764),
                             Name = "Dragon Ball FighterZ",
                             PlatformId = 1,
                             ReleaseDate = new DateTime(2018, 1, 26, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             URLToDocumentation = "Location to Doc",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(7494)
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(1766)
                         },
                         new
                         {
                             GameId = 68,
                             ConnectionType = (byte)2,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(7501),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(1775),
                             Name = "DOTA 2",
                             PlatformId = 1,
                             ReleaseDate = new DateTime(2013, 7, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             URLToDocumentation = "Location to Doc",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(7503)
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(1778)
                         },
                         new
                         {
                             GameId = 69,
                             ConnectionType = (byte)2,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(7511),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(1786),
                             Name = "Ace Combat 7: Skies Unknown",
                             PlatformId = 1,
                             ReleaseDate = new DateTime(2019, 1, 18, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             URLToDocumentation = "Location to Doc",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(7513)
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(1789)
                         },
                         new
                         {
                             GameId = 70,
                             ConnectionType = (byte)2,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(7520),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(1797),
                             Name = "Sekiro: Shadows Die Twice",
                             PlatformId = 1,
                             ReleaseDate = new DateTime(2019, 3, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             URLToDocumentation = "Location to Doc",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(7522)
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(1800)
                         },
                         new
                         {
                             GameId = 71,
                             ConnectionType = (byte)2,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(7529),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(1809),
                             Name = "Superhot VR",
                             PlatformId = 2,
                             ReleaseDate = new DateTime(2016, 12, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             URLToDocumentation = "Location to Doc",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(7531)
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(1811)
                         },
                         new
                         {
                             GameId = 72,
                             ConnectionType = (byte)2,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(7539),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(1820),
                             Name = "Gears of War 4",
                             PlatformId = 2,
                             ReleaseDate = new DateTime(2016, 10, 11, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             URLToDocumentation = "Location to Doc",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(7541)
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(1823)
                         },
                         new
                         {
                             GameId = 73,
                             ConnectionType = (byte)2,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(7548),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(1832),
                             Name = "Ghostbusters VR",
                             PlatformId = 2,
                             ReleaseDate = new DateTime(2016, 10, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             URLToDocumentation = "Location to Doc",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(7550)
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(1834)
                         },
                         new
                         {
                             GameId = 74,
                             ConnectionType = (byte)2,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(7557),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(1843),
                             Name = "Arizona Sunshine",
                             PlatformId = 2,
                             ReleaseDate = new DateTime(2016, 12, 6, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             URLToDocumentation = "Location to Doc",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(7559)
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(1846)
                         },
                         new
                         {
                             GameId = 75,
                             ConnectionType = (byte)2,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(7567),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(1854),
                             Name = "Halo Wars",
                             PlatformId = 2,
                             ReleaseDate = new DateTime(2019, 2, 26, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             URLToDocumentation = "Location to Doc",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(7569)
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(1857)
                         },
                         new
                         {
                             GameId = 76,
                             ConnectionType = (byte)2,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(7576),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(1866),
                             Name = "Marvel Run Jump Smash",
                             PlatformId = 3,
                             ReleaseDate = new DateTime(2014, 1, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             URLToDocumentation = "Location to Doc",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(7578)
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(1868)
                         },
                         new
                         {
                             GameId = 77,
                             ConnectionType = (byte)2,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(7586),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(1877),
                             Name = "Angry Birds (Free)",
                             PlatformId = 3,
                             ReleaseDate = new DateTime(2009, 10, 19, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             URLToDocumentation = "Location to Doc",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(7588)
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(1879)
                         },
                         new
                         {
                             GameId = 78,
                             ConnectionType = (byte)2,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(7595),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(1888),
                             Name = "Angry Birds Space (Free)",
                             PlatformId = 3,
                             ReleaseDate = new DateTime(2012, 3, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             URLToDocumentation = "Location to Doc",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(7597)
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(1890)
                         },
                         new
                         {
                             GameId = 79,
                             ConnectionType = (byte)2,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(7604),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(1999),
                             Name = "Candy Crush Saga (Free)",
                             PlatformId = 3,
                             ReleaseDate = new DateTime(2012, 4, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             URLToDocumentation = "Location to Doc",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(7606)
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(2001)
                         },
                         new
                         {
                             GameId = 80,
                             ConnectionType = (byte)2,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(7614),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(2010),
                             Name = "Fruit Ninja (Free)",
                             PlatformId = 3,
                             ReleaseDate = new DateTime(2010, 4, 21, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             URLToDocumentation = "Location to Doc",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(7616)
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(2013)
                         },
                         new
                         {
                             GameId = 81,
                             ConnectionType = (byte)2,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(7623),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(2022),
                             Name = "Jetpack Joyride (Free)",
                             PlatformId = 3,
                             ReleaseDate = new DateTime(2011, 9, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             URLToDocumentation = "Location to Doc",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(7625)
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(2024)
                         },
                         new
                         {
                             GameId = 82,
                             ConnectionType = (byte)2,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(7632),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(2033),
                             Name = "Plants vs Zombies 2 (Free)",
                             PlatformId = 3,
                             ReleaseDate = new DateTime(2011, 9, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             URLToDocumentation = "Location to Doc",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(7635)
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(2035)
                         },
                         new
                         {
                             GameId = 83,
                             ConnectionType = (byte)2,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(7642),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(2044),
                             Name = "Tap the Frog (Free)",
                             PlatformId = 3,
                             ReleaseDate = new DateTime(2012, 2, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             URLToDocumentation = "Location to Doc",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(7644)
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(2047)
                         },
                         new
                         {
                             GameId = 84,
                             ConnectionType = (byte)2,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(7651),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(2055),
                             Name = "Tiny Dice Dungeon",
                             PlatformId = 3,
                             ReleaseDate = new DateTime(2013, 11, 11, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             URLToDocumentation = "Location to Doc",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(7653)
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(2058)
                         },
                         new
                         {
                             GameId = 85,
                             ConnectionType = (byte)2,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(7661),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(2066),
                             Name = "Fractal Combat X (FCX) (Free)",
                             PlatformId = 3,
                             ReleaseDate = new DateTime(2013, 1, 8, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             URLToDocumentation = "Location to Doc",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(7663)
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(2069)
                         },
                         new
                         {
                             GameId = 86,
                             ConnectionType = (byte)2,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(7670),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(2077),
                             Name = "GT Racing 2",
                             PlatformId = 3,
                             ReleaseDate = new DateTime(2013, 11, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             URLToDocumentation = "Location to Doc",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(7672)
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(2080)
                         },
                         new
                         {
                             GameId = 87,
                             ConnectionType = (byte)2,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(7679),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(2089),
                             Name = "Shadowrun Returns",
                             PlatformId = 3,
                             ReleaseDate = new DateTime(2013, 7, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             URLToDocumentation = "Location to Doc",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(7681)
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(2091)
                         },
                         new
                         {
                             GameId = 88,
                             ConnectionType = (byte)2,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(7689),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(2100),
                             Name = "Hitman GO",
                             PlatformId = 3,
                             ReleaseDate = new DateTime(2014, 4, 17, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             URLToDocumentation = "Location to Doc",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(7691)
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(2103)
                         },
                         new
                         {
                             GameId = 89,
                             ConnectionType = (byte)2,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(7704),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(2111),
                             Name = "Sonic Dash",
                             PlatformId = 3,
                             ReleaseDate = new DateTime(2013, 3, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             URLToDocumentation = "Location to Doc",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(7706)
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(2114)
                         },
                         new
                         {
                             GameId = 90,
                             ConnectionType = (byte)2,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(7713),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(2123),
                             Name = "Blitz Brigade (Free)",
                             PlatformId = 3,
                             ReleaseDate = new DateTime(2013, 5, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             URLToDocumentation = "Location to Doc",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(7715)
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(2125)
                         },
                         new
                         {
                             GameId = 91,
                             ConnectionType = (byte)2,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(7723),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(2134),
                             Name = "Assassin's Creed Pirates (Free)",
                             PlatformId = 3,
                             ReleaseDate = new DateTime(2013, 12, 4, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             URLToDocumentation = "Location to Doc",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(7725)
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(2137)
                         },
                         new
                         {
                             GameId = 92,
                             ConnectionType = (byte)2,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(7732),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(2145),
                             Name = "Jetpack Joyride",
                             PlatformId = 3,
                             ReleaseDate = new DateTime(2011, 9, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             URLToDocumentation = "Location to Doc",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(7734)
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(2148)
                         },
                         new
                         {
                             GameId = 93,
                             ConnectionType = (byte)2,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(7741),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(2156),
                             Name = "Yo-kai Watch Wibble Wobble (Free)",
                             PlatformId = 3,
                             ReleaseDate = new DateTime(2015, 10, 21, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             URLToDocumentation = "Location to Doc",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(7743)
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(2159)
                         },
                         new
                         {
                             GameId = 94,
                             ConnectionType = (byte)2,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(7751),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(2168),
                             Name = "The Gallery - Episode 1: Call of the Starseed",
                             PlatformId = 4,
                             ReleaseDate = new DateTime(2016, 4, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             URLToDocumentation = "Location to Doc",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(7753)
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(2170)
                         },
                         new
                         {
                             GameId = 95,
                             ConnectionType = (byte)2,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(7760),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(2179),
                             Name = "Arizona Sunshine",
                             PlatformId = 4,
                             ReleaseDate = new DateTime(2016, 12, 6, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             URLToDocumentation = "Location to Doc",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(7762)
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(2182)
                         },
                         new
                         {
                             GameId = 96,
                             ConnectionType = (byte)2,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(7769),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(2190),
                             Name = "Budget Cuts",
                             PlatformId = 4,
                             ReleaseDate = new DateTime(2018, 6, 14, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             URLToDocumentation = "Location to Doc",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(7771)
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(2193)
                         },
                         new
                         {
                             GameId = 97,
                             ConnectionType = (byte)2,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(7779),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(2201),
                             Name = "The LAB",
                             PlatformId = 4,
                             ReleaseDate = new DateTime(2016, 4, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             URLToDocumentation = "Location to Doc",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(7781)
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(2204)
                         },
                         new
                         {
                             GameId = 98,
                             ConnectionType = (byte)2,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(7788),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(2213),
                             Name = "Raw Data",
                             PlatformId = 4,
                             ReleaseDate = new DateTime(2017, 10, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             URLToDocumentation = "Location to Doc",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(7790)
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(2215)
                         },
                         new
                         {
                             GameId = 99,
                             ConnectionType = (byte)2,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(7797),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(2224),
                             Name = "Raw Data (Demo)",
                             PlatformId = 4,
                             ReleaseDate = new DateTime(2017, 10, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             URLToDocumentation = "Location to Doc",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(7799)
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(2226)
                         },
                         new
                         {
                             GameId = 100,
                             ConnectionType = (byte)2,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(7807),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(2235),
                             Name = "theBlu",
                             PlatformId = 4,
                             ReleaseDate = new DateTime(2016, 4, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             URLToDocumentation = "Location to Doc",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(7809)
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(2238)
                         },
                         new
                         {
                             GameId = 101,
                             ConnectionType = (byte)2,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(7816),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(2247),
                             Name = "Tilt Brush",
                             PlatformId = 4,
                             ReleaseDate = new DateTime(2016, 4, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             URLToDocumentation = "Location to Doc",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(7818)
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(2250)
                         },
                         new
                         {
                             GameId = 102,
                             ConnectionType = (byte)2,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(7825),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(2259),
                             Name = "A-10 VR",
                             PlatformId = 4,
                             ReleaseDate = new DateTime(2016, 4, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             URLToDocumentation = "Location to Doc",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(7828)
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(2261)
                         },
                         new
                         {
                             GameId = 103,
                             ConnectionType = (byte)2,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(7835),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(2270),
                             Name = "Job Simulator",
                             PlatformId = 4,
                             ReleaseDate = new DateTime(2016, 4, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             URLToDocumentation = "Location to Doc",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(7837)
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(2273)
                         },
                         new
                         {
                             GameId = 104,
                             ConnectionType = (byte)2,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(7844),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(2282),
                             Name = "Fantastic Contraption",
                             PlatformId = 4,
                             ReleaseDate = new DateTime(2016, 4, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             URLToDocumentation = "Location to Doc",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(7846)
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(2284)
                         },
                         new
                         {
                             GameId = 105,
                             ConnectionType = (byte)2,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(7854),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(2293),
                             Name = "Balloon Chair Death Match",
                             PlatformId = 4,
                             ReleaseDate = new DateTime(2017, 7, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             URLToDocumentation = "Location to Doc",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(7856)
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(2295)
                         },
                         new
                         {
                             GameId = 106,
                             ConnectionType = (byte)2,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(7863),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(2304),
                             Name = "Serious Sam VR",
                             PlatformId = 4,
                             ReleaseDate = new DateTime(2017, 3, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             URLToDocumentation = "Location to Doc",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(7865)
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(2306)
                         },
                         new
                         {
                             GameId = 107,
                             ConnectionType = (byte)2,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(7872),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(2315),
                             Name = "Warhammer: End Times - Vermintide",
                             PlatformId = 4,
                             ReleaseDate = new DateTime(2015, 10, 23, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             URLToDocumentation = "Location to Doc",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(7874)
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(2317)
                         },
                         new
                         {
                             GameId = 108,
                             ConnectionType = (byte)2,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(7882),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(2326),
                             Name = "Blue Effect VR",
                             PlatformId = 4,
                             ReleaseDate = new DateTime(2016, 9, 29, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             URLToDocumentation = "Location to Doc",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(7884)
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(2329)
                         },
                         new
                         {
                             GameId = 109,
                             ConnectionType = (byte)2,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(7891),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(2437),
                             Name = "Bullet Sorrow VR",
                             PlatformId = 4,
                             ReleaseDate = new DateTime(2017, 4, 17, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             URLToDocumentation = "Location to Doc",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(7893)
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(2439)
                         },
                         new
                         {
                             GameId = 110,
                             ConnectionType = (byte)2,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(7900),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(2449),
                             Name = "Fruit Ninja VR",
                             PlatformId = 4,
                             ReleaseDate = new DateTime(2016, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             URLToDocumentation = "Location to Doc",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(7902)
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(2451)
                         },
                         new
                         {
                             GameId = 111,
                             ConnectionType = (byte)2,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(7910),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(2460),
                             Name = "NBA 2KVR Experience",
                             PlatformId = 4,
                             ReleaseDate = new DateTime(2016, 11, 21, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             URLToDocumentation = "Location to Doc",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(7912)
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(2462)
                         },
                         new
                         {
                             GameId = 112,
                             ConnectionType = (byte)2,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(7919),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(2471),
                             Name = "SportsBar VR",
                             PlatformId = 4,
                             ReleaseDate = new DateTime(2016, 6, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             URLToDocumentation = "Location to Doc",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(7921)
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(2474)
                         },
                         new
                         {
                             GameId = 113,
                             ConnectionType = (byte)2,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(7928),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(2482),
                             Name = "Evasion",
                             PlatformId = 4,
                             ReleaseDate = new DateTime(2018, 10, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             URLToDocumentation = "Location to Doc",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(7930)
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(2485)
                         },
                         new
                         {
                             GameId = 114,
                             ConnectionType = (byte)2,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(7938),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(2494),
                             Name = "Sprint Vector",
                             PlatformId = 4,
                             ReleaseDate = new DateTime(2018, 2, 8, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             URLToDocumentation = "Location to Doc",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(7940)
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(2496)
                         },
                         new
                         {
                             GameId = 115,
                             ConnectionType = (byte)2,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(7947),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(2505),
                             Name = "Mortal Blitz",
                             PlatformId = 4,
                             ReleaseDate = new DateTime(2017, 7, 19, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             URLToDocumentation = "Location to Doc",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(7949)
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(2507)
                         },
                         new
                         {
                             GameId = 116,
                             ConnectionType = (byte)2,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(7957),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(2516),
                             Name = "Onward",
                             PlatformId = 4,
                             ReleaseDate = new DateTime(2016, 8, 29, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             URLToDocumentation = "Location to Doc",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(7959)
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(2519)
                         },
                         new
                         {
                             GameId = 117,
                             ConnectionType = (byte)2,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(7966),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(2528),
                             Name = "Space Pirate Trainer",
                             PlatformId = 4,
                             ReleaseDate = new DateTime(2016, 4, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             URLToDocumentation = "Location to Doc",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(7968)
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(2530)
                         },
                         new
                         {
                             GameId = 118,
                             ConnectionType = (byte)2,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(7975),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(2539),
                             Name = "Archangel: Hellfire",
                             PlatformId = 4,
                             ReleaseDate = new DateTime(2017, 8, 2, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             URLToDocumentation = "Location to Doc",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(7977)
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(2541)
                         },
                         new
                         {
                             GameId = 119,
                             ConnectionType = (byte)2,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(8002),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(2550),
                             Name = "Beatsaber",
                             PlatformId = 4,
                             ReleaseDate = new DateTime(2018, 5, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             URLToDocumentation = "Location to Doc",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(8004)
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(2552)
                         },
                         new
                         {
                             GameId = 120,
                             ConnectionType = (byte)2,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(8011),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(2561),
                             Name = "The Gold Club VR",
                             PlatformId = 4,
                             ReleaseDate = new DateTime(2018, 9, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             URLToDocumentation = "Location to Doc",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(8013)
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(2563)
                         },
                         new
                         {
                             GameId = 121,
                             ConnectionType = (byte)2,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(8021),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(2572),
                             Name = "Creed - Rise to Glory",
                             PlatformId = 4,
                             ReleaseDate = new DateTime(2018, 9, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             URLToDocumentation = "Location to Doc",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(8023)
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(2574)
                         },
                         new
                         {
                             GameId = 122,
                             ConnectionType = (byte)2,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(8030),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(2583),
                             Name = "Creed - Rise to Glory \"Arcade\"",
                             PlatformId = 4,
                             ReleaseDate = new DateTime(2018, 9, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             URLToDocumentation = "Location to Doc",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(8032)
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(2585)
                         },
                         new
                         {
                             GameId = 123,
                             ConnectionType = (byte)2,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(8039),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(2594),
                             Name = "Audica",
                             PlatformId = 4,
                             ReleaseDate = new DateTime(2019, 3, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             URLToDocumentation = "Location to Doc",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(8041)
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(2597)
                         },
                         new
                         {
                             GameId = 124,
                             ConnectionType = (byte)2,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(8049),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(2605),
                             Name = "Superhot VR",
                             PlatformId = 5,
                             ReleaseDate = new DateTime(2016, 12, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             URLToDocumentation = "Location to Doc",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(8051)
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(2608)
                         },
                         new
                         {
                             GameId = 125,
                             ConnectionType = (byte)2,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(8058),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(2617),
                             Name = "Rock Band VR",
                             PlatformId = 5,
                             ReleaseDate = new DateTime(2017, 3, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             URLToDocumentation = "Location to Doc",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(8060)
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(2619)
                         },
                         new
                         {
                             GameId = 126,
                             ConnectionType = (byte)2,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(8067),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(2628),
                             Name = "Robo Recall",
                             PlatformId = 5,
                             ReleaseDate = new DateTime(2017, 3, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             URLToDocumentation = "Location to Doc",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(8069)
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(2631)
                         },
                         new
                         {
                             GameId = 127,
                             ConnectionType = (byte)2,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(8077),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(2639),
                             Name = "Unspoken",
                             PlatformId = 5,
                             ReleaseDate = new DateTime(2016, 12, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             URLToDocumentation = "Location to Doc",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(8079)
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(2642)
                         },
                         new
                         {
                             GameId = 128,
                             ConnectionType = (byte)2,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(8086),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(2651),
                             Name = "Dead and Buried",
                             PlatformId = 5,
                             ReleaseDate = new DateTime(2016, 12, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             URLToDocumentation = "Location to Doc",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(8088)
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(2653)
                         },
                         new
                         {
                             GameId = 129,
                             ConnectionType = (byte)2,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(8095),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(2662),
                             Name = "Sprint Vector",
                             PlatformId = 5,
                             ReleaseDate = new DateTime(2018, 2, 8, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             URLToDocumentation = "Location to Doc",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(8098)
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(2665)
                         },
                         new
                         {
                             GameId = 130,
                             ConnectionType = (byte)2,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(8105),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(2673),
                             Name = "Lone Echo",
                             PlatformId = 5,
                             ReleaseDate = new DateTime(2017, 7, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             URLToDocumentation = "Location to Doc",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(8107)
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(2676)
                         },
                         new
                         {
                             GameId = 131,
                             ConnectionType = (byte)2,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(8114),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(2684),
                             Name = "Luna",
                             PlatformId = 5,
                             ReleaseDate = new DateTime(2017, 10, 17, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             URLToDocumentation = "Location to Doc",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(8116)
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(2687)
                         },
                         new
                         {
                             GameId = 132,
                             ConnectionType = (byte)2,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(8123),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(2695),
                             Name = "Echo Arena",
                             PlatformId = 5,
                             ReleaseDate = new DateTime(2017, 7, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             URLToDocumentation = "Location to Doc",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(8125)
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(2698)
                         },
                         new
                         {
                             GameId = 133,
                             ConnectionType = (byte)2,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(8133),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(2707),
                             Name = "Battlefield 3",
                             PlatformId = 6,
                             ReleaseDate = new DateTime(2011, 10, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             URLToDocumentation = "Location to Doc",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(8135)
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(2709)
                         },
                         new
                         {
                             GameId = 134,
                             ConnectionType = (byte)2,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(8142),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(2718),
                             Name = "Fifa Soccer 12",
                             PlatformId = 6,
                             ReleaseDate = new DateTime(2011, 9, 27, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             URLToDocumentation = "Location to Doc",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(8144)
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(2721)
                         },
                         new
                         {
                             GameId = 135,
                             ConnectionType = (byte)2,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(8151),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(2729),
                             Name = "Fifa Soccer 13",
                             PlatformId = 6,
                             ReleaseDate = new DateTime(2012, 9, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             URLToDocumentation = "Location to Doc",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(8154)
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(2732)
                         },
                         new
                         {
                             GameId = 136,
                             ConnectionType = (byte)2,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(8161),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(2741),
                             Name = "Fifa Soccer 14",
                             PlatformId = 6,
                             ReleaseDate = new DateTime(2013, 9, 23, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             URLToDocumentation = "Location to Doc",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(8163)
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(2743)
                         },
                         new
                         {
                             GameId = 137,
                             ConnectionType = (byte)2,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(8170),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(2752),
                             Name = "Titanfall",
                             PlatformId = 6,
                             ReleaseDate = new DateTime(2014, 3, 11, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             URLToDocumentation = "Location to Doc",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(8172)
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(2754)
                         },
                         new
                         {
                             GameId = 138,
                             ConnectionType = (byte)2,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(8179),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(2763),
                             Name = "Fifa Soccer 15",
                             PlatformId = 6,
                             ReleaseDate = new DateTime(2014, 9, 23, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             URLToDocumentation = "Location to Doc",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(8181)
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(2765)
                         },
                         new
                         {
                             GameId = 139,
                             ConnectionType = (byte)2,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(8189),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(2882),
                             Name = "The SIMS 4",
                             PlatformId = 6,
                             ReleaseDate = new DateTime(2014, 9, 2, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             URLToDocumentation = "Location to Doc",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(8191)
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(2886)
                         },
                         new
                         {
                             GameId = 140,
                             ConnectionType = (byte)2,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(8198),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(2895),
                             Name = "Titanfall 2",
                             PlatformId = 6,
                             ReleaseDate = new DateTime(2016, 10, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             URLToDocumentation = "Location to Doc",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(8200)
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(2898)
                         },
                         new
                         {
                             GameId = 141,
                             ConnectionType = (byte)2,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(8207),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(2907),
                             Name = "Battlefield 1",
                             PlatformId = 6,
                             ReleaseDate = new DateTime(2016, 10, 21, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             URLToDocumentation = "Location to Doc",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(8209)
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(2909)
                         },
                         new
                         {
                             GameId = 142,
                             ConnectionType = (byte)2,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(8217),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(2918),
                             Name = "Tom Clany's Raimbow Six Siege",
                             PlatformId = 7,
                             ReleaseDate = new DateTime(2015, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             URLToDocumentation = "Location to Doc",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(8219)
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(2920)
                         },
                         new
                         {
                             GameId = 143,
                             ConnectionType = (byte)2,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(8226),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(2929),
                             Name = "Assassin's Creed Origins",
                             PlatformId = 7,
                             ReleaseDate = new DateTime(2017, 10, 27, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             URLToDocumentation = "Location to Doc",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(8228)
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(2932)
                         },
                         new
                         {
                             GameId = 144,
                             ConnectionType = (byte)2,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(8236),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(2940),
                             Name = "Fortnite",
                             PlatformId = 8,
                             ReleaseDate = new DateTime(2017, 7, 21, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             URLToDocumentation = "Location to Doc",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(8238)
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(2943)
                         },
                         new
                         {
                             GameId = 145,
                             ConnectionType = (byte)2,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(8245),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(2951),
                             Name = "Unreal Tournament",
                             PlatformId = 8,
                             ReleaseDate = new DateTime(1999, 11, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             URLToDocumentation = "Location to Doc",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(8247)
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(2954)
                         },
                         new
                         {
                             GameId = 146,
                             ConnectionType = (byte)2,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(8254),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(2962),
                             Name = "Lost Planet 2",
                             PlatformId = 9,
                             ReleaseDate = new DateTime(2010, 4, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             URLToDocumentation = "Location to Doc",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(8256)
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(2965)
                         },
                         new
                         {
                             GameId = 147,
                             ConnectionType = (byte)2,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(8264),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(2974),
                             Name = "DnD Daggerdale",
                             PlatformId = 9,
                             ReleaseDate = new DateTime(2011, 6, 24, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             URLToDocumentation = "Location to Doc",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(8266)
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(2976)
                         },
                         new
                         {
                             GameId = 148,
                             ConnectionType = (byte)2,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(8273),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(2985),
                             Name = "Need For Speed World",
                             PlatformId = 9,
                             ReleaseDate = new DateTime(2010, 7, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             URLToDocumentation = "Location to Doc",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(8275)
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(2987)
                         },
                         new
                         {
                             GameId = 149,
                             ConnectionType = (byte)2,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(8282),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(2996),
                             Name = "DarkSpore",
                             PlatformId = 9,
                             ReleaseDate = new DateTime(2011, 4, 26, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             URLToDocumentation = "Location to Doc",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(8284)
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(2998)
                         },
                         new
                         {
                             GameId = 150,
                             ConnectionType = (byte)2,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(8298),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(3007),
                             Name = "Might & Magic Heroes VI",
                             PlatformId = 9,
                             ReleaseDate = new DateTime(2011, 10, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             URLToDocumentation = "Location to Doc",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(8300)
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(3009)
                         },
                         new
                         {
                             GameId = 151,
                             ConnectionType = (byte)2,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(8307),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(3018),
                             Name = "LEGO Mini Figures Online",
                             PlatformId = 9,
                             ReleaseDate = new DateTime(2014, 10, 29, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             URLToDocumentation = "Location to Doc",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(8309)
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(3021)
                         },
                         new
                         {
                             GameId = 152,
                             ConnectionType = (byte)2,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(8316),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(3029),
                             Name = "TrackMania 2 - Canyon",
                             PlatformId = 9,
                             ReleaseDate = new DateTime(2011, 9, 14, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             URLToDocumentation = "Location to Doc",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(8318)
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(3032)
                         },
                         new
                         {
                             GameId = 153,
                             ConnectionType = (byte)2,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(8326),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(3040),
                             Name = "ShootMania",
                             PlatformId = 9,
                             ReleaseDate = new DateTime(2013, 4, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             URLToDocumentation = "Location to Doc",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(8328)
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(3043)
                         },
                         new
                         {
                             GameId = 154,
                             ConnectionType = (byte)2,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(8335),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(3052),
                             Name = "Trackmania - Valley",
                             PlatformId = 9,
                             ReleaseDate = new DateTime(2013, 7, 4, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             URLToDocumentation = "Location to Doc",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(8337)
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(3054)
                         },
                         new
                         {
                             GameId = 155,
                             ConnectionType = (byte)2,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(8344),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(3063),
                             Name = "Trackmania - Stadium",
                             PlatformId = 9,
                             ReleaseDate = new DateTime(2011, 9, 14, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             URLToDocumentation = "Location to Doc",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(8346)
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(3065)
                         },
                         new
                         {
                             GameId = 156,
                             ConnectionType = (byte)2,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(8354),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(3074),
                             Name = "Star Trek Online",
                             PlatformId = 9,
                             ReleaseDate = new DateTime(2010, 2, 2, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             URLToDocumentation = "Location to Doc",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(8356)
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(3077)
                         },
                         new
                         {
                             GameId = 157,
                             ConnectionType = (byte)2,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(8363),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(3085),
                             Name = "Planetside 2",
                             PlatformId = 10,
                             ReleaseDate = new DateTime(2012, 11, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             URLToDocumentation = "Location to Doc",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(8365)
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(3088)
                         },
                         new
                         {
                             GameId = 158,
                             ConnectionType = (byte)2,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(8372),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(3097),
                             Name = "Dragons Prophet",
                             PlatformId = 10,
                             ReleaseDate = new DateTime(2013, 9, 18, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             URLToDocumentation = "Location to Doc",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(8374)
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(3099)
                         },
                         new
                         {
                             GameId = 159,
                             ConnectionType = (byte)2,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(8382),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(3108),
                             Name = "Call of Duty: BO4",
                             PlatformId = 11,
                             ReleaseDate = new DateTime(2018, 10, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             URLToDocumentation = "Location to Doc",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(8384)
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(3110)
                         },
                         new
                         {
                             GameId = 160,
                             ConnectionType = (byte)2,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(8391),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(3119),
                             Name = "World of Warcraft",
                             PlatformId = 11,
                             ReleaseDate = new DateTime(2004, 11, 23, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             URLToDocumentation = "Location to Doc",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(8393)
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(3122)
                         },
                         new
                         {
                             GameId = 161,
                             ConnectionType = (byte)2,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(8401),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(3130),
                             Name = "Starcraft 2: Wings of Liberty",
                             PlatformId = 11,
                             ReleaseDate = new DateTime(2010, 7, 27, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             URLToDocumentation = "Location to Doc",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(8403)
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(3133)
                         },
                         new
                         {
                             GameId = 162,
                             ConnectionType = (byte)2,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(8410),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(3141),
                             Name = "Starcraft 2: Heart of the Swarm",
                             PlatformId = 11,
                             ReleaseDate = new DateTime(2013, 3, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             URLToDocumentation = "Location to Doc",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(8412)
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(3144)
                         },
                         new
                         {
                             GameId = 163,
                             ConnectionType = (byte)2,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(8419),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(3152),
                             Name = "Starcraft 2: Legacy of the Void",
                             PlatformId = 11,
                             ReleaseDate = new DateTime(2015, 11, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             URLToDocumentation = "Location to Doc",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(8421)
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(3155)
                         },
                         new
                         {
                             GameId = 164,
                             ConnectionType = (byte)2,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(8429),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(3164),
                             Name = "Starcraft 2: Nova Convert Ops",
                             PlatformId = 11,
                             ReleaseDate = new DateTime(2016, 3, 29, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             URLToDocumentation = "Location to Doc",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(8431)
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(3166)
                         },
                         new
                         {
                             GameId = 165,
                             ConnectionType = (byte)2,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(8438),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(3175),
                             Name = "Heartstone",
                             PlatformId = 11,
                             ReleaseDate = new DateTime(2014, 3, 11, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             URLToDocumentation = "Location to Doc",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(8440)
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(3177)
                         },
                         new
                         {
                             GameId = 166,
                             ConnectionType = (byte)2,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(8447),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(3186),
                             Name = "Overwatch",
                             PlatformId = 11,
                             ReleaseDate = new DateTime(2016, 5, 24, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             URLToDocumentation = "Location to Doc",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(8449)
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(3189)
                         },
                         new
                         {
                             GameId = 167,
                             ConnectionType = (byte)2,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(8457),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(3197),
                             Name = "Heroes of the Storm",
                             PlatformId = 11,
                             ReleaseDate = new DateTime(2015, 6, 2, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             URLToDocumentation = "Location to Doc",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(8459)
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(3199)
                         },
                         new
                         {
                             GameId = 168,
                             ConnectionType = (byte)2,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(8466),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(3208),
                             Name = "Starcraft",
                             PlatformId = 11,
                             ReleaseDate = new DateTime(1998, 3, 31, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             URLToDocumentation = "Location to Doc",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(8468)
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(3210)
                         },
                         new
                         {
                             GameId = 169,
                             ConnectionType = (byte)2,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(8476),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(3319),
                             Name = "Angry Birds",
                             PlatformId = 12,
                             ReleaseDate = new DateTime(2009, 12, 11, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             URLToDocumentation = "Location to Doc",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(8478)
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(3323)
                         },
                         new
                         {
                             GameId = 170,
                             ConnectionType = (byte)2,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(8485),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(3400),
                             Name = "Top Shot",
                             PlatformId = 12,
                             ReleaseDate = new DateTime(2012, 3, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             URLToDocumentation = "Location to Doc",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(8487)
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(3402)
                         },
                         new
                         {
                             GameId = 171,
                             ConnectionType = (byte)2,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(8494),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(3411),
                             Name = "Angry Birds Rio",
                             PlatformId = 12,
                             ReleaseDate = new DateTime(2011, 3, 21, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             URLToDocumentation = "Location to Doc",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(8496)
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(3414)
                         },
                         new
                         {
                             GameId = 172,
                             ConnectionType = (byte)2,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(8504),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(3422),
                             Name = "Fruit Ninja",
                             PlatformId = 12,
                             ReleaseDate = new DateTime(2010, 4, 21, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             URLToDocumentation = "Location to Doc",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(8506)
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(3425)
                         },
                         new
                         {
                             GameId = 173,
                             ConnectionType = (byte)2,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(8513),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(3434),
                             Name = "Pac-Man",
                             PlatformId = 12,
                             ReleaseDate = new DateTime(1980, 5, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             URLToDocumentation = "Location to Doc",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(8515)
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(3436)
                         },
                         new
                         {
                             GameId = 174,
                             ConnectionType = (byte)2,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(8522),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(3445),
                             Name = "Dr. Robotnik's Mean Bean Machine",
                             PlatformId = 12,
                             ReleaseDate = new DateTime(1993, 11, 26, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             URLToDocumentation = "Location to Doc",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(8524)
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(3447)
                         },
                         new
                         {
                             GameId = 175,
                             ConnectionType = (byte)2,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(8532),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(3456),
                             Name = "Sonic 3D Blast",
                             PlatformId = 12,
                             ReleaseDate = new DateTime(1996, 11, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             URLToDocumentation = "Location to Doc",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(8534)
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(3458)
                         },
                         new
                         {
                             GameId = 176,
                             ConnectionType = (byte)2,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(8541),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(3467),
                             Name = "Sonic the Hedgehog Spinball",
                             PlatformId = 12,
                             ReleaseDate = new DateTime(1993, 11, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             URLToDocumentation = "Location to Doc",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(8543)
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(3469)
                         },
                         new
                         {
                             GameId = 177,
                             ConnectionType = (byte)2,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(8550),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(3478),
                             Name = "Sonic & All-Stars Racing Transformed",
                             PlatformId = 12,
                             ReleaseDate = new DateTime(2012, 11, 16, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             URLToDocumentation = "Location to Doc",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(8552)
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 708, DateTimeKind.Local).AddTicks(3481)
                         });
                 });
 
@@ -4073,17 +5204,32 @@ namespace AccountAPI.Migrations
                         new
                         {
                             GameId = 1,
-                            RatingId = 1
+                            RatingId = 2
                         },
                         new
                         {
                             GameId = 1,
-                            RatingId = 4
+                            RatingId = 8
+                        },
+                        new
+                        {
+                            GameId = 1,
+                            RatingId = 13
+                        },
+                        new
+                        {
+                            GameId = 1,
+                            RatingId = 19
+                        },
+                        new
+                        {
+                            GameId = 1,
+                            RatingId = 25
                         },
                         new
                         {
                             GameId = 2,
-                            RatingId = 8
+                            RatingId = 3
                         },
                         new
                         {
@@ -4093,7 +5239,92 @@ namespace AccountAPI.Migrations
                         new
                         {
                             GameId = 2,
+                            RatingId = 15
+                        },
+                        new
+                        {
+                            GameId = 2,
+                            RatingId = 19
+                        },
+                        new
+                        {
+                            GameId = 2,
+                            RatingId = 27
+                        },
+                        new
+                        {
+                            GameId = 3,
+                            RatingId = 5
+                        },
+                        new
+                        {
+                            GameId = 3,
+                            RatingId = 12
+                        },
+                        new
+                        {
+                            GameId = 3,
+                            RatingId = 17
+                        },
+                        new
+                        {
+                            GameId = 3,
+                            RatingId = 22
+                        },
+                        new
+                        {
+                            GameId = 3,
+                            RatingId = 29
+                        },
+                        new
+                        {
+                            GameId = 4,
                             RatingId = 2
+                        },
+                        new
+                        {
+                            GameId = 4,
+                            RatingId = 8
+                        },
+                        new
+                        {
+                            GameId = 4,
+                            RatingId = 13
+                        },
+                        new
+                        {
+                            GameId = 4,
+                            RatingId = 19
+                        },
+                        new
+                        {
+                            GameId = 4,
+                            RatingId = 25
+                        },
+                        new
+                        {
+                            GameId = 5,
+                            RatingId = 4
+                        },
+                        new
+                        {
+                            GameId = 5,
+                            RatingId = 11
+                        },
+                        new
+                        {
+                            GameId = 5,
+                            RatingId = 15
+                        },
+                        new
+                        {
+                            GameId = 5,
+                            RatingId = 20
+                        },
+                        new
+                        {
+                            GameId = 5,
+                            RatingId = 27
                         });
                 });
 
@@ -4117,86 +5348,86 @@ namespace AccountAPI.Migrations
                         new
                         {
                             PlatformId = 1,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 657, DateTimeKind.Local).AddTicks(3432),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 706, DateTimeKind.Local).AddTicks(67),
                             Name = "Steam",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 657, DateTimeKind.Local).AddTicks(3699)
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 706, DateTimeKind.Local).AddTicks(445)
                         },
                         new
                         {
                             PlatformId = 2,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 657, DateTimeKind.Local).AddTicks(3956),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 706, DateTimeKind.Local).AddTicks(799),
                             Name = "Microsoft Store",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 657, DateTimeKind.Local).AddTicks(3960)
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 706, DateTimeKind.Local).AddTicks(805)
                         },
                         new
                         {
                             PlatformId = 3,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 657, DateTimeKind.Local).AddTicks(3969),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 706, DateTimeKind.Local).AddTicks(817),
                             Name = "Android",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 657, DateTimeKind.Local).AddTicks(3971)
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 706, DateTimeKind.Local).AddTicks(820)
                         },
                         new
                         {
                             PlatformId = 4,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 657, DateTimeKind.Local).AddTicks(3978),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 706, DateTimeKind.Local).AddTicks(827),
                             Name = "Steam VR",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 657, DateTimeKind.Local).AddTicks(3980)
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 706, DateTimeKind.Local).AddTicks(830)
                         },
                         new
                         {
                             PlatformId = 5,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 657, DateTimeKind.Local).AddTicks(3987),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 706, DateTimeKind.Local).AddTicks(838),
                             Name = "Oculus",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 657, DateTimeKind.Local).AddTicks(3989)
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 706, DateTimeKind.Local).AddTicks(841)
                         },
                         new
                         {
                             PlatformId = 6,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 657, DateTimeKind.Local).AddTicks(3995),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 706, DateTimeKind.Local).AddTicks(849),
                             Name = "Origin",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 657, DateTimeKind.Local).AddTicks(3997)
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 706, DateTimeKind.Local).AddTicks(851)
                         },
                         new
                         {
                             PlatformId = 7,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 657, DateTimeKind.Local).AddTicks(4017),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 706, DateTimeKind.Local).AddTicks(859),
                             Name = "Uplay",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 657, DateTimeKind.Local).AddTicks(4019)
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 706, DateTimeKind.Local).AddTicks(862)
                         },
                         new
                         {
                             PlatformId = 8,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 657, DateTimeKind.Local).AddTicks(4026),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 706, DateTimeKind.Local).AddTicks(870),
                             Name = "Epic",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 657, DateTimeKind.Local).AddTicks(4028)
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 706, DateTimeKind.Local).AddTicks(872)
                         },
                         new
                         {
                             PlatformId = 9,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 657, DateTimeKind.Local).AddTicks(4034),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 706, DateTimeKind.Local).AddTicks(880),
                             Name = "Standalone",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 657, DateTimeKind.Local).AddTicks(4036)
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 706, DateTimeKind.Local).AddTicks(883)
                         },
                         new
                         {
                             PlatformId = 10,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 657, DateTimeKind.Local).AddTicks(4043),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 706, DateTimeKind.Local).AddTicks(891),
                             Name = "Playsation",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 657, DateTimeKind.Local).AddTicks(4045)
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 706, DateTimeKind.Local).AddTicks(893)
                         },
                         new
                         {
                             PlatformId = 11,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 657, DateTimeKind.Local).AddTicks(4051),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 706, DateTimeKind.Local).AddTicks(902),
                             Name = "BattleNet",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 657, DateTimeKind.Local).AddTicks(4053)
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 706, DateTimeKind.Local).AddTicks(904)
                         },
                         new
                         {
                             PlatformId = 12,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 657, DateTimeKind.Local).AddTicks(4059),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 706, DateTimeKind.Local).AddTicks(912),
                             Name = "Intel Appup",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 657, DateTimeKind.Local).AddTicks(4061)
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 706, DateTimeKind.Local).AddTicks(914)
                         });
                 });
 
@@ -4235,349 +5466,349 @@ namespace AccountAPI.Migrations
                         {
                             RatingId = 1,
                             Age = 3,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(2398),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 707, DateTimeKind.Local).AddTicks(3130),
                             Definition = "Titles rated EC (Early Childhood) have content that may be suitable for ages 3 and older. Contains no material that parents would find inappropriate.",
                             ImageLink = "client/images/ESRB/eC.png",
                             Name = "Early Childhood",
                             RatingsCountry = "USA",
                             RatingsSystem = "ESRB",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(2610)
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 707, DateTimeKind.Local).AddTicks(3631)
                         },
                         new
                         {
                             RatingId = 2,
                             Age = 6,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(2843),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 707, DateTimeKind.Local).AddTicks(4154),
                             Definition = "Titles rated E (Everyone) have content that is generally suitable for all ages. May contain minimal cartoon, fantasy or mild violence and/or infrequent use of mild language.",
                             ImageLink = "client/images/ESRB/E.png",
                             Name = "Everyone",
                             RatingsCountry = "USA",
                             RatingsSystem = "ESRB",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(2847)
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 707, DateTimeKind.Local).AddTicks(4159)
                         },
                         new
                         {
                             RatingId = 3,
                             Age = 10,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(2856),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 707, DateTimeKind.Local).AddTicks(4171),
                             Definition = "Titles rated E10+ (Everyone 10 and older) have content that is generally suitable for ages 10 and up. May contain more cartoon, fantasy or mild violence, mild language and/or minimal suggestive themes.themes.",
                             ImageLink = "client/images/ESRB/E10.png",
                             Name = "Everyone 10+",
                             RatingsCountry = "USA",
                             RatingsSystem = "ESRB",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(2858)
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 707, DateTimeKind.Local).AddTicks(4174)
                         },
                         new
                         {
                             RatingId = 4,
                             Age = 13,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(2865),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 707, DateTimeKind.Local).AddTicks(4183),
                             Definition = "Titles rated T (Teen) have content that is generally suitable for ages 13 and up. May contain violence, suggestive themes, crude humor, minimal blood, simulated gambling, and/or infrequent use of strong language.",
                             ImageLink = "client/images/ESRB/T.png",
                             Name = "Teen",
                             RatingsCountry = "USA",
                             RatingsSystem = "ESRB",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(2867)
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 707, DateTimeKind.Local).AddTicks(4185)
                         },
                         new
                         {
                             RatingId = 5,
                             Age = 17,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(2874),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 707, DateTimeKind.Local).AddTicks(4194),
                             Definition = "Titles rated M (Mature) have content that is generally suitable for persons ages 17 and up. May contain intense violence, blood and gore, sexual content and/or strong language.",
                             ImageLink = "client/images/ESRB/M.png",
                             Name = "Mature",
                             RatingsCountry = "USA",
                             RatingsSystem = "ESRB",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(2876)
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 707, DateTimeKind.Local).AddTicks(4197)
                         },
                         new
                         {
                             RatingId = 6,
                             Age = 18,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(2883),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 707, DateTimeKind.Local).AddTicks(4205),
                             Definition = "Titles rated AO (Adults Only) have content that is only suitable for persons ages 17 and up. May contain intense violence, blood and gore, sexual content and/or strong language.",
                             ImageLink = "client/images/ESRB/Ao.png",
                             Name = "Adults Only 18+",
                             RatingsCountry = "USA",
                             RatingsSystem = "ESRB",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(2885)
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 707, DateTimeKind.Local).AddTicks(4208)
                         },
                         new
                         {
                             RatingId = 7,
                             Age = -1,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(2892),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 707, DateTimeKind.Local).AddTicks(4216),
                             Definition = "Titles listed as RP (Rating Pending) have not yet been assigned a final ESRB rating. (This symbol appears only in advertising and promotional materials prior to a game's release, and will be replaced by a game’s rating once it has been assigned.)",
                             ImageLink = "client/images/ESRB/RP.png",
                             Name = "Rating Pending",
                             RatingsCountry = "USA",
                             RatingsSystem = "ESRB",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(2894)
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 707, DateTimeKind.Local).AddTicks(4218)
                         },
                         new
                         {
                             RatingId = 8,
                             Age = 3,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(2901),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 707, DateTimeKind.Local).AddTicks(4227),
                             Definition = "The content of games with a PEGI 3 rating is considered suitable for all age groups. The game should not contain any sounds or pictures that are likely to frighten young children. A very mild form of violence (in a comical context or a childlike setting) is acceptable. No bad language should be heard.",
                             ImageLink = "client/images/PEGI/3.png",
                             Name = "PEGI 3",
                             RatingsCountry = "EU",
                             RatingsSystem = "PEGI",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(2903)
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 707, DateTimeKind.Local).AddTicks(4230)
                         },
                         new
                         {
                             RatingId = 9,
                             Age = 7,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(2910),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 707, DateTimeKind.Local).AddTicks(4238),
                             Definition = "Game content with scenes or sounds that can possibly frightening to younger children should fall in this category. Very mild forms of violence (implied, non-detailed, or non-realistic violence) are acceptable for a game with a PEGI 7 rating.",
                             ImageLink = "client/images/PEGI/7.png",
                             Name = "PEGI 7",
                             RatingsCountry = "EU",
                             RatingsSystem = "PEGI",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(2912)
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 707, DateTimeKind.Local).AddTicks(4240)
                         },
                         new
                         {
                             RatingId = 10,
                             Age = 12,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(2919),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 707, DateTimeKind.Local).AddTicks(4248),
                             Definition = "Video games that show violence of a slightly more graphic nature towards fantasy characters or non-realistic violence towards human-like characters would fall in this age category. Sexual innuendo or sexual posturing can be present, while any bad language in this category must be mild. Gambling as it is normally carried out in real life in casinos or gambling halls can also be present (e.g. card games that in real life would be played for money).",
                             ImageLink = "client/images/PEGI/12.png",
                             Name = "PEGI 12",
                             RatingsCountry = "EU",
                             RatingsSystem = "PEGI",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(2921)
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 707, DateTimeKind.Local).AddTicks(4251)
                         },
                         new
                         {
                             RatingId = 11,
                             Age = 16,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(2928),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 707, DateTimeKind.Local).AddTicks(4259),
                             Definition = "This rating is applied once the depiction of violence (or sexual activity) reaches a stage that looks the same as would be expected in real life. The use of bad language in games with a PEGI 16 rating can be more extreme, while games of chance, and the use of tobacco, alcohol or illegal drugs can also be present.",
                             ImageLink = "client/images/PEGI/16.png",
                             Name = "PEGI 16",
                             RatingsCountry = "EU",
                             RatingsSystem = "PEGI",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(2930)
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 707, DateTimeKind.Local).AddTicks(4262)
                         },
                         new
                         {
                             RatingId = 12,
                             Age = 18,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(2937),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 707, DateTimeKind.Local).AddTicks(4270),
                             Definition = "The adult classification is applied when the level of violence reaches a stage where it becomes a depiction of gross violence, apparently motiveless killing, or violence towards defenceless characters. The glamorisation of the use of illegal drugs and explicit sexual activity should also fall into this age category.",
                             ImageLink = "client/images/PEGI/18.png",
                             Name = "PEGI 18",
                             RatingsCountry = "EU",
                             RatingsSystem = "PEGI",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(2939)
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 707, DateTimeKind.Local).AddTicks(4273)
                         },
                         new
                         {
                             RatingId = 13,
                             Age = 0,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(2946),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 707, DateTimeKind.Local).AddTicks(4281),
                             Definition = "Any age",
                             ImageLink = "client/images/RARS/0+.png",
                             Name = "0+",
                             RatingsCountry = "Russia",
                             RatingsSystem = "RARS",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(2948)
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 707, DateTimeKind.Local).AddTicks(4284)
                         },
                         new
                         {
                             RatingId = 14,
                             Age = 6,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(2955),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 707, DateTimeKind.Local).AddTicks(4292),
                             Definition = "The age 6 and older",
                             ImageLink = "client/images/RARS/6+.png",
                             Name = "6+",
                             RatingsCountry = "Russia",
                             RatingsSystem = "RARS",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(2957)
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 707, DateTimeKind.Local).AddTicks(4295)
                         },
                         new
                         {
                             RatingId = 15,
                             Age = 12,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(2964),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 707, DateTimeKind.Local).AddTicks(4303),
                             Definition = "The age 12 and older",
                             ImageLink = "client/images/RARS/12+.png",
                             Name = "12+",
                             RatingsCountry = "Russia",
                             RatingsSystem = "RARS",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(2966)
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 707, DateTimeKind.Local).AddTicks(4305)
                         },
                         new
                         {
                             RatingId = 16,
                             Age = 16,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(2973),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 707, DateTimeKind.Local).AddTicks(4314),
                             Definition = "The age 16 and older",
                             ImageLink = "client/images/RARS/16+.png",
                             Name = "16+",
                             RatingsCountry = "Russia",
                             RatingsSystem = "RARS",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(2975)
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 707, DateTimeKind.Local).AddTicks(4317)
                         },
                         new
                         {
                             RatingId = 17,
                             Age = 18,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(2982),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 707, DateTimeKind.Local).AddTicks(4325),
                             Definition = "The age 18 and older",
                             ImageLink = "client/images/RARS/18+.png",
                             Name = "18+",
                             RatingsCountry = "Russia",
                             RatingsSystem = "RARS",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(2984)
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 707, DateTimeKind.Local).AddTicks(4327)
                         },
                         new
                         {
                             RatingId = 18,
                             Age = 0,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(2991),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 707, DateTimeKind.Local).AddTicks(4335),
                             Definition = "Contains material available for general viewing. This category does not necessarily designate a children's film or game. Although not mandatory at this category, the Board may provide consumer information. Consumer advice at G classification usually relates to impacts on very young children. The content is very mild in impact.",
                             ImageLink = "client/images/ACB/E.png",
                             Name = "Exempt from classification",
                             RatingsCountry = "Australia",
                             RatingsSystem = "ACB",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(2993)
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 707, DateTimeKind.Local).AddTicks(4338)
                         },
                         new
                         {
                             RatingId = 19,
                             Age = 0,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(3000),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 707, DateTimeKind.Local).AddTicks(4346),
                             Definition = "Contains material available for general viewing. This category does not necessarily designate a children's film or game. Although not mandatory at this category, the Board may provide consumer information. Consumer advice at G classification usually relates to impacts on very young children. The content is very mild in impact.",
                             ImageLink = "client/images/ACB/General.png",
                             Name = "General",
                             RatingsCountry = "Australia",
                             RatingsSystem = "ACB",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(3002)
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 707, DateTimeKind.Local).AddTicks(4349)
                         },
                         new
                         {
                             RatingId = 20,
                             Age = 8,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(3008),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 707, DateTimeKind.Local).AddTicks(4357),
                             Definition = "Not recommended for viewing or playing by people under 15 without guidance from parents or guardians. Contains material that young viewers may find confusing or upsetting. The content is mild in impact.",
                             ImageLink = "client/images/ACB/PG.png",
                             Name = "Parental Guidance",
                             RatingsCountry = "Australia",
                             RatingsSystem = "ACB",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(3010)
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 707, DateTimeKind.Local).AddTicks(4359)
                         },
                         new
                         {
                             RatingId = 21,
                             Age = 15,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(3017),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 707, DateTimeKind.Local).AddTicks(4536),
                             Definition = "Recommended for people aged 15 years and over. People under 15 may legally access this material because it is an advisory category. This category contains material that may require a mature perspective, but is not deemed too strong for younger viewers. The content is moderate in impact, although the Moderate indicator prefix is no longer used in the consumer advice, eg. Moderate violence is referred to as Violence.",
                             ImageLink = "client/images/ACB/M.png",
                             Name = "Mature",
                             RatingsCountry = "Australia",
                             RatingsSystem = "ACB",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(3019)
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 707, DateTimeKind.Local).AddTicks(4539)
                         },
                         new
                         {
                             RatingId = 22,
                             Age = 15,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(3026),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 707, DateTimeKind.Local).AddTicks(4548),
                             Definition = "Contains material that is considered unsuitable for exhibition by persons under the age of 15. People under 15 may legally purchase, rent, exhibit or view such content only under the supervision of a parent or adult guardian. A person may be asked to show proof of age before renting or purchasing an MA 15+ film or computer game. The content is strong in impact.",
                             ImageLink = "client/images/ACB/MA.png",
                             Name = "Mature Accompanied",
                             RatingsCountry = "Australia",
                             RatingsSystem = "ACB",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(3028)
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 707, DateTimeKind.Local).AddTicks(4550)
                         },
                         new
                         {
                             RatingId = 23,
                             Age = 18,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(3035),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 707, DateTimeKind.Local).AddTicks(4559),
                             Definition = "Contains material that is considered unsuitable for exhibition to persons under the age of 18. People under 18 may not legally buy, rent, exhibit or view R 18+ classified content. A person may be asked for proof of their age before purchasing, hiring or viewing an R 18+ film or computer game at a retail store or cinema. Some material classified R 18+ may be offensive to sections of the adult community. The content is high in impact.",
                             ImageLink = "client/images/ACB/R18.png",
                             Name = "Restricted R",
                             RatingsCountry = "Australia",
                             RatingsSystem = "ACB",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(3037)
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 707, DateTimeKind.Local).AddTicks(4561)
                         },
                         new
                         {
                             RatingId = 24,
                             Age = 18,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(3044),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 707, DateTimeKind.Local).AddTicks(4570),
                             Definition = "Contains material that is pornographic in nature. People under 18 may not legally buy, rent, possess, exhibit or view these films. The exhibition or sale of these films to people under the age of 18 years is a criminal offence carrying a maximum fine of $5,500. Films classified as X 18+ are banned (via state government legislation) from being sold or rented in all Australian states (but are legal to possess except in certain parts of the Northern Territory) and are legally available to purchase only in the Australian Capital Territory and the Northern Territory. Importing X 18+ material from these territories to any other state is legal (as the Australian Constitution forbids any restrictions on trade between the states and territories). The content is sexually explicit, and the rating does not exist for video games.",
                             ImageLink = "client/images/ACB/X18.png",
                             Name = "Restricted X",
                             RatingsCountry = "Australia",
                             RatingsSystem = "ACB",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(3046)
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 707, DateTimeKind.Local).AddTicks(4572)
                         },
                         new
                         {
                             RatingId = 25,
                             Age = 0,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(3053),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 707, DateTimeKind.Local).AddTicks(4581),
                             Definition = "Approved without age restriction in accordance with Art. 14 German Children and Young Persons Protection Act (JuSchG).  Games without age restriction are games which are directly aimed at children and young persons as well as at an adult buyer group.",
                             ImageLink = "client/images/USK/0.png",
                             Name = "0",
                             RatingsCountry = "Germany",
                             RatingsSystem = "USK",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(3055)
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 707, DateTimeKind.Local).AddTicks(4584)
                         },
                         new
                         {
                             RatingId = 26,
                             Age = 6,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(3062),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 707, DateTimeKind.Local).AddTicks(4592),
                             Definition = "Approved for children aged 6 and above in accordance with Art. 14 German Children and Young Persons Protection Act (JuSchG).  These games mostly involve family-friendly games which may be more exciting and competitive (e.g. via faster game speeds and more complex tasks).",
                             ImageLink = "client/images/USK/6.png",
                             Name = "6",
                             RatingsCountry = "Germany",
                             RatingsSystem = "USK",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(3064)
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 707, DateTimeKind.Local).AddTicks(4594)
                         },
                         new
                         {
                             RatingId = 27,
                             Age = 12,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(3071),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 707, DateTimeKind.Local).AddTicks(4603),
                             Definition = "Approved for children aged 12 and above in accordance with Art. 14 German Children and Young Persons Protection Act (JuSchG).  These games feature much more of a competitive edge. Game scenarios contain little violence, enabling players to distance themselves sufficiently from events.",
                             ImageLink = "client/images/USK/12.png",
                             Name = "12",
                             RatingsCountry = "Germany",
                             RatingsSystem = "USK",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(3073)
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 707, DateTimeKind.Local).AddTicks(4606)
                         },
                         new
                         {
                             RatingId = 28,
                             Age = 16,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(3080),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 707, DateTimeKind.Local).AddTicks(4614),
                             Definition = "Approved for children aged 16 and above in accordance with Art. 14 German Children and Young Persons Protection Act (JuSchG).  Games approved for children aged 16 and above may include acts of violence. This means that it is also natural for adults to buy them.",
                             ImageLink = "client/images/USK/16.png",
                             Name = "16",
                             RatingsCountry = "Germany",
                             RatingsSystem = "USK",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(3082)
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 707, DateTimeKind.Local).AddTicks(4616)
                         },
                         new
                         {
                             RatingId = 29,
                             Age = 18,
-                            CreatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(3088),
+                            CreatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 707, DateTimeKind.Local).AddTicks(4625),
                             Definition = "Not approved for anyone under 18 in accordance with Art. 14 German Children and Young Persons Protection Act (JuSchG).  These games almost always involve violent game concepts and frequently generate a dark and threatening atmosphere. This makes them suitable for adults only. These games often contain brutal, strong bloody violence and/or glorify war and/or human rights violations.",
                             ImageLink = "client/images/USK/18.png",
                             Name = "18",
                             RatingsCountry = "Germany",
                             RatingsSystem = "USK",
-                            UpdatedAt = new DateTime(2019, 7, 8, 19, 49, 11, 658, DateTimeKind.Local).AddTicks(3090)
+                            UpdatedAt = new DateTime(2019, 7, 9, 11, 29, 47, 707, DateTimeKind.Local).AddTicks(4627)
                         });
                 });
 
@@ -4591,6 +5822,11 @@ namespace AccountAPI.Migrations
                     b.HasOne("AccountAPI.Models.Event", "Event")
                         .WithMany("Accounts")
                         .HasForeignKey("EventId");
+
+                    b.HasOne("AccountAPI.Models.Platform", "Platform")
+                        .WithMany()
+                        .HasForeignKey("PlatformId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("AccountAPI.Models.AccountPlatform", b =>

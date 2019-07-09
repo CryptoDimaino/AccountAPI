@@ -22,10 +22,6 @@ namespace AccountAPI.Models
 
         protected override void OnModelCreating(ModelBuilder ModelBuilder)
         {
-            
-            // Make sure each Code is Unqiue
-            ModelBuilder.Entity<Code>().HasIndex(c => c.CodeString).IsUnique();
-
             // Create All Keys for Manay to Many tables
             ModelBuilder.Entity<GameAccount>().HasKey(ga => new { ga.GameId, ga.AccountId });
             ModelBuilder.Entity<GameControllerType>().HasKey(gc => new { gc.GameId, gc.ControllerTypeId });
