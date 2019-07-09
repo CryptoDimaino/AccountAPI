@@ -50,6 +50,7 @@ namespace AccountAPI
 
             services.AddSingleton<ILoggerManager, LoggerManager>();
             services.AddTransient<IAccountRepository, AccountRepository>();
+            services.AddTransient<IPlatformRepository, PlatformRepository>();
 
             services.AddMvc(options => 
             {

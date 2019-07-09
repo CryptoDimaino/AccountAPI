@@ -2521,21 +2521,73 @@ namespace AccountAPI
 			});
 
 			// Game Rating
+			// 1 - Ec
+			// 2 - E
+			// 3 - E10
+			// 4 - T
+			// 5 - M
+			// 6 - Ao
+
+			// 7 - RP
+			// 8 - PEGI 3
+			// 9 - PEGI 7
+			// 10 - PEGI 12
+			// 11 - PEGI 16
+			// 12 - PEGI 18
+
+			// RARS
+			// 13 - 0+
+			// 14 - 6+
+			// 15 - 12+
+			// 16 - 16+
+			// 17 - 18+
+
+			// ACB
+			// 18 - Excepmt
+			// 19 - General
+			// 20 - PArental Guidance
+			// 21 -  Mature
+			// 22 - Mature Accompanied
+			// 23 - Restricted R
+			// 24 - Restricted X
+
+			// 25 - 0
+			// 26 - 6
+			// 27 - 12
+			// 28 - 16
+			// 29 - 18
+
+
 			ModelBuilder.Entity<GameRating>().HasData(
 			new GameRating() 
             {
 				GameId = 1,
-				RatingId = 1
+				RatingId = 2
 			},
 			new GameRating() 
             {
 				GameId = 1,
-				RatingId = 4
+				RatingId = 8
+			},
+			new GameRating() 
+            {
+				GameId = 1,
+				RatingId = 13
+			},
+			new GameRating() 
+            {
+				GameId = 1,
+				RatingId = 19
+			},
+			new GameRating() 
+            {
+				GameId = 1,
+				RatingId = 25
 			},
 			new GameRating() 
             {
 				GameId = 2,
-				RatingId = 8
+				RatingId = 3
 			},
 			new GameRating() 
             {
@@ -2545,8 +2597,95 @@ namespace AccountAPI
 			new GameRating() 
             {
 				GameId = 2,
+				RatingId = 15
+			},
+			new GameRating() 
+            {
+				GameId = 2,
+				RatingId = 19
+			},
+			new GameRating() 
+            {
+				GameId = 2,
+				RatingId = 27
+			},
+			new GameRating() 
+            {
+				GameId = 3,
+				RatingId = 5
+			},
+			new GameRating() 
+            {
+				GameId = 3,
+				RatingId = 12
+			},
+			new GameRating() 
+            {
+				GameId = 3,
+				RatingId = 17
+			},
+			new GameRating() 
+            {
+				GameId = 3,
+				RatingId = 22
+			},
+			new GameRating() 
+            {
+				GameId = 3,
+				RatingId = 29
+			},
+			new GameRating() 
+            {
+				GameId = 4,
 				RatingId = 2
-			});
+			},
+			new GameRating() 
+            {
+				GameId = 4,
+				RatingId = 8
+			},
+			new GameRating() 
+            {
+				GameId = 4,
+				RatingId = 13
+			},
+			new GameRating() 
+            {
+				GameId = 4,
+				RatingId = 19
+			},
+			new GameRating() 
+            {
+				GameId = 4,
+				RatingId = 25
+			},
+			new GameRating() 
+            {
+				GameId = 5,
+				RatingId = 4
+			},
+			new GameRating() 
+            {
+				GameId = 5,
+				RatingId = 11
+			},
+			new GameRating() 
+            {
+				GameId = 5,
+				RatingId = 15
+			},
+			new GameRating() 
+            {
+				GameId = 5,
+				RatingId = 20
+			},
+			new GameRating() 
+            {
+				GameId = 5,
+				RatingId = 27
+			}
+
+			);
 
 			// Account Platform
 			ModelBuilder.Entity<AccountPlatform>().HasData(

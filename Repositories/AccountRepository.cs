@@ -19,7 +19,7 @@ namespace AccountAPI.Repositories
 
         public async Task<IEnumerable<Account>> GetAllAccountsAsync()
         {
-            return await GetAll().ToListAsync();
+            return await GetAll().Include(a => a.GameAccounts).ToListAsync();
         }
 
         public async Task<Account> GetAccountByIDAsync(int AccountId)
