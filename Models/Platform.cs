@@ -14,6 +14,8 @@ namespace AccountAPI.Models
         [Required]
         public string Name {get;set;}
         [Required]
+        public string URLToDocumentation {get;set;}
+        [Required]
         public DateTime CreatedAt {get;set;} = DateTime.Now;
         [Required]
         public DateTime UpdatedAt {get;set;} = DateTime.Now;
