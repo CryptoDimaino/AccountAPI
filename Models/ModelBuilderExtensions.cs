@@ -2727,38 +2727,38 @@ namespace AccountAPI
 				PlatformId = 5
 			});
 
-			// Game Account
-			ModelBuilder.Entity<GameAccount>().HasData(
-			new GameAccount()
-            {
-				GameId = 1,
-				AccountId = 1
-			},
-			new GameAccount() 
-            {
-				GameId = 2,
-				AccountId = 1
-			},
-			new GameAccount() 
-            {
-				GameId = 3,
-				AccountId = 1
-			},
-			new GameAccount() 
-            {
-				GameId = 3,
-				AccountId = 2
-			},
-			new GameAccount() 
-            {
-				GameId = 1,
-				AccountId = 2
-			},
-			new GameAccount() 
-            {
-				GameId = 2,
-				AccountId = 2
-			});
+			// // Game Account
+			// ModelBuilder.Entity<GameAccount>().HasData(
+			// new GameAccount()
+            // {
+			// 	GameId = 1,
+			// 	AccountId = 1
+			// },
+			// new GameAccount() 
+            // {
+			// 	GameId = 2,
+			// 	AccountId = 1
+			// },
+			// new GameAccount() 
+            // {
+			// 	GameId = 3,
+			// 	AccountId = 1
+			// },
+			// new GameAccount() 
+            // {
+			// 	GameId = 3,
+			// 	AccountId = 2
+			// },
+			// new GameAccount() 
+            // {
+			// 	GameId = 1,
+			// 	AccountId = 2
+			// },
+			// new GameAccount() 
+            // {
+			// 	GameId = 2,
+			// 	AccountId = 2
+			// });
 		}
 	}
 }

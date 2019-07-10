@@ -24,7 +24,7 @@ namespace AccountAPI.Controllers
             _IAccountRepository = IAccountRepository;
         }
 
-        // GET api/Account
+        // GET api/account
         [HttpGet]
         public async Task<IActionResult> GetAccounts()
         {
@@ -40,7 +40,7 @@ namespace AccountAPI.Controllers
             }
         }
 
-        // GET api/Account/{id}
+        // GET api/account/{id}
         [HttpGet("{id}")]
         public async Task<IActionResult> GetAccountId(int id)
         {
@@ -56,7 +56,7 @@ namespace AccountAPI.Controllers
             }
         }
 
-        // GET api/Account/{name}
+        // GET api/account/name/{name}
         [HttpGet("name/{name}")]
         public async Task<IActionResult> GetAccountByName(string Name)
         {
@@ -73,22 +73,24 @@ namespace AccountAPI.Controllers
         }
 
         // POST api/Account/CreateNewAccount
+        /// <summary>
+        /// Creates a new user account 
+        /// </summary>
+        /// <returns>
+        /// No Content or 500 Internal Server Error
+        /// </returns>
         [HttpPost("CreateNewAccount")]
         public async Task<IActionResult> CreateNewAccount()
         {
-            Console.WriteLine("Here");
             int Count = await _IAccountRepository.CountNumberOfAccountsAsync();
             Account NewAccount = new Account()
             {
                 Name = "Account" + Count,
                 Password = "Password" + Count,
-                // Email = $"Account{Count}@gmail.com",
-                // EmailPassword = "",
                 CheckedOutStatus = false,
                 EventId = 1,
                 CreatedAt = DateTime.Now,
                 UpdatedAt = DateTime.Now,
-                // AccountProfileId = 1
             };
 
             try
@@ -170,8 +172,8 @@ namespace AccountAPI.Controllers
             }
         }
 
-        // GET api/Account/DTO
-        [HttpGet("DTO")]
+        // GET api/account/games
+        [HttpGet("games")]
         public async Task<IActionResult> GetAllAccountDTOAsync()
         {
             try

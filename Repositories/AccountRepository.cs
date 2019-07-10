@@ -13,19 +13,29 @@ namespace AccountAPI.Repositories
 {
     public class AccountRepository : GenericRepository<Account>, IAccountRepository
     {
+        
         public AccountRepository(Context Context) : base(Context)
         {
 
         }
 
-        public async Task<IEnumerable<Account>> GetAllAccountsAsync()
+        public async Task<IEnumerable<AccountsDTO>> GetAllAccountsAsync()
         {
-            return await GetAll().Include(a => a.GameAccounts).Include(p => p.Platform).ToListAsync();
+            return await GetAll().Include(a => a.Event).Include(p => p.Platform).Include(at => at.AccountType).Select(a => new AccountsDTO()
+            {
+                AccountId = a.AccountId,
+                Name = a.Name,
+                Password = a.Password,
+                CheckedOutStatus = a.CheckedOutStatus,
+                PlatformName = a.Platform.Name,
+                EventName = a.Event.Name,
+                AccountType = a.AccountType.Type
+            }).OrderBy(a => a.AccountId).ToListAsync();
         }
 
         public async Task<Account> GetAccountByIDAsync(int AccountId)
         {
-            return await FindByCondition(a => a.AccountId == AccountId).FirstOrDefaultAsync();
+            return await FindByCondition(a => a.AccountId == AccountId).Include(a => a.Event).Include(p => p.Platform).Include(at => at.AccountType).Include(a => a.Codes).FirstOrDefaultAsync();
         }
 
         public async Task<Account> GetAccountByNameAsync(string Name)
@@ -58,15 +68,15 @@ namespace AccountAPI.Repositories
 
         public async Task<IEnumerable<AccountDTO>> GetAllAccountDTOAsync()
         {
-            return await GetAll().Include(a => a.GameAccounts).Select(a => new AccountDTO()
+            return await GetAll().Include(a => a.Codes).Select(a => new AccountDTO()
             {
                 AccountId = a.AccountId,
                 Name = a.Name,
                 Password = a.Password,
                 PlatformName = a.Platform.Name,
-                GameAccounts = a.GameAccounts.Select(ga => new AccountGameDTO()
+                Games = a.Codes.Select(c => new AccountCodeDTO()
                 {
-                    Name = ga.Game.Name
+                    Name = c.Game.Name
                 })
             }).OrderBy(a => a.AccountId).ToListAsync();
         }

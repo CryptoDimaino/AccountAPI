@@ -10,7 +10,7 @@ namespace AccountAPI.Models
         public DbSet<Account> Accounts {get;set;}
         public DbSet<AccountProfile> AccountProfiles {get;set;}
         public DbSet<Game> Games {get;set;}
-        public DbSet<GameAccount> GameAccounts {get;set;}
+        // public DbSet<GameAccount> GameAccounts {get;set;}
         public DbSet<AccountPlatform> AccountPlatforms {get;set;}
         public DbSet<Code> Codes {get;set;}
         public DbSet<Event> Events {get;set;}
@@ -23,7 +23,7 @@ namespace AccountAPI.Models
         protected override void OnModelCreating(ModelBuilder ModelBuilder)
         {
             // Create All Keys for Manay to Many tables
-            ModelBuilder.Entity<GameAccount>().HasKey(ga => new { ga.GameId, ga.AccountId });
+            // ModelBuilder.Entity<GameAccount>().HasKey(ga => new { ga.GameId, ga.AccountId });
             ModelBuilder.Entity<GameControllerType>().HasKey(gc => new { gc.GameId, gc.ControllerTypeId });
             ModelBuilder.Entity<GameRating>().HasKey(gr => new { gr.GameId, gr.RatingId });
             ModelBuilder.Entity<AccountPlatform>().HasKey(ap => new { ap.AccountId, ap.PlatformId });

@@ -31,7 +31,7 @@ namespace AccountAPI.Models
         public int PlatformId {get;set;}
         public Platform Platform {get;set;}
 
-        public ICollection<GameAccount> GameAccounts {get;} = new List<GameAccount>();
+        public ICollection<Code> Codes {get;} = new List<Code>();
         public virtual AccountProfile Profile {get;set;}
     }
 }

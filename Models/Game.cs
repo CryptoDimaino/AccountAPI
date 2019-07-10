@@ -30,7 +30,7 @@ namespace AccountAPI.Models
         public Platform Platform {get;set;}
         public ICollection<GameControllerType> GameControllerTypes {get;} = new List<GameControllerType>();
 
-        public ICollection<GameAccount> GameAccounts {get;} = new List<GameAccount>();
+        // public ICollection<GameAccount> GameAccounts {get;} = new List<GameAccount>();
         public ICollection<GameRating> GameRatings {get;} = new List<GameRating>();
     }
 }

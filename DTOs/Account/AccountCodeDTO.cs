@@ -3,7 +3,7 @@ using AccountAPI.Models;
 
 namespace AccountAPI.DTOs
 {
-    public class AccountGameDTO
+    public class AccountCodeDTO
     {
         public string Name {get;set;}
     }

@@ -13,7 +13,7 @@ namespace AccountAPI.Contracts
 {
     public interface IAccountRepository : IGenericRepository<Account>
     {
-        Task<IEnumerable<Account>> GetAllAccountsAsync();
+        Task<IEnumerable<AccountsDTO>> GetAllAccountsAsync();
         Task<Account> GetAccountByIDAsync(int AccountId);
         Task<Account> GetAccountByNameAsync(string Name);
         Task CreateAccountAsync(Account NewAccount);
