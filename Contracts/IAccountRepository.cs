@@ -7,7 +7,7 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
-// using AccountAPI.DTOs;
+using AccountAPI.DTOs;
 
 namespace AccountAPI.Contracts
 {
@@ -20,5 +20,7 @@ namespace AccountAPI.Contracts
         Task UpdateAccountAsync(Account AccountToUpdate);
         Task DeleteAccountAsync(Account AccountToDelete);
         Task<int> CountNumberOfAccountsAsync();
+
+        Task<IEnumerable<AccountDTO>> GetAllAccountDTOAsync();
     }
 }

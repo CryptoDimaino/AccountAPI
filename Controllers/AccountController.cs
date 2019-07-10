@@ -169,5 +169,21 @@ namespace AccountAPI.Controllers
                 return StatusCode(500, "Internal Server Error");
             }
         }
+
+        // GET api/Account/DTO
+        [HttpGet("DTO")]
+        public async Task<IActionResult> GetAllAccountDTOAsync()
+        {
+            try
+            {
+                _Logger.LogInfo(ControllerContext, $"List of all accounts and the games in each account!");
+                return Ok(await _IAccountRepository.GetAllAccountDTOAsync());
+            }
+            catch(Exception ex)
+            {
+                _Logger.LogError(ControllerContext, $"Error Message: {ex.Message}");
+                return StatusCode(500, "Internal Server Error");
+            }
+        }
     }
 }

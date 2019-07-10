@@ -2,6 +2,5 @@ appsettings.json
 obj/*
 bin/*
 logs/*
-SteamOriginalAccounts.csv
 Migrations/*
 ModelBuilderSensitiveData.cs

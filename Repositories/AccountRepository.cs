@@ -7,6 +7,7 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
+using AccountAPI.DTOs;
 
 namespace AccountAPI.Repositories
 {
@@ -53,6 +54,21 @@ namespace AccountAPI.Repositories
         public async Task<int> CountNumberOfAccountsAsync()
         {
             return await CountAsync();
+        }
+
+        public async Task<IEnumerable<AccountDTO>> GetAllAccountDTOAsync()
+        {
+            return await GetAll().Include(a => a.GameAccounts).Select(a => new AccountDTO()
+            {
+                AccountId = a.AccountId,
+                Name = a.Name,
+                Password = a.Password,
+                PlatformName = a.Platform.Name,
+                GameAccounts = a.GameAccounts.Select(ga => new AccountGameDTO()
+                {
+                    Name = ga.Game.Name
+                })
+            }).OrderBy(a => a.AccountId).ToListAsync();
         }
     }
 }

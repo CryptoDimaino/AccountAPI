@@ -29,7 +29,7 @@ namespace AccountAPI.Controllers
         [HttpGet]
         public async Task<IActionResult> GetRatings()
         {
-            return Ok(await _Context.Ratings.ToListAsync());
+            return Ok(await _Context.Ratings.Include(r => r.GameRatings).ThenInclude(gr => gr.Game).ToListAsync());
         }
 
         // // GET api/Account

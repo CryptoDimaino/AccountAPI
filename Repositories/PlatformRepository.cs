@@ -15,7 +15,6 @@ namespace AccountAPI.Repositories
     {
         public PlatformRepository(Context Context) : base(Context)
         {
-
         }
 
         public async Task<IEnumerable<Platform>> GetAllPlatformsAsync()
