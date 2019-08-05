@@ -13,7 +13,7 @@ namespace AccountAPI.Models
         public int GameId {get;set;}
         [Required]
         public string Name {get;set;}
-        [Required]
+        public int rawgId {get;set;}
         public int ConnectionType {get;set;}
         public DateTime ReleaseDate {get;set;}
 		public string URLToDocumentation {get;set;}

@@ -7,6 +7,7 @@ using AccountAPI.Contracts;
 using AccountAPI.Models;
 using Microsoft.EntityFrameworkCore;
 using AccountAPI.Repositories;
+using AccountAPI.Services;
 
 namespace AccountAPI.Controllers
 {
@@ -31,6 +32,9 @@ namespace AccountAPI.Controllers
         {
             try
             {
+                // var response = new ListResponse<GameDTO>();
+                // response
+
                 _Logger.LogInfo(ControllerContext, $"Querying all Games!");
                 return Ok(await _IGameRepository.GetAllGamesAsync());
             }
@@ -49,6 +53,30 @@ namespace AccountAPI.Controllers
             {
                 _Logger.LogInfo(ControllerContext, $"Querying Game with the id: {id}");
                 return Ok(await _IGameRepository.GetGameByIDAsync(id));
+            }
+            catch(Exception ex)
+            {
+                _Logger.LogError(ControllerContext, $"Error Message: {ex.Message}");
+                return StatusCode(500, "Internal Server Error");
+            }
+        }
+
+        // POST api/game
+        [HttpPost]
+        public async Task<IActionResult> AddGame([FromBody] Game NewGame)
+        {
+                _Logger.LogWarn(ControllerContext, "This is a test.");
+
+            if(ModelState.IsValid)
+            {
+                _Logger.LogWarn(ControllerContext, "No God No God NOOOOOOOOO");
+                return BadRequest(ModelState);
+            }
+            try
+            {
+                await _IGameRepository.AddGameAsync(NewGame);
+                _Logger.LogInfo(ControllerContext, $"Adding Game with the id: {NewGame.GameId}");
+                return NoContent();
             }
             catch(Exception ex)
             {

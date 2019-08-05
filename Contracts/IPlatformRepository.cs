@@ -13,6 +13,7 @@ namespace AccountAPI.Contracts
 {
     public interface IPlatformRepository : IGenericRepository<Platform>
     {
+        Task<IEnumerable<object>> GetAllPlatformsOnlyAsync();
         Task<IEnumerable<Platform>> GetAllPlatformsAsync();
         Task<Platform> GetPlatformByIDAsync(int PlatformId);
         Task<Platform> GetPlatformByNameAsync(string Name);

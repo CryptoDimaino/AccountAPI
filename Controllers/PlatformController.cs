@@ -31,7 +31,7 @@ namespace AccountAPI.Controllers
             try
             {
                 _Logger.LogInfo(ControllerContext, $"Querying all Platforms!");
-                return Ok(await _IPlatformRepository.GetAllPlatformsAsync());
+                return Ok(await _IPlatformRepository.GetAllPlatformsOnlyAsync());
             }
             catch(Exception ex)
             {

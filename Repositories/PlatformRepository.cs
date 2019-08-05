@@ -17,6 +17,14 @@ namespace AccountAPI.Repositories
         {
         }
 
+        public async Task<IEnumerable<object>> GetAllPlatformsOnlyAsync()
+        {
+            return await GetAll().Select(p => new {
+                PlatformID = p.PlatformId,
+                Platform = p.Name
+            }).ToListAsync();
+        }
+
         public async Task<IEnumerable<Platform>> GetAllPlatformsAsync()
         {
             return await GetAll().Include(p => p.Games).ToListAsync();
