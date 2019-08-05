@@ -20,5 +20,6 @@ namespace AccountAPI.Models
         public DateTime UpdatedAt {get;set;} = DateTime.Now;
 
         public ICollection<Game> Games {get;} = new List<Game>();
+        public ICollection<Account> Accounts {get;} = new List<Account>();
     }
 }

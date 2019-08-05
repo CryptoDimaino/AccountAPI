@@ -7,17 +7,20 @@ using Newtonsoft.Json;
 
 namespace AccountAPI.Models
 {
-	public class AccountType
+	public class EmailAccount
     {
         [Key]
-        public int AccountTypeId {get;set;}
+        public int EmailAccountId {get;set;}
         [Required]
-        public string Type {get;set;}
+        public string Email {get;set;}
+        [Required]
+        public string EmailPassword {get;set;}
         [Required]
         public DateTime CreatedAt {get;set;} = DateTime.Now;
         [Required]
         public DateTime UpdatedAt {get;set;} = DateTime.Now;
 
-        public ICollection<Account> Accounts {get;} = new List<Account>();
+        // Platforms
+        public ICollection<Platform> Platforms {get;} = new List<Platform>();
     }
 }

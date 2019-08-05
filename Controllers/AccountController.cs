@@ -25,167 +25,167 @@ namespace AccountAPI.Controllers
         }
 
         // GET api/account
-        [HttpGet]
-        public async Task<IActionResult> GetAccounts()
-        {
-            try
-            {
-                _Logger.LogInfo(ControllerContext, $"Querying all Accounts!");
-                return Ok(await _IAccountRepository.GetAllAccountsAsync());
-            }
-            catch(Exception ex)
-            {
-                _Logger.LogError(ControllerContext, $"Error Message: {ex.Message}");
-                return StatusCode(500, "Internal Server Error.");
-            }
-        }
+        // [HttpGet]
+        // public async Task<IActionResult> GetAccounts()
+        // {
+        //     try
+        //     {
+        //         _Logger.LogInfo(ControllerContext, $"Querying all Accounts!");
+        //         return Ok(await _IAccountRepository.GetAllAccountsAsync());
+        //     }
+        //     catch(Exception ex)
+        //     {
+        //         _Logger.LogError(ControllerContext, $"Error Message: {ex.Message}");
+        //         return StatusCode(500, "Internal Server Error.");
+        //     }
+        // }
 
-        // GET api/account/{id}
-        [HttpGet("{id}")]
-        public async Task<IActionResult> GetAccountId(int id)
-        {
-            try
-            {
-                _Logger.LogInfo(ControllerContext, $"Querying Account with the id: {id}");
-                return Ok(await _IAccountRepository.GetAccountByIDAsync(id));
-            }
-            catch(Exception ex)
-            {
-                _Logger.LogError(ControllerContext, $"Error Message: {ex.Message}");
-                return StatusCode(500, "Internal Server Error");
-            }
-        }
+        // // GET api/account/{id}
+        // [HttpGet("{id}")]
+        // public async Task<IActionResult> GetAccountId(int id)
+        // {
+        //     try
+        //     {
+        //         _Logger.LogInfo(ControllerContext, $"Querying Account with the id: {id}");
+        //         return Ok(await _IAccountRepository.GetAccountByIDAsync(id));
+        //     }
+        //     catch(Exception ex)
+        //     {
+        //         _Logger.LogError(ControllerContext, $"Error Message: {ex.Message}");
+        //         return StatusCode(500, "Internal Server Error");
+        //     }
+        // }
 
-        // GET api/account/name/{name}
-        [HttpGet("name/{name}")]
-        public async Task<IActionResult> GetAccountByName(string Name)
-        {
-            try
-            {
-                _Logger.LogInfo(ControllerContext, $"Querying for the Account with the name: {Name}");
-                return Ok(await _IAccountRepository.GetAccountByNameAsync(Name));
-            }
-            catch(Exception ex)
-            {
-                _Logger.LogError(ControllerContext, $"Error Message: {ex.Message}");
-                return StatusCode(500, "Internal Server Error.");
-            }
-        }
+        // // GET api/account/name/{name}
+        // [HttpGet("name/{name}")]
+        // public async Task<IActionResult> GetAccountByName(string Name)
+        // {
+        //     try
+        //     {
+        //         _Logger.LogInfo(ControllerContext, $"Querying for the Account with the name: {Name}");
+        //         return Ok(await _IAccountRepository.GetAccountByNameAsync(Name));
+        //     }
+        //     catch(Exception ex)
+        //     {
+        //         _Logger.LogError(ControllerContext, $"Error Message: {ex.Message}");
+        //         return StatusCode(500, "Internal Server Error.");
+        //     }
+        // }
 
-        // POST api/Account/CreateNewAccount
-        /// <summary>
-        /// Creates a new user account 
-        /// </summary>
-        /// <returns>
-        /// No Content or 500 Internal Server Error
-        /// </returns>
-        [HttpPost("CreateNewAccount")]
-        public async Task<IActionResult> CreateNewAccount()
-        {
-            int Count = await _IAccountRepository.CountNumberOfAccountsAsync();
-            Account NewAccount = new Account()
-            {
-                Name = "Account" + Count,
-                Password = "Password" + Count,
-                CheckedOutStatus = false,
-                EventId = 1,
-                CreatedAt = DateTime.Now,
-                UpdatedAt = DateTime.Now,
-            };
+        // // POST api/Account/CreateNewAccount
+        // /// <summary>
+        // /// Creates a new user account 
+        // /// </summary>
+        // /// <returns>
+        // /// No Content or 500 Internal Server Error
+        // /// </returns>
+        // [HttpPost("CreateNewAccount")]
+        // public async Task<IActionResult> CreateNewAccount()
+        // {
+        //     int Count = await _IAccountRepository.CountNumberOfAccountsAsync();
+        //     Account NewAccount = new Account()
+        //     {
+        //         Name = "Account" + Count,
+        //         Password = "Password" + Count,
+        //         CheckedOutStatus = false,
+        //         EventId = 1,
+        //         CreatedAt = DateTime.Now,
+        //         UpdatedAt = DateTime.Now,
+        //     };
 
-            try
-            {
-                _Logger.LogInfo(ControllerContext, $"Name: {NewAccount.Name}");
-                await _IAccountRepository.CreateAccountAsync(NewAccount);
-                return NoContent();
-            }  
-            catch(Exception ex)
-            {
-                _Logger.LogError(ControllerContext, $"Error Message: {ex.Message}");
-                return StatusCode(500, "Interal Server Error.");
-            }
-        }
+        //     try
+        //     {
+        //         _Logger.LogInfo(ControllerContext, $"Name: {NewAccount.Name}");
+        //         await _IAccountRepository.CreateAccountAsync(NewAccount);
+        //         return NoContent();
+        //     }  
+        //     catch(Exception ex)
+        //     {
+        //         _Logger.LogError(ControllerContext, $"Error Message: {ex.Message}");
+        //         return StatusCode(500, "Interal Server Error.");
+        //     }
+        // }
 
-        // PUT api/account/{id}
-        [HttpPut("{id}")]
-        public async Task<IActionResult> UpdateAccount(int id)
-        {
-            try
-            {
-                Account AccountToUpdate = await _IAccountRepository.GetAccountByIDAsync(id);
-                if(AccountToUpdate == null)
-                {
-                    _Logger.LogWarn(ControllerContext, $"Warning: Account was not found with the id: {id}");
-                    return StatusCode(500, "Internal Server Error.");
-                }
-                _Logger.LogInfo(ControllerContext, $"Account with the id: {id} has been updated.");
+        // // PUT api/account/{id}
+        // [HttpPut("{id}")]
+        // public async Task<IActionResult> UpdateAccount(int id)
+        // {
+        //     try
+        //     {
+        //         Account AccountToUpdate = await _IAccountRepository.GetAccountByIDAsync(id);
+        //         if(AccountToUpdate == null)
+        //         {
+        //             _Logger.LogWarn(ControllerContext, $"Warning: Account was not found with the id: {id}");
+        //             return StatusCode(500, "Internal Server Error.");
+        //         }
+        //         _Logger.LogInfo(ControllerContext, $"Account with the id: {id} has been updated.");
 
-                AccountToUpdate.UpdatedAt = DateTime.Now;
-                await _IAccountRepository.UpdateAccountAsync(AccountToUpdate);
-                return NoContent();
-            }
-            catch(Exception ex)
-            {
-                _Logger.LogError(ControllerContext, $"Error Message: {ex.Message}");
-                return StatusCode(500, "Internal Server Error.");
-            }
-        }
+        //         AccountToUpdate.UpdatedAt = DateTime.Now;
+        //         await _IAccountRepository.UpdateAccountAsync(AccountToUpdate);
+        //         return NoContent();
+        //     }
+        //     catch(Exception ex)
+        //     {
+        //         _Logger.LogError(ControllerContext, $"Error Message: {ex.Message}");
+        //         return StatusCode(500, "Internal Server Error.");
+        //     }
+        // }
 
-        // DELETE api/account/delete/{id}
-        [HttpDelete("delete/{id}")]
-        public async Task<IActionResult> DeleteAccount(int id)
-        {
-            _Logger.LogWarn(ControllerContext, $"Deleting a account will also delete te account profile linked and all the information in table.");
-            try
-            {
-                Account AccountToDelete = await _IAccountRepository.GetAccountByIDAsync(id);
-                if(AccountToDelete == null)
-                {
-                    _Logger.LogWarn(ControllerContext, $"Account with id: {id}, hasn't been found in database.");
-                    return NotFound();
-                }
-                _Logger.LogInfo(ControllerContext, $"Account with id: {id} has been deleted");
-                await _IAccountRepository.DeleteAccountAsync(AccountToDelete);
-                return NoContent();
-            }
-            catch(Exception ex)
-            {
-                _Logger.LogError(ControllerContext, $"Error Message: {ex.Message}");
-                return StatusCode(500, "Internal Server Error.");
-            }
-        }
+        // // DELETE api/account/delete/{id}
+        // [HttpDelete("delete/{id}")]
+        // public async Task<IActionResult> DeleteAccount(int id)
+        // {
+        //     _Logger.LogWarn(ControllerContext, $"Deleting a account will also delete te account profile linked and all the information in table.");
+        //     try
+        //     {
+        //         Account AccountToDelete = await _IAccountRepository.GetAccountByIDAsync(id);
+        //         if(AccountToDelete == null)
+        //         {
+        //             _Logger.LogWarn(ControllerContext, $"Account with id: {id}, hasn't been found in database.");
+        //             return NotFound();
+        //         }
+        //         _Logger.LogInfo(ControllerContext, $"Account with id: {id} has been deleted");
+        //         await _IAccountRepository.DeleteAccountAsync(AccountToDelete);
+        //         return NoContent();
+        //     }
+        //     catch(Exception ex)
+        //     {
+        //         _Logger.LogError(ControllerContext, $"Error Message: {ex.Message}");
+        //         return StatusCode(500, "Internal Server Error.");
+        //     }
+        // }
 
-        // GET api/account/count
-        [HttpGet("count")]
-        public async Task<IActionResult> GetNumberOfAccounts()
-        {
-            try
-            {
-                int NumOfAccounts = await _IAccountRepository.CountNumberOfAccountsAsync();
-                _Logger.LogInfo(ControllerContext, $"There are {NumOfAccounts} accounts!");
-                return Ok(NumOfAccounts);
-            }
-            catch(Exception ex)
-            {
-                _Logger.LogError(ControllerContext, $"Error Message: {ex.Message}");
-                return StatusCode(500, "Internal Server Error");
-            }
-        }
+        // // GET api/account/count
+        // [HttpGet("count")]
+        // public async Task<IActionResult> GetNumberOfAccounts()
+        // {
+        //     try
+        //     {
+        //         int NumOfAccounts = await _IAccountRepository.CountNumberOfAccountsAsync();
+        //         _Logger.LogInfo(ControllerContext, $"There are {NumOfAccounts} accounts!");
+        //         return Ok(NumOfAccounts);
+        //     }
+        //     catch(Exception ex)
+        //     {
+        //         _Logger.LogError(ControllerContext, $"Error Message: {ex.Message}");
+        //         return StatusCode(500, "Internal Server Error");
+        //     }
+        // }
 
-        // GET api/account/games
-        [HttpGet("games")]
-        public async Task<IActionResult> GetAllAccountDTOAsync()
-        {
-            try
-            {
-                _Logger.LogInfo(ControllerContext, $"List of all accounts and the games in each account!");
-                return Ok(await _IAccountRepository.GetAllAccountDTOAsync());
-            }
-            catch(Exception ex)
-            {
-                _Logger.LogError(ControllerContext, $"Error Message: {ex.Message}");
-                return StatusCode(500, "Internal Server Error");
-            }
-        }
+        // // GET api/account/games
+        // [HttpGet("games")]
+        // public async Task<IActionResult> GetAllAccountDTOAsync()
+        // {
+        //     try
+        //     {
+        //         _Logger.LogInfo(ControllerContext, $"List of all accounts and the games in each account!");
+        //         return Ok(await _IAccountRepository.GetAllAccountDTOAsync());
+        //     }
+        //     catch(Exception ex)
+        //     {
+        //         _Logger.LogError(ControllerContext, $"Error Message: {ex.Message}");
+        //         return StatusCode(500, "Internal Server Error");
+        //     }
+        // }
     }
 }

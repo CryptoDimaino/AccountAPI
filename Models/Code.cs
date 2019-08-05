@@ -20,8 +20,12 @@ namespace AccountAPI.Models
         [Required]
         public DateTime UpdatedAt {get;set;} = DateTime.Now;
 
-        public int? AccountId {get;set;}
+        // Sets accounts through composite key
+        public int? EmailAccountId {get;set;}
+        public int? PlatformId {get;set;}
         public Account Account {get;set;}
+
+        // Sets Game though foreign key
         public int GameId {get;set;}
         public Game Game {get;set;}
     }
