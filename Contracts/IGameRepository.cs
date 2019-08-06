@@ -13,10 +13,16 @@ namespace AccountAPI.Contracts
 {
     public interface IGameRepository : IGenericRepository<Game>
     {
+        // Default Options
+        Task<IEnumerable<Game>> GetAllGamesDefaultAsync();
+        Task<Game> GetGameByIDDefaultAsync(int GameId);
+        Task CreateGameAsync(Game GameToAdd);
+        Task UpdateGameAsync(Game GameToUpdate);
+        Task DeleteGameAsync(Game GameToDelete);
+        Task<int> CountNumberOfGamesAsync();
+
+        // Project Specific
         Task<IEnumerable<GamesDTO>> GetAllGamesAsync();
         Task<object> GetGameByIDAsync(int GameId);
-        Task DeleteGameAsync(Game GameToDelete);
-        Task<Game> DefaultGetGameByIDAsync(int GameId);
-        Task AddGameAsync(Game GameToAdd);
     }
 }

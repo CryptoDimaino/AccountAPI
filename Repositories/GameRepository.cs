@@ -18,6 +18,38 @@ namespace AccountAPI.Repositories
 
         }
 
+        public async Task<IEnumerable<Game>> GetAllGamesDefaultAsync()
+        {
+            return await GetAll().ToListAsync();
+        }
+
+        public async Task<Game> GetGameByIDDefaultAsync(int GameId)
+        {
+            return await FindByCondition(g => g.GameId == GameId).FirstOrDefaultAsync();
+        }
+
+        public async Task CreateGameAsync(Game GameToAdd)
+        {
+            Create(GameToAdd);
+            await SaveAsync();
+        }
+
+        public async Task UpdateGameAsync(Game GameToUpdate)
+        {
+            Update(GameToUpdate);
+            await SaveAsync();
+        }
+
+        public async Task DeleteGameAsync(Game GameToDelete)
+        {
+            Delete(GameToDelete);
+            await SaveAsync();
+        }
+        public async Task<int> CountNumberOfGamesAsync()
+        {
+            return await CountAsync();
+        }
+
         public async Task<IEnumerable<GamesDTO>> GetAllGamesAsync()
         {
             return await GetAll().Include(g => g.Platform).Include(g => g.Codes).ThenInclude(c => c.Account).Select(g => new GamesDTO()
@@ -37,6 +69,7 @@ namespace AccountAPI.Repositories
                 GameTitle = g.Name,
                 PlatformName = g.Platform.Name,
                 ReleaseDate = g.ReleaseDate,
+                URLToDocumentation = g.URLToDocumentation,
                 Accounts = g.Codes.Select(c => new
                 {
                     CodeString = c.CodeString,
@@ -47,23 +80,6 @@ namespace AccountAPI.Repositories
                     EmailPassword = c.Account.EmailAccount.EmailPassword
                 })
             }).FirstOrDefaultAsync();
-        }
-
-        public async Task<Game> DefaultGetGameByIDAsync(int GameId)
-        {
-            return await FindByCondition(g => g.GameId == GameId).FirstOrDefaultAsync();
-        }
-
-        public async Task DeleteGameAsync(Game GameToDelete)
-        {
-            Delete(GameToDelete);
-            await SaveAsync(); 
-        }
-
-        public async Task AddGameAsync(Game GameToAdd)
-        {
-            Create(GameToAdd);
-            await SaveAsync();
         }
     }
 }

@@ -33,14 +33,14 @@ namespace AccountAPI.Services
     public class Response : IResponse
     {
         public string Message {get;set;}
-        public bool DidError {get;set}
+        public bool DidError {get;set;}
         public string ErrorMessage {get;set;}
     }
 
     public class SingleResponse<TModel> : ISingleResponse<TModel>
     {
         public string Message {get;set;}
-        public bool DidError {get;set}
+        public bool DidError {get;set;}
         public string ErrorMessage {get;set;}
         public TModel Model {get;set;}
     }
@@ -48,7 +48,7 @@ namespace AccountAPI.Services
     public class ListResponse<TModel> : IListResponse<TModel>
     {
         public string Message {get;set;}
-        public bool DidError {get;set}
+        public bool DidError {get;set;}
         public string ErrorMessage {get;set;}
         public IEnumerable<TModel> Model {get;set;}
     }

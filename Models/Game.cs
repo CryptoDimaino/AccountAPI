@@ -13,13 +13,14 @@ namespace AccountAPI.Models
         public int GameId {get;set;}
         [Required]
         public string Name {get;set;}
+
         public int rawgId {get;set;}
         public int ConnectionType {get;set;}
-        public DateTime ReleaseDate {get;set;}
+        public DateTime? ReleaseDate {get;set;}
 		public string URLToDocumentation {get;set;}
-        [Required]
+        // [Required]
         public DateTime CreatedAt {get;set;} = DateTime.Now;
-        [Required]
+        // [Required]
         public DateTime UpdatedAt {get;set;} = DateTime.Now;
 
         public ICollection<Code> Codes {get;} = new List<Code>();
