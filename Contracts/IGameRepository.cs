@@ -22,7 +22,7 @@ namespace AccountAPI.Contracts
         Task<int> CountNumberOfGamesAsync();
 
         // Project Specific
-        Task<IEnumerable<GamesDTO>> GetAllGamesAsync();
+        Task<IEnumerable<object>> GetAllGamesAsync();
         Task<object> GetGameByIDAsync(int GameId);
     }
 }

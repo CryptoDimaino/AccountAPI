@@ -13,15 +13,17 @@ namespace AccountAPI.Contracts
 {
     public interface IPlatformRepository : IGenericRepository<Platform>
     {
-        Task<IEnumerable<object>> GetAllPlatformsOnlyAsync();
-        Task<IEnumerable<Platform>> GetAllPlatformsAsync();
-        Task<Platform> GetPlatformByIDAsync(int PlatformId);
-        Task<Platform> GetPlatformByNameAsync(string Name);
-        Task CreatePlatformAsync(Platform NewPlatform);
+        // Default Options
+        Task<IEnumerable<Platform>> GetAllPlatformsDefaultAsync();
+        Task<Platform> GetPlatformByIDDefaultAsync(int PlatformId);
+        Task CreatePlatformAsync(Platform PlatformToAdd);
         Task UpdatePlatformAsync(Platform PlatformToUpdate);
         Task DeletePlatformAsync(Platform PlatformToDelete);
         Task<int> CountNumberOfPlatformsAsync();
 
-        Task<IEnumerable<PlatformDTO>> GetAllPlatformDTOAsync();
+        // Project Specific
+        Task<IEnumerable<object>> GetAllPlatformsAsync();
+        Task<IEnumerable<object>> GetAllPlatformsOnlyAsync();
+        Task<object> GetPlatformByIdAsync(int PlatformId);
     }
 }

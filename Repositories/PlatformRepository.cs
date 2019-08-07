@@ -15,34 +15,22 @@ namespace AccountAPI.Repositories
     {
         public PlatformRepository(Context Context) : base(Context)
         {
+
         }
 
-        public async Task<IEnumerable<object>> GetAllPlatformsOnlyAsync()
+        public async Task<IEnumerable<Platform>> GetAllPlatformsDefaultAsync()
         {
-            return await GetAll().Select(p => new {
-                PlatformID = p.PlatformId,
-                Platform = p.Name
-            }).ToListAsync();
+            return await GetAll().ToListAsync();
         }
 
-        public async Task<IEnumerable<Platform>> GetAllPlatformsAsync()
-        {
-            return await GetAll().Include(p => p.Games).ToListAsync();
-        }
-
-        public async Task<Platform> GetPlatformByIDAsync(int PlatformId)
+        public async Task<Platform> GetPlatformByIDDefaultAsync(int PlatformId)
         {
             return await FindByCondition(a => a.PlatformId == PlatformId).FirstOrDefaultAsync();
         }
 
-        public async Task<Platform> GetPlatformByNameAsync(string Name)
+        public async Task CreatePlatformAsync(Platform PlatformToAdd)
         {
-            return await FindByCondition(a => a.Name == Name).FirstOrDefaultAsync();
-        }
-
-        public async Task CreatePlatformAsync(Platform NewPlatform)
-        {
-            Create(NewPlatform);
+            Create(PlatformToAdd);
             await SaveAsync();
         }
 
@@ -63,7 +51,7 @@ namespace AccountAPI.Repositories
             return await CountAsync();
         }
 
-        public async Task<IEnumerable<PlatformDTO>> GetAllPlatformDTOAsync()
+        public async Task<IEnumerable<object>> GetAllPlatformsAsync()
         {
             return await GetAll().Include(p => p.Games).Select(p => new PlatformDTO()
             {
@@ -74,6 +62,31 @@ namespace AccountAPI.Repositories
                     Name = g.Name
                 })
             }).ToListAsync();
+        }
+
+        public async Task<IEnumerable<object>> GetAllPlatformsOnlyAsync()
+        {
+            return await GetAll().Select(p => new {
+                PlatformID = p.PlatformId,
+                Platform = p.Name
+            }).ToListAsync();
+        }
+
+        public async Task<object> GetPlatformByIdAsync(int PlatformId)
+        {
+            return await FindByCondition(p => p.PlatformId == PlatformId).Include(p => p.Games).Include(p => p.Accounts).Select(p => new {
+                Id = p.PlatformId,
+                Name = p.Name,
+                URLToDocumentation = p.URLToDocumentation,
+                Games = p.Games.Select(g => new {
+                    Id = g.GameId,
+                    Name = g.Name,
+                }),
+                Accounts = p.Accounts.Select(a => new {
+                    Id = a.AccountId,
+                    Username = a.Username
+                })
+            }).FirstOrDefaultAsync();
         }
     }
 }

@@ -7,47 +7,34 @@ using AccountAPI.Contracts;
 using AccountAPI.Models;
 using Microsoft.EntityFrameworkCore;
 using AccountAPI.Repositories;
-// using AccountAPI.Helpers;
+using AccountAPI.Services;
 
 namespace AccountAPI.Controllers
 {
-    [Route("api/[controller]")]
+    [ApiVersion("1")]
+    [Route("api/v{version:apiVersion}/[controller]")]
     [ApiController]
     public class PlatformController : ControllerBase
     {
         private readonly ILoggerManager _Logger;
         private readonly IPlatformRepository _IPlatformRepository;
 
-        public PlatformController(ILoggerManager Logger, IPlatformRepository IPlatformRepository)
+        private readonly Context _Context;
+
+        public PlatformController(ILoggerManager Logger, IPlatformRepository IPlatformRepository, Context Context)
         {
             _Logger = Logger;
             _IPlatformRepository = IPlatformRepository;
+            _Context = Context;
         }
-
-        // GET api/Platform
-        [HttpGet]
-        public async Task<IActionResult> GetPlatforms()
+        // GET api/v{version:apiVersion}/game/default
+        [HttpGet("default")]
+        public async Task<IActionResult> GetAllPlatformsDefaultAsync()
         {
             try
             {
-                _Logger.LogInfo(ControllerContext, $"Querying all Platforms!");
-                return Ok(await _IPlatformRepository.GetAllPlatformsOnlyAsync());
-            }
-            catch(Exception ex)
-            {
-                _Logger.LogError(ControllerContext, $"Error Message: {ex.Message}");
-                return StatusCode(500, "Internal Server Error.");
-            }
-        }
-
-        // GET api/Platform/{id}
-        [HttpGet("{id}")]
-        public async Task<IActionResult> GetPlatformtId(int id)
-        {
-            try
-            {
-                _Logger.LogInfo(ControllerContext, $"Querying Platform with the id: {id}");
-                return Ok(await _IPlatformRepository.GetPlatformByIDAsync(id));
+                _Logger.LogInfo(ControllerContext, $"Querying all platforms with default information.");
+                return Ok(await _IPlatformRepository.GetAllPlatformsDefaultAsync());
             }
             catch(Exception ex)
             {
@@ -56,39 +43,30 @@ namespace AccountAPI.Controllers
             }
         }
 
-        // GET api/Platform/{name}
-        [HttpGet("name/{name}")]
-        public async Task<IActionResult> GetPlatformByName(string Name)
+        // GET api/v{version:apiVersion}/game/{id}/default
+        [HttpGet("{id}/default")]
+        public async Task<IActionResult> GetPlatformByIDDefaultAsync(int id)
         {
             try
             {
-                _Logger.LogInfo(ControllerContext, $"Querying for the Platform with the name: {Name}");
-                return Ok(await _IPlatformRepository.GetPlatformByNameAsync(Name));
+                _Logger.LogInfo(ControllerContext, $"Querying platform with the id: {id} with default information.");
+                return Ok(await _IPlatformRepository.GetPlatformByIDDefaultAsync(id));
             }
             catch(Exception ex)
             {
                 _Logger.LogError(ControllerContext, $"Error Message: {ex.Message}");
-                return StatusCode(500, "Internal Server Error.");
+                return StatusCode(500, "Internal Server Error");
             }
         }
 
-        // POST api/Platform/CreateNewPlatform
-        [HttpPost("CreateNewPlatform")]
-        public async Task<IActionResult> CreateNewPlatform()
+        // POST api/v{version:apiVersion}/Platform/CreateNewPlatform
+        [HttpPost("{id}")]
+        public async Task<IActionResult> CreateNewPlatform([FromBody] Platform NewPlatform)
         {
-            Console.WriteLine("Here");
-            int Count = await _IPlatformRepository.CountNumberOfPlatformsAsync();
-            Platform NewPlatform = new Platform()
-            {
-                Name = "Platform " + Count,
-                CreatedAt = DateTime.Now,
-                UpdatedAt = DateTime.Now,
-            };
-
             try
             {
-                _Logger.LogInfo(ControllerContext, $"Name: {NewPlatform.Name}");
                 await _IPlatformRepository.CreatePlatformAsync(NewPlatform);
+                _Logger.LogInfo(ControllerContext, $"Name: {NewPlatform.Name}");
                 return NoContent();
             }  
             catch(Exception ex)
@@ -98,22 +76,18 @@ namespace AccountAPI.Controllers
             }
         }
 
-        // PUT api/Platform/{id}
+        // PUT api/v{version:apiVersion}/Platform/{id}
         [HttpPut("{id}")]
-        public async Task<IActionResult> UpdatePlatform(int id)
+        public async Task<IActionResult> UpdatePlatform(int id, [FromBody] Platform UpdatePlatform)
         {
             try
             {
-                Platform PlatformToUpdate = await _IPlatformRepository.GetPlatformByIDAsync(id);
-                if(PlatformToUpdate == null)
+                if(id != UpdatePlatform.PlatformId)
                 {
-                    _Logger.LogWarn(ControllerContext, $"Warning: Platform was not found with the id: {id}");
-                    return StatusCode(500, "Internal Server Error.");
+                    return BadRequest();
                 }
+                await _IPlatformRepository.UpdatePlatformAsync(UpdatePlatform);
                 _Logger.LogInfo(ControllerContext, $"Platform with the id: {id} has been updated.");
-
-                PlatformToUpdate.UpdatedAt = DateTime.Now;
-                await _IPlatformRepository.UpdatePlatformAsync(PlatformToUpdate);
                 return NoContent();
             }
             catch(Exception ex)
@@ -123,13 +97,13 @@ namespace AccountAPI.Controllers
             }
         }
 
-        // DELETE api/Platform/delete/{id}
-        [HttpDelete("delete/{id}")]
+        // DELETE api/v{version:apiVersion}/Platform/delete/{id}
+        [HttpDelete("{id}")]
         public async Task<IActionResult> DeletePlatform(int id)
         {
             try
             {
-                Platform PlatformToDelete = await _IPlatformRepository.GetPlatformByIDAsync(id);
+                Platform PlatformToDelete = await _IPlatformRepository.GetPlatformByIDDefaultAsync(id);
                 if(PlatformToDelete == null)
                 {
                     _Logger.LogWarn(ControllerContext, $"Platform with id: {id}, hasn't been found in database.");
@@ -146,7 +120,7 @@ namespace AccountAPI.Controllers
             }
         }
 
-        // GET api/Platform/count
+        // GET api/v{version:apiVersion}/Platform/count
         [HttpGet("count")]
         public async Task<IActionResult> GetNumberOfPlatforms()
         {
@@ -162,15 +136,47 @@ namespace AccountAPI.Controllers
                 return StatusCode(500, "Internal Server Error");
             }
         }
-        
-        // GET api/Platform/DTO
-        [HttpGet("DTO")]
-        public async Task<IActionResult> GetAllPlatformDTOAsync()
+
+        // GET api/v{version:apiVersion}/Platform
+        [HttpGet]
+        public async Task<IActionResult> GetPlatforms()
         {
             try
             {
-                _Logger.LogInfo(ControllerContext, $"List of all platforms and the games in each platform!");
-                return Ok(await _IPlatformRepository.GetAllPlatformDTOAsync());
+                _Logger.LogInfo(ControllerContext, $"Querying all Platforms Names with Id.");
+                return Ok(await _IPlatformRepository.GetAllPlatformsOnlyAsync());
+            }
+            catch(Exception ex)
+            {
+                _Logger.LogError(ControllerContext, $"Error Message: {ex.Message}");
+                return StatusCode(500, "Internal Server Error.");
+            }
+        }
+
+        // Get api/v{version:apiVersion}/Platform/GetPlatformsAndGames
+        [HttpGet("GetPlatformsAndGames")]
+        public async Task<IActionResult> GetPlatformsAndGames()
+        {
+            try
+            {
+                _Logger.LogInfo(ControllerContext, $"Querying all Platforms With Games!");
+                return Ok(await _IPlatformRepository.GetAllPlatformsAsync());
+            }
+            catch(Exception ex)
+            {
+                _Logger.LogError(ControllerContext, $"Error Message: {ex.Message}");
+                return StatusCode(500, "Internal Server Error.");
+            }
+        }
+
+        // GET api/v{version:apiVersion}/Platform/{id}
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetPlatformId(int id)
+        {
+            try
+            {
+                _Logger.LogInfo(ControllerContext, $"Querying Platform with the id: {id} and list of games and accounts");
+                return Ok(await _IPlatformRepository.GetPlatformByIdAsync(id));
             }
             catch(Exception ex)
             {

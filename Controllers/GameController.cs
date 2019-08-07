@@ -18,39 +18,37 @@ namespace AccountAPI.Controllers
     {
         private readonly ILoggerManager _Logger;
         private readonly IGameRepository _IGameRepository;
-        private readonly Context _Context;
 
-        public GameController(ILoggerManager Logger, IGameRepository IGameRepository, Context Context)
+        public GameController(ILoggerManager Logger, IGameRepository IGameRepository)
         {
             _Logger = Logger;
             _IGameRepository = IGameRepository;
-            _Context = Context;
         }
 
-        // GET api/v{version:apiVersion}/game
-        [HttpGet]
-        public async Task<IActionResult> GetGames()
+        // GET api/v{version:apiVersion}/game/default
+        [HttpGet("default")]
+        public async Task<IActionResult> GetGamesDefault()
         {
             try
             {
-                _Logger.LogInfo(ControllerContext, $"Querying all Games!");
-                return Ok(await _IGameRepository.GetAllGamesAsync());
+                _Logger.LogInfo(ControllerContext, $"Querying all games with default information.");
+                return Ok(await _IGameRepository.GetAllGamesDefaultAsync());
             }
             catch(Exception ex)
             {
                 _Logger.LogError(ControllerContext, $"Error Message: {ex.Message}");
-                return StatusCode(500, "Internal Server Error.");
+                return StatusCode(500, "Internal Server Error");
             }
         }
 
-        // Get api/v{version:apiVersion}/game/{id}
-        [HttpGet("{id}")]
-        public async Task<IActionResult> GetGameId(int id)
+        // Get api/v{version:apiVersion}/game/{id}/default
+        [HttpGet("{id}/default")]
+        public async Task<IActionResult> GetGameIdDefault(int id)
         {
             try
             {
-                _Logger.LogInfo(ControllerContext, $"Querying Game with the id: {id}");
-                return Ok(await _IGameRepository.GetGameByIDAsync(id));
+                _Logger.LogInfo(ControllerContext, $"Querying Game with the id: {id} with default information.");
+                return Ok(await _IGameRepository.GetGameByIDDefaultAsync(id));
             }
             catch(Exception ex)
             {
@@ -78,16 +76,12 @@ namespace AccountAPI.Controllers
 
         // PUT api/v{version:apiVersion}/game/{id}
         [HttpPut("{id}")]
-        public async Task<IActionResult> UpdateGame(int id, [FromBody] Game UpdateGame)
+        public async Task<IActionResult> UpdateGame([FromBody] Game UpdateGame)
         {
-            UpdateGame = new Game() {
-                Name = "1",
-                PlatformId = 4
-            };
             try
             {
                 await _IGameRepository.UpdateGameAsync(UpdateGame);
-                _Logger.LogInfo(ControllerContext, $"Successfully updated the game with the id: {id}.");
+                _Logger.LogInfo(ControllerContext, $"Successfully updated the game with the id: {UpdateGame.GameId}.");
                 return NoContent();       
             }
             catch(Exception ex)
@@ -130,31 +124,31 @@ namespace AccountAPI.Controllers
                 return StatusCode(500, "Internal Server Error");
             }
         }
-
-        // GET api/v{version:apiVersion}/game/default
-        [HttpGet("default")]
-        public async Task<IActionResult> GetGamesDefault()
+        
+        // GET api/v{version:apiVersion}/game
+        [HttpGet]
+        public async Task<IActionResult> GetGames()
         {
             try
             {
-                _Logger.LogInfo(ControllerContext, $"Querying all games with default information.");
-                return Ok(await _IGameRepository.GetAllGamesDefaultAsync());
+                _Logger.LogInfo(ControllerContext, $"Querying all Games with Platform and Number of Accounts.");
+                return Ok(await _IGameRepository.GetAllGamesAsync());
             }
             catch(Exception ex)
             {
                 _Logger.LogError(ControllerContext, $"Error Message: {ex.Message}");
-                return StatusCode(500, "Internal Server Error");
+                return StatusCode(500, "Internal Server Error.");
             }
         }
 
-        // Get api/v{version:apiVersion}/game/{id}/default
-        [HttpGet("{id}/default")]
-        public async Task<IActionResult> GetGameIdDefault(int id)
+        // Get api/v{version:apiVersion}/game/{id}
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetGameId(int id)
         {
             try
             {
-                _Logger.LogInfo(ControllerContext, $"Querying Game with the id: {id} with default information.");
-                return Ok(await _IGameRepository.GetGameByIDDefaultAsync(id));
+                _Logger.LogInfo(ControllerContext, $"Querying Game with the id: {id} with a list of Accounts and their Codes.");
+                return Ok(await _IGameRepository.GetGameByIDAsync(id));
             }
             catch(Exception ex)
             {

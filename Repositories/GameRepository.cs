@@ -50,13 +50,13 @@ namespace AccountAPI.Repositories
             return await CountAsync();
         }
 
-        public async Task<IEnumerable<GamesDTO>> GetAllGamesAsync()
+        public async Task<IEnumerable<object>> GetAllGamesAsync()
         {
-            return await GetAll().Include(g => g.Platform).Include(g => g.Codes).ThenInclude(c => c.Account).Select(g => new GamesDTO()
+            return await GetAll().Include(g => g.Platform).Include(g => g.Codes).ThenInclude(c => c.Account).Select(g => new
             {
-                GameId = g.GameId,
-                GameTitle = g.Name,
-                PlatformName = g.Platform.Name,
+                Id = g.GameId,
+                Title = g.Name,
+                Platform = g.Platform.Name,
                 NumberOfAccounts = g.Codes.Count()
             }).ToListAsync();
         }
@@ -65,15 +65,15 @@ namespace AccountAPI.Repositories
         {
             return await FindByCondition(g => g.GameId == GameId).Include(g => g.Platform).Include(g => g.Codes).ThenInclude(c => c.Account).ThenInclude(a => a.EmailAccount).Select(g => new 
             {
-                GameId = g.GameId,
-                GameTitle = g.Name,
-                PlatformName = g.Platform.Name,
+                Id = g.GameId,
+                Title = g.Name,
+                Name = g.Platform.Name,
                 ReleaseDate = g.ReleaseDate,
                 URLToDocumentation = g.URLToDocumentation,
                 Accounts = g.Codes.Select(c => new
                 {
                     CodeString = c.CodeString,
-                    AccountId = c.Account.AccountId,
+                    Id = c.Account.AccountId,
                     Username = c.Account.Username,
                     Password = c.Account.Password,
                     Email = c.Account.EmailAccount.Email,
