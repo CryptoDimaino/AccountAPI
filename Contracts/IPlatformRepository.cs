@@ -1,4 +1,4 @@
- using AccountAPI.Models;
+using AccountAPI.Models;
 using AccountAPI.Contracts;
 using Microsoft.EntityFrameworkCore;
 using System;

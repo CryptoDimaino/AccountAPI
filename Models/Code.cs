@@ -15,9 +15,7 @@ namespace AccountAPI.Models
         public string CodeString {get;set;}
         [Required]
         public bool UsedStatus {get;set;}
-        [Required]
         public DateTime CreatedAt {get;set;} = DateTime.Now;
-        [Required]
         public DateTime UpdatedAt {get;set;} = DateTime.Now;
 
         // Sets accounts through composite key

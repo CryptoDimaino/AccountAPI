@@ -18,7 +18,7 @@ namespace AccountAPI.Contracts
         Task<Account> GetAccountByIdDefaultAsync(int AccountId);
         Task CreateAccountAsync(Account AccountToAdd);
         Task UpdateAccountAsync(Account AccountToUpdate);
-        Task DeleteAccountAsync(Account AccountToDelete);
+        Task<string> DeleteAccountAsync(Account AccountToDelete);
         Task<int> CountNumberOfAccountsAsync();
 
         // Project Specific

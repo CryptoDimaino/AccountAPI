@@ -18,11 +18,13 @@ namespace AccountAPI.Controllers
     {
         private readonly ILoggerManager _Logger;
         private readonly IAccountRepository _IAccountRepository;
+        private readonly Context _Context;
 
-        public AccountController(ILoggerManager Logger, IAccountRepository IAccountRepository)
+        public AccountController(ILoggerManager Logger, IAccountRepository IAccountRepository, Context Context)
         {
             _Logger = Logger;
             _IAccountRepository = IAccountRepository;
+            _Context = Context;
         }
 
         // GET api/v{version:apiVersion}/account/default
@@ -104,8 +106,8 @@ namespace AccountAPI.Controllers
                     return NotFound();
                 }
                 // NOTE: This will delete all relations to other tables such as codes.
-                _Logger.LogInfo(ControllerContext, $"Querying game with the id: {id} to delete.");
-                await _IAccountRepository.DeleteAccountAsync(await _IAccountRepository.GetAccountByIdDefaultAsync(id));
+                string CodeIds = await _IAccountRepository.DeleteAccountAsync(AccountToDelete);
+                _Logger.LogInfo(ControllerContext, $"Querying account with the id: {id} to delete, all deleted the codes with the ids:{CodeIds}.");
                 return NoContent();
             }
             catch(Exception ex)
