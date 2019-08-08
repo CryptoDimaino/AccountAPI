@@ -19,14 +19,12 @@ namespace AccountAPI.Controllers
         private readonly ILoggerManager _Logger;
         private readonly IPlatformRepository _IPlatformRepository;
 
-        private readonly Context _Context;
-
-        public PlatformController(ILoggerManager Logger, IPlatformRepository IPlatformRepository, Context Context)
+        public PlatformController(ILoggerManager Logger, IPlatformRepository IPlatformRepository)
         {
             _Logger = Logger;
             _IPlatformRepository = IPlatformRepository;
-            _Context = Context;
         }
+
         // GET api/v{version:apiVersion}/game/default
         [HttpGet("default")]
         public async Task<IActionResult> GetAllPlatformsDefaultAsync()
@@ -59,15 +57,15 @@ namespace AccountAPI.Controllers
             }
         }
 
-        // POST api/v{version:apiVersion}/Platform/CreateNewPlatform
-        [HttpPost("{id}")]
-        public async Task<IActionResult> CreateNewPlatform([FromBody] Platform NewPlatform)
+        // POST api/v{version:apiVersion}/Platform
+        [HttpPost]
+        public async Task<IActionResult> AddPlatform([FromBody] Platform NewPlatform)
         {
             try
             {
+                _Logger.LogInfo(ControllerContext, $"Name: {NewPlatform.PlatformId}");
                 await _IPlatformRepository.CreatePlatformAsync(NewPlatform);
-                _Logger.LogInfo(ControllerContext, $"Name: {NewPlatform.Name}");
-                return NoContent();
+                return Ok(new { Id = NewPlatform.PlatformId });
             }  
             catch(Exception ex)
             {
@@ -78,17 +76,13 @@ namespace AccountAPI.Controllers
 
         // PUT api/v{version:apiVersion}/Platform/{id}
         [HttpPut("{id}")]
-        public async Task<IActionResult> UpdatePlatform(int id, [FromBody] Platform UpdatePlatform)
+        public async Task<IActionResult> UpdatePlatform([FromBody] Platform UpdatePlatform)
         {
             try
             {
-                if(id != UpdatePlatform.PlatformId)
-                {
-                    return BadRequest();
-                }
+                _Logger.LogInfo(ControllerContext, $"Platform with the id: {UpdatePlatform.PlatformId} has been updated.");
                 await _IPlatformRepository.UpdatePlatformAsync(UpdatePlatform);
-                _Logger.LogInfo(ControllerContext, $"Platform with the id: {id} has been updated.");
-                return NoContent();
+                return Ok(new { Id = UpdatePlatform.PlatformId });
             }
             catch(Exception ex)
             {

@@ -23,7 +23,7 @@ namespace AccountAPI.Repositories
             return await GetAll().ToListAsync();
         }
 
-        public async Task<Game> GetGameByIDDefaultAsync(int GameId)
+        public async Task<Game> GetGameByIdDefaultAsync(int GameId)
         {
             return await FindByCondition(g => g.GameId == GameId).FirstOrDefaultAsync();
         }
@@ -61,7 +61,7 @@ namespace AccountAPI.Repositories
             }).ToListAsync();
         }
 
-        public async Task<object> GetGameByIDAsync(int GameId)
+        public async Task<object> GetGameByIdAsync(int GameId)
         {
             return await FindByCondition(g => g.GameId == GameId).Include(g => g.Platform).Include(g => g.Codes).ThenInclude(c => c.Account).ThenInclude(a => a.EmailAccount).Select(g => new 
             {

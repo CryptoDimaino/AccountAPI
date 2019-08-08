@@ -48,7 +48,7 @@ namespace AccountAPI.Controllers
             try
             {
                 _Logger.LogInfo(ControllerContext, $"Querying Game with the id: {id} with default information.");
-                return Ok(await _IGameRepository.GetGameByIDDefaultAsync(id));
+                return Ok(await _IGameRepository.GetGameByIdDefaultAsync(id));
             }
             catch(Exception ex)
             {
@@ -63,8 +63,8 @@ namespace AccountAPI.Controllers
         {
             try
             {
-                await _IGameRepository.CreateGameAsync(NewGame);
                 _Logger.LogInfo(ControllerContext, $"Adding Game with the id: {NewGame.GameId}");
+                await _IGameRepository.CreateGameAsync(NewGame);
                 return Ok(new { Id = NewGame.GameId });
             }
             catch(Exception ex)
@@ -80,9 +80,9 @@ namespace AccountAPI.Controllers
         {
             try
             {
-                await _IGameRepository.UpdateGameAsync(UpdateGame);
                 _Logger.LogInfo(ControllerContext, $"Successfully updated the game with the id: {UpdateGame.GameId}.");
-                return NoContent();       
+                await _IGameRepository.UpdateGameAsync(UpdateGame);
+                return Ok(new { Id = UpdateGame.GameId });       
             }
             catch(Exception ex)
             {
@@ -97,9 +97,15 @@ namespace AccountAPI.Controllers
         {
             try
             {
+                Game GameToDelete = await _IGameRepository.GetGameByIdDefaultAsync(id);
+                if(GameToDelete == null)
+                {
+                    _Logger.LogWarn(ControllerContext, $"Game with id: {id}, hasn't been found in database.");
+                    return NotFound();
+                }
                 // NOTE: This will delete all relations to other tables such as codes.
                 _Logger.LogInfo(ControllerContext, $"Querying game with the id: {id} to delete.");
-                await _IGameRepository.DeleteGameAsync(await _IGameRepository.GetGameByIDDefaultAsync(id));
+                await _IGameRepository.DeleteGameAsync(await _IGameRepository.GetGameByIdDefaultAsync(id));
                 return NoContent();
             }
             catch(Exception ex)
@@ -148,7 +154,7 @@ namespace AccountAPI.Controllers
             try
             {
                 _Logger.LogInfo(ControllerContext, $"Querying Game with the id: {id} with a list of Accounts and their Codes.");
-                return Ok(await _IGameRepository.GetGameByIDAsync(id));
+                return Ok(await _IGameRepository.GetGameByIdAsync(id));
             }
             catch(Exception ex)
             {
