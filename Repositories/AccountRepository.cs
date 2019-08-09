@@ -31,6 +31,8 @@ namespace AccountAPI.Repositories
 
         public async Task CreateAccountAsync(Account AccountToAdd)
         {
+            int AccountID = GetNextAccountId() + 1;
+            AccountToAdd.AccountId = AccountID;
             Create(AccountToAdd);
             await SaveAsync();
         }
@@ -92,6 +94,12 @@ namespace AccountAPI.Repositories
                     Code = c.CodeString
                 })
             }).FirstOrDefaultAsync();
+        }
+
+        public int GetNextAccountId()
+        {
+            int i = _Context.Accounts.Max(a => a.AccountId);
+            return i;
         }
     }
 }

@@ -9,8 +9,7 @@ namespace AccountAPI.Models
 {
 	public class Account
     {
-        [Required]
-        public int? AccountId {get;set;}
+        public int AccountId {get;set;}
         public string Username {get;set;}
         public string Password {get;set;}
         public int? EmailAccountId {get;set;}

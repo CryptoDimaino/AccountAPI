@@ -26,6 +26,7 @@ namespace AccountAPI.Models
             ModelBuilder.Entity<EmailAccount>().HasIndex(ea => ea.Email).IsUnique();
 
             // Create All Keys for Manay to Many tables
+            // ModelBuilder.Entity<Account>().Property(a => a.AccountId).ValueGeneratedOnAdd();
             ModelBuilder.Entity<Account>().HasKey(a => new { a.EmailAccountId, a.PlatformId });
 
             ModelBuilder.Entity<GameRating>().HasKey(gr => new { gr.GameId, gr.RatingId });
