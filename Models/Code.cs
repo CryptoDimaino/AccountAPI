@@ -24,6 +24,7 @@ namespace AccountAPI.Models
         public Account Account {get;set;}
 
         // Sets Game though foreign key
+        [Required]
         public int GameId {get;set;}
         public Game Game {get;set;}
     }

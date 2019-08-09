@@ -29,6 +29,11 @@ namespace AccountAPI.Repositories
             return this._Context.Set<T>().Where(Expression).AsNoTracking();
         }
 
+        public bool FindAnyByCondition(Expression<Func<T, bool>> Expression)
+        {
+            return this._Context.Set<T>().Any(Expression);
+        }
+
         public void Create(T Entity)
         {
             this._Context.Set<T>().Add(Entity);

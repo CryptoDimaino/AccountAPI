@@ -51,7 +51,7 @@ namespace AccountAPI
             services.AddSingleton<ILoggerManager, LoggerManager>();
             services.AddTransient<IAccountRepository, AccountRepository>();
             services.AddTransient<ICodeRepository, CodeRepository>();
-
+            services.AddTransient<IEmailAccountRepository, EmailAccountRepository>();
             services.AddTransient<IPlatformRepository, PlatformRepository>();
             services.AddTransient<IGameRepository, GameRepository>();
 

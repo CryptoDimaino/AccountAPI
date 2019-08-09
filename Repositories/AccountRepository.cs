@@ -31,10 +31,12 @@ namespace AccountAPI.Repositories
 
         public async Task CreateAccountAsync(Account AccountToAdd)
         {
-            int AccountID = GetNextAccountId() + 1;
-            AccountToAdd.AccountId = AccountID;
-            Create(AccountToAdd);
-            await SaveAsync();
+            if(!FindAnyByCondition(a => (a.EmailAccountId == AccountToAdd.EmailAccountId && a.PlatformId == AccountToAdd.PlatformId)))
+            {
+                AccountToAdd.AccountId = GetNextAccountId() + 1;
+                Create(AccountToAdd);
+                await SaveAsync();
+            }
         }
 
         public async Task UpdateAccountAsync(Account AccountToUpdate)
@@ -73,9 +75,6 @@ namespace AccountAPI.Repositories
                 EmailPassword = a.EmailAccount.EmailPassword,
                 Platform = a.Platform.Name,
                 Event = a.Event.Name
-                // Codes = a.Codes.Select(c => new {
-                //     Code = CodeString
-                // })
             }).ToListAsync();
         }
 
@@ -98,8 +97,7 @@ namespace AccountAPI.Repositories
 
         public int GetNextAccountId()
         {
-            int i = _Context.Accounts.Max(a => a.AccountId);
-            return i;
+            return _Context.Accounts.Max(a => a.AccountId);
         }
     }
 }

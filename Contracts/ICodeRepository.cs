@@ -16,7 +16,7 @@ namespace AccountAPI.Contracts
         // Default Options
         Task<IEnumerable<Code>> GetAllCodesDefaultAsync();
         Task<Code> GetCodeByIdDefaultAsync(int CodeId);
-        Task<int> CreateCodeAsync(Code CodeToAdd);
+        Task CreateCodeAsync(Code CodeToAdd);
         Task UpdateCodeAsync(Code CodeToUpdate);
         Task DeleteCodeAsync(Code CodeToDelete);
         Task<int> CountNumberOfCodesAsync();

@@ -11,6 +11,7 @@ namespace AccountAPI.Contracts
     {
         IQueryable<T> GetAll();
         IQueryable<T> FindByCondition(Expression<Func<T, bool>> Expression);
+        bool FindAnyByCondition(Expression<Func<T, bool>> Expression);
         void Create(T Entity);
         void Update(T Entity);
         void Delete(T Entity);

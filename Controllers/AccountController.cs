@@ -67,6 +67,10 @@ namespace AccountAPI.Controllers
             {
                 _Logger.LogInfo(ControllerContext, $"Adding Account with the id: {NewAccount.AccountId}");
                 await _IAccountRepository.CreateAccountAsync(NewAccount);
+                if(NewAccount.AccountId == 0)
+                {
+                    return Ok(new { Error = "Account already exists."});
+                }
                 return Ok(new { Id = NewAccount.AccountId });
             }
             catch(Exception ex)

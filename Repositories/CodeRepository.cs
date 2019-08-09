@@ -29,18 +29,13 @@ namespace AccountAPI.Repositories
             return await FindByCondition(c => c.CodeId == CodeId).FirstOrDefaultAsync();
         }
 
-        // TODO: Check to make sure code doesn't already exist
-        public async Task<int> CreateCodeAsync(Code CodeToAdd)
+        public async Task CreateCodeAsync(Code CodeToAdd)
         {
-            var CodeToCheck = await FindByCondition(c => (c.EmailAccountId == CodeToAdd.EmailAccountId && c.PlatformId == CodeToAdd.PlatformId)).SingleAsync();
-            Console.WriteLine(CodeToCheck);
-            if(CodeToAdd == null)
+            if(!FindAnyByCondition(c => (c.EmailAccountId == CodeToAdd.EmailAccountId && c.PlatformId == CodeToAdd.PlatformId && c.GameId == CodeToAdd.GameId)))
             {
                 Create(CodeToAdd);
                 await SaveAsync();
-                return CodeToAdd.CodeId;
             }
-            return 11;
         }
 
         public async Task UpdateCodeAsync(Code CodeToUpdate)

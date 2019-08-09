@@ -12,9 +12,9 @@ namespace AccountAPI.Models
         public int AccountId {get;set;}
         public string Username {get;set;}
         public string Password {get;set;}
-        public int? EmailAccountId {get;set;}
+        public int EmailAccountId {get;set;}
         public EmailAccount EmailAccount {get;set;}
-        public int? PlatformId {get;set;}
+        public int PlatformId {get;set;}
         public Platform Platform {get;set;}
 
         // Keeps track of Accounts

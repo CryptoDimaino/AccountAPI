@@ -64,8 +64,12 @@ namespace AccountAPI.Controllers
             try
             {
                 _Logger.LogInfo(ControllerContext, $"Adding CODE with the id: {NewCode.CodeId}");
-                var thing = await _ICodeRepository.CreateCodeAsync(NewCode);
-                return Ok(new { Id = thing });
+                await _ICodeRepository.CreateCodeAsync(NewCode);
+                if(NewCode.CodeId == 0)
+                {
+                    return Ok(new { Error = "Code already exists."});
+                }
+                return Ok(new { Id = NewCode.CodeId });
             }
             catch(Exception ex)
             {

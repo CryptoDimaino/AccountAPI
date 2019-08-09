@@ -15,12 +15,9 @@ namespace AccountAPI.Models
         public string Email {get;set;}
         [Required]
         public string EmailPassword {get;set;}
-        [Required]
         public DateTime CreatedAt {get;set;} = DateTime.Now;
-        [Required]
         public DateTime UpdatedAt {get;set;} = DateTime.Now;
 
-        // Platforms
-        public ICollection<Platform> Platforms {get;} = new List<Platform>();
+        public ICollection<Account> Accounts {get;} = new List<Account>();
     }
 }
