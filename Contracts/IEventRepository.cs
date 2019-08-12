@@ -18,7 +18,7 @@ namespace AccountAPI.Contracts
         Task<Event> GetEventByIdDefaultAsync(int EventId);
         Task CreateEventAsync(Event EventToAdd);
         Task UpdateEventAsync(Event EventToUpdate);
-        Task<string> DeleteEventAsync(Event EventToDelete);
+        Task DeleteEventAsync(Event EventToDelete);
         Task<int> CountNumberOfEventsAsync();
 
         // Project Specific

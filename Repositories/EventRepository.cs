@@ -71,7 +71,7 @@ namespace AccountAPI.Repositories
 
         public async Task<object> GetEventByIdAsync(int EventId)
         {
-            return await FindByCondition(e => e.EventId == EventId).Select(c => new {
+            return await FindByCondition(e => e.EventId == EventId).Select(e => new {
                 Id = e.EventId,
                 Name = e.Name,
                 Location = e.Location

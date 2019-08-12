@@ -52,6 +52,8 @@ namespace AccountAPI
             services.AddTransient<IAccountRepository, AccountRepository>();
             services.AddTransient<ICodeRepository, CodeRepository>();
             services.AddTransient<IEmailAccountRepository, EmailAccountRepository>();
+            services.AddTransient<IEventRepository, EventRepository>();
+
             services.AddTransient<IPlatformRepository, PlatformRepository>();
             services.AddTransient<IGameRepository, GameRepository>();
 
