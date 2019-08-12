@@ -61,6 +61,7 @@ namespace AccountAPI.Controllers
         [HttpPost]
         public async Task<IActionResult> AddCode([FromBody] Code NewCode)
         {
+            
             try
             {
                 _Logger.LogInfo(ControllerContext, $"Adding CODE with the id: {NewCode.CodeId}");

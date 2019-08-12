@@ -16,14 +16,15 @@ namespace AccountAPI.Contracts
         // Default Options
         Task<IEnumerable<Platform>> GetAllPlatformsDefaultAsync();
         Task<Platform> GetPlatformByIDDefaultAsync(int PlatformId);
-        Task CreatePlatformAsync(Platform PlatformToAdd);
-        Task UpdatePlatformAsync(Platform PlatformToUpdate);
-        Task DeletePlatformAsync(Platform PlatformToDelete);
+        Task<int> CreatePlatformAsync(Platform PlatformToAdd);
+        Task<int> UpdatePlatformAsync(Platform PlatformToUpdate);
+        Task<int> DeletePlatformAsync(Platform PlatformToDelete);
         Task<int> CountNumberOfPlatformsAsync();
 
         // Project Specific
         Task<IEnumerable<object>> GetAllPlatformsAsync();
         Task<IEnumerable<object>> GetAllPlatformsOnlyAsync();
         Task<object> GetPlatformByIdAsync(int PlatformId);
+        bool DoesPlatformExist(int id);
     }
 }

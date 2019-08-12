@@ -24,5 +24,6 @@ namespace AccountAPI.Contracts
         // Project Specific
         Task<IEnumerable<object>> GetAllGamesAsync();
         Task<object> GetGameByIdAsync(int GameId);
+        Task<IEnumerable<Game>> GetAllGamesByPlatformId(int id);
     }
 }

@@ -13,9 +13,14 @@ namespace AccountAPI.Repositories
 {
     public class PlatformRepository : GenericRepository<Platform>, IPlatformRepository
     {
-        public PlatformRepository(Context Context) : base(Context)
+        private readonly Context _Context;
+        private readonly IGameRepository _IGameRepository;
+        private readonly IAccountRepository _IAccountRepository;
+        public PlatformRepository(Context Context, IGameRepository IGameRepository, IAccountRepository IAccountRepository) : base(Context)
         {
-
+            _Context = Context;
+            _IGameRepository = IGameRepository;
+            _IAccountRepository = IAccountRepository;
         }
 
         public async Task<IEnumerable<Platform>> GetAllPlatformsDefaultAsync()
@@ -28,22 +33,49 @@ namespace AccountAPI.Repositories
             return await FindByCondition(a => a.PlatformId == PlatformId).FirstOrDefaultAsync();
         }
 
-        public async Task CreatePlatformAsync(Platform PlatformToAdd)
+        public async Task<int> CreatePlatformAsync(Platform PlatformToAdd)
         {
-            Create(PlatformToAdd);
-            await SaveAsync();
+            if(!FindAnyByCondition(p => p.Name == PlatformToAdd.Name))
+            {
+                Create(PlatformToAdd);
+                await SaveAsync();
+                return PlatformToAdd.PlatformId;
+            }
+            return 0;
         }
 
-        public async Task UpdatePlatformAsync(Platform PlatformToUpdate)
+        public async Task<int> UpdatePlatformAsync(Platform PlatformToUpdate)
         {
-            Update(PlatformToUpdate);
-            await SaveAsync();
+            if(FindAnyByCondition(p => p.PlatformId == PlatformToUpdate.PlatformId))
+            {
+                Update(PlatformToUpdate);
+                await SaveAsync();
+                return PlatformToUpdate.PlatformId;
+            }
+            return 0;
         }
 
-        public async Task DeletePlatformAsync(Platform PlatformToDelete)
+        public async Task<int> DeletePlatformAsync(Platform PlatformToDelete)
         {
-            Delete(PlatformToDelete);
-            await SaveAsync();
+            if(FindAnyByCondition(p => p.PlatformId == PlatformToDelete.PlatformId))
+            {
+                var Accounts = await _IAccountRepository.GetAllAccountsByPlatformId(PlatformToDelete.PlatformId);
+                foreach(var account in Accounts)
+                {
+                    await _IAccountRepository.DeleteAccountAsync(account);
+                }
+
+                var Games = await _IGameRepository.GetAllGamesByPlatformId(PlatformToDelete.PlatformId);
+                foreach(var game in Games)
+                {
+                    await _IGameRepository.DeleteGameAsync(game);
+                }
+                Delete(PlatformToDelete);
+                await SaveAsync();
+                return PlatformToDelete.PlatformId;
+            }
+            return 0;
+            
         }
 
         public async Task<int> CountNumberOfPlatformsAsync()
@@ -87,6 +119,11 @@ namespace AccountAPI.Repositories
                     Username = a.Username
                 })
             }).FirstOrDefaultAsync();
+        }
+
+        public bool DoesPlatformExist(int id)
+        {
+            return FindAnyByCondition(p => p.PlatformId == id);
         }
     }
 }

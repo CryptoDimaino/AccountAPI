@@ -11,7 +11,6 @@ namespace AccountAPI.Services
     {
         string Message {get;set;}
         bool DidError {get;set;}
-        string ErrorMessage {get;set;}
     }
 
     public interface ISingleResponse<TModel> : IResponse
@@ -24,24 +23,16 @@ namespace AccountAPI.Services
         IEnumerable<TModel> Model {get;set;}
     }
 
-    public interface IPagedResponse<TModel> : IListResponse<TModel>
-    {
-        int ItemsCount {get;set;}
-        double PageCount {get;}
-    }
-
     public class Response : IResponse
     {
         public string Message {get;set;}
         public bool DidError {get;set;}
-        public string ErrorMessage {get;set;}
     }
 
     public class SingleResponse<TModel> : ISingleResponse<TModel>
     {
         public string Message {get;set;}
         public bool DidError {get;set;}
-        public string ErrorMessage {get;set;}
         public TModel Model {get;set;}
     }
 
@@ -49,20 +40,7 @@ namespace AccountAPI.Services
     {
         public string Message {get;set;}
         public bool DidError {get;set;}
-        public string ErrorMessage {get;set;}
         public IEnumerable<TModel> Model {get;set;}
-    }
-
-    public class PagedResponse<TModel> : IPagedResponse<TModel>
-    {
-        public string Message { get; set; }
-        public bool DidError { get; set; }
-        public string ErrorMessage { get; set; }
-        public IEnumerable<TModel> Model { get; set; }
-        public int PageSize { get; set; }
-        public int PageNumber { get; set; }
-        public int ItemsCount { get; set; }
-        public double PageCount => ItemsCount < PageSize ? 1 : (int)(((double)ItemsCount / PageSize) + 1);
     }
 
     public static class ResponseExtensions
@@ -81,10 +59,14 @@ namespace AccountAPI.Services
         {
             var status = HttpStatusCode.OK;
 
-            if (response.DidError)
+            if(response.DidError)
+            {
                 status = HttpStatusCode.InternalServerError;
-            else if (response.Model == null)
+            }
+            else if(response.Model == null)
+            {
                 status = HttpStatusCode.NotFound;
+            }
 
             return new ObjectResult(response)
             {
@@ -96,10 +78,14 @@ namespace AccountAPI.Services
         {
             var status = HttpStatusCode.OK;
 
-            if (response.DidError)
+            if(response.DidError)
+            {
                 status = HttpStatusCode.InternalServerError;
-            else if (response.Model == null)
+            }
+            else if(response.Model == null)
+            {
                 status = HttpStatusCode.NoContent;
+            }
 
             return new ObjectResult(response)
             {

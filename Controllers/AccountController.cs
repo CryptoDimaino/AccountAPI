@@ -86,8 +86,13 @@ namespace AccountAPI.Controllers
         {
             try
             {
+                string UpdateResonse = await _IAccountRepository.UpdateAccountAsync(UpdateAccount);
+                // if(UpdateAccount.)
+                // {
+
+                // }
                 _Logger.LogInfo(ControllerContext, $"Successfully updated the game with the id: {UpdateAccount.AccountId}.");
-                await _IAccountRepository.UpdateAccountAsync(UpdateAccount);
+                
                 return Ok(new { Id = UpdateAccount.AccountId });       
             }
             catch(Exception ex)

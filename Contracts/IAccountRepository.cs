@@ -16,13 +16,14 @@ namespace AccountAPI.Contracts
         // Default Options
         Task<IEnumerable<Account>> GetAllAccountsDefaultAsync();
         Task<Account> GetAccountByIdDefaultAsync(int AccountId);
-        Task CreateAccountAsync(Account AccountToAdd);
-        Task UpdateAccountAsync(Account AccountToUpdate);
+        Task<string> CreateAccountAsync(Account AccountToAdd);
+        Task<string> UpdateAccountAsync(Account AccountToUpdate);
         Task<string> DeleteAccountAsync(Account AccountToDelete);
         Task<int> CountNumberOfAccountsAsync();
 
         // Project Specific
         Task<IEnumerable<object>> GetAllAccountsAsync();
         Task<object> GetAccountByIdAsync(int AccountId);
+        Task<IEnumerable<Account>> GetAllAccountsByPlatformId(int id);
     }
 }

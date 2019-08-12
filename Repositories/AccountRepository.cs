@@ -29,24 +29,32 @@ namespace AccountAPI.Repositories
             return await FindByCondition(a => a.AccountId == AccountId).FirstOrDefaultAsync();
         }
 
-        public async Task CreateAccountAsync(Account AccountToAdd)
+        public async Task<string> CreateAccountAsync(Account AccountToAdd)
         {
             if(!FindAnyByCondition(a => (a.EmailAccountId == AccountToAdd.EmailAccountId && a.PlatformId == AccountToAdd.PlatformId)))
             {
                 AccountToAdd.AccountId = GetNextAccountId() + 1;
                 Create(AccountToAdd);
                 await SaveAsync();
+                return $"Account with the id: {AccountToAdd.AccountId} has been added.";
             }
+            return $"Account was unable to be created because account already exists.";
         }
 
-        public async Task UpdateAccountAsync(Account AccountToUpdate)
+        public async Task<string> UpdateAccountAsync(Account AccountToUpdate)
         {
-            Update(AccountToUpdate);
-            await SaveAsync();
+            if(!FindAnyByCondition(a => a.AccountId == AccountToUpdate.AccountId))
+            {
+                Update(AccountToUpdate);
+                await SaveAsync();
+                return $"Account with the id: {AccountToUpdate.AccountId} has been updated.";
+            }
+            return $"No account exists with the id: {AccountToUpdate.AccountId}.";
         }
 
         public async Task<string> DeleteAccountAsync(Account AccountToDelete)
         {
+
             string codeIdsToDelete = "";
             var CodeListToDelete = _Context.Codes.Where(c => (c.EmailAccountId == AccountToDelete.EmailAccountId && c.PlatformId == AccountToDelete.PlatformId));
             foreach(var code in CodeListToDelete)
@@ -98,6 +106,17 @@ namespace AccountAPI.Repositories
         public int GetNextAccountId()
         {
             return _Context.Accounts.Max(a => a.AccountId);
+        }
+
+        // public async Task<Account> FindAnyAccountId(Account FindAccount)
+        // {
+        //     return await FindAnyByCondition();
+        // }
+
+        public async Task<IEnumerable<Account>> GetAllAccountsByPlatformId(int id)
+        {
+            var Accounts = await FindByCondition(a => a.PlatformId == id).ToListAsync();
+            return Accounts;
         }
     }
 }

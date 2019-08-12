@@ -81,5 +81,10 @@ namespace AccountAPI.Repositories
                 })
             }).FirstOrDefaultAsync();
         }
+
+        public async Task<IEnumerable<Game>> GetAllGamesByPlatformId(int id)
+        {
+            return await FindByCondition(g => g.PlatformId == id).ToListAsync();
+        }
     }
 }
