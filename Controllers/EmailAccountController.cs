@@ -110,8 +110,8 @@ namespace AccountAPI.Controllers
                     return NotFound();
                 }
                 // NOTE: This will delete all relations to other tables such as codes.
-                string accountids = await _IEmailAccountRepository.DeleteEmailAccountAsync(EmailAccountToDelete);
-                _Logger.LogInfo(ControllerContext, $"Querying EmailAccount with the id: {id} to delete, all deleted the emails with the ids:{accountids}.");
+                await _IEmailAccountRepository.DeleteEmailAccountAsync(EmailAccountToDelete);
+                // _Logger.LogInfo(ControllerContext, $"Querying EmailAccount with the id: {id} to delete, all deleted the emails with the ids:{accountids}.");
                 return NoContent();
             }
             catch(Exception ex)

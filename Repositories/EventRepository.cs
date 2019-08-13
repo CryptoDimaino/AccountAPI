@@ -29,25 +29,37 @@ namespace AccountAPI.Repositories
             return await FindByCondition(e => e.EventId == EventId).FirstOrDefaultAsync();
         }
 
-        public async Task CreateEventAsync(Event EventToAdd)
+        public async Task<int> CreateEventAsync(Event EventToAdd)
         {
             if(!FindAnyByCondition(e => e.EventId == EventToAdd.EventId))
             {
                 Create(EventToAdd);
                 await SaveAsync();
+                return EventToAdd.EventId;
             }
+            return 0;
         }
 
-        public async Task UpdateEventAsync(Event EventToUpdate)
+        public async Task<int> UpdateEventAsync(Event EventToUpdate)
         {
-            Update(EventToUpdate);
-            await SaveAsync();
+            if(!FindAnyByCondition(e => e.EventId == EventToUpdate.EventId))
+            {
+                Update(EventToUpdate);
+                await SaveAsync();
+                return EventToUpdate.EventId;
+            }
+            return 0;
         }
 
-        public async Task DeleteEventAsync(Event EventToDelete)
+        public async Task<int> DeleteEventAsync(Event EventToDelete)
         {
-            Delete(EventToDelete);
-            await SaveAsync();
+            if(FindAnyByCondition(e => e.EventId == EventToDelete.EventId))
+            {
+                Delete(EventToDelete);
+                await SaveAsync();
+                return EventToDelete.EventId;
+            }
+            return 0;
         }
 
         public async Task<int> CountNumberOfEventsAsync()

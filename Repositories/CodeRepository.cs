@@ -29,25 +29,37 @@ namespace AccountAPI.Repositories
             return await FindByCondition(c => c.CodeId == CodeId).FirstOrDefaultAsync();
         }
 
-        public async Task CreateCodeAsync(Code CodeToAdd)
+        public async Task<int> CreateCodeAsync(Code CodeToAdd)
         {
             if(!FindAnyByCondition(c => (c.EmailAccountId == CodeToAdd.EmailAccountId && c.PlatformId == CodeToAdd.PlatformId && c.GameId == CodeToAdd.GameId)))
             {
                 Create(CodeToAdd);
                 await SaveAsync();
+                return CodeToAdd.CodeId;
             }
+            return 0;
         }
 
-        public async Task UpdateCodeAsync(Code CodeToUpdate)
+        public async Task<int> UpdateCodeAsync(Code CodeToUpdate)
         {
-            Update(CodeToUpdate);
-            await SaveAsync();
+            if(!FindAnyByCondition(c => (c.EmailAccountId == CodeToUpdate.EmailAccountId && c.PlatformId == CodeToUpdate.PlatformId && c.GameId == CodeToUpdate.GameId)))
+            {
+                Update(CodeToUpdate);
+                await SaveAsync();
+                return CodeToUpdate.CodeId;
+            }
+            return 0;
         }
 
-        public async Task DeleteCodeAsync(Code CodeToDelete)
+        public async Task<int> DeleteCodeAsync(Code CodeToDelete)
         {
-            Delete(CodeToDelete);
-            await SaveAsync();
+            if(FindAnyByCondition(c => (c.EmailAccountId == CodeToDelete.EmailAccountId && c.PlatformId == CodeToDelete.PlatformId && c.GameId == CodeToDelete.GameId)))
+            {
+                Delete(CodeToDelete);
+                await SaveAsync();
+                return CodeToDelete.CodeId;
+            }
+            return 0;
         }
 
         public async Task<int> CountNumberOfCodesAsync()
@@ -77,6 +89,16 @@ namespace AccountAPI.Repositories
                 GameId = c.Game.GameId,
                 Game = c.Game.Name
             }).FirstOrDefaultAsync();
+        }
+
+        public async Task<IEnumerable<Code>> GetAllCodesByAccount(int EmailAccountId, int PlatformId)
+        {
+            return await FindByCondition(c => (c.EmailAccountId == EmailAccountId && c.PlatformId == PlatformId)).ToListAsync();
+        }
+
+        public bool DoesCodeExist(int id)
+        {
+            return FindAnyByCondition(c => c.CodeId == id);
         }
     }
 }

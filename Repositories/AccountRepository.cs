@@ -13,10 +13,10 @@ namespace AccountAPI.Repositories
 {
     public class AccountRepository : GenericRepository<Account>, IAccountRepository
     {
-        private readonly Context _Context;
-        public AccountRepository(Context Context) : base(Context)
+        private readonly ICodeRepository _ICodeRepository;
+        public AccountRepository(Context Context, ICodeRepository ICodeRepository) : base(Context)
         {
-            _Context = Context;
+            _ICodeRepository = ICodeRepository;
         }
 
         public async Task<IEnumerable<Account>> GetAllAccountsDefaultAsync()
@@ -29,42 +29,43 @@ namespace AccountAPI.Repositories
             return await FindByCondition(a => a.AccountId == AccountId).FirstOrDefaultAsync();
         }
 
-        public async Task<string> CreateAccountAsync(Account AccountToAdd)
+        public async Task<int> CreateAccountAsync(Account AccountToAdd)
         {
             if(!FindAnyByCondition(a => (a.EmailAccountId == AccountToAdd.EmailAccountId && a.PlatformId == AccountToAdd.PlatformId)))
             {
                 AccountToAdd.AccountId = GetNextAccountId() + 1;
                 Create(AccountToAdd);
                 await SaveAsync();
-                return $"Account with the id: {AccountToAdd.AccountId} has been added.";
+                return AccountToAdd.AccountId;
             }
-            return $"Account was unable to be created because account already exists.";
+            return 0;
         }
 
-        public async Task<string> UpdateAccountAsync(Account AccountToUpdate)
+        public async Task<int> UpdateAccountAsync(Account AccountToUpdate)
         {
             if(!FindAnyByCondition(a => a.AccountId == AccountToUpdate.AccountId))
             {
                 Update(AccountToUpdate);
                 await SaveAsync();
-                return $"Account with the id: {AccountToUpdate.AccountId} has been updated.";
+                return AccountToUpdate.AccountId;
             }
-            return $"No account exists with the id: {AccountToUpdate.AccountId}.";
+            return 0;
         }
 
-        public async Task<string> DeleteAccountAsync(Account AccountToDelete)
+        public async Task<int> DeleteAccountAsync(Account AccountToDelete)
         {
-
-            string codeIdsToDelete = "";
-            var CodeListToDelete = _Context.Codes.Where(c => (c.EmailAccountId == AccountToDelete.EmailAccountId && c.PlatformId == AccountToDelete.PlatformId));
-            foreach(var code in CodeListToDelete)
+            if(FindAnyByCondition(a => a.AccountId == AccountToDelete.AccountId))
             {
-                codeIdsToDelete += $" {code.CodeId}";
+                var CodeL = await _ICodeRepository.GetAllCodesByAccount(AccountToDelete.EmailAccountId, AccountToDelete.PlatformId);
+                foreach(var code in CodeL)
+                {
+                    await _ICodeRepository.DeleteCodeAsync(code);
+                }
+                Delete(AccountToDelete);
+                await SaveAsync();
+                return AccountToDelete.AccountId;
             }
-            _Context.Codes.RemoveRange(CodeListToDelete);
-            Delete(AccountToDelete);
-            await SaveAsync();
-            return codeIdsToDelete;
+            return 0;
         }
 
         public async Task<int> CountNumberOfAccountsAsync()
@@ -105,18 +106,22 @@ namespace AccountAPI.Repositories
 
         public int GetNextAccountId()
         {
-            return _Context.Accounts.Max(a => a.AccountId);
+            return GetAll().Max(a => a.AccountId);
         }
-
-        // public async Task<Account> FindAnyAccountId(Account FindAccount)
-        // {
-        //     return await FindAnyByCondition();
-        // }
 
         public async Task<IEnumerable<Account>> GetAllAccountsByPlatformId(int id)
         {
-            var Accounts = await FindByCondition(a => a.PlatformId == id).ToListAsync();
-            return Accounts;
+            return await FindByCondition(a => a.PlatformId == id).ToListAsync();
+        }
+
+        public async Task<IEnumerable<Account>> GetAllAccountsByEmailAccountId(int id)
+        {
+            return await FindByCondition(a => a.EmailAccountId == id).ToListAsync();
+        }
+
+        public bool DoesAccountExist(int id)
+        {
+            return FindAnyByCondition(a => a.AccountId == id);
         }
     }
 }

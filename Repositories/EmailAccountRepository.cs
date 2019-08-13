@@ -31,32 +31,42 @@ namespace AccountAPI.Repositories
             return await FindByCondition(g => g.EmailAccountId == EmailAccountId).FirstOrDefaultAsync();
         }
 
-        public async Task CreateEmailAccountAsync(EmailAccount EmailAccountToAdd)
+        public async Task<int> CreateEmailAccountAsync(EmailAccount EmailAccountToAdd)
         {
             if(!FindAnyByCondition(ea => ea.Email == EmailAccountToAdd.Email))
             {
                 Create(EmailAccountToAdd);
                 await SaveAsync();
+                return EmailAccountToAdd.EmailAccountId;
             }
+            return 0;
         }
 
-        public async Task UpdateEmailAccountAsync(EmailAccount EmailAccountToUpdate)
+        public async Task<int> UpdateEmailAccountAsync(EmailAccount EmailAccountToUpdate)
         {
-            Update(EmailAccountToUpdate);
-            await SaveAsync();
-        }
-
-        public async Task<string> DeleteEmailAccountAsync(EmailAccount EmailAccountToDelete)
-        {
-            string AccountIdsToDelete = "";
-            var AccountListToDelete = _Context.Accounts.Where(a => a.EmailAccountId == EmailAccountToDelete.EmailAccountId);
-            foreach(var account in AccountListToDelete)
+            if(FindAnyByCondition(ea => ea.EmailAccountId == EmailAccountToUpdate.EmailAccountId))
             {
-                AccountIdsToDelete += $"Account id: {account.AccountId} Code ids: {await _IAccountRepository.DeleteAccountAsync(account)},";
+                Update(EmailAccountToUpdate);
+                await SaveAsync();
+                return EmailAccountToUpdate.EmailAccountId;
             }
-            Delete(EmailAccountToDelete);
-            await SaveAsync();
-            return AccountIdsToDelete;
+            return 0;
+        }
+
+        public async Task<int> DeleteEmailAccountAsync(EmailAccount EmailAccountToDelete)
+        {
+            if(FindAnyByCondition(ea => ea.EmailAccountId == EmailAccountToDelete.EmailAccountId))
+            {
+                var AccountList = await _IAccountRepository.GetAllAccountsByEmailAccountId(EmailAccountToDelete.EmailAccountId);
+                foreach(var account in AccountList)
+                {
+                    await _IAccountRepository.DeleteAccountAsync(account);
+                }
+                Delete(EmailAccountToDelete);
+                await SaveAsync();
+                return EmailAccountToDelete.EmailAccountId;
+            }
+            return 0;
         }
 
         public async Task<int> CountNumberOfEmailAccountsAsync()

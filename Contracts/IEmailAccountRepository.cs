@@ -16,9 +16,9 @@ namespace AccountAPI.Contracts
         // Default Options
         Task<IEnumerable<EmailAccount>> GetAllEmailAccountsDefaultAsync();
         Task<EmailAccount> GetEmailAccountByIdDefaultAsync(int EmailAccountId);
-        Task CreateEmailAccountAsync(EmailAccount EmailAccountToAdd);
-        Task UpdateEmailAccountAsync(EmailAccount EmailAccountToUpdate);
-        Task<string> DeleteEmailAccountAsync(EmailAccount EmailAccountToDelete);
+        Task<int> CreateEmailAccountAsync(EmailAccount EmailAccountToAdd);
+        Task<int> UpdateEmailAccountAsync(EmailAccount EmailAccountToUpdate);
+        Task<int> DeleteEmailAccountAsync(EmailAccount EmailAccountToDelete);
         Task<int> CountNumberOfEmailAccountsAsync();
 
         // Project Specific

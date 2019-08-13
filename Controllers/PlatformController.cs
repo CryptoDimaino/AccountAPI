@@ -189,22 +189,28 @@ namespace AccountAPI.Controllers
         [HttpGet]
         public async Task<IActionResult> GetPlatforms()
         {
+            var Response = new ListResponse<object>();
             try
             {
-                _Logger.LogInfo(ControllerContext, $"Querying all Platforms Names with Id.");
-                return Ok(await _IPlatformRepository.GetAllPlatformsOnlyAsync());
+                var Platforms = await _IPlatformRepository.GetAllPlatformsOnlyAsync();
+                Response.Message =  $"Querying all Platforms Names with Id.";
+                Response.Model = Platforms;
+                _Logger.LogInfo(ControllerContext, Response.Message);
             }
             catch(Exception ex)
             {
+                Response.DidError = true;
+                Response.Message = "Internal Server Error.";
                 _Logger.LogError(ControllerContext, $"Error Message: {ex.Message}");
-                return StatusCode(500, "Internal Server Error.");
             }
+            return Response.ToHttpResponse();
         }
 
         // Get api/v{version:apiVersion}/Platform/GetPlatformsAndGames
         [HttpGet("GetPlatformsAndGames")]
         public async Task<IActionResult> GetPlatformsAndGames()
         {
+            var Response = new ListResponse<Platform>();
             try
             {
                 _Logger.LogInfo(ControllerContext, $"Querying all Platforms With Games!");
@@ -212,15 +218,18 @@ namespace AccountAPI.Controllers
             }
             catch(Exception ex)
             {
+                Response.DidError = true;
+                Response.Message = "Internal Server Error.";
                 _Logger.LogError(ControllerContext, $"Error Message: {ex.Message}");
-                return StatusCode(500, "Internal Server Error.");
             }
+            return Response.ToHttpResponse();
         }
 
         // GET api/v{version:apiVersion}/Platform/{id}
         [HttpGet("{id}")]
         public async Task<IActionResult> GetPlatformId(int id)
         {
+            var Response = new SingleResponse<object>();
             try
             {
                 _Logger.LogInfo(ControllerContext, $"Querying Platform with the id: {id} and list of games and accounts");
@@ -228,9 +237,11 @@ namespace AccountAPI.Controllers
             }
             catch(Exception ex)
             {
+                Response.DidError = true;
+                Response.Message = "Internal Server Error.";
                 _Logger.LogError(ControllerContext, $"Error Message: {ex.Message}");
-                return StatusCode(500, "Internal Server Error");
             }
+            return Response.ToHttpResponse();
         }
     }
 }

@@ -28,22 +28,37 @@ namespace AccountAPI.Repositories
             return await FindByCondition(g => g.GameId == GameId).FirstOrDefaultAsync();
         }
 
-        public async Task CreateGameAsync(Game GameToAdd)
+        public async Task<int> CreateGameAsync(Game GameToAdd)
         {
-            Create(GameToAdd);
-            await SaveAsync();
+            if(FindAnyByCondition(g => g.Name == GameToAdd.Name))
+            {
+                Create(GameToAdd);
+                await SaveAsync();
+                return GameToAdd.GameId;
+            }
+            return 0;
         }
 
-        public async Task UpdateGameAsync(Game GameToUpdate)
+        public async Task<int> UpdateGameAsync(Game GameToUpdate)
         {
-            Update(GameToUpdate);
-            await SaveAsync();
+            if(FindAnyByCondition(g => g.GameId == GameToUpdate.GameId))
+            {
+                Update(GameToUpdate);
+                await SaveAsync();
+                return GameToUpdate.GameId;
+            }
+            return 0;
         }
 
-        public async Task DeleteGameAsync(Game GameToDelete)
+        public async Task<int> DeleteGameAsync(Game GameToDelete)
         {
-            Delete(GameToDelete);
-            await SaveAsync();
+            if(FindAnyByCondition(g => g.GameId == GameToDelete.GameId))
+            {
+                Delete(GameToDelete);
+                await SaveAsync();
+                return GameToDelete.GameId;
+            }
+            return 0;
         }
         public async Task<int> CountNumberOfGamesAsync()
         {

@@ -16,9 +16,9 @@ namespace AccountAPI.Contracts
         // Default Options
         Task<IEnumerable<Event>> GetAllEventsDefaultAsync();
         Task<Event> GetEventByIdDefaultAsync(int EventId);
-        Task CreateEventAsync(Event EventToAdd);
-        Task UpdateEventAsync(Event EventToUpdate);
-        Task DeleteEventAsync(Event EventToDelete);
+        Task<int> CreateEventAsync(Event EventToAdd);
+        Task<int> UpdateEventAsync(Event EventToUpdate);
+        Task<int> DeleteEventAsync(Event EventToDelete);
         Task<int> CountNumberOfEventsAsync();
 
         // Project Specific

@@ -13,12 +13,10 @@ namespace AccountAPI.Repositories
 {
     public class PlatformRepository : GenericRepository<Platform>, IPlatformRepository
     {
-        private readonly Context _Context;
         private readonly IGameRepository _IGameRepository;
         private readonly IAccountRepository _IAccountRepository;
         public PlatformRepository(Context Context, IGameRepository IGameRepository, IAccountRepository IAccountRepository) : base(Context)
         {
-            _Context = Context;
             _IGameRepository = IGameRepository;
             _IAccountRepository = IAccountRepository;
         }

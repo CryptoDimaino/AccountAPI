@@ -16,13 +16,15 @@ namespace AccountAPI.Contracts
         // Default Options
         Task<IEnumerable<Code>> GetAllCodesDefaultAsync();
         Task<Code> GetCodeByIdDefaultAsync(int CodeId);
-        Task CreateCodeAsync(Code CodeToAdd);
-        Task UpdateCodeAsync(Code CodeToUpdate);
-        Task DeleteCodeAsync(Code CodeToDelete);
+        Task<int> CreateCodeAsync(Code CodeToAdd);
+        Task<int> UpdateCodeAsync(Code CodeToUpdate);
+        Task<int> DeleteCodeAsync(Code CodeToDelete);
         Task<int> CountNumberOfCodesAsync();
 
         // Project Specific
         Task<IEnumerable<object>> GetAllCodesAsync();
         Task<object> GetCodeByIdAsync(int CodeId);
+        Task<IEnumerable<Code>> GetAllCodesByAccount(int EmailAccountId, int PlatformId);
+        bool DoesCodeExist(int id);
     }
 }
