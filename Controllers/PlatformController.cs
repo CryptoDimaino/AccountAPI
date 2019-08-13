@@ -38,17 +38,15 @@ namespace AccountAPI.Controllers
             var Response = new ListResponse<Platform>();
             try
             {
-                var Platforms = await _IPlatformRepository.GetAllPlatformsDefaultAsync();
+                Response.Model = await _IPlatformRepository.GetAllPlatformsDefaultAsync();
                 Response.Message = "Querying all platforms with default information.";
-                Response.Model = Platforms;
-                _Logger.LogInfo(ControllerContext, Response.Message);
             }
             catch(Exception ex)
             {
                 Response.DidError = true;
-                Response.Message = "Internal Server Error.";
-                _Logger.LogError(ControllerContext, $"Error Message: {ex.Message}");
+                Response.Message = $"Internal Server Error. Error Message: {ex.Message}";
             }
+            _Logger.LogInfo(ControllerContext, Response.Message);
             return Response.ToHttpResponse();
         }
 
@@ -59,17 +57,23 @@ namespace AccountAPI.Controllers
             var Response = new SingleResponse<Platform>();
             try
             {
-                var Platform = await _IPlatformRepository.GetPlatformByIDDefaultAsync(id);
-                Response.Message = $"Querying platform with the id: {id} with default information.";
-                Response.Model = Platform;
-                _Logger.LogInfo(ControllerContext, Response.Message);
+                if(!_IPlatformRepository.DoesPlatformExist(id))
+                {
+                    Response.DidError = true;
+                    Response.Message = $"The Platform with the id: {id} was not found in the database.";
+                }
+                else
+                {
+                    Response.Model = await _IPlatformRepository.GetPlatformByIDDefaultAsync(id);
+                    Response.Message = $"Querying Platform with the id: {id}.";
+                }
             }
             catch(Exception ex)
             {
                 Response.DidError = true;
-                Response.Message = "Internal Server Error.";
-                _Logger.LogError(ControllerContext, $"Error Message: {ex.Message}");
+                Response.Message = $"Internal Server Error. Error Message: {ex.Message}";
             }
+            _Logger.LogInfo(ControllerContext, Response.Message);
             return Response.ToHttpResponse();
         }
 
@@ -85,21 +89,19 @@ namespace AccountAPI.Controllers
                 {
                     Response.DidError = true;
                     Response.Message = $"The Platform with the Name: {NewPlatform.Name} was already found in the database.";
-                    _Logger.LogError(ControllerContext, Response.Message);
                 }
                 else
                 {
-                    Response.Message = $"{NewPlatform.PlatformId}";
+                    Response.Message = $"The Platform with the Name: {NewPlatform.Name} was added to the database.";
                     Response.Model = NewPlatform;
-                    _Logger.LogInfo(ControllerContext, $"The Platform with the Name: {NewPlatform.Name} was added to the database.");
                 }
             }
             catch(Exception ex)
             {
                 Response.DidError = true;
-                Response.Message = "Internal Server Error.";
-                _Logger.LogError(ControllerContext, $"Error Message: {ex.Message}");
+                Response.Message = $"Internal Server Error. Error Message: {ex.Message}";
             }
+            _Logger.LogError(ControllerContext, Response.Message);
             return Response.ToHttpResponse();
         }
 
@@ -115,21 +117,19 @@ namespace AccountAPI.Controllers
                 {
                     Response.DidError = true;
                     Response.Message = $"The Platform with the id: {UpdatePlatform.PlatformId} was not found in the database.";
-                    _Logger.LogError(ControllerContext, Response.Message);
                 }
                 else
                 {
-                    Response.Message = $"{UpdatePlatform.PlatformId}";
+                    Response.Message = $"Platform with the id: {UpdatePlatform.PlatformId} has been updated.";
                     Response.Model = UpdatePlatform;
-                    _Logger.LogInfo(ControllerContext, $"Platform with the id: {UpdatePlatform.PlatformId} has been updated.");
                 }
             }
             catch(Exception ex)
             {
                 Response.DidError = true;
-                Response.Message = "Internal Server Error.";
-                _Logger.LogError(ControllerContext, $"Error Message: {ex.Message}");
+                Response.Message = $"Internal Server Error. Error Message: {ex.Message}";
             }
+            _Logger.LogError(ControllerContext, Response.Message);
             return Response.ToHttpResponse();
         }
 
@@ -144,23 +144,21 @@ namespace AccountAPI.Controllers
                 {
                     Response.DidError = true;
                     Response.Message = $"The Platform with the id: {id} was not found in the database.";
-                    _Logger.LogError(ControllerContext, Response.Message);
                 }
                 else
                 {
                     Platform PlatformToDelete = await _IPlatformRepository.GetPlatformByIDDefaultAsync(id);
                     await _IPlatformRepository.DeletePlatformAsync(PlatformToDelete);
-                    Response.Message = $"{PlatformToDelete.PlatformId}";
+                    Response.Message = $"Platform with the id: {PlatformToDelete.PlatformId} has been deleted.";
                     Response.Model = PlatformToDelete;
-                    _Logger.LogInfo(ControllerContext, $"Platform with the id: {PlatformToDelete.PlatformId} has been deleted.");
                 }
             }
             catch(Exception ex)
             {
                 Response.DidError = true;
-                Response.Message = "Internal Server Error.";
-                _Logger.LogError(ControllerContext, $"Error Message: {ex.Message}");
+                Response.Message = $"Internal Server Error. Error Message: {ex.Message}";
             }
+            _Logger.LogError(ControllerContext, Response.Message);
             return Response.ToHttpResponse();
         }
 
@@ -168,20 +166,18 @@ namespace AccountAPI.Controllers
         [HttpGet("count")]
         public async Task<IActionResult> GetNumberOfPlatforms()
         {
-            var Response = new SingleResponse<Platform>();
+            var Response = new SingleResponse<int>();
             try
             {
-                int NumOfPlatforms = await _IPlatformRepository.CountNumberOfPlatformsAsync();
-                Response.Message =  $"There are {NumOfPlatforms} platforms!";
-                Response.Model = null;
-                _Logger.LogInfo(ControllerContext, Response.Message);
+                Response.Model = await _IPlatformRepository.CountNumberOfPlatformsAsync();
+                Response.Message =  $"There are {Response.Model} platforms!";
             }
             catch(Exception ex)
             {
                 Response.DidError = true;
-                Response.Message = "Internal Server Error.";
-                _Logger.LogError(ControllerContext, $"Error Message: {ex.Message}");
+                Response.Message = $"Internal Server Error. Error Message: {ex.Message}";
             }
+            _Logger.LogInfo(ControllerContext, Response.Message);  
             return Response.ToHttpResponse();
         }
 
@@ -192,17 +188,15 @@ namespace AccountAPI.Controllers
             var Response = new ListResponse<object>();
             try
             {
-                var Platforms = await _IPlatformRepository.GetAllPlatformsOnlyAsync();
-                Response.Message =  $"Querying all Platforms Names with Id.";
-                Response.Model = Platforms;
-                _Logger.LogInfo(ControllerContext, Response.Message);
+                Response.Model = await _IPlatformRepository.GetAllPlatformsOnlyAsync();
+                Response.Message =  $"Querying all Platforms Names with id.";
             }
             catch(Exception ex)
             {
                 Response.DidError = true;
-                Response.Message = "Internal Server Error.";
-                _Logger.LogError(ControllerContext, $"Error Message: {ex.Message}");
+                Response.Message = $"Internal Server Error. Error Message: {ex.Message}";                
             }
+            _Logger.LogInfo(ControllerContext, Response.Message);  
             return Response.ToHttpResponse();
         }
 
@@ -210,18 +204,18 @@ namespace AccountAPI.Controllers
         [HttpGet("GetPlatformsAndGames")]
         public async Task<IActionResult> GetPlatformsAndGames()
         {
-            var Response = new ListResponse<Platform>();
+            var Response = new ListResponse<object>();
             try
             {
-                _Logger.LogInfo(ControllerContext, $"Querying all Platforms With Games!");
-                return Ok(await _IPlatformRepository.GetAllPlatformsAsync());
+                Response.Model = await _IPlatformRepository.GetAllPlatformsAsync();
+                Response.Message = $"Querying all Platforms.";
             }
             catch(Exception ex)
             {
                 Response.DidError = true;
-                Response.Message = "Internal Server Error.";
-                _Logger.LogError(ControllerContext, $"Error Message: {ex.Message}");
+                Response.Message = $"Internal Server Error. Error Message: {ex.Message}";
             }
+            _Logger.LogInfo(ControllerContext, Response.Message);  
             return Response.ToHttpResponse();
         }
 
@@ -232,15 +226,23 @@ namespace AccountAPI.Controllers
             var Response = new SingleResponse<object>();
             try
             {
-                _Logger.LogInfo(ControllerContext, $"Querying Platform with the id: {id} and list of games and accounts");
-                return Ok(await _IPlatformRepository.GetPlatformByIdAsync(id));
+                if(!_IPlatformRepository.DoesPlatformExist(id))
+                {
+                    Response.DidError = true;
+                    Response.Message = $"The Platform with the id: {id} was not found in the database.";
+                }
+                else
+                {
+                    Response.Model = await _IPlatformRepository.GetPlatformByIdAsync(id);
+                    Response.Message = $"Querying Platform with the id: {id}.";
+                }
             }
             catch(Exception ex)
             {
                 Response.DidError = true;
-                Response.Message = "Internal Server Error.";
-                _Logger.LogError(ControllerContext, $"Error Message: {ex.Message}");
+                Response.Message = $"Internal Server Error. Error Message: {ex.Message}";
             }
+            _Logger.LogError(ControllerContext, Response.Message);            
             return Response.ToHttpResponse();
         }
     }

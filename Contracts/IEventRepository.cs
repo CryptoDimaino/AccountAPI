@@ -24,5 +24,6 @@ namespace AccountAPI.Contracts
         // Project Specific
         Task<IEnumerable<object>> GetAllEventsAsync();
         Task<object> GetEventByIdAsync(int EventId);
+        bool DoesEventExist(int id);
     }
 }

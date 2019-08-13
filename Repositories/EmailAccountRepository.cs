@@ -98,5 +98,10 @@ namespace AccountAPI.Repositories
                 })
             }).FirstOrDefaultAsync();
         }
+
+        public bool DoesEmailAccountExist(int id)
+        {
+            return FindAnyByCondition(a => a.EmailAccountId == id);
+        }
     }
 }

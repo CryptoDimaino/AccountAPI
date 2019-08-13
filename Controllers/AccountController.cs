@@ -78,7 +78,7 @@ namespace AccountAPI.Controllers
                 if(NewAccount.AccountId == 0)
                 {
                     Response.DidError = true;
-                    Response.Message = $"The Account with the id: {NewAccount.AccountId} was already found in the database.";
+                    Response.Message = $"The Account you are trying to add was already found in the database.";
                     _Logger.LogError(ControllerContext, Response.Message);
                 }
                 else
@@ -162,12 +162,12 @@ namespace AccountAPI.Controllers
         [HttpGet("count")]
         public async Task<IActionResult> GetAccountCount()
         {
-            var Response = new SingleResponse<Account>();
+            var Response = new SingleResponse<int>();
             try
             {
                 int NumOfAccounts = await _IAccountRepository.CountNumberOfAccountsAsync();
                 Response.Message =  $"Querying the total number of accounts.";
-                Response.Model = null;
+                Response.Model = NumOfAccounts;
                 _Logger.LogInfo(ControllerContext, Response.Message);
             }
             catch(Exception ex)
@@ -207,10 +207,19 @@ namespace AccountAPI.Controllers
             var Response = new SingleResponse<object>();
             try
             {
-                var Account = await _IAccountRepository.GetAccountByIdAsync(id);
-                Response.Message = $"Querying Account with the id: {id}.";
-                Response.Model = Account;
-                _Logger.LogInfo(ControllerContext, Response.Message);
+                if(!_IAccountRepository.DoesAccountExist(id))
+                {
+                    Response.DidError = true;
+                    Response.Message = $"The Account with the id: {id} was not found in the database.";
+                    _Logger.LogError(ControllerContext, Response.Message);
+                }
+                else
+                {
+                    var Account = await _IAccountRepository.GetAccountByIdAsync(id);
+                    Response.Message = $"Querying Account with the id: {id}.";
+                    Response.Model = Account;
+                    _Logger.LogInfo(ControllerContext, Response.Message);
+                }
             }
             catch(Exception ex)
             {

@@ -42,7 +42,7 @@ namespace AccountAPI.Repositories
 
         public async Task<int> UpdateEventAsync(Event EventToUpdate)
         {
-            if(!FindAnyByCondition(e => e.EventId == EventToUpdate.EventId))
+            if(FindAnyByCondition(e => e.EventId == EventToUpdate.EventId))
             {
                 Update(EventToUpdate);
                 await SaveAsync();
@@ -88,6 +88,11 @@ namespace AccountAPI.Repositories
                 Name = e.Name,
                 Location = e.Location
             }).FirstOrDefaultAsync();
+        }
+
+        public bool DoesEventExist(int id)
+        {
+            return FindAnyByCondition(a => a.EventId == id);
         }
     }
 }

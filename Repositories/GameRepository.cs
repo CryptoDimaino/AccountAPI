@@ -67,7 +67,7 @@ namespace AccountAPI.Repositories
 
         public async Task<IEnumerable<object>> GetAllGamesAsync()
         {
-            return await GetAll().Include(g => g.Platform).Include(g => g.Codes).ThenInclude(c => c.Account).Select(g => new
+            return await GetAll().Include(g => g.Platform).Include(g => g.Codes).ThenInclude(c => c.Account).OrderBy(g => g.GameId).Select(g => new
             {
                 Id = g.GameId,
                 Title = g.Name,
@@ -100,6 +100,11 @@ namespace AccountAPI.Repositories
         public async Task<IEnumerable<Game>> GetAllGamesByPlatformId(int id)
         {
             return await FindByCondition(g => g.PlatformId == id).ToListAsync();
+        }
+
+        public bool DoesGameExist(int id)
+        {
+            return FindAnyByCondition(a => a.GameId == id);
         }
     }
 }

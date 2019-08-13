@@ -24,5 +24,6 @@ namespace AccountAPI.Contracts
         // Project Specific
         Task<IEnumerable<object>> GetAllEmailAccountsAsync();
         Task<object> GetEmailAccountByIdAsync(int EmailAccountId);
+        bool DoesEmailAccountExist(int id);
     }
 }

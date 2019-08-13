@@ -29,138 +29,196 @@ namespace AccountAPI.Controllers
         [HttpGet("default")]
         public async Task<IActionResult> GetGamesDefault()
         {
+            var Response = new ListResponse<Game>();
             try
             {
-                _Logger.LogInfo(ControllerContext, $"Querying all games with default information.");
-                return Ok(await _IGameRepository.GetAllGamesDefaultAsync());
+                Response.Model = await _IGameRepository.GetAllGamesDefaultAsync();
+                Response.Message = "Querying all games with default information.";
             }
             catch(Exception ex)
             {
-                _Logger.LogError(ControllerContext, $"Error Message: {ex.Message}");
-                return StatusCode(500, "Internal Server Error");
+                Response.DidError = true;
+                Response.Message = $"Internal Server Error. Error Message: {ex.Message}";
             }
+            _Logger.LogInfo(ControllerContext, Response.Message);
+            return Response.ToHttpResponse();
         }
 
         // Get api/v{version:apiVersion}/game/{id}/default
         [HttpGet("{id}/default")]
         public async Task<IActionResult> GetGameIdDefault(int id)
         {
+            var Response = new SingleResponse<Game>();
             try
             {
-                _Logger.LogInfo(ControllerContext, $"Querying Game with the id: {id} with default information.");
-                return Ok(await _IGameRepository.GetGameByIdDefaultAsync(id));
+                if(!_IGameRepository.DoesGameExist(id))
+                {
+                    Response.DidError = true;
+                    Response.Message = $"The Game with the id: {id} was not found in the database.";
+                }
+                else
+                {
+                    Response.Model = await _IGameRepository.GetGameByIdDefaultAsync(id);
+                    Response.Message = $"Querying Game with the id: {id} with default information.";
+                }
             }
             catch(Exception ex)
             {
-                _Logger.LogError(ControllerContext, $"Error Message: {ex.Message}");
-                return StatusCode(500, "Internal Server Error");
+                Response.DidError = true;
+                Response.Message = $"Internal Server Error. Error Message: {ex.Message}";
             }
+            _Logger.LogInfo(ControllerContext, Response.Message);
+            return Response.ToHttpResponse();
         }
 
         // POST api/v{version:apiVersion}/game
         [HttpPost]
         public async Task<IActionResult> AddGame([FromBody] Game NewGame)
         {
+            var Response = new SingleResponse<Game>();
             try
             {
-                _Logger.LogInfo(ControllerContext, $"Adding Game with the id: {NewGame.GameId}");
                 await _IGameRepository.CreateGameAsync(NewGame);
-                return Ok(new { Id = NewGame.GameId });
+                if(NewGame.GameId == 0)
+                {
+                    Response.DidError = true;
+                    Response.Message = $"The Game you are trying to add was already found in the database.";
+                }
+                else
+                {
+                    Response.Message = $"The Game with the id: {NewGame.GameId} was added to the database.";
+                    Response.Model = NewGame;
+                }
             }
             catch(Exception ex)
             {
-                _Logger.LogError(ControllerContext, $"Error Message: {ex.Message}");
-                return StatusCode(500, "Internal Server Error");
+                Response.DidError = true;
+                Response.Message = $"Internal Server Error. Error Message: {ex.Message}";
             }
+            _Logger.LogError(ControllerContext, Response.Message);
+            return Response.ToHttpResponse();
         }
 
         // PUT api/v{version:apiVersion}/game/{id}
         [HttpPut("{id}")]
         public async Task<IActionResult> UpdateGame([FromBody] Game UpdateGame)
         {
+            var Response = new SingleResponse<Game>();
             try
             {
-                _Logger.LogInfo(ControllerContext, $"Successfully updated the game with the id: {UpdateGame.GameId}.");
-                await _IGameRepository.UpdateGameAsync(UpdateGame);
-                return Ok(new { Id = UpdateGame.GameId });       
+                int result = await _IGameRepository.UpdateGameAsync(UpdateGame);
+                if(result == 0)
+                {
+                    Response.DidError = true;
+                    Response.Message = $"The Game with the id: {UpdateGame.GameId} was not found in the database.";
+                }
+                else
+                {
+                    Response.Message = $"Game with the id: {UpdateGame.GameId} has been updated.";
+                    Response.Model = UpdateGame;
+                }    
             }
             catch(Exception ex)
             {
-                _Logger.LogError(ControllerContext, $"Error Message: {ex.Message}");
-                return StatusCode(500, "Internal Server Error");
+                Response.DidError = true;
+                Response.Message = $"Internal Server Error. Error Message: {ex.Message}";
             }
+            _Logger.LogError(ControllerContext, Response.Message);
+            return Response.ToHttpResponse();
         }
 
         // DELETE api/v{version:apiVersion}/game/{id}
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteGameId(int id)
         {
+            var Response = new SingleResponse<Game>();
             try
             {
-                Game GameToDelete = await _IGameRepository.GetGameByIdDefaultAsync(id);
-                if(GameToDelete == null)
+                if(!_IGameRepository.DoesGameExist(id))
                 {
-                    _Logger.LogWarn(ControllerContext, $"Game with id: {id}, hasn't been found in database.");
-                    return NotFound();
+                    Response.DidError = true;
+                    Response.Message = $"The Game with the id: {id} was not found in the database.";
                 }
-                // NOTE: This will delete all relations to other tables such as codes.
-                _Logger.LogInfo(ControllerContext, $"Querying game with the id: {id} to delete.");
-                await _IGameRepository.DeleteGameAsync(await _IGameRepository.GetGameByIdDefaultAsync(id));
-                return NoContent();
+                else
+                {
+                    Game GameToDelete = await _IGameRepository.GetGameByIdDefaultAsync(id);
+                    await _IGameRepository.DeleteGameAsync(GameToDelete);
+                    Response.Message = $"The Game with the id: {GameToDelete.GameId} has been deleted.";
+                    Response.Model = GameToDelete;
+                }
             }
             catch(Exception ex)
             {
-                _Logger.LogError(ControllerContext, $"Error Message: {ex.Message}");
-                return StatusCode(500, "Internal Server Error");
+                Response.DidError = true;
+                Response.Message = $"Internal Server Error. Error Message: {ex.Message}";
             }
+            _Logger.LogError(ControllerContext, Response.Message);
+            return Response.ToHttpResponse();
         }
 
         // GET api/v{version:apiVersion}/game/count
         [HttpGet("count")]
         public async Task<IActionResult> GetGameCount()
         {
+            var Response = new SingleResponse<int>();
             try
             {
-                _Logger.LogInfo(ControllerContext, $"Querying the total number of games.");
-                return Ok(await _IGameRepository.CountNumberOfGamesAsync());
+                Response.Model = await _IGameRepository.CountNumberOfGamesAsync();
+                Response.Message =  $"Querying the total number of games.";
             }
             catch(Exception ex)
             {
-                _Logger.LogError(ControllerContext, $"Error Message: {ex.Message}");
-                return StatusCode(500, "Internal Server Error");
+                Response.DidError = true;
+                Response.Message = $"Internal Server Error. Error Message: {ex.Message}";
             }
+            _Logger.LogInfo(ControllerContext, Response.Message);
+            return Response.ToHttpResponse();
         }
         
         // GET api/v{version:apiVersion}/game
         [HttpGet]
         public async Task<IActionResult> GetGames()
         {
+            var Response = new ListResponse<object>();
             try
             {
-                _Logger.LogInfo(ControllerContext, $"Querying all Games with Platform and Number of Accounts.");
-                return Ok(await _IGameRepository.GetAllGamesAsync());
+                Response.Model = await _IGameRepository.GetAllGamesAsync();
+                Response.Message = $"Querying all Games.";
             }
             catch(Exception ex)
             {
-                _Logger.LogError(ControllerContext, $"Error Message: {ex.Message}");
-                return StatusCode(500, "Internal Server Error.");
+                Response.DidError = true;
+                Response.Message = $"Internal Server Error. Error Message: {ex.Message}";
             }
+            _Logger.LogInfo(ControllerContext, Response.Message);  
+            return Response.ToHttpResponse();
         }
 
         // Get api/v{version:apiVersion}/game/{id}
         [HttpGet("{id}")]
         public async Task<IActionResult> GetGameId(int id)
         {
+            var Response = new SingleResponse<object>();
             try
             {
-                _Logger.LogInfo(ControllerContext, $"Querying Game with the id: {id} with a list of Accounts and their Codes.");
-                return Ok(await _IGameRepository.GetGameByIdAsync(id));
+                if(!_IGameRepository.DoesGameExist(id))
+                {
+                    Response.DidError = true;
+                    Response.Message = $"The Game with the id: {id} was not found in the database.";
+                }
+                else
+                {
+                    Response.Model = await _IGameRepository.GetGameByIdAsync(id);
+                    Response.Message = $"Querying Game with the id: {id}.";
+                }
             }
             catch(Exception ex)
             {
-                _Logger.LogError(ControllerContext, $"Error Message: {ex.Message}");
-                return StatusCode(500, "Internal Server Error");
+                Response.DidError = true;
+                Response.Message = $"Internal Server Error. Error Message: {ex.Message}";
             }
+            _Logger.LogError(ControllerContext, Response.Message);
+            return Response.ToHttpResponse();
         }
     }
 }

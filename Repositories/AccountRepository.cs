@@ -21,7 +21,7 @@ namespace AccountAPI.Repositories
 
         public async Task<IEnumerable<Account>> GetAllAccountsDefaultAsync()
         {
-            return await GetAll().ToListAsync();
+            return await GetAll().OrderBy(a => a.AccountId).ToListAsync();
         }
 
         public async Task<Account> GetAccountByIdDefaultAsync(int AccountId)
@@ -43,7 +43,7 @@ namespace AccountAPI.Repositories
 
         public async Task<int> UpdateAccountAsync(Account AccountToUpdate)
         {
-            if(!FindAnyByCondition(a => a.AccountId == AccountToUpdate.AccountId))
+            if(FindAnyByCondition(a => a.AccountId == AccountToUpdate.AccountId))
             {
                 Update(AccountToUpdate);
                 await SaveAsync();
@@ -75,7 +75,8 @@ namespace AccountAPI.Repositories
 
         public async Task<IEnumerable<object>> GetAllAccountsAsync()
         {
-            return await GetAll().Include(a => a.EmailAccount).Include(a => a.Platform).Include(a => a.Event).Include(a => a.Codes).Select(a => new 
+            return await GetAll().Include(a => a.EmailAccount).Include(a => a.Platform).Include(a => a.Event).Include(a => a.Codes).OrderBy(a => a.AccountId)
+            .Select(a => new 
             {
                 Id = a.AccountId,
                 Username = a.Username,
@@ -111,12 +112,12 @@ namespace AccountAPI.Repositories
 
         public async Task<IEnumerable<Account>> GetAllAccountsByPlatformId(int id)
         {
-            return await FindByCondition(a => a.PlatformId == id).ToListAsync();
+            return await FindByCondition(a => a.PlatformId == id).OrderBy(a => a.AccountId).ToListAsync();
         }
 
         public async Task<IEnumerable<Account>> GetAllAccountsByEmailAccountId(int id)
         {
-            return await FindByCondition(a => a.EmailAccountId == id).ToListAsync();
+            return await FindByCondition(a => a.EmailAccountId == id).OrderBy(a => a.AccountId).ToListAsync();
         }
 
         public bool DoesAccountExist(int id)

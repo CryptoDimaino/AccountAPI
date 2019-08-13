@@ -18,155 +18,211 @@ namespace AccountAPI.Controllers
     {
         private readonly ILoggerManager _Logger;
         private readonly IEmailAccountRepository _IEmailAccountRepository;
-        private readonly Context _Context;
 
-        public EmailAccountController(ILoggerManager Logger, IEmailAccountRepository IEmailAccountRepository, Context Context)
+        public EmailAccountController(ILoggerManager Logger, IEmailAccountRepository IEmailAccountRepository)
         {
             _Logger = Logger;
             _IEmailAccountRepository = IEmailAccountRepository;
-            _Context = Context;
         }
     
         // GET api/v{version:apiVersion}/emailaccount/default
         [HttpGet("default")]
         public async Task<IActionResult> GetEmailAccountsDefault()
         {
+            var Response = new ListResponse<EmailAccount>();
             try
             {
-                _Logger.LogInfo(ControllerContext, $"Querying all EmailAccounts with the default information.");
-                return Ok(await _IEmailAccountRepository.GetAllEmailAccountsDefaultAsync());
+                Response.Model = await _IEmailAccountRepository.GetAllEmailAccountsDefaultAsync();
+                Response.Message = "Querying all EmailAccounts with default information.";
+                _Logger.LogInfo(ControllerContext, Response.Message);
             }
             catch(Exception ex)
             {
+                Response.DidError = true;
+                Response.Message = "Internal Server Error.";
                 _Logger.LogError(ControllerContext, $"Error Message: {ex.Message}");
-                return StatusCode(500, "Internal Server Error.");
             }
+            return Response.ToHttpResponse();
         }
 
         // GET api/v{version:apiVersion}/emailaccount/{id}/default
         [HttpGet("{id}/default")]
         public async Task<IActionResult> GetEmailAccountIdDefault(int id)
         {
+            var Response = new SingleResponse<EmailAccount>();
             try
             {
-                _Logger.LogInfo(ControllerContext, $"Querying EmailAccount with the id: {id} with default information.");
-                return Ok(await _IEmailAccountRepository.GetEmailAccountByIdDefaultAsync(id));
+                Response.Model = await _IEmailAccountRepository.GetEmailAccountByIdDefaultAsync(id);                
+                Response.Message = $"Querying EmailAccount with the id: {id} with default information.";
+                _Logger.LogInfo(ControllerContext, Response.Message);
             }
             catch(Exception ex)
             {
+                Response.DidError = true;
+                Response.Message = "Internal Server Error.";
                 _Logger.LogError(ControllerContext, $"Error Message: {ex.Message}");
-                return StatusCode(500, "Internal Server Error.");
             }
+            return Response.ToHttpResponse();
         }
 
         // POST api/v{version:apiVersion}/emailaccount
         [HttpPost]
         public async Task<IActionResult> AddEmailAccount([FromBody] EmailAccount NewEmailAccount)
         {
+            var Response = new SingleResponse<EmailAccount>();
             try
             {
-                _Logger.LogInfo(ControllerContext, $"Adding EmailAccount with the id: {NewEmailAccount.EmailAccountId}");
                 await _IEmailAccountRepository.CreateEmailAccountAsync(NewEmailAccount);
                 if(NewEmailAccount.EmailAccountId == 0)
                 {
-                    return Ok(new { Error = "EmailAccount already exists."});
+                    Response.DidError = true;
+                    Response.Message = $"The EmailAccount you are trying to add was already found in the database.";
+                    _Logger.LogError(ControllerContext, Response.Message);
                 }
-                return Ok(new { Id = NewEmailAccount.EmailAccountId });
+                else
+                {
+                    Response.Message = $"{NewEmailAccount.EmailAccountId}";
+                    Response.Model = NewEmailAccount;
+                    _Logger.LogInfo(ControllerContext, $"The EmailAccount with the id: {NewEmailAccount.EmailAccountId} was added to the database.");
+                }
             }
             catch(Exception ex)
             {
+                Response.DidError = true;
+                Response.Message = "Internal Server Error.";
                 _Logger.LogError(ControllerContext, $"Error Message: {ex.Message}");
-                return StatusCode(500, "Internal Server Error");
             }
+            return Response.ToHttpResponse();
         }
 
         // PUT api/v{version:apiVersion}/emailaccount/{id}
         [HttpPut("{id}")]
         public async Task<IActionResult> UpdateEmailAccount([FromBody] EmailAccount UpdateEmailAccount)
         {
+            var Response = new SingleResponse<EmailAccount>();
             try
             {
-                _Logger.LogInfo(ControllerContext, $"Successfully updated the emailaccount with the id: {UpdateEmailAccount.EmailAccountId}.");
-                await _IEmailAccountRepository.UpdateEmailAccountAsync(UpdateEmailAccount);
-                return Ok(new { Id = UpdateEmailAccount.EmailAccountId });       
+                int result = await _IEmailAccountRepository.UpdateEmailAccountAsync(UpdateEmailAccount);
+                if(result == 0)
+                {
+                    Response.DidError = true;
+                    Response.Message = $"The Account with the id: {UpdateEmailAccount.EmailAccountId} was not found in the database.";
+                    _Logger.LogError(ControllerContext, Response.Message);
+                }
+                else
+                {
+                    Response.Message = $"{UpdateEmailAccount.EmailAccountId}";
+                    Response.Model = UpdateEmailAccount;
+                    _Logger.LogInfo(ControllerContext, $"EmailAccount with the id: {UpdateEmailAccount.EmailAccountId} has been updated.");
+                }     
             }
             catch(Exception ex)
             {
+                Response.DidError = true;
+                Response.Message = "Internal Server Error.";
                 _Logger.LogError(ControllerContext, $"Error Message: {ex.Message}");
-                return StatusCode(500, "Internal Server Error");
             }
+            return Response.ToHttpResponse();
         }
 
         // DELETE api/v{version:apiVersion}/emailaccount/{id}
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteEmailAccountId(int id)
         {
+            var Response = new SingleResponse<EmailAccount>();
             try
             {
-                EmailAccount EmailAccountToDelete = await _IEmailAccountRepository.GetEmailAccountByIdDefaultAsync(id);
-                if(EmailAccountToDelete == null)
+                if(!_IEmailAccountRepository.DoesEmailAccountExist(id))
                 {
-                    _Logger.LogWarn(ControllerContext, $"EmailAccount with id: {id}, hasn't been found in database.");
-                    return NotFound();
+                    Response.DidError = true;
+                    Response.Message = $"The EmailAccount with the id: {id} was not found in the database.";
+                    _Logger.LogError(ControllerContext, Response.Message);
                 }
-                // NOTE: This will delete all relations to other tables such as codes.
-                await _IEmailAccountRepository.DeleteEmailAccountAsync(EmailAccountToDelete);
-                // _Logger.LogInfo(ControllerContext, $"Querying EmailAccount with the id: {id} to delete, all deleted the emails with the ids:{accountids}.");
-                return NoContent();
+                else
+                {
+                    EmailAccount EmailAccountToDelete = await _IEmailAccountRepository.GetEmailAccountByIdDefaultAsync(id);
+                    await _IEmailAccountRepository.DeleteEmailAccountAsync(EmailAccountToDelete);
+                    Response.Message = $"{EmailAccountToDelete.EmailAccountId}";
+                    Response.Model = EmailAccountToDelete;
+                    _Logger.LogInfo(ControllerContext, $"EmailAccount with the id: {EmailAccountToDelete.EmailAccountId} has been deleted.");
+                }
             }
             catch(Exception ex)
             {
+                Response.DidError = true;
+                Response.Message = "Internal Server Error.";
                 _Logger.LogError(ControllerContext, $"Error Message: {ex.Message}");
-                return StatusCode(500, "Internal Server Error");
             }
+            return Response.ToHttpResponse();
         }
 
         // GET api/v{version:apiVersion}/EmailAccount/count
         [HttpGet("count")]
         public async Task<IActionResult> GetEmailAccountCount()
         {
+            var Response = new SingleResponse<int>();
             try
             {
-                _Logger.LogInfo(ControllerContext, $"Querying the total number of EmailAccounts.");
-                return Ok(await _IEmailAccountRepository.CountNumberOfEmailAccountsAsync());
+                Response.Model = await _IEmailAccountRepository.CountNumberOfEmailAccountsAsync();
+                Response.Message =  $"Querying the total number of EmailAccounts.";
+                _Logger.LogInfo(ControllerContext, Response.Message);
             }
             catch(Exception ex)
             {
+                Response.DidError = true;
+                Response.Message = "Internal Server Error.";
                 _Logger.LogError(ControllerContext, $"Error Message: {ex.Message}");
-                return StatusCode(500, "Internal Server Error");
             }
+            return Response.ToHttpResponse();
         }
 
         // GET api/v{version:apiVersion}/EmailAccount
         [HttpGet]
         public async Task<IActionResult> GetEmailAccounts()
         {
+            var Response = new ListResponse<object>();
             try
             {
-                _Logger.LogInfo(ControllerContext, $"Querying all EmailAccounts.");
-                return Ok(await _IEmailAccountRepository.GetAllEmailAccountsAsync());
+                Response.Model = await _IEmailAccountRepository.GetAllEmailAccountsAsync();
+                Response.Message = $"Querying all EmailAccounts.";
+                _Logger.LogInfo(ControllerContext, Response.Message);
             }
             catch(Exception ex)
             {
+                Response.DidError = true;
+                Response.Message = "Internal Server Error.";
                 _Logger.LogError(ControllerContext, $"Error Message: {ex.Message}");
-                return StatusCode(500, "Internal Server Error.");
             }
+            return Response.ToHttpResponse();
         }
 
         // Get api/v{version:apiVersion}/EmailAccount/{id}
         [HttpGet("{id}")]
         public async Task<IActionResult> GetEmailAccountId(int id)
         {
+            var Response = new SingleResponse<object>();
             try
             {
-                _Logger.LogInfo(ControllerContext, $"Querying EmailAccount with the id: {id}.");
-                return Ok(await _IEmailAccountRepository.GetEmailAccountByIdAsync(id));
+                if(!_IEmailAccountRepository.DoesEmailAccountExist(id))
+                {
+                    Response.DidError = true;
+                    Response.Message = $"The EmailAccount with the id: {id} was not found in the database.";
+                    _Logger.LogError(ControllerContext, Response.Message);
+                }
+                else
+                {
+                    Response.Model = await _IEmailAccountRepository.GetEmailAccountByIdAsync(id);
+                    Response.Message = $"Querying Account with the id: {id}.";
+                    _Logger.LogInfo(ControllerContext, Response.Message);
+                }
             }
             catch(Exception ex)
             {
+                Response.DidError = true;
+                Response.Message = "Internal Server Error.";
                 _Logger.LogError(ControllerContext, $"Error Message: {ex.Message}");
-                return StatusCode(500, "Internal Server Error");
             }
+            return Response.ToHttpResponse();
         }
     }
 }
