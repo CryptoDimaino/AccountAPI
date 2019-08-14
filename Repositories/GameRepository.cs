@@ -82,12 +82,12 @@ namespace AccountAPI.Repositories
             {
                 Id = g.GameId,
                 Title = g.Name,
-                Name = g.Platform.Name,
+                Platform = g.Platform.Name,
                 ReleaseDate = g.ReleaseDate,
                 URLToDocumentation = g.URLToDocumentation,
                 Accounts = g.Codes.Select(c => new
                 {
-                    CodeString = c.CodeString,
+                    Code = c.CodeString,
                     Id = c.Account.AccountId,
                     Username = c.Account.Username,
                     Password = c.Account.Password,
