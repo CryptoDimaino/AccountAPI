@@ -14,9 +14,11 @@ namespace AccountAPI.Repositories
     public class CodeRepository : GenericRepository<Code>, ICodeRepository
     {
         private readonly Context _Context;
-        public CodeRepository(Context Context) : base(Context)
+        private readonly IGameRepository _IGameRepository;
+        public CodeRepository(Context Context, IGameRepository IGameRepository) : base(Context)
         {
             _Context = Context;
+            _IGameRepository = IGameRepository;
         }
 
         public async Task<IEnumerable<Code>> GetAllCodesDefaultAsync()
@@ -31,7 +33,13 @@ namespace AccountAPI.Repositories
 
         public async Task<int> CreateCodeAsync(Code CodeToAdd)
         {
-            if(!FindAnyByCondition(c => (c.EmailAccountId == CodeToAdd.EmailAccountId && c.PlatformId == CodeToAdd.PlatformId && c.GameId == CodeToAdd.GameId)))
+            if(CodeToAdd.EmailAccountId != null && CodeToAdd.PlatformId != null && !FindAnyByCondition(c => (c.EmailAccountId == CodeToAdd.EmailAccountId && c.PlatformId == CodeToAdd.PlatformId && c.GameId == CodeToAdd.GameId)))
+            {
+                Create(CodeToAdd);
+                await SaveAsync();
+                return CodeToAdd.CodeId;
+            }
+            else if(CodeToAdd.EmailAccountId == null && CodeToAdd.PlatformId == null && _IGameRepository.DoesGameExist(CodeToAdd.GameId))
             {
                 Create(CodeToAdd);
                 await SaveAsync();
@@ -84,7 +92,7 @@ namespace AccountAPI.Repositories
                 Id = c.CodeId,
                 Code = c.CodeString,
                 Used = c.UsedStatus,
-                AccountId = c.Account.AccountId,
+                AccountId = (int?)c.Account.AccountId,
                 Account = c.Account.Username,
                 GameId = c.Game.GameId,
                 Game = c.Game.Name

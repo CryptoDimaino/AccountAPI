@@ -56,7 +56,7 @@ namespace AccountAPI.Repositories
         {
             if(FindAnyByCondition(a => a.AccountId == AccountToDelete.AccountId))
             {
-                var CodeL = await _ICodeRepository.GetAllCodesByAccount(AccountToDelete.EmailAccountId, AccountToDelete.PlatformId);
+                var CodeL = await _ICodeRepository.GetAllCodesByAccount((int)AccountToDelete.EmailAccountId, (int)AccountToDelete.PlatformId);
                 foreach(var code in CodeL)
                 {
                     await _ICodeRepository.DeleteCodeAsync(code);

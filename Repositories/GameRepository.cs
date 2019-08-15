@@ -87,8 +87,9 @@ namespace AccountAPI.Repositories
                 URLToDocumentation = g.URLToDocumentation,
                 Accounts = g.Codes.Select(c => new
                 {
+                    CodeId = c.CodeId,
                     Code = c.CodeString,
-                    Id = c.Account.AccountId,
+                    Id = (int?)c.Account.AccountId,
                     Username = c.Account.Username,
                     Password = c.Account.Password,
                     Email = c.Account.EmailAccount.Email,
