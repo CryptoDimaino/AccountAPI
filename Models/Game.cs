@@ -29,5 +29,8 @@ namespace AccountAPI.Models
 
         public ICollection<GameRating> GameRatings {get;} = new List<GameRating>();
 
+        public int? EventId {get;set;}
+        public Event Event {get;set;}
+
     }
 }

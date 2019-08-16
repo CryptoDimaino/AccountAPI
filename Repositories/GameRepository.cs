@@ -30,7 +30,7 @@ namespace AccountAPI.Repositories
 
         public async Task<int> CreateGameAsync(Game GameToAdd)
         {
-            if(FindAnyByCondition(g => g.Name == GameToAdd.Name))
+            if(!FindAnyByCondition(g => g.Name == GameToAdd.Name && g.PlatformId == GameToAdd.PlatformId))
             {
                 Create(GameToAdd);
                 await SaveAsync();
