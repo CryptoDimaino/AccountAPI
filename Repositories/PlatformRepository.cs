@@ -83,21 +83,18 @@ namespace AccountAPI.Repositories
 
         public async Task<IEnumerable<object>> GetAllPlatformsAsync()
         {
-            return await GetAll().Include(p => p.Games).Select(p => new PlatformDTO()
+            return await GetAll().Include(p => p.Games).Select(p => new
             {
-                PlatformId = p.PlatformId,
-                Name = p.Name,
-                Games = p.Games.Select(g => new PlatformGameDTO()
-                {
-                    Name = g.Name
-                })
+                Id = p.PlatformId,
+                Platform = p.Name,
+                GameCount = p.Games.Count()
             }).ToListAsync();
         }
 
         public async Task<IEnumerable<object>> GetAllPlatformsOnlyAsync()
         {
             return await GetAll().Select(p => new {
-                PlatformID = p.PlatformId,
+                Id = p.PlatformId,
                 Platform = p.Name
             }).ToListAsync();
         }

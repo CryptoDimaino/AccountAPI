@@ -133,7 +133,7 @@ namespace AccountAPI.Controllers
             return Response.ToHttpResponse();
         }
 
-        // DELETE api/v{version:apiVersion}/Platform/delete/{id}
+        // DELETE api/v{version:apiVersion}/Platform/{id}
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeletePlatform(int id)
         {
@@ -188,8 +188,27 @@ namespace AccountAPI.Controllers
             var Response = new ListResponse<object>();
             try
             {
+                Response.Model = await _IPlatformRepository.GetAllPlatformsAsync();
+                Response.Message =  $"Querying all Platforms.";
+            }
+            catch(Exception ex)
+            {
+                Response.DidError = true;
+                Response.Message = $"Internal Server Error. Error Message: {ex.Message}";                
+            }
+            _Logger.LogInfo(ControllerContext, Response.Message);  
+            return Response.ToHttpResponse();
+        }
+
+        // GET api/v{version:apiVersion}/Platform/OnlyId
+        [HttpGet("OnlyId")]
+        public async Task<IActionResult> GetPlatformsOnlyId()
+        {
+            var Response = new ListResponse<object>();
+            try
+            {
                 Response.Model = await _IPlatformRepository.GetAllPlatformsOnlyAsync();
-                Response.Message =  $"Querying all Platforms Names with id.";
+                Response.Message =  $"Querying all Platforms with Id.";
             }
             catch(Exception ex)
             {
