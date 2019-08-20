@@ -25,6 +25,7 @@ namespace AccountAPI.Contracts
         Task<IEnumerable<object>> GetAllCodesAsync();
         Task<object> GetCodeByIdAsync(int CodeId);
         Task<IEnumerable<Code>> GetAllCodesByAccount(int EmailAccountId, int PlatformId);
+        Task<IEnumerable<Code>> GetAllCodesByGame(int GameId);
         bool DoesCodeExist(int id);
     }
 }

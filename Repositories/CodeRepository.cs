@@ -104,6 +104,11 @@ namespace AccountAPI.Repositories
             return await FindByCondition(c => (c.EmailAccountId == EmailAccountId && c.PlatformId == PlatformId)).ToListAsync();
         }
 
+        public async Task<IEnumerable<Code>> GetAllCodesByGame(int GameId)
+        {
+            return await FindByCondition(c => c.GameId == GameId).ToListAsync();
+        }
+
         public bool DoesCodeExist(int id)
         {
             return FindAnyByCondition(c => c.CodeId == id);

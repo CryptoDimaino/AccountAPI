@@ -17,7 +17,8 @@ namespace AccountAPI.Contracts
         Task<IEnumerable<Game>> GetAllGamesDefaultAsync();
         Task<Game> GetGameByIdDefaultAsync(int GameId);
         Task<int> CreateGameAsync(Game GameToAdd);
-        Task<int> UpdateGameAsync(Game GameToUpdate);
+        Task<int> UpdateGameAsync(int id, Game GameToUpdate);
+        Task DeleteGameAndCodesAsync(Game GameToDelete);
         Task<int> DeleteGameAsync(Game GameToDelete);
         Task<int> CountNumberOfGamesAsync();
 

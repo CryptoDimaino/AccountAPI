@@ -16,8 +16,8 @@ namespace AccountAPI.Models
         public DbSet<Platform> Platforms {get;set;}
 
         // Extra
-        public DbSet<Rating> Ratings {get;set;}
-        public DbSet<GameRating> GameRatings {get;set;}
+        // public DbSet<Rating> Ratings {get;set;}
+        // public DbSet<GameRating> GameRatings {get;set;}
 
 
         protected override void OnModelCreating(ModelBuilder ModelBuilder)
@@ -29,12 +29,12 @@ namespace AccountAPI.Models
             // ModelBuilder.Entity<Account>().Property(a => a.AccountId).ValueGeneratedOnAdd();
             ModelBuilder.Entity<Account>().HasKey(a => new { a.EmailAccountId, a.PlatformId });
 
-            ModelBuilder.Entity<GameRating>().HasKey(gr => new { gr.GameId, gr.RatingId });
+            // ModelBuilder.Entity<GameRating>().HasKey(gr => new { gr.GameId, gr.RatingId });
 
 
             // Change Enum vaule to strings
-            ModelBuilder.Entity<Rating>().Property(r => r.RatingsSystem).HasConversion<string>();
-            ModelBuilder.Entity<Rating>().Property(r => r.RatingsCountry).HasConversion<string>();
+            // ModelBuilder.Entity<Rating>().Property(r => r.RatingsSystem).HasConversion<string>();
+            // ModelBuilder.Entity<Rating>().Property(r => r.RatingsCountry).HasConversion<string>();
 
             // Create base model
             base.OnModelCreating(ModelBuilder);

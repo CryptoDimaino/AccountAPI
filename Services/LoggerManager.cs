@@ -15,9 +15,7 @@ namespace AccountAPI.Services
     {
         private readonly ILogger logger = LogManager.GetCurrentClassLogger();
 
-        public LoggerManager()
-        {
-        }
+        public LoggerManager() { }
 
         public void LogDebug(ControllerContext ControllerContext, string Message)
         {

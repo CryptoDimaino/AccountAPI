@@ -101,16 +101,21 @@ namespace AccountAPI.Controllers
 
         // PUT api/v{version:apiVersion}/game/{id}
         [HttpPut("{id}")]
-        public async Task<IActionResult> UpdateGame([FromBody] Game UpdateGame)
+        public async Task<IActionResult> UpdateGame(int id, [FromBody] Game UpdateGame)
         {
             var Response = new SingleResponse<Game>();
             try
             {
-                int result = await _IGameRepository.UpdateGameAsync(UpdateGame);
+                int result = await _IGameRepository.UpdateGameAsync(id, UpdateGame);
                 if(result == 0)
                 {
                     Response.DidError = true;
                     Response.Message = $"The Game with the id: {UpdateGame.GameId} was not found in the database.";
+                }
+                else if(result == 1)
+                {
+                    Response.DidError = true;
+                    Response.Message = $"The games platform cannot be changed while accounts exist because they all belong to that game and platform.";
                 }
                 else
                 {
@@ -142,10 +147,57 @@ namespace AccountAPI.Controllers
                 else
                 {
                     Game GameToDelete = await _IGameRepository.GetGameByIdDefaultAsync(id);
-                    await _IGameRepository.DeleteGameAsync(GameToDelete);
-                    Response.Message = $"The Game with the id: {GameToDelete.GameId} has been deleted.";
-                    Response.Model = GameToDelete;
+                    int result = await _IGameRepository.DeleteGameAsync(GameToDelete);
+                    if(result == 0)
+                    {
+                        Response.DidError = true;
+                        Response.Message = $"The Game with the id: {id} cannot be delete while there are still codes/accounts attached to the game.";
+                    }
+                    else
+                    {
+                        Response.Message = $"The Game with the id: {GameToDelete.GameId} has been deleted.";
+                        Response.Model = GameToDelete;
+                    }
                 }
+            }
+            catch(Exception ex)
+            {
+                Response.DidError = true;
+                Response.Message = $"Internal Server Error. Error Message: {ex.Message}";
+            }
+            _Logger.LogError(ControllerContext, Response.Message);
+            return Response.ToHttpResponse();
+        }
+
+        // DELETE api/v{version:apiVersion}/game/{id}/confirm
+        [HttpDelete("{id}/confirm")]
+        public async Task<IActionResult> DeleteGameIdAndCodes(int id)
+        {
+            var Response = new SingleResponse<Game>();
+            try
+            {
+                if(!_IGameRepository.DoesGameExist(id))
+                {
+                    Response.DidError = true;
+                    Response.Message = $"The Game with the id: {id} was not found in the database.";
+                }
+                else
+                {
+                    Game GameToDelete = await _IGameRepository.GetGameByIdDefaultAsync(id);
+                    int result = await _IGameRepository.DeleteGameAsync(GameToDelete);
+                    if(result == 0)
+                    {
+                        Response.DidError = true;
+                        Response.Message = $"The Game with the id: {GameToDelete.GameId} has been deleted.";
+                        await _IGameRepository.DeleteGameAndCodesAsync(GameToDelete);
+                    }
+                    else
+                    {
+                        Response.Message = $"The Game with the id: {GameToDelete.GameId} has been deleted.";
+                        Response.Model = GameToDelete;
+                    }
+                }
+                
             }
             catch(Exception ex)
             {

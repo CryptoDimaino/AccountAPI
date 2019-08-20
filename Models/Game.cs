@@ -18,16 +18,14 @@ namespace AccountAPI.Models
         public int ConnectionType {get;set;}
         public DateTime? ReleaseDate {get;set;}
 		public string URLToDocumentation {get;set;}
-        // [Required]
         public DateTime CreatedAt {get;set;} = DateTime.Now;
-        // [Required]
         public DateTime UpdatedAt {get;set;} = DateTime.Now;
 
         public ICollection<Code> Codes {get;} = new List<Code>();
         public int PlatformId {get;set;}
         public Platform Platform {get;set;}
 
-        public ICollection<GameRating> GameRatings {get;} = new List<GameRating>();
+        // public ICollection<GameRating> GameRatings {get;} = new List<GameRating>();
 
         public int? EventId {get;set;}
         public Event Event {get;set;}

@@ -47,7 +47,7 @@ namespace AccountAPI.Services
     {
         public static IActionResult ToHttpResponse(this IResponse response)
         {
-            var status = response.DidError ? HttpStatusCode.InternalServerError : HttpStatusCode.OK;
+            var status = HttpStatusCode.OK;
 
             return new ObjectResult(response)
             {
@@ -59,15 +59,6 @@ namespace AccountAPI.Services
         {
             var status = HttpStatusCode.OK;
 
-            if(response.DidError)
-            {
-                status = HttpStatusCode.InternalServerError;
-            }
-            else if(response.Model == null)
-            {
-                status = HttpStatusCode.NotFound;
-            }
-
             return new ObjectResult(response)
             {
                 StatusCode = (int)status
@@ -77,15 +68,6 @@ namespace AccountAPI.Services
         public static IActionResult ToHttpResponse<TModel>(this IListResponse<TModel> response)
         {
             var status = HttpStatusCode.OK;
-
-            if(response.DidError)
-            {
-                status = HttpStatusCode.InternalServerError;
-            }
-            else if(response.Model == null)
-            {
-                status = HttpStatusCode.NoContent;
-            }
 
             return new ObjectResult(response)
             {

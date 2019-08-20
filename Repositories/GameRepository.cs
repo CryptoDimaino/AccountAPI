@@ -13,9 +13,10 @@ namespace AccountAPI.Repositories
 {
     public class GameRepository : GenericRepository<Game>, IGameRepository
     {
+        private readonly Context _Context;
         public GameRepository(Context Context) : base(Context)
         {
-
+            _Context = Context;
         }
 
         public async Task<IEnumerable<Game>> GetAllGamesDefaultAsync()
@@ -30,6 +31,7 @@ namespace AccountAPI.Repositories
 
         public async Task<int> CreateGameAsync(Game GameToAdd)
         {
+            // If the game name doesn't exist with the platform create a new game.
             if(!FindAnyByCondition(g => g.Name == GameToAdd.Name && g.PlatformId == GameToAdd.PlatformId))
             {
                 Create(GameToAdd);
@@ -39,32 +41,60 @@ namespace AccountAPI.Repositories
             return 0;
         }
 
-        public async Task<int> UpdateGameAsync(Game GameToUpdate)
+        public async Task<int> UpdateGameAsync(int id, Game GameToUpdate)
         {
+            // Checks to make sure GameId exists.
             if(FindAnyByCondition(g => g.GameId == GameToUpdate.GameId))
             {
-                Update(GameToUpdate);
-                await SaveAsync();
-                return GameToUpdate.GameId;
+                // Pulls game with the id provided to be able to check if accounts exists and the PlatformId
+                var game = await FindByCondition(g => g.GameId == id).Include(g => g.Codes).ThenInclude(c => c.Account).Select(g => new {
+                    Id = g.GameId,
+                    PlatformId = g.PlatformId,
+                    NumberOfAccounts = g.Codes.Count()
+                }).FirstOrDefaultAsync();
+
+                // Checks if the edit is trying to change the platform and if accounts exist
+                if(game.PlatformId != GameToUpdate.PlatformId && game.NumberOfAccounts > 0)
+                {
+                    return 1;
+                }
+                else
+                {
+                    Update(GameToUpdate);
+                    await SaveAsync();
+                    return GameToUpdate.GameId;   
+                }
             }
             return 0;
         }
 
         public async Task<int> DeleteGameAsync(Game GameToDelete)
         {
-            if(FindAnyByCondition(g => g.GameId == GameToDelete.GameId))
+            if(_Context.Codes.Any(c => c.GameId == GameToDelete.GameId))
             {
-                Delete(GameToDelete);
-                await SaveAsync();
-                return GameToDelete.GameId;
+                return 0;
             }
-            return 0;
+            Delete(GameToDelete);
+            await SaveAsync();
+            return GameToDelete.GameId;
         }
+
+
+        public async Task DeleteGameAndCodesAsync(Game GameToDelete)
+        {
+            var CodesList = await _Context.Codes.Where(c => c.GameId == GameToDelete.GameId).ToListAsync();
+            _Context.Codes.RemoveRange(CodesList);
+            Delete(GameToDelete);
+            await SaveAsync();
+        }
+
+        // Counts the number of games
         public async Task<int> CountNumberOfGamesAsync()
         {
             return await CountAsync();
         }
 
+        // Returns an object of all games with specific properties
         public async Task<IEnumerable<object>> GetAllGamesAsync()
         {
             return await GetAll().Include(g => g.Platform).Include(g => g.Codes).ThenInclude(c => c.Account).OrderBy(g => g.GameId).Select(g => new
@@ -76,6 +106,7 @@ namespace AccountAPI.Repositories
             }).ToListAsync();
         }
 
+        // Returns a game with specific properties and inclues all accounts and codes
         public async Task<object> GetGameByIdAsync(int GameId)
         {
             return await FindByCondition(g => g.GameId == GameId).Include(g => g.Platform).Include(g => g.Codes).ThenInclude(c => c.Account).ThenInclude(a => a.EmailAccount).Select(g => new 
