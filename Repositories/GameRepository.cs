@@ -46,6 +46,11 @@ namespace AccountAPI.Repositories
             // Checks to make sure GameId exists.
             if(FindAnyByCondition(g => g.GameId == GameToUpdate.GameId))
             {
+                if(FindAnyByCondition(g => g.Name == GameToUpdate.Name && g.PlatformId == GameToUpdate.PlatformId && g.GameId != GameToUpdate.GameId))
+                {
+                    return -2;
+                }
+
                 // Pulls game with the id provided to be able to check if accounts exists and the PlatformId
                 var game = await FindByCondition(g => g.GameId == id).Include(g => g.Codes).ThenInclude(c => c.Account).Select(g => new {
                     Id = g.GameId,
@@ -56,7 +61,7 @@ namespace AccountAPI.Repositories
                 // Checks if the edit is trying to change the platform and if accounts exist
                 if(game.PlatformId != GameToUpdate.PlatformId && game.NumberOfAccounts > 0)
                 {
-                    return 1;
+                    return -1;
                 }
                 else
                 {

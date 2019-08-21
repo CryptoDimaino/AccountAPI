@@ -112,7 +112,12 @@ namespace AccountAPI.Controllers
                     Response.DidError = true;
                     Response.Message = $"The Game with the id: {UpdateGame.GameId} was not found in the database.";
                 }
-                else if(result == 1)
+                else if(result == -2)
+                {
+                    Response.DidError = true;
+                    Response.Message = "There is already a game with that name and platform.";
+                }
+                else if(result == -1)
                 {
                     Response.DidError = true;
                     Response.Message = $"The games platform cannot be changed while accounts exist because they all belong to that game and platform.";
