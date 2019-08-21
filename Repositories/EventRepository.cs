@@ -69,15 +69,12 @@ namespace AccountAPI.Repositories
 
         public async Task<IEnumerable<object>> GetAllEventsAsync()
         {
-            return await GetAll().Include(e => e.Accounts).Select(e => new {
+            return await GetAll().Include(e => e.Accounts).Include(e => e.Games).Select(e => new {
                 Id = e.EventId,
                 Name = e.Name,
                 Location = e.Location,
-                Accounts = e.Accounts.Select(a => new {
-                    Username = a.Username,
-                    Password = a.Password,
-                    Platform = a.Platform.Name
-                })
+                GameCount = e.Games.Count(),
+                AccountCount = e.Accounts.Count()
             }).ToListAsync();
         }
 

@@ -16,12 +16,13 @@ namespace AccountAPI.Models
         [Required]
         public string Location {get;set;}
         [Required]
-        public DateTime CreatedAt {get;set;} = DateTime.Now;
+        public DateTime StartDate {get;set;}
         [Required]
+        public DateTime EndDate {get;set;}
+        public DateTime CreatedAt {get;set;} = DateTime.Now;
         public DateTime UpdatedAt {get;set;} = DateTime.Now;
 
         public ICollection<Account> Accounts {get;} = new List<Account>();
-
         public ICollection<Game> Games {get;} = new List<Game>();
     }
 }
