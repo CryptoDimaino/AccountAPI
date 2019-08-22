@@ -9,6 +9,8 @@ using Microsoft.EntityFrameworkCore;
 using AccountAPI.Repositories;
 using AccountAPI.Services;
 
+using Microsoft.AspNetCore.Http;
+
 namespace AccountAPI.Controllers
 {
     [ApiVersion("1")]
@@ -19,10 +21,19 @@ namespace AccountAPI.Controllers
         private readonly ILoggerManager _Logger;
         private readonly ICodeRepository _ICodeRepository;
 
-        public CodeController(ILoggerManager Logger, ICodeRepository ICodeRepository)
+        private IHttpContextAccessor _accessor;
+
+        public CodeController(ILoggerManager Logger, ICodeRepository ICodeRepository, IHttpContextAccessor accessor)
         {
             _Logger = Logger;
             _ICodeRepository = ICodeRepository;
+            _accessor = accessor;
+        }
+
+        [HttpGet("ip")]
+        public IActionResult GetIp()
+        {
+            return Content(_accessor.HttpContext.Connection.RemoteIpAddress.ToString());
         }
 
         // GET api/v{version:apiVersion}/code/default

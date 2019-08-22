@@ -124,5 +124,18 @@ namespace AccountAPI.Repositories
         {
             return FindAnyByCondition(a => a.AccountId == id);
         }
+
+        // public bool DoesAccountExistIds(int PlatformId, int EmailAccountId)
+        // {
+        //     return FindAnyByCondition(a => a.PlatformId == PlatformId, );
+        // }
+
+        public async Task<IEnumerable<AccountPlatform>> AccountsAndPlatforms()
+        {
+            return await GetAll().Select(a => new AccountPlatform {
+                PlatformId = (int)a.PlatformId,
+                EmailAccountId = (int)a.EmailAccountId
+            }).ToListAsync();
+        }
     }
 }
