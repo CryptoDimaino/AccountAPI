@@ -27,3 +27,39 @@ namespace AccountAPI.Models
 
     }
 }
+
+/*
+
+class Program
+    {
+        static void Main(string[] args)
+        {
+            List<AccountTest> list1 = new List<AccountTest>();
+
+            for(int i = 1; i <= 15; i++)
+            {
+                for(int j = 1; j <= 190; j++)
+                {
+                    AccountTest t1 = new AccountTest {
+                        EmailAccountId = j,
+                        PlatformId = i
+                    };
+                    list1.Add(t1);
+                }
+            }
+
+            foreach(var account in list1)
+            {
+                Console.WriteLine(account.PlatformId + " " + account.EmailAccountId);
+            }
+        }
+    }
+
+    public class AccountTest
+    {
+        public int EmailAccountId {get;set;}
+        public int PlatformId {get;set;}
+    }
+
+
+ */
