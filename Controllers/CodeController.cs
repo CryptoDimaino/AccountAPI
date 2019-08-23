@@ -44,7 +44,7 @@ namespace AccountAPI.Controllers
             try
             {
                 Response.Model = await _ICodeRepository.GetAllCodesDefaultAsync();
-                Response.Message = "Querying all codes with default information.";
+                Response.Message = $"Querying all codes with default information. {_accessor.HttpContext.Connection.RemoteIpAddress.ToString()}";
                 _Logger.LogInfo(ControllerContext, Response.Message);
             }
             catch(Exception ex)

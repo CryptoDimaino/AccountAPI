@@ -89,8 +89,8 @@ namespace AccountAPI.Controllers
             catch(Exception ex)
             {
                 Response.DidError = true;
-                Response.Message = "Internal Server Error.";
-                _Logger.LogError(ControllerContext, $"Error Message: {ex.Message}");
+                Response.Message = $"Internal Server Error. Error Message: {ex.Message}";
+                _Logger.LogError(ControllerContext, Response.Message);
             }
             return Response.ToHttpResponse();
         }
