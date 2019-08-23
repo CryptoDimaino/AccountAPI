@@ -27,5 +27,6 @@ namespace AccountAPI.Contracts
         Task<IEnumerable<Account>> GetAllAccountsByPlatformId(int id);
         bool DoesAccountExist(int id);
         Task<IEnumerable<Account>> GetAllAccountsByEmailAccountId(int id);
+        Task<IEnumerable<AccountPlatform>> AccountsAndPlatforms();
     }
 }

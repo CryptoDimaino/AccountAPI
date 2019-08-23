@@ -229,5 +229,24 @@ namespace AccountAPI.Controllers
             }
             return Response.ToHttpResponse();
         }
+
+        // Get api/v{version:apiVersion}/account/check
+        [HttpGet("check")]
+        public async Task<IActionResult> CheckAccount(int PlatformId, int EmailAccountId)
+        {
+            var Response = new SingleResponse<object>();
+            try
+            {
+                var AccountsPlatformsList = await _IAccountRepository.AccountsAndPlatforms();
+                Response.Model = AccountsPlatformsList;
+            }
+            catch(Exception ex)
+            {
+                Response.DidError = true;
+                Response.Message = "Internal Server Error.";
+                _Logger.LogError(ControllerContext, $"Error Message: {ex.Message}");
+            }
+            return Response.ToHttpResponse();
+        }
     }
 }

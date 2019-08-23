@@ -22,6 +22,9 @@ using System.Buffers;
 using AccountAPI.Repositories;
 using Microsoft.EntityFrameworkCore;
 
+using Microsoft.AspNetCore.Http;
+
+
 namespace AccountAPI
 {
     public class Startup
@@ -56,6 +59,8 @@ namespace AccountAPI
 
             services.AddTransient<IPlatformRepository, PlatformRepository>();
             services.AddTransient<IGameRepository, GameRepository>();
+
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
             services.AddMvc(options => 
             {
