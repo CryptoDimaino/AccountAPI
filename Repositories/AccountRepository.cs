@@ -90,16 +90,19 @@ namespace AccountAPI.Repositories
 
         public async Task<object> GetAccountByIdAsync(int AccountId)
         {
-            return await FindByCondition(a => a.AccountId == AccountId).Include(a => a.EmailAccount).Include(a => a.Platform).Include(a => a.Event).Include(a => a.Codes).Select(a => new 
+            return await FindByCondition(a => a.AccountId == AccountId).Include(a => a.Codes).Include(a => a.EmailAccount).Include(a => a.Platform).Include(a => a.Event).Select(a => new 
             {
                 Id = a.AccountId,
                 Username = a.Username,
                 Password = a.Password,
                 Email = a.EmailAccount.Email,
                 EmailPassword = a.EmailAccount.EmailPassword,
+                PlatformId = a.Platform.PlatformId,
                 Platform = a.Platform.Name,
+                EventId = (int?)a.Event.EventId,
                 Event = a.Event.Name,
                 Codes = a.Codes.Select(c => new {
+                    CodeId = c.CodeId,
                     Code = c.CodeString
                 })
             }).FirstOrDefaultAsync();

@@ -105,6 +105,8 @@ namespace AccountAPI.Repositories
                 Id = p.PlatformId,
                 Name = p.Name,
                 URLToDocumentation = p.URLToDocumentation,
+                p.CreatedAt,
+                p.UpdatedAt,
                 Games = p.Games.Select(g => new {
                     Id = g.GameId,
                     Name = g.Name,

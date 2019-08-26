@@ -73,6 +73,8 @@ namespace AccountAPI.Repositories
                 Id = e.EventId,
                 Name = e.Name,
                 Location = e.Location,
+                StartDate = e.StartDate,
+                EndDate = e.EndDate,
                 GameCount = e.Games.Count(),
                 AccountCount = e.Accounts.Count()
             }).ToListAsync();
@@ -80,10 +82,27 @@ namespace AccountAPI.Repositories
 
         public async Task<object> GetEventByIdAsync(int EventId)
         {
-            return await FindByCondition(e => e.EventId == EventId).Select(e => new {
+            return await FindByCondition(e => e.EventId == EventId).Include(e => e.Accounts).Include(e => e.Games).ThenInclude(g => g.Platform).Select(e => new {
                 Id = e.EventId,
                 Name = e.Name,
-                Location = e.Location
+                Location = e.Location,
+                StartDate = e.StartDate,
+                EndDate = e.EndDate,
+                Accounts = e.Accounts.Select(a => new {
+                    AccountId = a.AccountId,
+                    a.Username,
+                    a.Password,
+                    a.EmailAccountId,
+                    a.EmailAccount.Email,
+                    a.EmailAccount.EmailPassword
+                }),
+                Games = e.Games.Select(g => new {
+                    GameId = g.GameId,
+                    GameTitle = g.Name,
+                    PlatformId = g.PlatformId,
+                    PlatformName = g.Platform.Name,
+                    URLToDocumentation = g.URLToDocumentation
+                })
             }).FirstOrDefaultAsync();
         }
 
