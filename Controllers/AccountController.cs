@@ -143,17 +143,29 @@ namespace AccountAPI.Controllers
                 else
                 {
                     Account AccountToDelete = await _IAccountRepository.GetAccountByIdDefaultAsync(id);
-                    await _IAccountRepository.DeleteAccountAsync(AccountToDelete);
-                    Response.Message = $"{AccountToDelete.AccountId}";
-                    Response.Model = AccountToDelete;
-                    _Logger.LogInfo(ControllerContext, $"Account with the id: {AccountToDelete.AccountId} has been deleted.");
+                    int result = await _IAccountRepository.DeleteAccountAsync(AccountToDelete);
+                    if(result == 0)
+                    {
+                        Response.DidError = true;
+                        Response.Message = $"The Account with the id: {id} cannot be delete while there are still codes attached to the account.";
+                    }
+                    else if(result == -1)
+                    {
+                        Response.DidError = true;
+                        Response.Message = $"The Account with the id: {id} cannot be delete while it is checked out to an event.";
+                    }
+                    else
+                    {
+                        Response.Message = $"The Account with the id: {AccountToDelete.AccountId} has been deleted.";
+                        Response.Model = AccountToDelete;
+                    }
                 }
             }
             catch(Exception ex)
             {
                 Response.DidError = true;
-                Response.Message = "Internal Server Error.";
-                _Logger.LogError(ControllerContext, $"Error Message: {ex.Message}");
+                Response.Message = $"Internal Server Error. Error Message: {ex.Message}";
+                _Logger.LogError(ControllerContext, Response.Message);
             }
             return Response.ToHttpResponse();
         }

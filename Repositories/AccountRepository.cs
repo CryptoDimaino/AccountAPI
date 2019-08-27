@@ -13,9 +13,11 @@ namespace AccountAPI.Repositories
 {
     public class AccountRepository : GenericRepository<Account>, IAccountRepository
     {
+        private readonly Context _Context;
         private readonly ICodeRepository _ICodeRepository;
         public AccountRepository(Context Context, ICodeRepository ICodeRepository) : base(Context)
         {
+            _Context = Context;
             _ICodeRepository = ICodeRepository;
         }
 
@@ -54,18 +56,18 @@ namespace AccountAPI.Repositories
 
         public async Task<int> DeleteAccountAsync(Account AccountToDelete)
         {
-            if(FindAnyByCondition(a => a.AccountId == AccountToDelete.AccountId))
+            if(_Context.Codes.Any(c => (c.PlatformId == AccountToDelete.PlatformId && c.EmailAccountId == AccountToDelete.EmailAccountId)))
             {
-                var CodeL = await _ICodeRepository.GetAllCodesByAccount((int)AccountToDelete.EmailAccountId, (int)AccountToDelete.PlatformId);
-                foreach(var code in CodeL)
-                {
-                    await _ICodeRepository.DeleteCodeAsync(code);
-                }
-                Delete(AccountToDelete);
-                await SaveAsync();
-                return AccountToDelete.AccountId;
+                return 0;
             }
-            return 0;
+            else if(_Context.Accounts.Any(a => a.EventId == AccountToDelete.EventId) && AccountToDelete.EventId != null)
+            // else if(AccountToDelete.EventId != null)
+            {
+                return -1;
+            }
+            Delete(AccountToDelete);
+            await SaveAsync();
+            return AccountToDelete.AccountId;
         }
 
         public async Task<int> CountNumberOfAccountsAsync()

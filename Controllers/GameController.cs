@@ -122,6 +122,12 @@ namespace AccountAPI.Controllers
                     Response.DidError = true;
                     Response.Message = $"The games platform cannot be changed while accounts exist because they all belong to that game and platform.";
                 }
+                else if(result == -3)
+                {
+                    Response.DidError = true;
+                    Response.Message = $"The";
+
+                }
                 else
                 {
                     Response.Message = $"Game with the id: {UpdateGame.GameId} has been updated.";

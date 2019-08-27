@@ -107,16 +107,26 @@ namespace AccountAPI.Controllers
 
         // PUT api/v{version:apiVersion}/Platform/{id}
         [HttpPut("{id}")]
-        public async Task<IActionResult> UpdatePlatform([FromBody] Platform UpdatePlatform)
+        public async Task<IActionResult> UpdatePlatform(int id, [FromBody] Platform UpdatePlatform)
         {
             var Response = new SingleResponse<Platform>();
             try
             {
-                int result = await _IPlatformRepository.UpdatePlatformAsync(UpdatePlatform);
+                int result = await _IPlatformRepository.UpdatePlatformAsync(id, UpdatePlatform);
                 if(result == 0)
                 {
                     Response.DidError = true;
                     Response.Message = $"The Platform with the id: {UpdatePlatform.PlatformId} was not found in the database.";
+                }
+                else if(result == -2) 
+                {
+                    Response.DidError = true;
+                    Response.Message = $"The Platform with the id: {UpdatePlatform.PlatformId} has the same name already in the database.";
+                }
+                else if(result == -1)
+                {
+                    Response.DidError = true;
+                    Response.Message = $"The Platform with the id: {UpdatePlatform.PlatformId} cannot be changed while there are accounts/games.";
                 }
                 else
                 {
@@ -148,9 +158,17 @@ namespace AccountAPI.Controllers
                 else
                 {
                     Platform PlatformToDelete = await _IPlatformRepository.GetPlatformByIDDefaultAsync(id);
-                    await _IPlatformRepository.DeletePlatformAsync(PlatformToDelete);
-                    Response.Message = $"Platform with the id: {PlatformToDelete.PlatformId} has been deleted.";
-                    Response.Model = PlatformToDelete;
+                    int result = await _IPlatformRepository.DeletePlatformAsync(PlatformToDelete);
+                    if(result == 0)
+                    {
+                        Response.DidError = true;
+                        Response.Message = $"The Platform with the id: {id} cannot be delete while there are still games/accounts attached to the platform.";
+                    }
+                    else
+                    {
+                        Response.Message = $"The Platform with the id: {PlatformToDelete.PlatformId} has been deleted.";
+                        Response.Model = PlatformToDelete;
+                    }
                 }
             }
             catch(Exception ex)
@@ -158,7 +176,14 @@ namespace AccountAPI.Controllers
                 Response.DidError = true;
                 Response.Message = $"Internal Server Error. Error Message: {ex.Message}";
             }
-            _Logger.LogError(ControllerContext, Response.Message);
+            if(Response.DidError == true)
+            {
+                _Logger.LogError(ControllerContext, Response.Message);
+            }
+            else
+            {
+                _Logger.LogInfo(ControllerContext, Response.Message);
+            }
             return Response.ToHttpResponse();
         }
 
