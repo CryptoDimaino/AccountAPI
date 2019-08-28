@@ -47,6 +47,11 @@ namespace AccountAPI.Repositories
         {
             if(FindAnyByCondition(a => a.AccountId == AccountToUpdate.AccountId))
             {
+                if(FindAnyByCondition(a => a.Username == AccountToUpdate.Username && a.AccountId != AccountToUpdate.AccountId))
+                {
+                    return -2;
+                }
+                
                 Update(AccountToUpdate);
                 await SaveAsync();
                 return AccountToUpdate.AccountId;
@@ -61,7 +66,6 @@ namespace AccountAPI.Repositories
                 return 0;
             }
             else if(_Context.Accounts.Any(a => a.EventId == AccountToDelete.EventId) && AccountToDelete.EventId != null)
-            // else if(AccountToDelete.EventId != null)
             {
                 return -1;
             }
