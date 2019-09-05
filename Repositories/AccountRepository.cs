@@ -47,7 +47,7 @@ namespace AccountAPI.Repositories
         {
             if(FindAnyByCondition(a => a.AccountId == AccountToUpdate.AccountId))
             {
-                if(FindAnyByCondition(a => a.Username == AccountToUpdate.Username && a.AccountId != AccountToUpdate.AccountId))
+                if(FindAnyByCondition(a => a.Username != AccountToUpdate.Username && a.AccountId == AccountToUpdate.AccountId))
                 {
                     return -2;
                 }
@@ -101,6 +101,7 @@ namespace AccountAPI.Repositories
                 Id = a.AccountId,
                 Username = a.Username,
                 Password = a.Password,
+                EmailAccountId = a.EmailAccountId,
                 Email = a.EmailAccount.Email,
                 EmailPassword = a.EmailAccount.EmailPassword,
                 PlatformId = a.Platform.PlatformId,

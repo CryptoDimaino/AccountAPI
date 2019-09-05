@@ -18,6 +18,7 @@ namespace AccountAPI.Models
         public int ConnectionType {get;set;}
         public DateTime? ReleaseDate {get;set;}
 		public string URLToDocumentation {get;set;}
+        // public int NumberOfEvents {get;set;}
         public DateTime CreatedAt {get;set;} = DateTime.Now;
         public DateTime UpdatedAt {get;set;} = DateTime.Now;
 

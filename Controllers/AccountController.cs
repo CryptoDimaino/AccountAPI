@@ -19,10 +19,13 @@ namespace AccountAPI.Controllers
         private readonly ILoggerManager _Logger;
         private readonly IAccountRepository _IAccountRepository;
 
-        public AccountController(ILoggerManager Logger, IAccountRepository IAccountRepository)
+        private readonly Context _Context;
+
+        public AccountController(ILoggerManager Logger, IAccountRepository IAccountRepository, Context Context)
         {
             _Logger = Logger;
             _IAccountRepository = IAccountRepository;
+            _Context = Context;
         }
 
         // GET api/v{version:apiVersion}/account/default
@@ -111,8 +114,15 @@ namespace AccountAPI.Controllers
                     Response.Message = $"The Account with the id: {UpdateAccount.AccountId} was not found in the database.";
                     _Logger.LogError(ControllerContext, Response.Message);
                 }
+                else if(result == -2)
+                {
+                    Response.DidError = true;
+                    Response.Message = $"The Account with the id: {UpdateAccount.AccountId} WOW BROWN CHICKEN BROWN COW!.";
+                    _Logger.LogError(ControllerContext, Response.Message);
+                }
                 else
                 {
+                    
                     Response.Message = $"{UpdateAccount.AccountId}";
                     Response.Model = UpdateAccount;
                     _Logger.LogInfo(ControllerContext, $"Account with the id: {UpdateAccount.AccountId} has been updated.");
@@ -125,6 +135,12 @@ namespace AccountAPI.Controllers
                 _Logger.LogError(ControllerContext, $"Error Message: {ex.Message}");
             }
             return Response.ToHttpResponse();
+
+            // _Context.Accounts.Update(UpdateAccount);
+            // _Context.SaveChanges();
+
+            
+            // return Ok(UpdateAccount);
         }
 
         // DELETE api/v{version:apiVersion}/account/{id}
