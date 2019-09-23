@@ -80,7 +80,7 @@ namespace AccountAPI.Repositories
             return await GetAll().Include(c => c.Account).Include(c => c.Game).Select(c => new {
                 Id = c.CodeId,
                 Code = c.CodeString,
-                Used = c.UsedStatus,
+                Status = c.UsedStatus,
                 Account = c.Account.Username,
                 Game = c.Game.Name
             }).ToListAsync();
@@ -91,11 +91,12 @@ namespace AccountAPI.Repositories
             return await FindByCondition(c => c.CodeId == CodeId).Include(c => c.Account).Include(c => c.Game).Select(c => new {
                 Id = c.CodeId,
                 Code = c.CodeString,
-                Used = c.UsedStatus,
+                Status = c.UsedStatus,
                 AccountId = (int?)c.Account.AccountId,
                 Account = c.Account.Username,
                 GameId = c.Game.GameId,
-                Game = c.Game.Name
+                Game = c.Game.Name,
+                PlatformId = c.Game.PlatformId
             }).FirstOrDefaultAsync();
         }
 
