@@ -50,7 +50,8 @@ namespace AccountAPI.Repositories
 
         public async Task<int> UpdateCodeAsync(Code CodeToUpdate)
         {
-            if(FindAnyByCondition(c => (c.EmailAccountId == CodeToUpdate.EmailAccountId && c.PlatformId == CodeToUpdate.PlatformId && c.GameId == CodeToUpdate.GameId) || (CodeToUpdate.EmailAccountId == null && c.PlatformId == CodeToUpdate.PlatformId && c.GameId == CodeToUpdate.GameId)))
+            // if(FindAnyByCondition(c => (c.EmailAccountId == CodeToUpdate.EmailAccountId && c.PlatformId == CodeToUpdate.PlatformId && c.GameId == CodeToUpdate.GameId) || (CodeToUpdate.EmailAccountId == null && c.PlatformId == CodeToUpdate.PlatformId && c.GameId == CodeToUpdate.GameId)))
+            if(FindAnyByCondition(c => c.CodeId == CodeToUpdate.CodeId))
             {
                 Update(CodeToUpdate);
                 await SaveAsync();
