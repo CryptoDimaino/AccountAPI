@@ -33,18 +33,26 @@ namespace AccountAPI.Repositories
 
         public async Task<int> CreateCodeAsync(Code CodeToAdd)
         {
-            if(CodeToAdd.EmailAccountId != null && CodeToAdd.PlatformId != null && !FindAnyByCondition(c => (c.EmailAccountId == CodeToAdd.EmailAccountId && c.PlatformId == CodeToAdd.PlatformId && c.GameId == CodeToAdd.GameId)))
+            // Check to make sure there is a unique or no account for each game.
+            // Check to see if code contains the gme, platform and emailaccount
+            if(CodeToAdd.EmailAccountId == null || !FindAnyByCondition(c => c.GameId == CodeToAdd.GameId && c.EmailAccountId == CodeToAdd.EmailAccountId && c.PlatformId == CodeToAdd.PlatformId))
             {
                 Create(CodeToAdd);
                 await SaveAsync();
                 return CodeToAdd.CodeId;
             }
-            else if(CodeToAdd.EmailAccountId == null && CodeToAdd.PlatformId == null && _IGameRepository.DoesGameExist(CodeToAdd.GameId))
-            {
-                Create(CodeToAdd);
-                await SaveAsync();
-                return CodeToAdd.CodeId;
-            }
+            // if(CodeToAdd.EmailAccountId != null && CodeToAdd.PlatformId != null && !FindAnyByCondition(c => (c.EmailAccountId == CodeToAdd.EmailAccountId && c.PlatformId == CodeToAdd.PlatformId && c.GameId == CodeToAdd.GameId)))
+            // {
+            //     Create(CodeToAdd);
+            //     await SaveAsync();
+            //     return CodeToAdd.CodeId;
+            // }
+            // else if(CodeToAdd.EmailAccountId == null && CodeToAdd.PlatformId == null && _IGameRepository.DoesGameExist(CodeToAdd.GameId))
+            // {
+            //     Create(CodeToAdd);
+            //     await SaveAsync();
+            //     return CodeToAdd.CodeId;
+            // }
             return 0;
         }
 

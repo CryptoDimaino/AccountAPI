@@ -118,7 +118,7 @@ namespace AccountAPI.Repositories
                 Title = g.Name,
                 Platform = g.Platform.Name,
                 NumberOfAccounts = g.Codes.Count()
-            }).ToListAsync();
+            }).OrderBy(g => g.Title).ToListAsync();
         }
 
         // Returns a game with specific properties and inclues all accounts and codes
