@@ -1,0 +1,50 @@
+<!-- Header -->
+<div id="main-content-header" class="main-content-header">
+  <h1>Adding new Game</h1>
+</div>
+
+<!-- Loading Spinner -->
+<div *ngIf="!loaded" class="loading-center">
+  <div class="lds-css ng-scope">
+    <div class="lds-spinner"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+  </div>
+</div>
+
+<!-- Loaded Form -->
+<div *ngIf="loaded">
+  <div id="main-content-wrapper" class="main-content-wrapper">
+    <div id="items-content-wrapper" class="items-content-wrapper">
+      <div class="row model-form">
+        <div class="col-3"></div>
+        <div class="col-6">
+          <form [formGroup]="addGameForm" (ngSubmit)="AddGame()">
+            <div class="form-group">
+              <label>Game Title</label>
+              <input type="text" formControlName="Name" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.Name.errors }" />
+              <div *ngIf="submitted && f.Name.errors" class="invalid-feedback">
+                <div *ngIf="f.Name.errors.required">Game Title is required</div>
+                <div *ngIf="f.Name.errors.minlength">Game Title must be at least 3 characters</div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label>Platform</label>
+              <select class="form-control" formControlName="PlatformId" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.Name.errors }">
+                <option value="" disabled>Choose a Platform</option>
+                <option *ngFor="let plat of platforms" [ngValue]="plat.Id">{{plat.Platform}}</option>
+              </select>
+              <div *ngIf="submitted && f.PlatformId.errors" class="invalid-feedback">
+                <div *ngIf="f.PlatformId.errors.required">Platform is required</div>
+              </div>
+            </div>
+            <div class="row button-form-padding">
+              <div class="col-2"></div>
+              <div class="col-8">
+                <button [disabled]="loading" class="model-form-button">Add Game</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,77 @@
+<!-- Header -->
+<div class="main-content-header">
+  <h1>Email Accounts</h1>
+</div>
+
+<!-- Loading Spinner -->
+<div *ngIf="!loaded" class="loading-center">
+  <div class="lds-css ng-scope">
+      <div class="lds-spinner"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+  </div>
+</div>
+
+<!-- Load Table -->
+<div *ngIf="loaded">
+<div class="main-content-wrapper">
+  <div class="items-content-wrapper">
+    <ng-container *ngIf="(emailaccountList | tableFilter: {Email: searchText, Password: searchText}) as result">
+      <div class="row table-header">
+        <div class="col-3">
+          <a class="special-button add-button" [routerLink]="['/emailaccounts/add']" routerLinkActive="active">Add Email Account</a>
+          <select class="item-per-page-select" (change)="onChange($event.target.value)">
+            <option value="{{selectOptions[0]}}">10</option>
+            <option value="{{selectOptions[1]}}" selected>25</option>
+            <option value="{{selectOptions[2]}}">50</option>
+            <option value="{{selectOptions[3]}}">100</option>
+            <option value="{{selectOptions[4]}}">All</option>
+          </select>
+        </div>
+        <div class="col-9">
+          <div class="search-table">
+            <input [(ngModel)]="searchText" placeholder="Search..." class="advancedSearchTextbox table-search-bar" autocomplete="off">
+          </div>
+          <div class="table-info">
+            <p>Filtering {{(result)?.length}} of {{numberOfEmailAccounts}}. </p>
+            <p *ngIf="(result)?.length < numberToShow">Showing {{(result)?.length}} out of {{numberToShow}}</p>
+            <p *ngIf="(result)?.length > numberToShow">Showing {{numberToShow}} out of {{numberToShow}}</p>
+          </div>
+        </div>
+      </div>
+      <table class="table">
+        <thead>
+          <tr>
+            <th (click)="sort('Email')">Email
+              <span class="table-link-item" *ngIf="key =='Email'" [ngClass]="{'table-header-arrow-up':reverse, 'table-header-arrow-down':!reverse}"></span>
+            </th>
+            <th (click)="sort('Password')">Password
+              <span class="table-link-item" *ngIf="key =='Password'" [ngClass]="{'table-header-arrow-up':reverse, 'table-header-arrow-down':!reverse}"></span>
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let emailaccount of result | orderBy: key : reverse : true | paginate: config;" >
+            <td><a [routerLink]="['/emailaccounts/', emailaccount.Id]" class="nav-link" routerLinkActive="active">{{emailaccount.Email}}</a></td>
+            <td>{{emailaccount.Password}}</td>
+          </tr>
+        </tbody>
+      </table>
+      <pagination-template #p="paginationApi" [id]="config.id" (pageChange)="config.currentPage=$event">
+        <div class="custom-pagination">
+          <div class="pagination-previous" [class.disabled]="p.isFirstPage()">
+            <span class="arrow-pagination left-pagination" *ngIf="!p.isFirstPage()" (click)="p.previous()"></span>
+          </div>
+          <div class="page-number" *ngFor="let page of p.pages" [class.current]="p.getCurrent() === page.value">
+            <span (click)="p.setCurrent(page.value)" *ngIf="p.getCurrent() !== page.value">{{ page.label }}</span>
+            <div *ngIf="p.getCurrent() === page.value">
+              <span>{{ page.label }}</span>
+            </div>
+          </div>
+          <div class="pagination-next" [class.disabled]="p.isLastPage()">
+            <span class="arrow-pagination right-pagination" *ngIf="!p.isLastPage()" (click)="p.next()"></span>
+          </div>
+        </div>
+      </pagination-template>
+    </ng-container>
+  </div>
+</div>
+</div>

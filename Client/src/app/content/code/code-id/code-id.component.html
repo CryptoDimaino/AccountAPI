@@ -1,0 +1,88 @@
+<!-- Header -->
+<div class="main-content-header">
+  <h1>{{Title}}</h1>
+</div>
+
+<!-- Loading Spinner -->
+<div *ngIf="!loaded" class="loading-center">
+    <div class="lds-css ng-scope">
+        <div class="lds-spinner"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+    </div>
+</div>
+
+
+<!-- Loaded -->
+<div *ngIf="loaded">
+
+<!-- Information -->
+<div class="main-content-wrapper">
+    <div class="items-content-wrapper">
+        <h4 class="item-information">Code Information</h4>
+        <div class="item-information-box">
+            <div class="row button-area">
+                <div class="col-sm-2"></div>
+                <div *ngIf="!accountExists; else Edit;" class="col-sm-4 information-button"><a [routerLink]="['/codes/edit/', id]" class="special-button" routerLinkActive="active">Edit</a></div>
+                <div *ngIf="!accountExists; else Delete;" class="col-sm-4 information-button"><a class="special-button" (click)="DeleteCode()">Delete</a></div>
+
+                <ng-template #Edit>
+                  <div class="col-sm-4 information-button"><a class="special-button" (click)="openModal('edit-model-button')">Edit</a></div>
+                </ng-template>
+
+
+                <ng-template #Delete>
+                  <div class="col-sm-4 information-button"><a class="special-button" (click)="openModal('delete-model-button')">Delete</a></div>
+                </ng-template>
+
+
+                <app-modal id="edit-model-button">
+                  <div></div>
+                  <h1>This code has an account and should <span>not</span> be edited!</h1>
+                  <div class="row">
+                    <p class="col-md-12 modal-paragraph">You can still edit this code if needed.</p>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-2"></div>
+                    <div class="col-md-4 information-button"><a [routerLink]="['/codes/edit/', id]" class="special-button" routerLinkActive="active">Edit Anyway</a></div>
+                    <div class="col-md-4 information-button"><a class="special-button" (click)="closeModal('edit-model-button');">Close</a></div>
+                    <div class="col-md-2"></div>
+                  </div>
+                  <div></div>
+                </app-modal>
+
+                <app-modal id="delete-model-button">
+                  <div></div>
+                  <h1>This code has an account and should <span>not</span> be delete!</h1>
+                  <div class="row">
+                    <p class="col-md-12 modal-paragraph">Please change the Status of teh code to false if you want to delete it.</p>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-3"></div>
+                    <div class="col-md-6 information-button"><a class="special-button" (click)="closeModal('delete-model-button');">Close</a></div>
+                    <div class="col-md-3"></div>
+                  </div>
+                  <div></div>
+                </app-modal>
+
+
+                <div class="col-sm-2"></div>
+            </div>
+            <div class="item-information-innerbox">
+                <div class="row item-information-padding">
+                    <div class="col-md-1"></div>
+                    <div *ngIf="accountExists; else NoAccount;" class="col-md-5 item-information-item">Account: <a [routerLink]="['/accounts/', code.AccountId]" class="nav-link" routerLinkActive="active">{{code.Account}}</a></div>
+                    <ng-template #NoAccount>
+                      <div class="col-md-5 item-information-item">Account: <p>No Account Exists</p></div>
+                    </ng-template>
+                    <div class="col-md-5 item-information-item">Game: <a [routerLink]="['/games/', code.GameId]" class="nav-link" routerLinkActive="active">{{code.Game}}</a></div>
+                    <div class="col-md-1"></div>
+                </div>
+                <div class="row item-padding-bottom">
+                    <div class="col-md-1"></div>
+                    <div class="col-md-5 item-information-item">Code: <p>{{code.CodeString}}</p></div>
+                    <div class="col-md-5 item-information-item">Used: <p>{{code.UsedStatus}}</p></div>
+                    <div class="col-md-1"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

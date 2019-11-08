@@ -1,0 +1,146 @@
+<!-- Header -->
+<div id="main-content-header" class="main-content-header">
+  <h1>{{Title}}</h1>
+</div>
+
+<!-- Loading Spinner -->
+<div *ngIf="!loaded" class="loading-center">
+    <div class="lds-css ng-scope">
+        <div class="lds-spinner"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+    </div>
+</div>
+
+<!-- Loaded -->
+<div *ngIf="loaded">
+
+  <!-- Information -->
+  <div class="main-content-wrapper">
+    <div class="items-content-wrapper">
+      <div>
+        <h4 class="item-information">Game Information</h4>
+        <div class="item-information-box">
+          <div class="row button-area">
+            <div class="col-sm-2"></div>
+            <div class="col-sm-4 information-button"><a [routerLink]="['/games/edit/', id]" class="special-button" routerLinkActive="active">Edit Game</a></div>
+            <div class="col-sm-4 information-button"><a class="special-button" (click)="DeleteGame()">Delete Game</a></div>
+            <div class="col-sm-2"></div>
+          </div>
+          <div class="item-information-innerbox">
+            <div class="row item-information-padding">
+              <div class="col-md-1"></div>
+              <div class="col-md-5 item-information-item">Name: <p>{{game?.Title}}</p></div>
+              <div class="col-md-5 item-information-item">Platform: <p>{{game?.Platform}}</p></div>
+              <div class="col-md-1"></div>
+            </div>
+            <div class="row item-padding-bottom">
+              <div class="col-md-1"></div>
+              <div class="col-md-5 item-information-item">Documentation: <span *ngIf="game?.URLToDocumentation != null; else NoDocumentation"><a href="{{game?.URLToDocumentation}}">Documentation</a></span><ng-template #NoDocumentation><p>There is no documentation</p></ng-template></div>
+              <div class="col-md-5 item-information-item">Release Date: <span *ngIf="game?.ReleaseDate != null; else NoReleaseDate"><p>{{game?.ReleaseDate}}</p></span><ng-template #NoReleaseDate><p>Edit to change the release date</p></ng-template></div>
+              <div class="col-md-1"></div>
+            </div>
+          </div>
+        </div>
+        </div >
+    </div>
+  </div>
+
+  <!-- Accounts Table -->
+  <div class="main-content-wrapper">
+    <div class="items-content-wrapper">
+      <ng-container *ngIf="AccountsExist; else NoAccounts">
+        <h4 class="table-title">Accounts table</h4>
+        <ng-container *ngIf="(accounts | tableFilter: {Username: searchText, Email: searchText}) as result">
+          <div class="row table-header">
+            <div class="col-4">
+              <a class="special-button add-button" [routerLink]="['/accounts/add']" routerLinkActive="active">Add Account</a>
+              <select class="item-per-page-select" (change)="onChange($event.target.value)">
+                <option value="{{selectOptions[0]}}" selected>10</option>
+                <option value="{{selectOptions[1]}}">25</option>
+                <option value="{{selectOptions[2]}}">50</option>
+                <option value="{{selectOptions[3]}}">100</option>
+                <option value="{{selectOptions[4]}}">All</option>
+              </select>
+            </div>
+            <div class="col-8">
+              <div class="search-table">
+                <input [(ngModel)]="searchText" placeholder="Search.." class="advancedSearchTextbox table-search-bar" autocomplete="off">
+              </div>
+              <div class="table-info">
+                <p>Filtering {{(result)?.length}} of {{numberOfAccounts}}. </p>
+                <p *ngIf="(result)?.length < numberToShow && numberOfAccounts > numberToShow">Showing {{(result)?.length}} out of {{numberToShow}}</p>
+                <p *ngIf="(result)?.length > numberToShow && numberOfAccounts > numberToShow">Showing {{numberToShow}} out of {{numberToShow}}</p>
+              </div>
+            </div>
+          </div>
+          <table class="table">
+            <thead>
+              <tr>
+                <th (click)="sort('Username')">Username
+                  <span class="arrows" *ngIf="key =='Username'" [ngClass]="{'table-header-arrow-up':reverse, 'table-header-arrow-down':!reverse}"></span>
+                </th>
+                <th (click)="sort('Password')">Password
+                  <span class="arrows" *ngIf="key =='Password'" [ngClass]="{'table-header-arrow-up':reverse, 'table-header-arrow-down':!reverse}"></span>
+                </th>
+                <th (click)="sort('Email')">Email
+                  <span class="arrows" *ngIf="key =='Email'" [ngClass]="{'table-header-arrow-up':reverse, 'table-header-arrow-down':!reverse}"></span>
+                </th>
+                <th (click)="sort('EmailPassword')">Email Password
+                  <span class="arrows" *ngIf="key =='EmailPassword'" [ngClass]="{'table-header-arrow-up':reverse, 'table-header-arrow-down':!reverse}"></span>
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="gamerows" *ngFor="let account of result | orderBy: key : reverse : true | paginate: config;" >
+                <ng-container *ngIf="account.Id">
+                  <td><a [routerLink]="['/accounts/', account.Id]" class="nav-link" routerLinkActive="active">{{account.Username}}</a></td>
+                  <td>{{account.Password}}</td>
+                  <td>{{account.Email}}</td>
+                  <td>{{account.EmailPassword}}</td>
+                </ng-container>
+              </tr>
+            </tbody>
+          </table>
+          <pagination-template #p="paginationApi" [id]="config.id" (pageChange)="config.currentPage=$event">
+            <div class="custom-pagination">
+              <div class="pagination-previous" [class.disabled]="p.isFirstPage()">
+                <span class="arrow-pagination left-pagination" *ngIf="!p.isFirstPage()" (click)="p.previous()"></span>
+              </div>
+              <div class="page-number" *ngFor="let page of p.pages" [class.current]="p.getCurrent() === page.value">
+                <span (click)="p.setCurrent(page.value)" *ngIf="p.getCurrent() !== page.value">{{ page.label }}</span>
+                <div *ngIf="p.getCurrent() === page.value">
+                  <span>{{ page.label }}</span>
+                </div>
+              </div>
+              <div class="pagination-next" [class.disabled]="p.isLastPage()">
+                <span class="arrow-pagination right-pagination" *ngIf="!p.isLastPage()" (click)="p.next()"></span>
+              </div>
+            </div>
+          </pagination-template>
+        </ng-container>
+      </ng-container>
+      <ng-template #NoAccounts>
+        <div class="no-models">There are no Accounts for this game</div>
+      </ng-template>
+    </div>
+  </div>
+
+  <!-- Code Table -->
+  <div class="main-content-wrapper">
+      <div class="items-content-wrapper">
+        <ng-container *ngIf="CodesExist; else NoCodes;">
+          <h3 id="table-title-1">Codes table</h3>
+          <table id="code-table" class="table">
+            <tr>
+              <th>Code</th>
+            </tr>
+            <tr *ngFor="let code of codes">
+              <td>{{code.Code}}</td>
+            </tr>
+          </table>
+        </ng-container>
+      <ng-template #NoCodes>
+        <div class="no-models">There are no extra codes for this game</div>
+      </ng-template>
+    </div>
+  </div>
+</div>

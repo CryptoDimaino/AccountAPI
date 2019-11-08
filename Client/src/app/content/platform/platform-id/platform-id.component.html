@@ -1,0 +1,181 @@
+<!-- Header -->
+<div class="main-content-header">
+<h1>{{Title}}</h1>
+</div>
+  
+<!-- Loading Spinner -->
+<div *ngIf="!loaded" class="loading-center">
+    <div class="lds-css ng-scope">
+        <div class="lds-spinner"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+    </div>
+</div>
+
+<!-- Loaded -->
+<div *ngIf="loaded">
+
+<!-- Information -->
+<div class="main-content-wrapper">
+    <div class="items-content-wrapper">
+        <h4 class="item-information">Platform Information</h4>
+        <div class="item-information-box">
+            <div class="row button-area">
+                <div class="col-sm-2"></div>
+                <div class="col-sm-4 information-button"><a [routerLink]="['/platforms/edit/', id]" class="special-button" routerLinkActive="active">Edit Platform</a></div>
+                <div class="col-sm-4 information-button"><a class="special-button" (click)="DeletePlatform()">Delete Platform</a></div>
+                <div class="col-sm-2"></div>
+            </div>
+            <div class="item-information-innerbox">
+                <div class="row item-information-padding">
+                    <div class="col-md-1"></div>
+                    <div class="col-md-5 item-information-item">Name: <p>{{platform.Name}}</p></div>
+                    <div class="col-md-5 item-information-item">Documentation: <span *ngIf="platform.URLToDocumentation != null; else NoDocumentation"><a href="{{platform.URLToDocumentation}}">Documentation</a></span><ng-template #NoDocumentation><p>There is no documentation</p></ng-template></div>
+                    <div class="col-md-1"></div>
+                </div>
+                <div class="row item-padding-bottom">
+                    <div class="col-md-1"></div>
+                    <div class="col-md-5 item-information-item">Creation Date: <p>{{platform.CreatedAt}}</p></div>
+                    <div class="col-md-5 item-information-item">Last Updated: <p>{{platform.UpdatedAt}}</p></div>
+                    <div class="col-md-1"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Accounts Table -->
+<div class="main-content-wrapper">
+    <div class="items-content-wrapper">
+    <ng-container *ngIf="gamesExist; else NoGames">
+        <h4 class="table-title">Games table</h4>
+        <ng-container *ngIf="(games | tableFilter: {Name: searchText}) as result">
+        <div class="row table-header">
+            <div class="col-4">
+            <a class="special-button add-button" [routerLink]="['/games/add']" routerLinkActive="active">Add Games</a>
+            <select class="item-per-page-select" (change)="onChange($event.target.value)">
+                <option value="{{selectOptions[0]}}" selected>10</option>
+                <option value="{{selectOptions[1]}}">25</option>
+                <option value="{{selectOptions[2]}}">50</option>
+                <option value="{{selectOptions[3]}}">100</option>
+                <option value="{{selectOptions[4]}}">All</option>
+            </select>
+            </div>
+            <div class="col-8">
+            <div class="search-table">
+                <input [(ngModel)]="searchText" placeholder="Search.." class="advancedSearchTextbox table-search-bar" autocomplete="off">
+            </div>
+            <div class="table-info">
+                <p>Filtering {{(result)?.length}} of {{numberOfGames}}. </p>
+                <p *ngIf="(result)?.length < numberToShow && numberOfGames > numberToShow">Showing {{(result)?.length}} out of {{numberToShow}}</p>
+                <p *ngIf="(result)?.length > numberToShow && numberOfGames > numberToShow">Showing {{numberToShow}} out of {{numberToShow}}</p>
+            </div>
+            </div>
+        </div>
+        <table class="table">
+            <thead>
+            <tr>
+                <th (click)="sort('Name')">Name
+                    <span class="arrows" *ngIf="key =='Name'" [ngClass]="{'table-header-arrow-up':reverse, 'table-header-arrow-down':!reverse}"></span>
+                </th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr class="gamerows" *ngFor="let game of result | orderBy: key : reverse : true | paginate: config;" >
+                    <!-- <tr class="gamerows" *ngFor="let game of result | orderBy: key : reverse : true | paginate: { itemsPerPage: 10, currentPage: p, id: 'first' };" > -->
+                <ng-container *ngIf="game.Id">
+                <td><a [routerLink]="['/games/', game.Id]" class="nav-link" routerLinkActive="active">{{game.Name}}</a></td>
+                </ng-container>
+            </tr>
+            </tbody>
+        </table>
+        <pagination-template #p="paginationApi" [id]="config.id" (pageChange)="config.currentPage=$event">
+            <div class="custom-pagination">
+            <div class="pagination-previous" [class.disabled]="p.isFirstPage()">
+                <span class="arrow-pagination left-pagination" *ngIf="!p.isFirstPage()" (click)="p.previous()"></span>
+            </div>
+            <div class="page-number" *ngFor="let page of p.pages" [class.current]="p.getCurrent() === page.value">
+                <span (click)="p.setCurrent(page.value)" *ngIf="p.getCurrent() !== page.value">{{ page.label }}</span>
+                <div *ngIf="p.getCurrent() === page.value">
+                <span>{{ page.label }}</span>
+                </div>
+            </div>
+            <div class="pagination-next" [class.disabled]="p.isLastPage()">
+                <span class="arrow-pagination right-pagination" *ngIf="!p.isLastPage()" (click)="p.next()"></span>
+            </div>
+            </div>
+        </pagination-template>
+        <!-- <pagination-controls (pageChange)="p1 = $event" id="first"></pagination-controls> -->
+        </ng-container>
+    </ng-container>
+    <ng-template #NoGames>
+        <div class="no-models">There are no Games for this platform</div>
+    </ng-template>
+    </div>
+</div>
+
+
+
+<div class="main-content-wrapper">
+        <div class="items-content-wrapper">
+        <ng-container *ngIf="accountsExist; else NoAccounts">
+            <h4 class="table-title">Accounts table</h4>
+            <ng-container *ngIf="(accounts | tableFilter: {Username: searchText1}) as result1">
+            <div class="row table-header">
+                <div class="col-4">
+                <a class="special-button add-button" [routerLink]="['/accounts/add']" routerLinkActive="active">Add Accounts</a>
+                <select class="item-per-page-select" (change)="onChange1($event.target.value)">
+                    <option value="{{selectOptions[0]}}" selected>10</option>
+                    <option value="{{selectOptions[1]}}">25</option>
+                    <option value="{{selectOptions[2]}}">50</option>
+                    <option value="{{selectOptions[3]}}">100</option>
+                    <option value="{{selectOptions[4]}}">All</option>
+                </select>
+                </div>
+                <div class="col-8">
+                <div class="search-table">
+                    <input [(ngModel)]="searchText1" placeholder="Search.." class="advancedSearchTextbox table-search-bar" autocomplete="off">
+                </div>
+                <div class="table-info">
+                    <p>Filtering {{(result1)?.length}} of {{numberOfAccounts}}. </p>
+                    <p *ngIf="(result1)?.length < numberToShow1 && numberOfAccounts > numberToShow1">Showing {{(result1)?.length}} out of {{numberToShow1}}</p>
+                    <p *ngIf="(result1)?.length > numberToShow1 && numberOfAccounts > numberToShow1">Showing {{numberToShow1}} out of {{numberToShow1}}</p>
+                </div>
+                </div>
+            </div>
+            <table class="table">
+                <thead>
+                <tr>
+                    <th (click)="sort1('Username')">Name
+                        <span class="arrows" *ngIf="key1 =='Username'" [ngClass]="{'table-header-arrow-up':reverse1, 'table-header-arrow-down':!reverse1}"></span>
+                    </th>
+                </tr>
+                </thead>
+                <tbody>
+                        <tr class="gamerows" *ngFor="let account of result1 | orderBy: key1 : reverse1 : true | paginate: config1" >
+                    <td><a [routerLink]="['/accounts/', account.Id]" class="nav-link" routerLinkActive="active">{{account.Username}}</a></td>
+                </tr>
+                </tbody>
+            </table>
+            <pagination-template #p1="paginationApi"  maxSize="9" [id]="config1.id" (pageChange)="config1.currentPage=$event">
+                <div class="custom-pagination">
+                <div class="pagination-previous" [class.disabled]="p1.isFirstPage()">
+                    <span class="arrow-pagination left-pagination" *ngIf="!p1.isFirstPage()" (click)="p1.previous()"></span>
+                </div>
+                <div class="page-number" *ngFor="let page of p1.pages" [class.current]="p1.getCurrent() === page.value">
+                    <span (click)="p1.setCurrent(page.value)" *ngIf="p1.getCurrent() !== page.value">{{ page.label }}</span>
+                    <div *ngIf="p1.getCurrent() === page.value">
+                    <span>{{ page.label }}</span>
+                    </div>
+                </div>
+                <div class="pagination-next" [class.disabled]="p1.isLastPage()">
+                    <span class="arrow-pagination right-pagination" *ngIf="!p1.isLastPage()" (click)="p1.next()"></span>
+                </div>
+                </div>
+            </pagination-template>
+            </ng-container>
+        </ng-container>
+        <ng-template #NoAccounts>
+            <div class="no-models">There are no Accounts for this platform</div>
+        </ng-template>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,27 @@
+@import './global-variables.scss';
+
+h1 {
+  line-height: 1.5;
+}
+
+.main-content-header {
+  background-color: $header-background-color;
+  color: black;
+}
+
+.main-content-header h1 {
+  text-align: center;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+.main-content-wrapper {
+  background-color: $main-background-color;
+}
+
+.items-content-wrapper {
+  margin: 15px;
+  border-radius: 5px;
+  padding-bottom: 15px;
+  background-color: $table-background-color;
+}

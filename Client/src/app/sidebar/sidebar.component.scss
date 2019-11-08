@@ -1,0 +1,82 @@
+/* ---------------------------------------------------
+                   SIDEBAR
+----------------------------------------------------- */
+
+#sidebar {
+  position: fixed;
+  display: block;
+  height: calc(100% - 50px);
+  min-width: 250px;
+  max-width: 250px;
+  background: #2c2f35;
+  color: #fff;
+  transition: all 0.3s;
+  top: 60px;
+  margin-left: -250px;
+}
+
+/* Show Sidebar */
+#sidebar.active {
+  margin-left: 0px;
+}
+
+#sidebar-header {
+background-color: #1a242f;
+text-align: center;
+font-size: 30px;
+padding-top: 20px;
+padding-bottom: 20px;
+}
+
+ul li a {
+  color: white;
+}
+
+li { 
+  text-align: center;
+}
+
+#homeSubmenu, #pageSubmenu {
+  border-top: 1px solid white;
+}
+
+#sidemenutable {
+  border-bottom: 1px solid white;
+}
+
+#intel-links, #sidemenuexcel, #sidemenutable {
+  padding: 10px;
+}
+
+#intel-links, #sidemenuintel, #sidemenuexcel, #sidemenutable {
+border-top: 1px solid white;
+background-color: #212429;
+display: block;
+text-align: center;
+}
+
+.lolz {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid gray;
+
+}
+
+.inner-links {
+  padding: 10px;
+  border-top: 1px solid black;
+  top: 10px;
+  position: relative;
+  background-color: #3d4249;
+}
+
+.middle-link {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid gray;
+}
+
+.last-in-list {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}

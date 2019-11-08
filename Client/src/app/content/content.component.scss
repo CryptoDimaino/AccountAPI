@@ -1,0 +1,22 @@
+$main-background-color: #ededed;// #ededed;
+$header-background-color: white;
+$table-background-color: white;
+$table-header-color: lightblue;
+$table-even-row-color: #d2e9f0;
+$table-odd-row-color: #e5f2f7;
+
+#main-content {
+  transition: all 0.3s;
+  height: max-content;
+  top: 60px;
+  position: relative;
+  left: 0px;
+  width: 100%;
+  background-color: $main-background-color;
+}
+
+/* Expand Main Content */
+#main-content.expanded {
+  width: calc(100% - 250px);
+  left: 250px;
+}

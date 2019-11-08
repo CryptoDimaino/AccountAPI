@@ -1,0 +1,77 @@
+<!-- Header -->
+<div id="main-content-header" class="main-content-header">
+  <h1>Platforms</h1>
+</div>
+
+<!-- Loading Spinner -->
+<div *ngIf="!loaded" class="loading-center">
+  <div class="lds-css ng-scope">
+      <div class="lds-spinner"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+  </div>
+</div>
+
+<!-- Load Tables -->
+<div *ngIf="loaded">
+  <div class="main-content-wrapper">
+    <div class="items-content-wrapper">
+      <ng-container *ngIf="(platformList | tableFilter: {Platform: searchText}) as result">
+        <div class="row table-header">
+          <div class="col-3">
+            <a class="special-button add-button" [routerLink]="['/platforms/add']" routerLinkActive="active">Add Platform</a>
+            <select class="item-per-page-select" (change)="onChange($event.target.value)">
+              <option value="{{selectOptions[0]}}">10</option>
+              <option value="{{selectOptions[1]}}" selected>25</option>
+              <option value="{{selectOptions[2]}}">50</option>
+              <option value="{{selectOptions[3]}}">100</option>
+              <option value="{{selectOptions[4]}}">All</option>
+            </select>
+          </div>
+          <div class="col-9">
+            <div class="search-table">
+              <input [(ngModel)]="searchText" placeholder="Search..." class="advancedSearchTextbox table-search-bar" autocomplete="off">
+            </div>
+            <div class="table-info">
+              <p>Filtering {{(result)?.length}} of {{numberOfPlatforms}}. </p>
+              <p *ngIf="(result)?.length < numberToShow">Showing {{(result)?.length}} out of {{numberToShow}}</p>
+              <p *ngIf="(result)?.length > numberToShow">Showing {{numberToShow}} out of {{numberToShow}}</p>
+            </div>
+          </div>
+        </div>
+        <table class="table">
+          <thead>
+            <tr>
+              <th (click)="sort('Platform')">Platform
+                <span class="table-link-item" *ngIf="key =='Platform'" [ngClass]="{'table-header-arrow-up':reverse, 'table-header-arrow-down':!reverse}"></span>
+              </th>
+              <th (click)="sort('GameCount')">Number of Games
+                <span class="table-link-item" *ngIf="key =='GameCount'" [ngClass]="{'table-header-arrow-up':reverse, 'table-header-arrow-down':!reverse}"></span>
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let platform of result | orderBy: key : reverse : true | paginate: config;" >
+              <td><a [routerLink]="['/platforms/', platform.Id]" class="nav-link" routerLinkActive="active">{{platform.Platform}}</a></td>
+              <td>{{platform.GameCount}}</td>
+            </tr>
+          </tbody>
+        </table>
+        <pagination-template #p="paginationApi" [id]="config.id" (pageChange)="config.currentPage=$event">
+          <div class="custom-pagination">
+            <div class="pagination-previous" [class.disabled]="p.isFirstPage()">
+              <span class="arrow-pagination left-pagination" *ngIf="!p.isFirstPage()" (click)="p.previous()"></span>
+            </div>
+            <div class="page-number" *ngFor="let page of p.pages" [class.current]="p.getCurrent() === page.value">
+              <span (click)="p.setCurrent(page.value)" *ngIf="p.getCurrent() !== page.value">{{ page.label }}</span>
+              <div *ngIf="p.getCurrent() === page.value">
+                <span>{{ page.label }}</span>
+              </div>
+            </div>
+            <div class="pagination-next" [class.disabled]="p.isLastPage()">
+              <span class="arrow-pagination right-pagination" *ngIf="!p.isLastPage()" (click)="p.next()"></span>
+            </div>
+          </div>
+        </pagination-template>
+      </ng-container>
+    </div>
+  </div>
+</div>

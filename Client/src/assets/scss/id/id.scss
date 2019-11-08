@@ -1,0 +1,18 @@
+@import '../main-content.scss';
+@import '../table.scss';
+@import '../custom-pagination.scss';
+@import '../special-button.scss';
+@import '../custom-spinner.scss';
+@import '../id/item-information.scss';
+
+.table-title {
+    text-align: center;
+    padding: 10px;
+    border-bottom: 1px solid lightgrey;
+}
+  
+.no-models {
+    text-align: center;
+    font-size: 30px;
+    padding: 50px;
+}

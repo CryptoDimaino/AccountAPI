@@ -1,0 +1,38 @@
+<header id="menubar">
+    <!-- Button for Side-Navbar -->
+    <div id="button-area-sidenavbar">
+        <div id="sidenavbar-postion">
+            <div class="bar1"></div>
+            <div class="bar2"></div>
+            <div class="bar3"></div>
+        </div>
+    </div>
+
+    <!-- Fixed Menu Navbar -->
+    <nav id="fixed-menu-navbar" class="navbar navbar-expand-sm navbar-dark">
+        <a id="fixed-menu-title" routerLink="events" class="navbar-brand" routerLinkActive="active">Intel Demo Depot</a>
+        <div class="collapse navbar-collapse" id="collapsibleNavbar">
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <a [routerLink]="['/events']" class="nav-link" routerLinkActive="active">Events</a>
+              </li>
+              <li class="nav-item">
+                  <a [routerLink]="['/games']" class="nav-link" routerLinkActive="active">Games</a>
+              </li>
+              <li class="nav-item">
+                <a [routerLink]="['/accounts']" class="nav-link" routerLinkActive="active">Accounts</a>
+              </li>
+              <li class="nav-item">
+                <a [routerLink]="['/codes']" class="nav-link" routerLinkActive="active">Codes</a>
+              </li>
+            </ul>
+
+        </div>
+        <div id="darkmode-option">
+            <a id="darkmode-button" class="nav-link" href="#">Dark Mode</a>
+        </div>
+        <div id="menu-logo" class="logo">
+                <a href="https://www.intel.com" target="_blank"><img src="../../../assets/images/intel-logo-transparent.png" alt="Intel Logo"></a>
+        </div>
+    </nav>
+  </header>

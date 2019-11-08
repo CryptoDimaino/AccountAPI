@@ -1,0 +1,103 @@
+<nav id="sidebar">
+    <div id="sidebar-header" class="sidebar-header">
+        <h3>Links</h3>
+    </div>
+    <ul class="list-unstyled components">
+      <li class="active first-set">
+          <a id="intel-links" href="#homeSubmenu" data-toggle="collapse" aria-expanded="false">Intel</a>
+          <ul class="collapse list-unstyled" id="homeSubmenu">
+              <li class="middle-link">
+                  <a href="#">Almira</a>
+              </li>
+              <li class="middle-link">
+                  <a href="#">ADS</a>
+              </li>
+              <li class="last-in-list">
+                  <a href="#">Autozilla</a>
+              </li>
+          </ul>
+      </li>
+      <li class="first-set">
+          <a id="sidemenuexcel" href="#pageSubmenu" data-toggle="collapse" aria-expanded="false">Excel</a>
+          <ul class="collapse list-unstyled" id="pageSubmenu">
+              <li class="middle-link">
+                  <a href="#">Accounts</a>
+              </li>
+              <li class="last-in-list">
+                  <a href="#">Ratings</a>
+              </li>
+          </ul>
+      </li>
+      <li class="first-set">
+        <a id="sidemenutable" href="#tableSubmenu" data-toggle="collapse" aria-expanded="false">Pages</a>
+        <ul class="collapse list-unstyled" id="tableSubmenu">
+          <li class="lolz">
+            <a id="accounts-submenu" href="#accountSubmenu" data-toggle="collapse" aria-expanded="false">Accounts</a>
+            <ul class="collapse list-unstyled" id="accountSubmenu">
+              <li class="inner-links">
+                  <a [routerLink]="['/accounts']" routerLinkActive="active">Account-List</a>
+              </li>
+              <li class="inner-links">
+                  <a [routerLink]="['/accounts/add']" routerLinkActive="active">Account-Add</a>
+              </li>
+            </ul>
+          </li>
+          <li class="lolz">
+            <a id="codes-submenu" href="#codeSubmenu" data-toggle="collapse" aria-expanded="false">Codes</a>
+            <ul class="collapse list-unstyled" id="codeSubmenu">
+              <li class="inner-links">
+                  <a [routerLink]="['/codes']" routerLinkActive="active">Code-List</a>
+                </li>
+              <li class="inner-links">
+                    <a [routerLink]="['/codes/add']" routerLinkActive="active">Code-Add</a>
+              </li>
+            </ul>
+          </li>
+          <li class="lolz">
+              <a id="email-accounts-submenu" href="#emailSubmenu" data-toggle="collapse" aria-expanded="false">Email Accounts</a>
+              <ul class="collapse list-unstyled" id="emailSubmenu">
+                <li class="inner-links">
+                    <a [routerLink]="['/emailaccounts']" routerLinkActive="active">Email-Account-List</a>
+                </li>
+                <li class="inner-links">
+                    <a [routerLink]="['/emailaccounts/add']" routerLinkActive="active">Email-Account-Add</a>
+                </li>
+              </ul>
+          </li>
+          <li class="lolz">
+              <a id="event-submenu" href="#eventSubmenu" data-toggle="collapse" aria-expanded="false">Events</a>
+              <ul class="collapse list-unstyled" id="eventSubmenu">
+                <li class="inner-links">
+                    <a [routerLink]="['/events']" routerLinkActive="active">Event-List</a>
+                </li>
+                <li class="inner-links">
+                    <a [routerLink]="['/events/add']" routerLinkActive="active">Event-Add</a>
+                </li>
+              </ul>
+          </li>
+          <li class="lolz">
+              <a id="game-submenu" href="#gameSubmenu" data-toggle="collapse" aria-expanded="false">Games</a>
+              <ul class="collapse list-unstyled" id="gameSubmenu">
+                <li class="inner-links">
+                    <a [routerLink]="['/games']" routerLinkActive="active">Game-List</a>
+                </li>
+                <li class="inner-links">
+                    <a [routerLink]="['/games/add']" routerLinkActive="active">Game-Add</a>
+                </li>
+              </ul>
+          </li>
+          <li class="lolz">
+              <a id="platform-submenu" href="#platformSubmenu" data-toggle="collapse" aria-expanded="false">Platforms</a>
+              <ul class="collapse list-unstyled" id="platformSubmenu">
+                <li class="inner-links">
+                    <a [routerLink]="['/platforms']" routerLinkActive="active">Platform-List</a>
+                </li>
+                <li class="inner-links">
+                    <a [routerLink]="['/platforms/add']" routerLinkActive="active">Platform-Add</a>
+                </li>
+              </ul>
+          </li>
+        </ul>
+    </li>
+  </ul>
+</nav>

@@ -1,0 +1,172 @@
+<!-- Header -->
+<div class="main-content-header">
+  <h1>{{Title}}</h1>
+</div>
+
+<!-- Loading Spinner -->
+<div *ngIf="!loaded" class="loading-center">
+    <div class="lds-css ng-scope">
+        <div class="lds-spinner"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+    </div>
+</div>
+
+
+<!-- Loaded -->
+<div *ngIf="loaded">
+
+<!-- Information -->
+<div class="main-content-wrapper">
+    <div class="items-content-wrapper">
+        <h4 class="item-information">Account Information</h4>
+        <div class="item-information-box">
+            <div class="row button-area">
+                <div class="col-sm-2"></div>
+                <div *ngIf="!accountHasEvent; else NoEvent;" class="col-sm-4 information-button"><a [routerLink]="['/accounts/edit/', id]" class="special-button" routerLinkActive="active">Edit Account</a></div>
+                <div class="col-sm-4 information-button"><a class="special-button" (click)="DeleteAccount()">Delete Account</a></div>
+                <ng-template #NoEvent>
+                  <div class="col-sm-4 information-button"><a class="special-button" (click)="openModal('edit-model-button')">Edit Account</a></div>
+                </ng-template>
+
+                <app-modal id="edit-model-button">
+                  <div></div>
+                  <h1>This account has an event and should <span>not</span> be edited!</h1>
+                  <div class="row">
+                    <p class="col-md-12 modal-paragraph">You can still edit this account if you need to but as long as an account is on an event it cannot be changed. Please change the Event Status to false.</p>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-2"></div>
+                    <div class="col-md-4 information-button"><a [routerLink]="['/accounts/edit/', id]" class="special-button" routerLinkActive="active">Edit Anyway</a></div>
+                    <div class="col-md-4 information-button"><a class="special-button" (click)="closeModal('edit-model-button');">Close</a></div>
+                    <div class="col-md-2"></div>
+                  </div>
+                  <div></div>
+                </app-modal>
+
+                <app-modal id="delete-model-button">
+                  <div></div>
+                  <h1>This account has an event and can <span>not</span> be delete!</h1>
+                  <div class="row">
+                    <p class="col-md-12 modal-paragraph">{{deleteErrorMessage}} Please change the Event Status to false.</p>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-3"></div>
+                    <div class="col-md-6 information-button"><a class="special-button" (click)="closeModal('delete-model-button');">Close</a></div>
+                    <div class="col-md-3"></div>
+                  </div>
+                  <div></div>
+                </app-modal>
+
+
+                <div class="col-sm-2"></div>
+            </div>
+            <div class="item-information-innerbox">
+                <div class="row item-information-padding">
+                    <div class="col-md-1"></div>
+                    <div class="col-md-5 item-information-item">Username: <p>{{account.Username}}</p></div>
+                    <div class="col-md-5 item-information-item">Password: <p>{{account.Password}}</p></div>
+                    <div class="col-md-1"></div>
+                </div>
+                <div class="row item-padding-bottom">
+                    <div class="col-md-1"></div>
+                    <div class="col-md-5 item-information-item">Email: <p>{{account.Email}}</p></div>
+                    <div class="col-md-5 item-information-item">EmailPassword: <p>{{account.EmailPassword}}</p></div>
+                    <div class="col-md-1"></div>
+                </div>
+                <div class="row item-padding-bottom">
+                    <div class="col-md-1"></div>
+                    <div class="col-md-5 item-information-item">Platform: <p>{{account.Platform}}</p></div>
+                    <div class="col-md-5 item-information-item">Event: <p>{{account.Event}}</p></div>
+                    <div class="col-md-1"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Accounts Table -->
+<div class="main-content-wrapper">
+    <div class="items-content-wrapper">
+    <ng-container *ngIf="codesExist; else NoCodes">
+        <h4 class="table-title">Codes table</h4>
+        <ng-container *ngIf="(codes | tableFilter: {Username: searchText}) as result">
+        <div class="row table-header">
+            <div class="col-4">
+            <a class="special-button add-button" [routerLink]="['/codes/add']" routerLinkActive="active">Add Codes</a>
+            <select class="item-per-page-select" (change)="onChange($event.target.value)">
+                <option value="{{selectOptions[0]}}" selected>10</option>
+                <option value="{{selectOptions[1]}}">25</option>
+                <option value="{{selectOptions[2]}}">50</option>
+                <option value="{{selectOptions[3]}}">100</option>
+                <option value="{{selectOptions[4]}}">All</option>
+            </select>
+            </div>
+            <div class="col-8">
+            <div class="search-table">
+                <input [(ngModel)]="searchText" placeholder="Search.." class="advancedSearchTextbox table-search-bar" autocomplete="off">
+            </div>
+            <div class="table-info">
+                <p>Filtering {{(result)?.length}} of {{numberOfCodes}}. </p>
+                <p *ngIf="(result)?.length < numberToShow && numberOfCodes > numberToShow">Showing {{(result)?.length}} out of {{numberToShow}}</p>
+                <p *ngIf="(result)?.length > numberToShow && numberOfCodes > numberToShow">Showing {{numberToShow}} out of {{numberToShow}}</p>
+            </div>
+            </div>
+        </div>
+        <table class="table">
+            <thead>
+            <tr>
+                <th (click)="sort('Username')">Username
+                    <span class="arrows" *ngIf="key =='Username'" [ngClass]="{'table-header-arrow-up':reverse, 'table-header-arrow-down':!reverse}"></span>
+                </th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr class="gamerows" *ngFor="let code of result | orderBy: key : reverse : true | paginate: config;" >
+                <td><a [routerLink]="['/codes/', code.CodeId]" class="nav-link" routerLinkActive="active">{{code.Code}}</a></td>
+            </tr>
+            </tbody>
+        </table>
+        <pagination-template #p="paginationApi" [id]="config.id" (pageChange)="config.currentPage=$event">
+            <div class="custom-pagination">
+            <div class="pagination-previous" [class.disabled]="p.isFirstPage()">
+                <span class="arrow-pagination left-pagination" *ngIf="!p.isFirstPage()" (click)="p.previous()"></span>
+            </div>
+            <div class="page-number" *ngFor="let page of p.pages" [class.current]="p.getCurrent() === page.value">
+                <span (click)="p.setCurrent(page.value)" *ngIf="p.getCurrent() !== page.value">{{ page.label }}</span>
+                <div *ngIf="p.getCurrent() === page.value">
+                <span>{{ page.label }}</span>
+                </div>
+            </div>
+            <div class="pagination-next" [class.disabled]="p.isLastPage()">
+                <span class="arrow-pagination right-pagination" *ngIf="!p.isLastPage()" (click)="p.next()"></span>
+            </div>
+            </div>
+        </pagination-template>
+        <!-- <pagination-controls (pageChange)="p1 = $event" id="first"></pagination-controls> -->
+        </ng-container>
+    </ng-container>
+    <ng-template #NoCodes>
+        <div class="no-models">There are no Codes for this account</div>
+    </ng-template>
+    </div>
+  </div>
+
+
+
+  <ng-template #content let-c="close" let-d="dismiss">
+      <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">Hi there!</h4>
+        <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>Hello, World!</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline-dark" (click)="c('Save click')">Save</button>
+      </div>
+    </ng-template>
+</div>
+
+
+

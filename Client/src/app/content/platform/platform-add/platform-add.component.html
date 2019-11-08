@@ -1,0 +1,30 @@
+<!-- Header -->
+<div class="main-content-header">
+  <h1>Adding new Platform</h1>
+</div>
+
+<div class="main-content-wrapper">
+  <div class="items-content-wrapper">
+    <div class="row model-form">
+      <div class="col-3"></div>
+      <div class="col-6">
+        <form [formGroup]="addModelForm" (ngSubmit)="AddPlatform()">
+          <div class="form-group">
+            <label>Platform Name</label>
+            <input type="text" formControlName="Name" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.Name.errors }" />
+            <div *ngIf="submitted && f.Name.errors" class="invalid-feedback">
+              <div *ngIf="f.Name.errors.required">Platform Name is required</div>
+              <div *ngIf="f.Name.errors.minlength">Platform Name must be at least 3 characters</div>
+            </div>
+          </div>
+          <div class="row button-form-padding">
+            <div class="col-2"></div>
+            <div class="col-8">
+              <button [disabled]="loading" class="model-form-button">Add Platform</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,127 @@
+.table-header {
+  margin-bottom: 10px;
+  padding-top: 10px;
+}
+
+.add-button {
+  margin-left: 10px;
+}
+
+.search-table {
+  float: right;
+}
+
+.table-info {
+  float: right;
+  padding-right: 15px;
+  padding-top: 5px;
+  background-color: transparent;
+}
+
+.table-info p {
+  display: inline;
+}
+
+div.col-4.remove-margin, .col-8.remove-margin {
+  padding: 0px;
+}
+
+div.col-4.remove-margin {
+  padding-left: 15px;
+}
+
+.col-8.remove-margin {
+  padding-right: 15px;
+}
+
+/**** Select Option ****/
+.item-per-page-select {
+  border-radius: 5px;
+  padding-bottom: 5px;
+  padding-left: 10px;
+  padding-top: 5px;
+  border-color: lightgrey;
+  outline: none;
+  margin-left: 10px;
+}
+
+/**** Searchbar Table ****/
+.table-search-bar {
+  border-radius: 10px;
+  font-size: 22px;
+  border: none;
+  box-shadow: 0px 0 1px 1px lightgrey;
+  text-align: center;
+  margin-right: 10px;
+}
+
+.table-search-bar:focus {
+  outline: none;
+  box-shadow: 0 0 2px 2px rgb(183, 141, 238);
+}
+
+/* ---------------------------------------------------
+    TABLE STYLE
+----------------------------------------------------- */
+/**** Table Structure ****/
+th {
+  font-weight: bold;
+  background-color: $table-header-color;
+}
+
+tr:nth-child(odd) {
+  background-color: $table-odd-row-color;
+}
+
+tr:nth-child(even) {
+  background-color: $table-even-row-color;
+}
+
+table, td, th {
+  border: 1px solid black !important;
+}
+
+.table td, .table th {
+  vertical-align: middle;
+  padding: .5rem;
+}
+
+.table {
+  margin-left: 10px;
+  width: calc(100% - 20px);
+}
+
+table {
+  table-layout: fixed;
+  word-wrap: break-word;
+}
+
+/**** Table Hover ****/
+th:hover {
+  background-color: #78b4c9;
+}
+
+tr:hover {
+  background: lightblue;
+}
+
+
+
+/**** Tables Arrows ****/
+.table-link-item {
+  border: solid black;
+  border-width: 0 3px 3px 0;
+  padding: 3px;
+  float: right;
+  margin-top: 8px;
+}
+
+.table-header-arrow-up {
+  transform: rotate(-135deg);
+  -webkit-transform: rotate(-135deg);
+}
+
+.table-header-arrow-down {
+  transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+}

@@ -1,0 +1,12 @@
+$main-background-color: #ededed;
+$header-background-color: white;
+$table-background-color: white;
+$table-header-color: lightblue;
+$table-even-row-color: #d2e9f0;
+$table-odd-row-color: #e5f2f7;
+
+
+/**** Removes Bootstraps padding to links ****/
+.nav-link {
+  padding: 0;
+}

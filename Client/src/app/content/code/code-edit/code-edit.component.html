@@ -1,0 +1,72 @@
+<!-- Header -->
+<div class="main-content-header">
+  <h1>Editing {{Title}}</h1>
+</div>
+
+<!-- Loading Spinner -->
+<div *ngIf="!loaded" class="loading-center">
+  <div class="lds-css ng-scope">
+    <div class="lds-spinner"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+  </div>
+</div>
+
+<!-- Loaded Form -->
+<div *ngIf="loaded">
+  <div class="main-content-wrapper">
+    <div class="items-content-wrapper">
+      <div class="row model-form">
+        <div class="col-3"></div>
+        <div class="col-6">
+          <form [formGroup]="editModelForm" (ngSubmit)="onEdit()">
+            <div class="form-group">
+              <label>Code</label>
+              <input type="text" formControlName="Code" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.Code.errors }" />
+              <div *ngIf="submitted && f.Code.errors" class="invalid-feedback">
+                <div *ngIf="f.Code.errors.required">Code is required</div>
+              </div>
+            </div>
+
+
+            <div class="form-group">
+              <label>Used Status</label>
+              <select class="form-control" formControlName="Status" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.Status.errors }">
+                <option [ngValue]="false">False</option>
+                <option [ngValue]="true">True</option>
+              </select>
+              <div *ngIf="submitted && f.Status.errors" class="invalid-feedback">
+                <div *ngIf="f.Status.errors.required">Platform is required</div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label>Game</label>
+              <select class="form-control" formControlName="GameId" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.GameId.errors }">
+                  <option *ngFor="let game of gameList" [ngValue]="game.Id">{{game.Title}} - {{game.Platform}}</option>
+                </select>
+              <div *ngIf="submitted && f.GameId.errors" class="invalid-feedback">
+                <div *ngIf="f.GameId.errors.required">Game is required</div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label>Account</label>
+              <select class="form-control" formControlName="AccountId" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.AccountId.errors }">
+                <option *ngFor="let account of sortedAccountList" [ngValue]="account.Id">{{account.Username}}</option>
+              </select>
+              <div *ngIf="submitted && f.AccountId.errors" class="invalid-feedback">
+                  <div *ngIf="f.AccountId.errors.required">An account is required</div>
+                </div>
+            </div>
+
+            <div class="row button-form-padding">
+              <div class="col-2"></div>
+              <div class="col-8">
+                <button [disabled]="loading" class="model-form-button">Save Changes</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
