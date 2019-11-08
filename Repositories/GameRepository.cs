@@ -117,6 +117,7 @@ namespace AccountAPI.Repositories
                 Id = g.GameId,
                 Title = g.Name,
                 Platform = g.Platform.Name,
+                ReleaseDate = g.ReleaseDate,
                 NumberOfAccounts = g.Codes.Count()
             }).OrderBy(g => g.Title).ToListAsync();
         }

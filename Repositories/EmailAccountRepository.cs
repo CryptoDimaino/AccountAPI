@@ -94,7 +94,7 @@ namespace AccountAPI.Repositories
                 Accounts = ea.Accounts.Select(a => new {
                     AccountId = a.AccountId,
                     Username = a.Username,
-                    UserPassword = a.Password
+                    Password = a.Password
                 })
             }).FirstOrDefaultAsync();
         }
