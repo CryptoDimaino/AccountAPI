@@ -13,7 +13,6 @@ export interface EmailAccountEdit {
   EmailAccountId: number;
   Email: string;
   EmailPassword: string;
-  UpdatedAt: Date;
 }
 
 export interface EmailAccount {

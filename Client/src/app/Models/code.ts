@@ -9,7 +9,7 @@ export interface CodeList {
 export interface CodeAdd {
   CodeString: string,
   UsedStatus: boolean;
-  EmailAccountId: null;
+  EmailAccountId: number;
   PlatformId: number;
   GameId: number;
 }

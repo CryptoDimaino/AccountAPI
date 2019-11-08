@@ -14,6 +14,9 @@ import { EmailAccountAddComponent } from './email-account-add/email-account-add.
 import { EmailAccountIdComponent } from './email-account-id/email-account-id.component';
 import { EmailAccountListComponent } from './email-account-list/email-account-list.component';
 
+import { ModalModule } from '../../modal/modal.module';
+
+
 @NgModule({
   declarations: [EmailAccountEditComponent, EmailAccountAddComponent, EmailAccountIdComponent, EmailAccountListComponent],
   imports: [
@@ -23,7 +26,8 @@ import { EmailAccountListComponent } from './email-account-list/email-account-li
     NgxPaginationModule,
     OrderModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    ModalModule
   ],
   exports: [
     DatePipe

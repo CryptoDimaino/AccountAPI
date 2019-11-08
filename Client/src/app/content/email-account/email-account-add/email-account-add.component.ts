@@ -57,6 +57,7 @@ export class EmailAccountAddComponent implements OnInit {
       EmailPassword: this.addModelForm.value.EmailPassword
     }
 
+    console.log(this.newEmailAccount)
     // Create a new email account
     this.emailaccountService.addEmailAccount(this.newEmailAccount).then((response: Response<EmailAccount>) => {
       if(response.DidError)
@@ -65,7 +66,8 @@ export class EmailAccountAddComponent implements OnInit {
       }
       else
       {
-        this.router.navigate(['/emailaccount/' + response.Model.EmailAccountId]);
+        // console.log(response.Model.EmailAccountId);
+        this.router.navigate(['/emailaccounts/' + response.Model.EmailAccountId]);
       }
     });
  }

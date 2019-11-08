@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PaginationInstance } from 'ngx-pagination';
+import { DatePipe } from '@angular/common';
 
 import { GameService } from '../../../Services/game.service';
 import { Response } from '../../../Models/response';
@@ -46,7 +47,7 @@ export class GameListComponent implements OnInit {
   private reverse: boolean;
   private caseInsensitive: boolean;
 
-  constructor(private gameService: GameService) { }
+  constructor(private gameService: GameService, private datePipe: DatePipe) { }
 
   async ngOnInit() {
     // Check if API was loaded
@@ -59,6 +60,10 @@ export class GameListComponent implements OnInit {
     if(this.response.DidError) {
     }
     else {
+
+      this.gameList.forEach(element => {
+        element.ReleaseDate = this.datePipe.transform(element.ReleaseDate, 'yyyy/MM');
+      });
       // Sort
       this.key = 'Title';
       this.reverse = false;
@@ -85,6 +90,7 @@ export class GameListComponent implements OnInit {
       this.response = data;
       this.gameList = this.response.Model;
       this.loaded = true;
+      console.log(this.gameList);
     })
   }
 

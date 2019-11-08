@@ -2,6 +2,7 @@ export interface GameList {
     Id: number;
     Name: string;
     Platform: string;
+    ReleaseDate: Date;
     NumberOfAccounts: number;
 }
 

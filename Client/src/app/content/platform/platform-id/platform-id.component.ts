@@ -128,7 +128,7 @@ export class PlatformIdComponent implements OnInit {
       this.responsive = true;
 
       this.gamesExist = this.numberOfGames > 0;
-      this.accountsExist = this.numberOfAccounts > 0;
+      this.accountsExist = true//this.numberOfAccounts > 0;
     }
   }
 

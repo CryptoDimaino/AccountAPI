@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { debounceTime } from 'rxjs/operators';
+import { Subscription } from 'rxjs';
+
 
 import { Response } from '../../../Models/response';
 
@@ -12,8 +14,9 @@ import { GameService } from '../../../Services/game.service';
 
 import { PlatformList, PlatformAdd, PlatformEdit, Platform, Platforms } from '../../../Models/platform';
 import { CodeList, CodeAdd, CodeEdit, Code } from '../../../Models/code';
-import { AccountList, AccountAdd, AccountPlatform } from '../../../Models/account';
+import { AccountList, AccountAdd, AccountPlatform, Account } from '../../../Models/account';
 import { Game, GameAccount, GameList, GameAdd, GameEdit } from '../../../Models/game';
+import { ThrowStmt } from '@angular/compiler';
 
 @Component({
   selector: 'app-code-add',
@@ -31,33 +34,81 @@ export class CodeAddComponent implements OnInit {
   private gameResponse: Response<GameList[]>;
   private games: GameList[];
 
+  private accountResponse: Response<AccountList[]>;
+  private accounts: AccountList[];
+
+  private sortedAccountList: AccountList[] = [];
+
+  private newCode: CodeAdd;
+
+  private game: GameList;
+
+
   // Form
   private submitted = false;
-  private addModelForm: FormGroup
+  private addModelForm: FormGroup;
 
-  // Check for checkbox
-  private checkCheckbox: boolean;
+
+  private account: Account;
+
+
+
+  private subscriptions: Array<Subscription> = [];
+
 
 
   constructor(private router: Router, private formBuilder: FormBuilder, private accountService: AccountService, private platformService: PlatformService, private codeService: CodeService, private gameService: GameService) { }
 
   async ngOnInit() {
-    this.checkCheckbox = true;
 
     this.loaded = false;
 
     // Create initial form
     this.addModelForm = this.formBuilder.group({
-      CheckBox: [false],
       CodeString: ['', Validators.required],
-      UsedStatus: [''],
-      EmailAccountId: [''],
-      PlatformId: [''],
+      Status: ['', Validators.required],
+      AccountId: ['', Validators.required],
       GameId: ['', Validators.required],
     });
 
     // Loads response and all platform list
     await this.loadResources();
+
+    if(this.platformResponse.DidError || this.gameResponse.DidError) {
+      console.log("Error loading resources.");
+    }
+    else {
+      this.loaded = true;
+
+      // Checks for value changes and if there is a change it set the other form controls to disabled.
+      this.subscriptions.push(this.addModelForm.controls["Status"].valueChanges.subscribe((data: boolean) => {
+        if(data === true) {
+            this.addModelForm.controls["AccountId"].enable();
+        }
+        else {
+          this.addModelForm.controls["AccountId"].disable();
+          this.addModelForm.controls["AccountId"].setValue(null);
+        }
+      }));
+
+
+      this.subscriptions.push(this.addModelForm.controls["GameId"].valueChanges.subscribe((data) => {
+        this.sortedAccountList = [];
+        
+        this.games.forEach(game => {
+          if(game.Id == data)
+          {
+            this.game = game;
+          }
+        });
+        this.accounts.forEach(account => {
+          if(this.game.Platform == account.Platform)
+          {
+            this.sortedAccountList.push(account);
+          }
+        });
+      }));
+    }
   }
 
   // Reads in data from API
@@ -65,31 +116,84 @@ export class CodeAddComponent implements OnInit {
     await this.platformService.getPlatformsWithId().then((data: Response<Platforms[]>) => {
       this.platformResponse = data;
       this.platforms = data.Model;
-      console.log(data.Model);
     });
 
     await this.gameService.getGames().then((data: Response<GameList[]>) => {
       this.gameResponse = data;
       this.games = data.Model;
-      console.log(data.Model);
     });
 
-    // await this.emailaccountService.getEmailAccounts().then((data: Response<EmailAccountList[]>) => {
-    //   this.emailaccountResponse = data;
-    //   this.emailaccounts = data.Model;
-    //   this.loaded = true;
-    //   console.log(data.Model);
-    // });
+    await this.accountService.getAccounts().then((data: Response<AccountList[]>) => {
+      this.accountResponse = data;
+      this.accounts = data.Model;
+    });
 
-    // await this.accountService.getEmailAccountAndPlatforms().then((data: Response<AccountPlatform[]>) => {
-    //   this.accountplatformResponse = data;
-    //   this.accountplatforms = data.Model;
-    //   console.log(data.Model);
-    // });
+    // Loads in the platform information
+    await this.platformService.getPlatformsWithId().then((data: Response<PlatformList[]>) => {
+      this.platformResponse = data;
+      this.platforms = data.Model;
+      // console.log(this.platformList);
+    });
   }
 
   // getter for easy access to form fields
   get f() { return this.addModelForm.controls; }
+
+  async AddCode() {
+    this.submitted = true;
+
+    if(this.addModelForm.invalid) {
+      return;
+    }
+
+    if(this.addModelForm.getRawValue().Status == true) {
+      await this.accountService.getAccount(this.addModelForm.getRawValue().AccountId).then((data: Response<Account>) => {
+        this.account = data.Model;
+      });
+
+      this.newCode = {
+        CodeString: this.addModelForm.getRawValue().CodeString,
+        UsedStatus: this.addModelForm.getRawValue().Status,
+        GameId: this.addModelForm.getRawValue().GameId,
+        EmailAccountId: this.account.EmailAccountId,
+        PlatformId: this.account.PlatformId
+      };
+    }
+    else {
+      let plat = 0;
+      this.platforms.forEach(platform => {
+        if(platform.Platform == this.game.Platform) {
+          plat = platform.Id;
+        }
+      });
+
+      this.newCode = {
+        CodeString: this.addModelForm.getRawValue().CodeString,
+        UsedStatus: this.addModelForm.getRawValue().Status,
+        GameId: this.addModelForm.getRawValue().GameId,
+        PlatformId: plat,
+        EmailAccountId: null,
+      };
+    }
+
+    console.log(this.newCode);
+
+    this.codeService.addCode(this.newCode).then((data: Response<Code>) => {
+      if(data.DidError) {
+        alert(data.Message);
+      }
+      else {
+        this.router.navigate(['/codes/' + data.Model.CodeId]);
+      }
+    });
+  }
+
+  public ngOnDestroy(): void {
+    this.subscriptions.forEach((subscription: Subscription) => {
+        subscription.unsubscribe();
+    });
+  }
+
 }
 
 

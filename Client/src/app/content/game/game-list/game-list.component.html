@@ -46,6 +46,9 @@
               <th (click)="sort('Platform')">Platform
                 <span class="table-link-item" *ngIf="key =='Platform'" [ngClass]="{'table-header-arrow-up':reverse, 'table-header-arrow-down':!reverse}"></span>
               </th>
+              <th (click)="sort('ReleaseDate')">Release Date
+                <span class="table-link-item" *ngIf="key =='ReleaseDate'" [ngClass]="{'table-header-arrow-up':reverse, 'table-header-arrow-down':!reverse}"></span>
+              </th>
               <th (click)="sort('NumberOfAccounts')">Number of Accounts
                 <span class="table-link-item" *ngIf="key =='NumberOfAccounts'" [ngClass]="{'table-header-arrow-up':reverse, 'table-header-arrow-down':!reverse}"></span>
               </th>
@@ -55,6 +58,7 @@
             <tr *ngFor="let game of result | orderBy: key : reverse : true | paginate: config;" >
               <td><a [routerLink]="['/games/', game.Id]" class="nav-link" routerLinkActive="active">{{game.Title}}</a></td>
               <td>{{game.Platform}}</td>
+              <td>{{game.ReleaseDate}}</td>
               <td>{{game.NumberOfAccounts}}</td>
             </tr>
           </tbody>

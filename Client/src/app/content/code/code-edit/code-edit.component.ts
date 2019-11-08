@@ -155,6 +155,13 @@ export class CodeEditComponent implements OnInit {
           }
         });
       }));
+
+
+    // Show current game. Allow to pick every game. Done
+
+    // Load account based on the game picked for the platform. Done
+
+
     }
   }
 
@@ -198,23 +205,18 @@ export class CodeEditComponent implements OnInit {
 
 
   async onEdit() {
-    //
     this.submitted = true;
 
-    //
     if(this.editModelForm.invalid) {
       return;
     }
 
-    //
     if(this.editModelForm.getRawValue().Status == true)
     {
-      //
       await this.accountService.getAccount(this.editModelForm.getRawValue().AccountId).then((data: Response<Account>) => {
         this.account = data.Model;
       });
 
-      //
       this.newCode = {
         CodeId: this.id,
         CodeString: this.editModelForm.getRawValue().Code,
@@ -230,7 +232,6 @@ export class CodeEditComponent implements OnInit {
       this.platformList.forEach(platform => {
         if(platform.Platform == this.game.Platform) {
           plat = platform.Id;
-
         }
       });
 

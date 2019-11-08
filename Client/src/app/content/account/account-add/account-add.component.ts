@@ -70,7 +70,6 @@ export class AccountAddComponent implements OnInit {
       Password: ['', Validators.required],
       EmailAccountId: ['', Validators.required],
       PlatformId: ['', Validators.required],
-
     });
 
     this.addAccountForm.controls['Username'].disable();

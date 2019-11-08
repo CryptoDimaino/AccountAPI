@@ -1,1 +1,49 @@
-<p>email-account-edit works!</p>
+<!-- Header -->
+<div class="main-content-header">
+    <h1>Editing {{Title}}</h1>
+  </div>
+  
+  <!-- Loading Spinner -->
+  <div *ngIf="!loaded" class="loading-center">
+    <div class="lds-css ng-scope">
+      <div class="lds-spinner"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+    </div>
+  </div>
+  
+  <!-- Loaded Form -->
+  <div *ngIf="loaded">
+    <div class="main-content-wrapper">
+      <div class="items-content-wrapper">
+        <div class="row model-form">
+          <div class="col-3"></div>
+          <div class="col-6">
+            <form [formGroup]="editModelForm" (ngSubmit)="onEdit()">
+              <div class="form-group">
+                <label>Email</label>
+                <input type="text" formControlName="Email" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.Email.errors }" />
+                <div *ngIf="submitted && f.Email.errors" class="invalid-feedback">
+                  <div *ngIf="f.Email.errors.required">Email is required</div>
+                  <div *ngIf="f.Email.errors.minlength">Email must be at least 5 characters</div>
+                </div>
+              </div>
+              <div class="form-group">
+                <label>Password</label>
+                <input type="text" formControlName="Password" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.Password.errors }" />
+                <div *ngIf="submitted && f.Password.errors" class="invalid-feedback">
+                    <div *ngIf="f.Password.errors.required">Password is required</div>
+                    <div *ngIf="f.Password.errors.minlength">Password must be at least 5 characters</div>
+                </div>
+              </div>
+              <div class="row button-form-padding">
+                <div class="col-2"></div>
+                <div class="col-8">
+                  <button [disabled]="loading" class="model-form-button">Save Changes</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
